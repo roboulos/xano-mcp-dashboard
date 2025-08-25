@@ -53,11 +53,11 @@ const Navbar = () => {
       <div className="flex items-center justify-between px-6 py-3">
         <Link href="/" className="flex shrink-0 items-center gap-2">
           <Image
-            src="/logo.svg"
-            alt="logo"
-            width={94}
-            height={18}
-            className="dark:invert"
+            src="/snappy-mcp-logo.svg"
+            alt="Snappy MCP"
+            width={160}
+            height={40}
+            className=""
           />
         </Link>
 
