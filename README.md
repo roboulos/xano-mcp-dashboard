@@ -1,8 +1,11 @@
-# Mainline NextJS Template
+# Xano AI Developer - MCP Dashboard
 
-Mainline NextJS Template is a premium template built by https://www.shadcnblocks.com
+Your own AI Xano developer. Supercharge your Xano backend with any AI tool (Claude, ChatGPT, Copilot).
 
-- [Demo](https://mainline-nextjs-template.vercel.app/)
+Built with the Mainline NextJS Template by https://www.shadcnblocks.com
+
+- [Live Site](https://mcp.snappy.ai/)
+- Last updated: August 25, 2025
 - [Documentation](https://docs.shadcnblocks.com/templates/getting-started)
 
 ## Screenshot
