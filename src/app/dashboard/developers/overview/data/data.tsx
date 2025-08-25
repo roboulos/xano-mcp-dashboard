@@ -47,7 +47,7 @@ type RecentActivity = (typeof recentActivity)[number];
 export const getActivityIcon = (type: RecentActivity['type']) => {
   switch (type) {
     case 'pull-request':
-      return <GitPullRequest className="h-5 w-5 text-blue-500" />;
+      return <GitPullRequest className="h-5 w-5 text-violet-500" />;
     case 'issue-closed':
       return <GitMerge className="h-5 w-5 text-green-500" />;
     case 'commit':

@@ -79,14 +79,14 @@ export default function ApiKeysPage() {
         <TabsList className="border-muted flex h-auto w-full items-center justify-start rounded-none border-b bg-transparent p-0!">
           <TabsTrigger
             value="api"
-            className="rounded-none border-blue-600 py-1 shadow-none! data-[state=active]:border-b-[2px]"
+            className="rounded-none border-violet-600 py-1 shadow-none! data-[state=active]:border-b-[2px]"
           >
             API Keys
           </TabsTrigger>
           <TabsTrigger
             disabled
             value="account"
-            className="rounded-none border-blue-600 py-1 shadow-none! data-[state=active]:border-b-[2px]"
+            className="rounded-none border-violet-600 py-1 shadow-none! data-[state=active]:border-b-[2px]"
           >
             Account
           </TabsTrigger>

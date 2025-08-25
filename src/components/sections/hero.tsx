@@ -84,7 +84,7 @@ const Hero = ({
   return (
     <>
       {/* Hero Section - Premium Layout with Generous Spacing */}
-      <section className="flex min-h-[90vh] items-center bg-gradient-to-br from-slate-50/50 via-white to-purple-50/30 pt-[180px] pb-[160px] lg:pt-[200px] dark:from-slate-950 dark:via-slate-900 dark:to-purple-950/20">
+      <section className="flex min-h-[90vh] items-center bg-gradient-to-br from-purple-50/40 via-white to-indigo-50/30 pt-[180px] pb-[160px] lg:pt-[200px] dark:from-slate-950 dark:via-purple-950/10 dark:to-indigo-950/20">
         <div className="container max-w-screen-xl px-6 lg:px-8">
           <div className="grid items-center gap-20 lg:grid-cols-12 lg:gap-24">
             {/* Left Column - Content (spans 6 columns) */}
@@ -93,7 +93,7 @@ const Hero = ({
               <div className="max-w-[680px]">
                 <div className="relative">
                   {/* More dynamic background gradient behind headline */}
-                  <div className="absolute inset-0 -z-10 bg-gradient-to-r from-purple-500/10 via-blue-500/8 via-orange-500/6 to-amber-500/8 blur-3xl dark:from-purple-500/5 dark:via-blue-500/4 dark:via-orange-500/3 dark:to-amber-500/4"></div>
+                  <div className="absolute inset-0 -z-10 bg-gradient-to-r from-purple-500/15 via-indigo-500/10 via-violet-500/8 to-pink-500/10 blur-3xl dark:from-purple-500/8 dark:via-indigo-500/6 dark:via-violet-500/4 dark:to-pink-500/5"></div>
 
                   <h1
                     className="hero-headline mb-8 text-4xl leading-[1.1] font-bold tracking-[-0.01em] text-slate-900 lg:text-[4rem] dark:text-slate-100"
@@ -104,7 +104,7 @@ const Hero = ({
                     }}
                   >
                     Supercharge your{' '}
-                    <span className="gradient-text-database bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent dark:from-purple-400 dark:to-indigo-400">
+                    <span className="gradient-text-database bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent dark:from-violet-400 dark:to-purple-400">
                       Xano backend
                     </span>{' '}
                     with{' '}
@@ -135,7 +135,7 @@ const Hero = ({
                 {/* CTA Buttons */}
                 <div className="mb-8 flex flex-wrap gap-5">
                   <Link href="/dashboard/settings/universe-credentials">
-                    <Button className="h-[58px] rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 px-9 text-base font-semibold text-white shadow-lg transition-all duration-200 hover:scale-105 hover:shadow-xl hover:brightness-110 dark:from-purple-500 dark:to-indigo-500">
+                    <Button className="h-[58px] rounded-xl bg-gradient-to-r from-violet-600 to-purple-600 px-9 text-base font-semibold text-white shadow-lg transition-all duration-200 hover:scale-105 hover:shadow-xl hover:brightness-110 dark:from-violet-500 dark:to-purple-500">
                       Connect Your Xano
                     </Button>
                   </Link>

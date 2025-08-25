@@ -19,8 +19,8 @@ export default function MaintenancePage() {
     <div className="bg-background flex min-h-screen items-center justify-center">
       <Card className="mx-4 w-full max-w-md">
         <CardHeader>
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900/20">
-            <Wrench className="h-8 w-8 text-blue-600 dark:text-blue-400" />
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-purple-100 dark:bg-purple-900/20">
+            <Wrench className="h-8 w-8 text-purple-600 dark:text-purple-400" />
           </div>
           <CardTitle className="text-center text-3xl">
             503 - Under Maintenance

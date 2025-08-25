@@ -90,8 +90,8 @@ const Features = () => {
 
               <Card className="space-y-4 p-6">
                 <div className="flex items-center gap-3">
-                  <div className="rounded-lg bg-blue-100 p-2 dark:bg-blue-900/20">
-                    <Database className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                  <div className="rounded-lg bg-purple-100 p-2 dark:bg-purple-900/20">
+                    <Database className="h-5 w-5 text-purple-600 dark:text-purple-400" />
                   </div>
                   <h4 className="font-semibold">Xano-native development</h4>
                 </div>
@@ -117,8 +117,8 @@ Function Stack:
 
               <Card className="space-y-4 p-6">
                 <div className="flex items-center gap-3">
-                  <div className="rounded-lg bg-purple-100 p-2 dark:bg-purple-900/20">
-                    <Users className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+                  <div className="rounded-lg bg-violet-100 p-2 dark:bg-violet-900/20">
+                    <Users className="h-5 w-5 text-violet-600 dark:text-violet-400" />
                   </div>
                   <h4 className="font-semibold">Best practices built-in</h4>
                 </div>
@@ -161,8 +161,8 @@ Function Stack:
             <div className="grid gap-8 lg:grid-cols-3">
               <Card className="space-y-4 p-6">
                 <div className="flex items-center gap-3">
-                  <div className="rounded-lg bg-purple-100 p-2 dark:bg-purple-900/20">
-                    <Zap className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+                  <div className="rounded-lg bg-indigo-100 p-2 dark:bg-indigo-900/20">
+                    <Zap className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
                   </div>
                   <h4 className="font-semibold">Skip the learning curve</h4>
                 </div>
@@ -171,8 +171,8 @@ Function Stack:
                   development. Describe your goal, get working code instantly.
                 </p>
                 <div className="space-y-2">
-                  <div className="rounded-lg border border-blue-200 bg-blue-50 p-3 dark:border-blue-800 dark:bg-blue-900/10">
-                    <div className="mb-1 text-xs font-medium text-blue-600 dark:text-blue-400">
+                  <div className="rounded-lg border border-purple-200 bg-purple-50 p-3 dark:border-purple-800 dark:bg-purple-900/10">
+                    <div className="mb-1 text-xs font-medium text-purple-600 dark:text-purple-400">
                       You describe
                     </div>
                     <div className="text-sm">
@@ -231,8 +231,8 @@ Function Stack:
 
               <Card className="space-y-4 p-6">
                 <div className="flex items-center gap-3">
-                  <div className="rounded-lg bg-cyan-100 p-2 dark:bg-cyan-900/20">
-                    <Database className="h-5 w-5 text-cyan-600 dark:text-cyan-400" />
+                  <div className="rounded-lg bg-violet-100 p-2 dark:bg-violet-900/20">
+                    <Database className="h-5 w-5 text-violet-600 dark:text-violet-400" />
                   </div>
                   <h4 className="font-semibold">
                     Understands your Xano workspace
@@ -285,8 +285,8 @@ Function Stack:
             <div className="grid gap-8 lg:grid-cols-3">
               <Card className="space-y-4 p-6">
                 <div className="flex items-center gap-3">
-                  <div className="rounded-lg bg-indigo-100 p-2 dark:bg-indigo-900/20">
-                    <Zap className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
+                  <div className="rounded-lg bg-purple-100 p-2 dark:bg-purple-900/20">
+                    <Zap className="h-5 w-5 text-purple-600 dark:text-purple-400" />
                   </div>
                   <h4 className="font-semibold">Instant deployment</h4>
                 </div>

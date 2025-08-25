@@ -9,7 +9,7 @@ import { Input } from '@/components/ui/input';
 
 const Signup = () => {
   return (
-    <section className="flex min-h-screen items-center justify-center bg-gradient-to-br from-slate-50/50 via-white to-purple-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-purple-950/20">
+    <section className="flex min-h-screen items-center justify-center bg-gradient-to-br from-purple-50/40 via-white to-indigo-50/30 dark:from-slate-950 dark:via-purple-950/10 dark:to-indigo-950/20">
       <div className="container max-w-screen-xl px-6 py-28 lg:px-8 lg:py-32">
         <div className="flex flex-col gap-4">
           <Card className="mx-auto w-full max-w-sm border-slate-900/8 bg-white shadow-[0_12px_32px_rgba(2,6,23,0.12),0_4px_16px_rgba(2,6,23,0.08)] dark:border-slate-100/8 dark:bg-slate-900 dark:shadow-[0_12px_32px_rgba(0,0,0,0.5),0_4px_16px_rgba(0,0,0,0.3)]">
@@ -34,20 +34,20 @@ const Signup = () => {
                   type="text"
                   placeholder="Enter your name"
                   required
-                  className="border-slate-200 bg-white text-slate-900 transition-all duration-200 placeholder:text-slate-500 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-400 dark:focus:border-purple-400 dark:focus:ring-purple-400/20"
+                  className="border-slate-200 bg-white text-slate-900 transition-all duration-200 placeholder:text-slate-500 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-400 dark:focus:border-violet-400 dark:focus:ring-violet-400/20"
                 />
                 <Input
                   type="email"
                   placeholder="Enter your email"
                   required
-                  className="border-slate-200 bg-white text-slate-900 transition-all duration-200 placeholder:text-slate-500 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-400 dark:focus:border-purple-400 dark:focus:ring-purple-400/20"
+                  className="border-slate-200 bg-white text-slate-900 transition-all duration-200 placeholder:text-slate-500 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-400 dark:focus:border-violet-400 dark:focus:ring-violet-400/20"
                 />
                 <div>
                   <Input
                     type="password"
                     placeholder="Enter your password"
                     required
-                    className="border-slate-200 bg-white text-slate-900 transition-all duration-200 placeholder:text-slate-500 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-400 dark:focus:border-purple-400 dark:focus:ring-purple-400/20"
+                    className="border-slate-200 bg-white text-slate-900 transition-all duration-200 placeholder:text-slate-500 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-400 dark:focus:border-violet-400 dark:focus:ring-violet-400/20"
                   />
                   <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
                     Must be at least 8 characters.
@@ -55,7 +55,7 @@ const Signup = () => {
                 </div>
                 <Button
                   type="submit"
-                  className="mt-2 w-full bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-500 text-white shadow-md transition-all duration-200 hover:scale-[1.02] hover:shadow-lg hover:brightness-110 dark:from-purple-500 dark:via-blue-500 dark:to-cyan-400"
+                  className="mt-2 w-full bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 text-white shadow-md transition-all duration-200 hover:scale-[1.02] hover:shadow-lg hover:brightness-110 dark:from-violet-500 dark:via-purple-500 dark:to-indigo-500"
                 >
                   Create an account
                 </Button>
@@ -71,7 +71,7 @@ const Signup = () => {
                 <p>Already have an account?</p>
                 <Link
                   href="/login"
-                  className="font-medium text-purple-600 transition-colors duration-200 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300"
+                  className="font-medium text-violet-600 transition-colors duration-200 hover:text-violet-700 dark:text-violet-400 dark:hover:text-violet-300"
                 >
                   Log in
                 </Link>
