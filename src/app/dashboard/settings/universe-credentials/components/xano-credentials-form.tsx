@@ -13,12 +13,12 @@ export default function XanoCredentialsForm() {
     <>
       <div className="text-muted-foreground mb-6 text-start text-sm font-medium tracking-tight">
         <p className="mb-2">
-          Connect your Xano workspace to enable AI-powered backend
-          development through any AI assistant.
+          Connect your Xano workspace to enable AI-powered backend development
+          through any AI assistant.
         </p>
         <p>
-          Your credentials are encrypted and stored securely. OAuth 2.0
-          ensures secure access to your workspace.
+          Your credentials are encrypted and stored securely. OAuth 2.0 ensures
+          secure access to your workspace.
         </p>
       </div>
 
@@ -34,11 +34,7 @@ export default function XanoCredentialsForm() {
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="hostname">Workspace URL</Label>
-                <Input
-                  id="hostname"
-                  placeholder="your-app.xano.io"
-                  required
-                />
+                <Input id="hostname" placeholder="your-app.xano.io" required />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="port">API Version</Label>

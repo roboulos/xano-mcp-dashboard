@@ -5,7 +5,6 @@ import {
   Activity,
   Users,
   CheckCircle,
-  Clock,
 } from 'lucide-react';
 
 import { Badge } from '@/components/ui/badge';
@@ -27,8 +26,8 @@ const Features = () => {
           </h2>
           <p className="text-muted-foreground max-w-3xl text-center text-balance lg:text-xl">
             Have your own AI Xano developer that builds within your existing
-            workspace. Works with Claude.ai, ChatGPT, Copilot, and any AI
-            you prefer.
+            workspace. Works with Claude.ai, ChatGPT, Copilot, and any AI you
+            prefer.
           </p>
         </div>
 
@@ -121,9 +120,7 @@ Function Stack:
                   <div className="rounded-lg bg-purple-100 p-2 dark:bg-purple-900/20">
                     <Users className="h-5 w-5 text-purple-600 dark:text-purple-400" />
                   </div>
-                  <h4 className="font-semibold">
-                    Best practices built-in
-                  </h4>
+                  <h4 className="font-semibold">Best practices built-in</h4>
                 </div>
                 <p className="text-muted-foreground">
                   AI follows Xano best practices: proper error handling,
@@ -155,9 +152,9 @@ Function Stack:
                 Natural language to working APIs
               </h3>
               <p className="text-muted-foreground text-lg">
-                Skip documentation, avoid tutorials. Just describe what you
-                want to build and AI handles the complex Xano logic. From idea
-                to deployed API in minutes.
+                Skip documentation, avoid tutorials. Just describe what you want
+                to build and AI handles the complex Xano logic. From idea to
+                deployed API in minutes.
               </p>
             </div>
 
@@ -179,7 +176,8 @@ Function Stack:
                       You describe
                     </div>
                     <div className="text-sm">
-                      "I need an API that returns inactive users with their last activity date"
+                      "I need an API that returns inactive users with their last
+                      activity date"
                     </div>
                   </div>
                   <div className="rounded-lg border border-green-200 bg-green-50 p-3 dark:border-green-800 dark:bg-green-900/10">
@@ -245,9 +243,7 @@ Function Stack:
                   Suggests the right approach based on your current setup.
                 </p>
                 <div className="bg-muted space-y-2 rounded-lg p-3">
-                  <div className="text-xs font-medium">
-                    Your Xano Resources
-                  </div>
+                  <div className="text-xs font-medium">Your Xano Resources</div>
                   <div className="grid grid-cols-2 gap-1 text-xs">
                     <div className="flex items-center gap-1">
                       <CheckCircle className="h-3 w-3 text-green-500" />
@@ -280,8 +276,9 @@ Function Stack:
                 AI-generated code follows Xano best practices
               </h3>
               <p className="text-muted-foreground text-lg">
-                Built-in error handling • Optimized queries • Proper authentication
-                • Ready for production traffic from the moment you deploy
+                Built-in error handling • Optimized queries • Proper
+                authentication • Ready for production traffic from the moment
+                you deploy
               </p>
             </div>
 

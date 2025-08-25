@@ -41,7 +41,7 @@ const FAQ = ({
       id: 'faq-3',
       question: 'Do I need to change my Xano setup?',
       answer:
-        "No! Xano AI Developer works with your existing Xano workspace exactly as it is. No migration, no new platform to learn, no changes to your current APIs. Just connect and start building faster with AI assistance.",
+        'No! Xano AI Developer works with your existing Xano workspace exactly as it is. No migration, no new platform to learn, no changes to your current APIs. Just connect and start building faster with AI assistance.',
     },
     {
       id: 'faq-4',
@@ -71,13 +71,13 @@ const FAQ = ({
       id: 'faq-8',
       question: 'Can I use my preferred AI tool?',
       answer:
-        'Yes! Xano AI Developer works with Claude.ai, ChatGPT, GitHub Copilot, Cursor, and any AI assistant that supports MCP or custom tools. Use the AI you're already comfortable with to build in Xano.',
+        "Yes! Xano AI Developer works with Claude.ai, ChatGPT, GitHub Copilot, Cursor, and any AI assistant that supports MCP or custom tools. Use the AI you're already comfortable with to build in Xano.",
     },
     {
       id: 'faq-9',
       question: 'How do I get started?',
       answer:
-        "Getting started takes less than 2 minutes: 1) Connect your Xano workspace, 2) Authenticate with OAuth or API key, 3) Open your favorite AI tool, and 4) Start describing what you want to build. The AI handles the rest.",
+        'Getting started takes less than 2 minutes: 1) Connect your Xano workspace, 2) Authenticate with OAuth or API key, 3) Open your favorite AI tool, and 4) Start describing what you want to build. The AI handles the rest.',
     },
     {
       id: 'faq-10',

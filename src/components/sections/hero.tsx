@@ -206,7 +206,8 @@ const Hero = ({
                     {/* User Message */}
                     <div className="flex justify-end">
                       <div className="max-w-md rounded-xl border border-slate-900/5 bg-white px-5 py-4 text-sm dark:border-slate-700 dark:bg-slate-800">
-                        Create an API endpoint that returns users who signed up this week with their subscription status
+                        Create an API endpoint that returns users who signed up
+                        this week with their subscription status
                       </div>
                     </div>
 
@@ -257,11 +258,16 @@ const Hero = ({
                               </TabsList>
                               <TabsContent value="summary" className="mt-2">
                                 <div className="text-muted-foreground space-y-1 text-xs">
-                                  <p>• API endpoint created: /users/recent-signups</p>
+                                  <p>
+                                    • API endpoint created:
+                                    /users/recent-signups
+                                  </p>
                                   <p>
                                     • Database query added with 7-day filter
                                   </p>
-                                  <p>• Response includes user + subscription data</p>
+                                  <p>
+                                    • Response includes user + subscription data
+                                  </p>
                                 </div>
                               </TabsContent>
                               <TabsContent value="sql" className="mt-2">
@@ -307,8 +313,9 @@ const Hero = ({
 
                         <div className="text-foreground">
                           <p className="mb-2">
-                            Created API endpoint that found <strong>47 new users</strong> this week.
-                            The endpoint is now live at{' '}
+                            Created API endpoint that found{' '}
+                            <strong>47 new users</strong> this week. The
+                            endpoint is now live at{' '}
                             <strong>/api:v1/users/recent-signups</strong>:
                           </p>
 

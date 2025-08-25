@@ -11,8 +11,8 @@ const CTA = () => {
             Ready to Get Your AI Xano Developer?
           </h2>
           <p className="text-muted-foreground max-w-2xl text-lg">
-            Transform how you build in Xano. Natural language to working APIs
-            in minutes. Your workspace, your AI assistant, instant results.
+            Transform how you build in Xano. Natural language to working APIs in
+            minutes. Your workspace, your AI assistant, instant results.
           </p>
           <div className="mt-4 flex flex-col gap-4 sm:flex-row">
             <Link href="/dashboard/settings/universe-credentials">

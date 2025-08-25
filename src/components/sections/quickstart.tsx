@@ -71,9 +71,8 @@ Step 3: Connection Verified
             Get Your Xano AI Developer in 2 minutes
           </h2>
           <p className="text-muted-foreground mx-auto max-w-3xl text-balance lg:text-xl">
-            Simple setup - no coding required. Connect your Xano workspace
-            and start building APIs with natural language using any AI
-            immediately.
+            Simple setup - no coding required. Connect your Xano workspace and
+            start building APIs with natural language using any AI immediately.
           </p>
         </div>
 
@@ -138,7 +137,9 @@ Step 3: Connection Verified
                 </div>
                 <div className="bg-muted/50 dark:bg-muted/30 flex items-center justify-center gap-2 rounded-lg p-4">
                   <CheckCircle className="h-5 w-5 text-green-500" />
-                  <span className="text-sm font-medium">Works in Your Xano</span>
+                  <span className="text-sm font-medium">
+                    Works in Your Xano
+                  </span>
                 </div>
                 <div className="bg-muted/50 dark:bg-muted/30 flex items-center justify-center gap-2 rounded-lg p-4">
                   <CheckCircle className="h-5 w-5 text-green-500" />
@@ -183,9 +184,7 @@ Step 3: Connection Verified
                 </div>
                 <div className="bg-muted/50 dark:bg-muted/30 flex items-center justify-center gap-2 rounded-lg p-4">
                   <CheckCircle className="h-5 w-5 text-green-500" />
-                  <span className="text-sm font-medium">
-                    AI Builds Code
-                  </span>
+                  <span className="text-sm font-medium">AI Builds Code</span>
                 </div>
                 <div className="bg-muted/50 dark:bg-muted/30 flex items-center justify-center gap-2 rounded-lg p-4">
                   <CheckCircle className="h-5 w-5 text-green-500" />
@@ -198,9 +197,7 @@ Step 3: Connection Verified
               <Card>
                 <CardContent className="p-6">
                   <div className="mb-4 flex items-center justify-between">
-                    <h3 className="text-lg font-semibold">
-                      Review & Deploy
-                    </h3>
+                    <h3 className="text-lg font-semibold">Review & Deploy</h3>
                     <div className="flex gap-2">
                       <Badge variant="secondary" className="text-xs">
                         Tested
