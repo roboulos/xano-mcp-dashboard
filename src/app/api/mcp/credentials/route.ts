@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+import { loggedFetch } from '@/lib/api-debug-logger';
 import { createRequestLogger } from '@/lib/api-logger';
 
 // Xano API endpoint
@@ -21,13 +22,16 @@ export async function GET(request: NextRequest) {
     const authToken = authHeader.split(' ')[1];
 
     // Call Xano list endpoint
-    const response = await fetch(`${XANO_API_BASE}/xano-credentials/list`, {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${authToken}`,
-        'Content-Type': 'application/json',
-      },
-    });
+    const response = await loggedFetch(
+      `${XANO_API_BASE}/xano-credentials/list`,
+      {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+          'Content-Type': 'application/json',
+        },
+      }
+    );
 
     const data = await response.json();
 
@@ -69,11 +73,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
 
     // Validate required fields
-    if (
-      !body.credential_name ||
-      !body.xano_api_key ||
-      !body.xano_instance_name
-    ) {
+    if (!body.credential_name || !body.xano_api_key) {
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 }
@@ -81,19 +81,22 @@ export async function POST(request: NextRequest) {
     }
 
     // Call Xano create endpoint
-    const response = await fetch(`${XANO_API_BASE}/xano-credentials/create`, {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${authToken}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        credential_name: body.credential_name,
-        xano_api_key: body.xano_api_key,
-        xano_instance_name: body.xano_instance_name,
-        xano_instance_email: body.xano_instance_email,
-      }),
-    });
+    const response = await loggedFetch(
+      `${XANO_API_BASE}/xano-credentials/create`,
+      {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          credential_name: body.credential_name,
+          xano_api_key: body.xano_api_key,
+          xano_instance_name: body.xano_instance_name,
+          xano_instance_email: body.xano_instance_email,
+        }),
+      }
+    );
 
     const data = await response.json();
 

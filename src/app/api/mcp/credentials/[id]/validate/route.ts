@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+import { loggedFetch } from '@/lib/api-debug-logger';
 import { createRequestLogger } from '@/lib/api-logger';
 
 // Xano API endpoint
@@ -28,16 +29,19 @@ export async function POST(
     const authToken = authHeader.split(' ')[1];
 
     // Call Xano validate endpoint
-    const response = await fetch(`${XANO_API_BASE}/xano-credentials/validate`, {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${authToken}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        id: parseInt(id, 10),
-      }),
-    });
+    const response = await loggedFetch(
+      `${XANO_API_BASE}/xano-credentials/validate`,
+      {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id: parseInt(id, 10),
+        }),
+      }
+    );
 
     const data = await response.json();
 

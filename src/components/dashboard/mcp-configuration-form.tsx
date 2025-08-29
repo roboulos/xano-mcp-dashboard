@@ -3,7 +3,7 @@
 import { useState } from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Loader2, Info, Shield, Tag, User, Building } from 'lucide-react';
+import { Loader2, Info, Shield, Tag } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 
@@ -42,12 +42,7 @@ const formSchema = z.object({
     .string()
     .min(1, 'Name is required')
     .max(50, 'Name must be less than 50 characters'),
-  apiKey: z
-    .string()
-    .min(1, 'API Key is required')
-    .regex(/^xano_/, 'API Key must start with "xano_"'),
-  instanceName: z.string().optional(),
-  email: z.string().email('Must be a valid email').optional(),
+  apiKey: z.string().min(1, 'API Key is required'),
 });
 
 interface MCPConfigurationFormProps {
@@ -70,8 +65,6 @@ export function MCPConfigurationForm({
     defaultValues: {
       name: config?.name || '',
       apiKey: config?.apiKey || '',
-      instanceName: config?.instanceName || '',
-      email: config?.email || '',
     },
   });
 
@@ -149,57 +142,13 @@ export function MCPConfigurationForm({
                   <FormControl>
                     <Input
                       type="password"
-                      placeholder="xano_prod_1234567890abcdef"
+                      placeholder="your_xano_api_key_here"
                       {...field}
                       className="font-mono"
                     />
                   </FormControl>
                   <FormDescription>
                     Your Xano API authentication key
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="instanceName"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="flex items-center gap-2">
-                    <Building className="h-4 w-4" />
-                    Instance Name
-                  </FormLabel>
-                  <FormControl>
-                    <Input placeholder="My Xano Instance" {...field} />
-                  </FormControl>
-                  <FormDescription>
-                    Optional: Name of your Xano instance
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="flex items-center gap-2">
-                    <User className="h-4 w-4" />
-                    Email
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      type="email"
-                      placeholder="user@example.com"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormDescription>
-                    Optional: Email associated with this configuration
                   </FormDescription>
                   <FormMessage />
                 </FormItem>

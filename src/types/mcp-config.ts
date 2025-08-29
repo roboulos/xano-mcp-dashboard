@@ -2,18 +2,10 @@ export type ConnectionStatus = 'connected' | 'error' | 'testing' | 'inactive';
 
 // Validation result structure from Xano API
 export interface XanoValidationResult {
-  endpoints?: Array<{
-    id?: number;
-    name?: string;
-    method?: string;
-    path?: string;
-  }>;
-  tables?: Array<{
-    id?: number;
-    name?: string;
-  }>;
-  name?: string;
-  email?: string;
+  credentialName?: string;
+  userName?: string;
+  userEmail?: string;
+  tokenExpiresAt?: string;
 }
 
 // Xano credential structure from API
@@ -46,10 +38,10 @@ export interface MCPConfiguration {
   createdAt: Date;
   updatedAt?: Date;
   preview?: {
-    totalEndpoints?: number;
-    totalTables?: number;
-    instanceName?: string;
-    email?: string;
+    credentialName?: string;
+    userName?: string;
+    userEmail?: string;
+    tokenExpiresAt?: string;
   };
   validationResult?: XanoValidationResult;
 }
@@ -57,6 +49,4 @@ export interface MCPConfiguration {
 export interface MCPConfigurationFormData {
   name: string;
   apiKey: string;
-  instanceName?: string;
-  email?: string;
 }

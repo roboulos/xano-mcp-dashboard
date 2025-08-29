@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+import { loggedFetch } from '@/lib/api-debug-logger';
 import { createRequestLogger } from '@/lib/api-logger';
 
 // Xano API endpoint
@@ -28,7 +29,7 @@ export async function PUT(
     const authToken = authHeader.split(' ')[1];
 
     // Call Xano set-default endpoint
-    const response = await fetch(
+    const response = await loggedFetch(
       `${XANO_API_BASE}/xano-credentials/set-default`,
       {
         method: 'PUT',

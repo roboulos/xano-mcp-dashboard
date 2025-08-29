@@ -246,27 +246,38 @@ export function MCPConfigurations() {
       }
 
       // Update configuration status based on validation result
+      // If we get back credential data, it means validation was successful
+      const isValid = !!(data.credentialName && data.userName);
+
       setConfigurations(prevConfigs =>
         prevConfigs.map(config =>
           config.id === id
             ? {
                 ...config,
-                status: data.valid ? 'connected' : 'error',
-                lastConnected: data.valid ? new Date() : config.lastConnected,
+                status: isValid ? 'connected' : 'error',
+                lastConnected: isValid ? new Date() : config.lastConnected,
                 updatedAt: new Date(),
+                preview: isValid
+                  ? {
+                      credentialName: data.credentialName,
+                      userName: data.userName,
+                      userEmail: data.userEmail,
+                      tokenExpiresAt: data.tokenExpiresAt,
+                    }
+                  : config.preview,
               }
             : config
         )
       );
 
       toast({
-        title: data.valid ? 'Connection Successful' : 'Connection Failed',
+        title: isValid ? 'Connection Successful' : 'Connection Failed',
         description:
           data.message ||
-          (data.valid
-            ? `Successfully connected to ${config.name}.`
+          (isValid
+            ? `Successfully connected as ${data.userName || config.name}.`
             : 'Unable to establish connection. Please check your credentials.'),
-        variant: data.valid ? 'default' : 'destructive',
+        variant: isValid ? 'default' : 'destructive',
       });
     } catch (error) {
       // Reset status on error
@@ -349,6 +360,11 @@ export function MCPConfigurations() {
 
         // Refresh the list to get the new credential
         await fetchCredentials();
+
+        // Automatically validate the new credential
+        if (result.id) {
+          await handleTestConnection(result.id);
+        }
 
         toast({
           title: 'Configuration Added',

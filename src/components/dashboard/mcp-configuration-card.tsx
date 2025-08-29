@@ -13,8 +13,6 @@ import {
   EyeOff,
   PlayCircle,
   Star,
-  Database,
-  Activity,
   Copy,
   Check,
   AlertCircle,
@@ -289,39 +287,23 @@ export function MCPConfigurationCard({
               Connection Details
               <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-500" />
             </h4>
-            {(config.preview.instanceName || config.preview.email) && (
-              <div className="mb-3 space-y-1.5 text-sm">
-                {config.preview.instanceName && (
-                  <div className="text-muted-foreground">
-                    <span className="font-medium">Instance:</span>{' '}
-                    {config.preview.instanceName}
-                  </div>
-                )}
-                {config.preview.email && (
-                  <div className="text-muted-foreground">
-                    <span className="font-medium">Email:</span>{' '}
-                    {config.preview.email}
-                  </div>
-                )}
-              </div>
-            )}
-            <div className="grid grid-cols-2 gap-3 text-sm">
-              {config.preview.totalEndpoints && (
-                <div className="bg-primary/5 hover:bg-primary/10 flex items-center gap-2 rounded-md p-2 transition-colors">
-                  <Activity className="text-primary h-4 w-4" />
-                  <span className="font-medium">
-                    {config.preview.totalEndpoints}
-                  </span>
-                  <span className="text-muted-foreground">endpoints</span>
+            <div className="space-y-1.5 text-sm">
+              {config.preview.userName && (
+                <div className="text-muted-foreground">
+                  <span className="font-medium">User:</span>{' '}
+                  {config.preview.userName}
                 </div>
               )}
-              {config.preview.totalTables && (
-                <div className="bg-primary/5 hover:bg-primary/10 flex items-center gap-2 rounded-md p-2 transition-colors">
-                  <Database className="text-primary h-4 w-4" />
-                  <span className="font-medium">
-                    {config.preview.totalTables}
-                  </span>
-                  <span className="text-muted-foreground">tables</span>
+              {config.preview.userEmail && (
+                <div className="text-muted-foreground">
+                  <span className="font-medium">Email:</span>{' '}
+                  {config.preview.userEmail}
+                </div>
+              )}
+              {config.preview.tokenExpiresAt && (
+                <div className="text-muted-foreground">
+                  <span className="font-medium">Token Expires:</span>{' '}
+                  {config.preview.tokenExpiresAt}
                 </div>
               )}
             </div>

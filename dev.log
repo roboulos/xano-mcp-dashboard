@@ -428,3 +428,2126 @@
   status: 'error'
 }
  POST /api/mcp/credentials/4/validate 500 in 696ms
+ ✓ Compiled /dashboard in 17ms
+ GET /dashboard 200 in 159ms
+ ✓ Compiled in 145ms
+[API Log] /api/mcp/credentials: {
+  requestId: 'dz2cy',
+  timestamp: '2025-08-29T18:53:10.256Z',
+  endpoint: '/api/mcp/credentials',
+  method: 'GET',
+  url: 'http://localhost:3000/api/mcp/credentials',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    itemsReceived: 1,
+    curPage: 1,
+    nextPage: null,
+    prevPage: null,
+    offset: 0,
+    perPage: 20,
+    itemsTotal: 1,
+    pageTotal: 1,
+    items: [ [Object] ]
+  },
+  duration: 1201,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/mcp/credentials 200 in 1244ms
+ GET /dashboard 200 in 327ms
+ GET /shadcnblocks-admin-logo.svg 404 in 48ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 89ms
+[API Log] /api/auth/me: {
+  requestId: 'j9sie',
+  timestamp: '2025-08-29T18:57:52.268Z',
+  endpoint: '/api/auth/me',
+  method: 'GET',
+  url: 'http://localhost:3000/api/auth/me',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    user: {
+      id: '17b6fc02-966c-4642-babe-e8004afffc46',
+      created_at: 1729648277250,
+      name: 'Robert',
+      api_key: 'eyJhbGciOiJSUzI1NiJ9.eyJ4YW5vIjp7ImRibyI6Im1hc3Rlcjp1c2VyIiwiaWQiOjQyODQ0LCJhY2Nlc3NfdG9rZW4iOnsia2V5aWQiOiI0NmVmM2ZiOC05ZWJiLTQwY2UtODNkMy1hYjcyYWQxZGRhZDEiLCJzY29wZSI6eyJ3b3Jrc3BhY2U6YWRkb24iOjE1LCJ3b3Jrc3BhY2U6YXBpIjoxNSwid29ya3NwYWNlOmNvbnRlbnQiOjE1LCJ3b3Jrc3BhY2U6ZGF0YWJhc2UiOjE1LCJ3b3Jrc3BhY2U6ZGF0YXNvdXJjZTpsaXZlIjoxNSwid29ya3NwYWNlOmZpbGUiOjE1LCJ3b3Jrc3BhY2U6ZnVuY3Rpb24iOjE1LCJ3b3Jrc3BhY2U6cmVxdWVzdGhpc3RvcnkiOjE1LCJ3b3Jrc3BhY2U6dGFzayI6MTV9fX0sImlhdCI6MTczODg2ODc3NywibmJmIjoxNzM4ODY4Nzc3LCJhdWQiOiJ4YW5vOm1ldGEifQ.DCfBvtXzoCpTXZ5dYYoGwZtD6nxxUYZaCOXf9NkJv7NEz8SRSwgY33LWsQcXUzyQQOpqi9BJXgKgLBD6VFVPJfHTezkossi6WD5_gEh28l5T7QfbD26I8jqoDIbqeR0L74Y2rLFpBHkGhIw4sUTKk5gb9feBzHVd8HrDjt2q4Qy5C1ROox6Yu57YmSNhzeboO4vooSBrJLhaXsrEEvhKwcs7fW1RG8FRS90CS_-_bGAej_tdXi8TQft2BPmCvwjLoT9BUwGtT9QXAmtrQQaP9WXXFMf2PACP1pBGYpsSrcqcsnYBHRibXzDDoBVt4w3xXUzx7kguNrsIzTmW5aT8pfixV_9hnq_d5LiWe5kRVXyChc91JkSuJ6VE4BslXC1hJ4aw6bDiMAu76hTaxczfLnzUv9h69OWE3G3_eyVPDhaIlCY6HLj7juIqnnt10Nrp5puCcjo5FWvMJnunomMbufvO1xGmqwKwd2LrFYzHeft6Sf-e9WBWIl3Qo7-ZsG9LrDq9zLB9-m8bhkZtqVUxIOJHYGO7FpQnNQsQjwW2fYx1e7w89-0k1nu5VjJ4yHr3FGf7pGgiqyQ6eTB1APA-GfU6etVAMeIdjWUzJ4Tqyemr0_27gUmcZ9Grb3Tu3ssHLH2r-Dv59Ke7_g-WPuQCc6m3gNHcJ5_FQN7um8K5ADw',
+      email: 'robertjboulos@gmail.com'
+    }
+  },
+  duration: 274,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/auth/me 200 in 348ms
+[API Log] /api/mcp/credentials: {
+  requestId: 'vzywcg',
+  timestamp: '2025-08-29T18:57:52.270Z',
+  endpoint: '/api/mcp/credentials',
+  method: 'GET',
+  url: 'http://localhost:3000/api/mcp/credentials',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    itemsReceived: 1,
+    curPage: 1,
+    nextPage: null,
+    prevPage: null,
+    offset: 0,
+    perPage: 20,
+    itemsTotal: 1,
+    pageTotal: 1,
+    items: [ [Object] ]
+  },
+  duration: 282,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/mcp/credentials 200 in 365ms
+[API Log] /api/mcp/credentials/4: {
+  requestId: 'e1g7la',
+  timestamp: '2025-08-29T18:58:03.591Z',
+  endpoint: '/api/mcp/credentials/4',
+  method: 'PATCH',
+  url: 'http://localhost:3000/api/mcp/credentials/4',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {
+    credential_name: 'Snappy',
+    xano_api_key: 'eyJhbGciOiJSUzI1NiJ9.eyJ4YW5vIjp7ImRibyI6Im1hc3Rlcjp1c2VyIiwiaWQiOjQyODQ0LCJhY2Nlc3NfdG9rZW4iOnsia2V5aWQiOiI0NmVmM2ZiOC05ZWJiLTQwY2UtODNkMy1hYjcyYWQxZGRhZDEiLCJzY29wZSI6eyJ3b3Jrc3BhY2U6YWRkb24iOjE1LCJ3b3Jrc3BhY2U6YXBpIjoxNSwid29ya3NwYWNlOmNvbnRlbnQiOjE1LCJ3b3Jrc3BhY2U6ZGF0YWJhc2UiOjE1LCJ3b3Jrc3BhY2U6ZGF0YXNvdXJjZTpsaXZlIjoxNSwid29ya3NwYWNlOmZpbGUiOjE1LCJ3b3Jrc3BhY2U6ZnVuY3Rpb24iOjE1LCJ3b3Jrc3BhY2U6cmVxdWVzdGhpc3RvcnkiOjE1LCJ3b3Jrc3BhY2U6dGFzayI6MTV9fX0sImlhdCI6MTczODg2ODc3NywibmJmIjoxNzM4ODY4Nzc3LCJhdWQiOiJ4YW5vOm1ldGEifQ.DCfBvtXzoCpTXZ5dYYoGwZtD6nxxUYZaCOXf9NkJv7NEz8SRSwgY33LWsQcXUzyQQOpqi9BJXgKgLBD6VFVPJfHTezkossi6WD5_gEh28l5T7QfbD26I8jqoDIbqeR0L74Y2rLFpBHkGhIw4sUTKk5gb9feBzHVd8HrDjt2q4Qy5C1ROox6Yu57YmSNhzeboO4vooSBrJLhaXsrEEvhKwcs7fW1RG8FRS90CS_-_bGAej_tdXi8TQft2BPmCvwjLoT9BUwGtT9QXAmtrQQaP9WXXFMf2PACP1pBGYpsSrcqcsnYBHRibXzDDoBVt4w3xXUzx7kguNrsIzTmW5aT8pfixV_9hnq_d5LiWe5kRVXyChc91JkSuJ6VE4BslXC1hJ4aw6bDiMAu76hTaxczfLnzUv9h69OWE3G3_eyVPDhaIlCY6HLj7juIqnnt10Nrp5puCcjo5FWvMJnunomMbufvO1xGmqwKwd2LrFYzHeft6Sf-e9WBWIl3Qo7-ZsG9LrDq9zLB9-m8bhkZtqVUxIOJHYGO7FpQnNQsQjwW2fYx1e7w89-0k1nu5VjJ4yHr3FGf7pGgiqyQ6eTB1APA-GfU6etVAMeIdjWUzJ4Tqyemr0_27gUmcZ9Grb3Tu3ssHLH2r-Dv59Ke7_g-WPuQCc6m3gNHcJ5_FQN7um8K5ADw'
+  },
+  response: { success: true, message: 'Credential updated' },
+  duration: 1052,
+  error: undefined,
+  status: 'success'
+}
+ PATCH /api/mcp/credentials/4 200 in 1091ms
+[API Log] /api/mcp/credentials: {
+  requestId: 'fxllrk',
+  timestamp: '2025-08-29T18:58:03.840Z',
+  endpoint: '/api/mcp/credentials',
+  method: 'GET',
+  url: 'http://localhost:3000/api/mcp/credentials',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    itemsReceived: 1,
+    curPage: 1,
+    nextPage: null,
+    prevPage: null,
+    offset: 0,
+    perPage: 20,
+    itemsTotal: 1,
+    pageTotal: 1,
+    items: [ [Object] ]
+  },
+  duration: 206,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/mcp/credentials 200 in 242ms
+[API Log] /api/mcp/credentials/4/validate: {
+  requestId: '6z1aq4',
+  timestamp: '2025-08-29T18:58:10.004Z',
+  endpoint: '/api/mcp/credentials/4/validate',
+  method: 'POST',
+  url: 'http://localhost:3000/api/mcp/credentials/4/validate',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: { id: '4' },
+  response: {
+    error: 'Input "VALIDATION" is not one of the allowable values.',
+    status: 400
+  },
+  duration: 974,
+  error: undefined,
+  status: 'error'
+}
+ POST /api/mcp/credentials/4/validate 400 in 1015ms
+[API Log] /api/mcp/credentials/4: {
+  requestId: '4p5bbf',
+  timestamp: '2025-08-29T19:00:21.017Z',
+  endpoint: '/api/mcp/credentials/4',
+  method: 'PATCH',
+  url: 'http://localhost:3000/api/mcp/credentials/4',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {
+    credential_name: 'Robert Boulos',
+    xano_api_key: 'eyJhbGciOiJSUzI1NiJ9.eyJ4YW5vIjp7ImRibyI6Im1hc3Rlcjp1c2VyIiwiaWQiOjQyODQ0LCJhY2Nlc3NfdG9rZW4iOnsia2V5aWQiOiI0NmVmM2ZiOC05ZWJiLTQwY2UtODNkMy1hYjcyYWQxZGRhZDEiLCJzY29wZSI6eyJ3b3Jrc3BhY2U6YWRkb24iOjE1LCJ3b3Jrc3BhY2U6YXBpIjoxNSwid29ya3NwYWNlOmNvbnRlbnQiOjE1LCJ3b3Jrc3BhY2U6ZGF0YWJhc2UiOjE1LCJ3b3Jrc3BhY2U6ZGF0YXNvdXJjZTpsaXZlIjoxNSwid29ya3NwYWNlOmZpbGUiOjE1LCJ3b3Jrc3BhY2U6ZnVuY3Rpb24iOjE1LCJ3b3Jrc3BhY2U6cmVxdWVzdGhpc3RvcnkiOjE1LCJ3b3Jrc3BhY2U6dGFzayI6MTV9fX0sImlhdCI6MTczODg2ODc3NywibmJmIjoxNzM4ODY4Nzc3LCJhdWQiOiJ4YW5vOm1ldGEifQ.DCfBvtXzoCpTXZ5dYYoGwZtD6nxxUYZaCOXf9NkJv7NEz8SRSwgY33LWsQcXUzyQQOpqi9BJXgKgLBD6VFVPJfHTezkossi6WD5_gEh28l5T7QfbD26I8jqoDIbqeR0L74Y2rLFpBHkGhIw4sUTKk5gb9feBzHVd8HrDjt2q4Qy5C1ROox6Yu57YmSNhzeboO4vooSBrJLhaXsrEEvhKwcs7fW1RG8FRS90CS_-_bGAej_tdXi8TQft2BPmCvwjLoT9BUwGtT9QXAmtrQQaP9WXXFMf2PACP1pBGYpsSrcqcsnYBHRibXzDDoBVt4w3xXUzx7kguNrsIzTmW5aT8pfixV_9hnq_d5LiWe5kRVXyChc91JkSuJ6VE4BslXC1hJ4aw6bDiMAu76hTaxczfLnzUv9h69OWE3G3_eyVPDhaIlCY6HLj7juIqnnt10Nrp5puCcjo5FWvMJnunomMbufvO1xGmqwKwd2LrFYzHeft6Sf-e9WBWIl3Qo7-ZsG9LrDq9zLB9-m8bhkZtqVUxIOJHYGO7FpQnNQsQjwW2fYx1e7w89-0k1nu5VjJ4yHr3FGf7pGgiqyQ6eTB1APA-GfU6etVAMeIdjWUzJ4Tqyemr0_27gUmcZ9Grb3Tu3ssHLH2r-Dv59Ke7_g-WPuQCc6m3gNHcJ5_FQN7um8K5ADw'
+  },
+  response: { success: true, message: 'Credential updated' },
+  duration: 414,
+  error: undefined,
+  status: 'success'
+}
+ PATCH /api/mcp/credentials/4 200 in 465ms
+[API Log] /api/mcp/credentials: {
+  requestId: 'pryy8',
+  timestamp: '2025-08-29T19:00:21.128Z',
+  endpoint: '/api/mcp/credentials',
+  method: 'GET',
+  url: 'http://localhost:3000/api/mcp/credentials',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    itemsReceived: 1,
+    curPage: 1,
+    nextPage: null,
+    prevPage: null,
+    offset: 0,
+    perPage: 20,
+    itemsTotal: 1,
+    pageTotal: 1,
+    items: [ [Object] ]
+  },
+  duration: 78,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/mcp/credentials 200 in 107ms
+ POST /api/mcp/credentials 400 in 34ms
+ ✓ Compiled in 245ms
+ GET /dashboard 200 in 171ms
+ GET /dashboard 200 in 33ms
+ POST /api/mcp/credentials 400 in 139ms
+[API Log] /api/mcp/credentials/4: {
+  requestId: 'izlczs',
+  timestamp: '2025-08-29T19:03:28.761Z',
+  endpoint: '/api/mcp/credentials/4',
+  method: 'DELETE',
+  url: 'http://localhost:3000/api/mcp/credentials/4',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: { id: '4' },
+  response: { success: true, message: 'Credential deleted' },
+  duration: 456,
+  error: undefined,
+  status: 'success'
+}
+ DELETE /api/mcp/credentials/4 200 in 583ms
+ POST /api/mcp/credentials 400 in 41ms
+ GET /shadcnblocks-admin-logo.svg 404 in 100ms
+ GET /dashboard 200 in 157ms
+ GET /shadcnblocks-admin-logo.svg 404 in 180ms
+[API Log] /api/auth/me: {
+  requestId: '1i6wy8',
+  timestamp: '2025-08-29T19:05:51.951Z',
+  endpoint: '/api/auth/me',
+  method: 'GET',
+  url: 'http://localhost:3000/api/auth/me',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    user: {
+      id: '17b6fc02-966c-4642-babe-e8004afffc46',
+      created_at: 1729648277250,
+      name: 'Robert',
+      api_key: 'eyJhbGciOiJSUzI1NiJ9.eyJ4YW5vIjp7ImRibyI6Im1hc3Rlcjp1c2VyIiwiaWQiOjQyODQ0LCJhY2Nlc3NfdG9rZW4iOnsia2V5aWQiOiI0NmVmM2ZiOC05ZWJiLTQwY2UtODNkMy1hYjcyYWQxZGRhZDEiLCJzY29wZSI6eyJ3b3Jrc3BhY2U6YWRkb24iOjE1LCJ3b3Jrc3BhY2U6YXBpIjoxNSwid29ya3NwYWNlOmNvbnRlbnQiOjE1LCJ3b3Jrc3BhY2U6ZGF0YWJhc2UiOjE1LCJ3b3Jrc3BhY2U6ZGF0YXNvdXJjZTpsaXZlIjoxNSwid29ya3NwYWNlOmZpbGUiOjE1LCJ3b3Jrc3BhY2U6ZnVuY3Rpb24iOjE1LCJ3b3Jrc3BhY2U6cmVxdWVzdGhpc3RvcnkiOjE1LCJ3b3Jrc3BhY2U6dGFzayI6MTV9fX0sImlhdCI6MTczODg2ODc3NywibmJmIjoxNzM4ODY4Nzc3LCJhdWQiOiJ4YW5vOm1ldGEifQ.DCfBvtXzoCpTXZ5dYYoGwZtD6nxxUYZaCOXf9NkJv7NEz8SRSwgY33LWsQcXUzyQQOpqi9BJXgKgLBD6VFVPJfHTezkossi6WD5_gEh28l5T7QfbD26I8jqoDIbqeR0L74Y2rLFpBHkGhIw4sUTKk5gb9feBzHVd8HrDjt2q4Qy5C1ROox6Yu57YmSNhzeboO4vooSBrJLhaXsrEEvhKwcs7fW1RG8FRS90CS_-_bGAej_tdXi8TQft2BPmCvwjLoT9BUwGtT9QXAmtrQQaP9WXXFMf2PACP1pBGYpsSrcqcsnYBHRibXzDDoBVt4w3xXUzx7kguNrsIzTmW5aT8pfixV_9hnq_d5LiWe5kRVXyChc91JkSuJ6VE4BslXC1hJ4aw6bDiMAu76hTaxczfLnzUv9h69OWE3G3_eyVPDhaIlCY6HLj7juIqnnt10Nrp5puCcjo5FWvMJnunomMbufvO1xGmqwKwd2LrFYzHeft6Sf-e9WBWIl3Qo7-ZsG9LrDq9zLB9-m8bhkZtqVUxIOJHYGO7FpQnNQsQjwW2fYx1e7w89-0k1nu5VjJ4yHr3FGf7pGgiqyQ6eTB1APA-GfU6etVAMeIdjWUzJ4Tqyemr0_27gUmcZ9Grb3Tu3ssHLH2r-Dv59Ke7_g-WPuQCc6m3gNHcJ5_FQN7um8K5ADw',
+      email: 'robertjboulos@gmail.com'
+    }
+  },
+  duration: 1286,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/auth/me 200 in 1452ms
+[API Log] /api/mcp/credentials: {
+  requestId: '12i7o',
+  timestamp: '2025-08-29T19:05:52.044Z',
+  endpoint: '/api/mcp/credentials',
+  method: 'GET',
+  url: 'http://localhost:3000/api/mcp/credentials',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    itemsReceived: 0,
+    curPage: 1,
+    nextPage: null,
+    prevPage: null,
+    offset: 0,
+    perPage: 20,
+    itemsTotal: 0,
+    pageTotal: 0,
+    items: []
+  },
+  duration: 1368,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/mcp/credentials 200 in 1572ms
+[API Log] /api/mcp/credentials: {
+  requestId: '50stle',
+  timestamp: '2025-08-29T19:06:03.730Z',
+  endpoint: '/api/mcp/credentials',
+  method: 'POST',
+  url: 'http://localhost:3000/api/mcp/credentials',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {
+    credential_name: 'Robert',
+    xano_api_key: 'eyJhbGciOiJSUzI1NiJ9.eyJ4YW5vIjp7ImRibyI6Im1hc3Rlcjp1c2VyIiwiaWQiOjQyODQ0LCJhY2Nlc3NfdG9rZW4iOnsia2V5aWQiOiI0NmVmM2ZiOC05ZWJiLTQwY2UtODNkMy1hYjcyYWQxZGRhZDEiLCJzY29wZSI6eyJ3b3Jrc3BhY2U6YWRkb24iOjE1LCJ3b3Jrc3BhY2U6YXBpIjoxNSwid29ya3NwYWNlOmNvbnRlbnQiOjE1LCJ3b3Jrc3BhY2U6ZGF0YWJhc2UiOjE1LCJ3b3Jrc3BhY2U6ZGF0YXNvdXJjZTpsaXZlIjoxNSwid29ya3NwYWNlOmZpbGUiOjE1LCJ3b3Jrc3BhY2U6ZnVuY3Rpb24iOjE1LCJ3b3Jrc3BhY2U6cmVxdWVzdGhpc3RvcnkiOjE1LCJ3b3Jrc3BhY2U6dGFzayI6MTV9fX0sImlhdCI6MTczODg2ODc3NywibmJmIjoxNzM4ODY4Nzc3LCJhdWQiOiJ4YW5vOm1ldGEifQ.DCfBvtXzoCpTXZ5dYYoGwZtD6nxxUYZaCOXf9NkJv7NEz8SRSwgY33LWsQcXUzyQQOpqi9BJXgKgLBD6VFVPJfHTezkossi6WD5_gEh28l5T7QfbD26I8jqoDIbqeR0L74Y2rLFpBHkGhIw4sUTKk5gb9feBzHVd8HrDjt2q4Qy5C1ROox6Yu57YmSNhzeboO4vooSBrJLhaXsrEEvhKwcs7fW1RG8FRS90CS_-_bGAej_tdXi8TQft2BPmCvwjLoT9BUwGtT9QXAmtrQQaP9WXXFMf2PACP1pBGYpsSrcqcsnYBHRibXzDDoBVt4w3xXUzx7kguNrsIzTmW5aT8pfixV_9hnq_d5LiWe5kRVXyChc91JkSuJ6VE4BslXC1hJ4aw6bDiMAu76hTaxczfLnzUv9h69OWE3G3_eyVPDhaIlCY6HLj7juIqnnt10Nrp5puCcjo5FWvMJnunomMbufvO1xGmqwKwd2LrFYzHeft6Sf-e9WBWIl3Qo7-ZsG9LrDq9zLB9-m8bhkZtqVUxIOJHYGO7FpQnNQsQjwW2fYx1e7w89-0k1nu5VjJ4yHr3FGf7pGgiqyQ6eTB1APA-GfU6etVAMeIdjWUzJ4Tqyemr0_27gUmcZ9Grb3Tu3ssHLH2r-Dv59Ke7_g-WPuQCc6m3gNHcJ5_FQN7um8K5ADw'
+  },
+  response: { error: 'Missing param: xano_instance_name', status: 400 },
+  duration: 1044,
+  error: undefined,
+  status: 'error'
+}
+ POST /api/mcp/credentials 400 in 1076ms
+ GET /dashboard 200 in 102ms
+ GET /shadcnblocks-admin-logo.svg 404 in 113ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 93ms
+[API Log] /api/auth/me: {
+  requestId: 'tgw0r8',
+  timestamp: '2025-08-29T19:08:47.179Z',
+  endpoint: '/api/auth/me',
+  method: 'GET',
+  url: 'http://localhost:3000/api/auth/me',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    user: {
+      id: '17b6fc02-966c-4642-babe-e8004afffc46',
+      created_at: 1729648277250,
+      name: 'Robert',
+      api_key: 'eyJhbGciOiJSUzI1NiJ9.eyJ4YW5vIjp7ImRibyI6Im1hc3Rlcjp1c2VyIiwiaWQiOjQyODQ0LCJhY2Nlc3NfdG9rZW4iOnsia2V5aWQiOiI0NmVmM2ZiOC05ZWJiLTQwY2UtODNkMy1hYjcyYWQxZGRhZDEiLCJzY29wZSI6eyJ3b3Jrc3BhY2U6YWRkb24iOjE1LCJ3b3Jrc3BhY2U6YXBpIjoxNSwid29ya3NwYWNlOmNvbnRlbnQiOjE1LCJ3b3Jrc3BhY2U6ZGF0YWJhc2UiOjE1LCJ3b3Jrc3BhY2U6ZGF0YXNvdXJjZTpsaXZlIjoxNSwid29ya3NwYWNlOmZpbGUiOjE1LCJ3b3Jrc3BhY2U6ZnVuY3Rpb24iOjE1LCJ3b3Jrc3BhY2U6cmVxdWVzdGhpc3RvcnkiOjE1LCJ3b3Jrc3BhY2U6dGFzayI6MTV9fX0sImlhdCI6MTczODg2ODc3NywibmJmIjoxNzM4ODY4Nzc3LCJhdWQiOiJ4YW5vOm1ldGEifQ.DCfBvtXzoCpTXZ5dYYoGwZtD6nxxUYZaCOXf9NkJv7NEz8SRSwgY33LWsQcXUzyQQOpqi9BJXgKgLBD6VFVPJfHTezkossi6WD5_gEh28l5T7QfbD26I8jqoDIbqeR0L74Y2rLFpBHkGhIw4sUTKk5gb9feBzHVd8HrDjt2q4Qy5C1ROox6Yu57YmSNhzeboO4vooSBrJLhaXsrEEvhKwcs7fW1RG8FRS90CS_-_bGAej_tdXi8TQft2BPmCvwjLoT9BUwGtT9QXAmtrQQaP9WXXFMf2PACP1pBGYpsSrcqcsnYBHRibXzDDoBVt4w3xXUzx7kguNrsIzTmW5aT8pfixV_9hnq_d5LiWe5kRVXyChc91JkSuJ6VE4BslXC1hJ4aw6bDiMAu76hTaxczfLnzUv9h69OWE3G3_eyVPDhaIlCY6HLj7juIqnnt10Nrp5puCcjo5FWvMJnunomMbufvO1xGmqwKwd2LrFYzHeft6Sf-e9WBWIl3Qo7-ZsG9LrDq9zLB9-m8bhkZtqVUxIOJHYGO7FpQnNQsQjwW2fYx1e7w89-0k1nu5VjJ4yHr3FGf7pGgiqyQ6eTB1APA-GfU6etVAMeIdjWUzJ4Tqyemr0_27gUmcZ9Grb3Tu3ssHLH2r-Dv59Ke7_g-WPuQCc6m3gNHcJ5_FQN7um8K5ADw',
+      email: 'robertjboulos@gmail.com'
+    }
+  },
+  duration: 949,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/auth/me 200 in 1014ms
+[API Log] /api/mcp/credentials: {
+  requestId: 'kvkpv',
+  timestamp: '2025-08-29T19:08:47.200Z',
+  endpoint: '/api/mcp/credentials',
+  method: 'GET',
+  url: 'http://localhost:3000/api/mcp/credentials',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    itemsReceived: 0,
+    curPage: 1,
+    nextPage: null,
+    prevPage: null,
+    offset: 0,
+    perPage: 20,
+    itemsTotal: 0,
+    pageTotal: 0,
+    items: []
+  },
+  duration: 967,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/mcp/credentials 200 in 1035ms
+[API Log] /api/mcp/credentials: {
+  requestId: 'e17rh7',
+  timestamp: '2025-08-29T19:08:52.166Z',
+  endpoint: '/api/mcp/credentials',
+  method: 'POST',
+  url: 'http://localhost:3000/api/mcp/credentials',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {
+    credential_name: 'Snappy',
+    xano_api_key: 'Okay, I just tried it, and I think it showed me the same error. Maybe you can see something in the communications.'
+  },
+  response: { error: 'Unable to locate input: xano_instance_name', status: 500 },
+  duration: 218,
+  error: undefined,
+  status: 'error'
+}
+ POST /api/mcp/credentials 500 in 247ms
+[API Log] /api/mcp/credentials: {
+  requestId: 'a7solz',
+  timestamp: '2025-08-29T19:09:32.449Z',
+  endpoint: '/api/mcp/credentials',
+  method: 'POST',
+  url: 'http://localhost:3000/api/mcp/credentials',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {
+    credential_name: 'Snappy',
+    xano_api_key: 'eyJhbGciOiJSUzI1NiJ9.eyJ4YW5vIjp7ImRibyI6Im1hc3Rlcjp1c2VyIiwiaWQiOjQyODQ0LCJhY2Nlc3NfdG9rZW4iOnsia2V5aWQiOiI0NmVmM2ZiOC05ZWJiLTQwY2UtODNkMy1hYjcyYWQxZGRhZDEiLCJzY29wZSI6eyJ3b3Jrc3BhY2U6YWRkb24iOjE1LCJ3b3Jrc3BhY2U6YXBpIjoxNSwid29ya3NwYWNlOmNvbnRlbnQiOjE1LCJ3b3Jrc3BhY2U6ZGF0YWJhc2UiOjE1LCJ3b3Jrc3BhY2U6ZGF0YXNvdXJjZTpsaXZlIjoxNSwid29ya3NwYWNlOmZpbGUiOjE1LCJ3b3Jrc3BhY2U6ZnVuY3Rpb24iOjE1LCJ3b3Jrc3BhY2U6cmVxdWVzdGhpc3RvcnkiOjE1LCJ3b3Jrc3BhY2U6dGFzayI6MTV9fX0sImlhdCI6MTczODg2ODc3NywibmJmIjoxNzM4ODY4Nzc3LCJhdWQiOiJ4YW5vOm1ldGEifQ.DCfBvtXzoCpTXZ5dYYoGwZtD6nxxUYZaCOXf9NkJv7NEz8SRSwgY33LWsQcXUzyQQOpqi9BJXgKgLBD6VFVPJfHTezkossi6WD5_gEh28l5T7QfbD26I8jqoDIbqeR0L74Y2rLFpBHkGhIw4sUTKk5gb9feBzHVd8HrDjt2q4Qy5C1ROox6Yu57YmSNhzeboO4vooSBrJLhaXsrEEvhKwcs7fW1RG8FRS90CS_-_bGAej_tdXi8TQft2BPmCvwjLoT9BUwGtT9QXAmtrQQaP9WXXFMf2PACP1pBGYpsSrcqcsnYBHRibXzDDoBVt4w3xXUzx7kguNrsIzTmW5aT8pfixV_9hnq_d5LiWe5kRVXyChc91JkSuJ6VE4BslXC1hJ4aw6bDiMAu76hTaxczfLnzUv9h69OWE3G3_eyVPDhaIlCY6HLj7juIqnnt10Nrp5puCcjo5FWvMJnunomMbufvO1xGmqwKwd2LrFYzHeft6Sf-e9WBWIl3Qo7-ZsG9LrDq9zLB9-m8bhkZtqVUxIOJHYGO7FpQnNQsQjwW2fYx1e7w89-0k1nu5VjJ4yHr3FGf7pGgiqyQ6eTB1APA-GfU6etVAMeIdjWUzJ4Tqyemr0_27gUmcZ9Grb3Tu3ssHLH2r-Dv59Ke7_g-WPuQCc6m3gNHcJ5_FQN7um8K5ADw'
+  },
+  response: { error: 'Unable to locate input: xano_instance_name', status: 500 },
+  duration: 376,
+  error: undefined,
+  status: 'error'
+}
+ POST /api/mcp/credentials 500 in 426ms
+[API Log] /api/mcp/credentials: {
+  requestId: 'nj7nuy',
+  timestamp: '2025-08-29T19:10:26.496Z',
+  endpoint: '/api/mcp/credentials',
+  method: 'POST',
+  url: 'http://localhost:3000/api/mcp/credentials',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {
+    credential_name: 'Snappy',
+    xano_api_key: '{"xano_api_key":"eyJhbGciOiJSUzI1NiJ9.eyJ4YW5vIjp7ImRibyI6Im1hc3Rlcjp1c2VyIiwiaWQiOjQyODQ0LCJhY2Nlc3NfdG9rZW4iOnsia2V5aWQiOiI0NmVmM2ZiOC05ZWJiLTQwY2UtODNkMy1hYjcyYWQxZGRhZDEiLCJzY29wZSI6eyJ3b3Jrc3BhY2U6YWRkb24iOjE1LCJ3b3Jrc3BhY2U6YXBpIjoxNSwid29ya3NwYWNlOmNvbnRlbnQiOjE1LCJ3b3Jrc3BhY2U6ZGF0YWJhc2UiOjE1LCJ3b3Jrc3BhY2U6ZGF0YXNvdXJjZTpsaXZlIjoxNSwid29ya3NwYWNlOmZpbGUiOjE1LCJ3b3Jrc3BhY2U6ZnVuY3Rpb24iOjE1LCJ3b3Jrc3BhY2U6cmVxdWVzdGhpc3RvcnkiOjE1LCJ3b3Jrc3BhY2U6dGFzayI6MTV9fX0sImlhdCI6MTczODg2ODc3NywibmJmIjoxNzM4ODY4Nzc3LCJhdWQiOiJ4YW5vOm1ldGEifQ.DCfBvtXzoCpTXZ5dYYoGwZtD6nxxUYZaCOXf9NkJv7NEz8SRSwgY33LWsQcXUzyQQOpqi9BJXgKgLBD6VFVPJfHTezkossi6WD5_gEh28l5T7QfbD26I8jqoDIbqeR0L74Y2rLFpBHkGhIw4sUTKk5gb9feBzHVd8HrDjt2q4Qy5C1ROox6Yu57YmSNhzeboO4vooSBrJLhaXsrEEvhKwcs7fW1RG8FRS90CS_-_bGAej_tdXi8TQft2BPmCvwjLoT9BUwGtT9QXAmtrQQaP9WXXFMf2PACP1pBGYpsSrcqcsnYBHRibXzDDoBVt4w3xXUzx7kguNrsIzTmW5aT8pfixV_9hnq_d5LiWe5kRVXyChc91JkSuJ6VE4BslXC1hJ4aw6bDiMAu76hTaxczfLnzUv9h69OWE3G3_eyVPDhaIlCY6HLj7juIqnnt10Nrp5puCcjo5FWvMJnunomMbufvO1xGmqwKwd2LrFYzHeft6Sf-e9WBWIl3Qo7-ZsG9LrDq9zLB9-m8bhkZtqVUxIOJHYGO7FpQnNQsQjwW2fYx1e7w89-0k1nu5VjJ4yHr3FGf7pGgiqyQ6eTB1APA-GfU6etVAMeIdjWUzJ4Tqyemr0_27gUmcZ9Grb3Tu3ssHLH2r-Dv59Ke7_g-WPuQCc6m3gNHcJ5_FQN7um8K5ADw","credential_name":"Snappy"}'
+  },
+  response: { error: 'Invalid timestamp format.', status: 400 },
+  duration: 387,
+  error: undefined,
+  status: 'error'
+}
+ POST /api/mcp/credentials 400 in 419ms
+[API Log] /api/mcp/credentials: {
+  requestId: 'y66te',
+  timestamp: '2025-08-29T19:11:17.283Z',
+  endpoint: '/api/mcp/credentials',
+  method: 'POST',
+  url: 'http://localhost:3000/api/mcp/credentials',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {
+    credential_name: 'Snappy',
+    xano_api_key: 'eyJhbGciOiJSUzI1NiJ9.eyJ4YW5vIjp7ImRibyI6Im1hc3Rlcjp1c2VyIiwiaWQiOjQyODQ0LCJhY2Nlc3NfdG9rZW4iOnsia2V5aWQiOiI0NmVmM2ZiOC05ZWJiLTQwY2UtODNkMy1hYjcyYWQxZGRhZDEiLCJzY29wZSI6eyJ3b3Jrc3BhY2U6YWRkb24iOjE1LCJ3b3Jrc3BhY2U6YXBpIjoxNSwid29ya3NwYWNlOmNvbnRlbnQiOjE1LCJ3b3Jrc3BhY2U6ZGF0YWJhc2UiOjE1LCJ3b3Jrc3BhY2U6ZGF0YXNvdXJjZTpsaXZlIjoxNSwid29ya3NwYWNlOmZpbGUiOjE1LCJ3b3Jrc3BhY2U6ZnVuY3Rpb24iOjE1LCJ3b3Jrc3BhY2U6cmVxdWVzdGhpc3RvcnkiOjE1LCJ3b3Jrc3BhY2U6dGFzayI6MTV9fX0sImlhdCI6MTczODg2ODc3NywibmJmIjoxNzM4ODY4Nzc3LCJhdWQiOiJ4YW5vOm1ldGEifQ.DCfBvtXzoCpTXZ5dYYoGwZtD6nxxUYZaCOXf9NkJv7NEz8SRSwgY33LWsQcXUzyQQOpqi9BJXgKgLBD6VFVPJfHTezkossi6WD5_gEh28l5T7QfbD26I8jqoDIbqeR0L74Y2rLFpBHkGhIw4sUTKk5gb9feBzHVd8HrDjt2q4Qy5C1ROox6Yu57YmSNhzeboO4vooSBrJLhaXsrEEvhKwcs7fW1RG8FRS90CS_-_bGAej_tdXi8TQft2BPmCvwjLoT9BUwGtT9QXAmtrQQaP9WXXFMf2PACP1pBGYpsSrcqcsnYBHRibXzDDoBVt4w3xXUzx7kguNrsIzTmW5aT8pfixV_9hnq_d5LiWe5kRVXyChc91JkSuJ6VE4BslXC1hJ4aw6bDiMAu76hTaxczfLnzUv9h69OWE3G3_eyVPDhaIlCY6HLj7juIqnnt10Nrp5puCcjo5FWvMJnunomMbufvO1xGmqwKwd2LrFYzHeft6Sf-e9WBWIl3Qo7-ZsG9LrDq9zLB9-m8bhkZtqVUxIOJHYGO7FpQnNQsQjwW2fYx1e7w89-0k1nu5VjJ4yHr3FGf7pGgiqyQ6eTB1APA-GfU6etVAMeIdjWUzJ4Tqyemr0_27gUmcZ9Grb3Tu3ssHLH2r-Dv59Ke7_g-WPuQCc6m3gNHcJ5_FQN7um8K5ADw'
+  },
+  response: { success: true, id: 6 },
+  duration: 335,
+  error: undefined,
+  status: 'success'
+}
+ POST /api/mcp/credentials 200 in 376ms
+[API Log] /api/mcp/credentials: {
+  requestId: '8hhtie',
+  timestamp: '2025-08-29T19:11:17.449Z',
+  endpoint: '/api/mcp/credentials',
+  method: 'GET',
+  url: 'http://localhost:3000/api/mcp/credentials',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    itemsReceived: 2,
+    curPage: 1,
+    nextPage: null,
+    prevPage: null,
+    offset: 0,
+    perPage: 20,
+    itemsTotal: 2,
+    pageTotal: 1,
+    items: [ [Object], [Object] ]
+  },
+  duration: 109,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/mcp/credentials 200 in 158ms
+ GET /dashboard 200 in 68ms
+ GET /shadcnblocks-admin-logo.svg 404 in 145ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 69ms
+[API Log] /api/mcp/credentials: {
+  requestId: '38q3zp',
+  timestamp: '2025-08-29T19:11:30.459Z',
+  endpoint: '/api/mcp/credentials',
+  method: 'GET',
+  url: 'http://localhost:3000/api/mcp/credentials',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    itemsReceived: 2,
+    curPage: 1,
+    nextPage: null,
+    prevPage: null,
+    offset: 0,
+    perPage: 20,
+    itemsTotal: 2,
+    pageTotal: 1,
+    items: [ [Object], [Object] ]
+  },
+  duration: 286,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/mcp/credentials 200 in 351ms
+[API Log] /api/auth/me: {
+  requestId: '8e2jil',
+  timestamp: '2025-08-29T19:11:30.464Z',
+  endpoint: '/api/auth/me',
+  method: 'GET',
+  url: 'http://localhost:3000/api/auth/me',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    user: {
+      id: '17b6fc02-966c-4642-babe-e8004afffc46',
+      created_at: 1729648277250,
+      name: 'Robert',
+      api_key: 'eyJhbGciOiJSUzI1NiJ9.eyJ4YW5vIjp7ImRibyI6Im1hc3Rlcjp1c2VyIiwiaWQiOjQyODQ0LCJhY2Nlc3NfdG9rZW4iOnsia2V5aWQiOiI0NmVmM2ZiOC05ZWJiLTQwY2UtODNkMy1hYjcyYWQxZGRhZDEiLCJzY29wZSI6eyJ3b3Jrc3BhY2U6YWRkb24iOjE1LCJ3b3Jrc3BhY2U6YXBpIjoxNSwid29ya3NwYWNlOmNvbnRlbnQiOjE1LCJ3b3Jrc3BhY2U6ZGF0YWJhc2UiOjE1LCJ3b3Jrc3BhY2U6ZGF0YXNvdXJjZTpsaXZlIjoxNSwid29ya3NwYWNlOmZpbGUiOjE1LCJ3b3Jrc3BhY2U6ZnVuY3Rpb24iOjE1LCJ3b3Jrc3BhY2U6cmVxdWVzdGhpc3RvcnkiOjE1LCJ3b3Jrc3BhY2U6dGFzayI6MTV9fX0sImlhdCI6MTczODg2ODc3NywibmJmIjoxNzM4ODY4Nzc3LCJhdWQiOiJ4YW5vOm1ldGEifQ.DCfBvtXzoCpTXZ5dYYoGwZtD6nxxUYZaCOXf9NkJv7NEz8SRSwgY33LWsQcXUzyQQOpqi9BJXgKgLBD6VFVPJfHTezkossi6WD5_gEh28l5T7QfbD26I8jqoDIbqeR0L74Y2rLFpBHkGhIw4sUTKk5gb9feBzHVd8HrDjt2q4Qy5C1ROox6Yu57YmSNhzeboO4vooSBrJLhaXsrEEvhKwcs7fW1RG8FRS90CS_-_bGAej_tdXi8TQft2BPmCvwjLoT9BUwGtT9QXAmtrQQaP9WXXFMf2PACP1pBGYpsSrcqcsnYBHRibXzDDoBVt4w3xXUzx7kguNrsIzTmW5aT8pfixV_9hnq_d5LiWe5kRVXyChc91JkSuJ6VE4BslXC1hJ4aw6bDiMAu76hTaxczfLnzUv9h69OWE3G3_eyVPDhaIlCY6HLj7juIqnnt10Nrp5puCcjo5FWvMJnunomMbufvO1xGmqwKwd2LrFYzHeft6Sf-e9WBWIl3Qo7-ZsG9LrDq9zLB9-m8bhkZtqVUxIOJHYGO7FpQnNQsQjwW2fYx1e7w89-0k1nu5VjJ4yHr3FGf7pGgiqyQ6eTB1APA-GfU6etVAMeIdjWUzJ4Tqyemr0_27gUmcZ9Grb3Tu3ssHLH2r-Dv59Ke7_g-WPuQCc6m3gNHcJ5_FQN7um8K5ADw',
+      email: 'robertjboulos@gmail.com'
+    }
+  },
+  duration: 284,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/auth/me 200 in 356ms
+[API Log] /api/mcp/credentials/5: {
+  requestId: 'xdg7s4',
+  timestamp: '2025-08-29T19:11:36.093Z',
+  endpoint: '/api/mcp/credentials/5',
+  method: 'DELETE',
+  url: 'http://localhost:3000/api/mcp/credentials/5',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: { id: '5' },
+  response: { success: true, message: 'Credential deleted' },
+  duration: 287,
+  error: undefined,
+  status: 'success'
+}
+ DELETE /api/mcp/credentials/5 200 in 398ms
+[API Log] /api/mcp/credentials/6/validate: {
+  requestId: 'n2dvia',
+  timestamp: '2025-08-29T19:11:37.637Z',
+  endpoint: '/api/mcp/credentials/6/validate',
+  method: 'POST',
+  url: 'http://localhost:3000/api/mcp/credentials/6/validate',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: { id: '6' },
+  response: {
+    error: 'Input "VALIDATION" is not one of the allowable values.',
+    status: 400
+  },
+  duration: 232,
+  error: undefined,
+  status: 'error'
+}
+ POST /api/mcp/credentials/6/validate 400 in 363ms
+[API Log] /api/mcp/credentials/6/validate: {
+  requestId: '3mrge7',
+  timestamp: '2025-08-29T19:24:08.869Z',
+  endpoint: '/api/mcp/credentials/6/validate',
+  method: 'POST',
+  url: 'http://localhost:3000/api/mcp/credentials/6/validate',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: { id: '6' },
+  response: {
+    credentialName: 'Snappy',
+    userName: 'Robert Boulos',
+    userEmail: 'robertjboulos@gmail.com',
+    tokenExpiresAt: 'never'
+  },
+  duration: 511,
+  error: undefined,
+  status: 'success'
+}
+ POST /api/mcp/credentials/6/validate 200 in 606ms
+ ✓ Compiled in 169ms
+[API Log] /api/mcp/credentials: {
+  requestId: 'bw0tuj',
+  timestamp: '2025-08-29T19:24:44.446Z',
+  endpoint: '/api/mcp/credentials',
+  method: 'GET',
+  url: 'http://localhost:3000/api/mcp/credentials',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    itemsReceived: 1,
+    curPage: 1,
+    nextPage: null,
+    prevPage: null,
+    offset: 0,
+    perPage: 20,
+    itemsTotal: 1,
+    pageTotal: 1,
+    items: [ [Object] ]
+  },
+  duration: 473,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/mcp/credentials 200 in 497ms
+[API Log] /api/mcp/credentials/6/validate: {
+  requestId: 'qmai',
+  timestamp: '2025-08-29T19:24:46.834Z',
+  endpoint: '/api/mcp/credentials/6/validate',
+  method: 'POST',
+  url: 'http://localhost:3000/api/mcp/credentials/6/validate',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: { id: '6' },
+  response: {
+    credentialName: 'Snappy',
+    userName: 'Robert Boulos',
+    userEmail: 'robertjboulos@gmail.com',
+    tokenExpiresAt: 'never'
+  },
+  duration: 341,
+  error: undefined,
+  status: 'success'
+}
+ POST /api/mcp/credentials/6/validate 200 in 383ms
+ GET /dashboard 200 in 243ms
+ GET /shadcnblocks-admin-logo.svg 404 in 70ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 112ms
+[API Log] /api/mcp/credentials: {
+  requestId: '44bsq',
+  timestamp: '2025-08-29T19:24:49.012Z',
+  endpoint: '/api/mcp/credentials',
+  method: 'GET',
+  url: 'http://localhost:3000/api/mcp/credentials',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    itemsReceived: 1,
+    curPage: 1,
+    nextPage: null,
+    prevPage: null,
+    offset: 0,
+    perPage: 20,
+    itemsTotal: 1,
+    pageTotal: 1,
+    items: [ [Object] ]
+  },
+  duration: 189,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/mcp/credentials 200 in 273ms
+[API Log] /api/auth/me: {
+  requestId: 'psc3m',
+  timestamp: '2025-08-29T19:24:49.426Z',
+  endpoint: '/api/auth/me',
+  method: 'GET',
+  url: 'http://localhost:3000/api/auth/me',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    user: {
+      id: '17b6fc02-966c-4642-babe-e8004afffc46',
+      created_at: 1729648277250,
+      name: 'Robert',
+      api_key: 'eyJhbGciOiJSUzI1NiJ9.eyJ4YW5vIjp7ImRibyI6Im1hc3Rlcjp1c2VyIiwiaWQiOjQyODQ0LCJhY2Nlc3NfdG9rZW4iOnsia2V5aWQiOiI0NmVmM2ZiOC05ZWJiLTQwY2UtODNkMy1hYjcyYWQxZGRhZDEiLCJzY29wZSI6eyJ3b3Jrc3BhY2U6YWRkb24iOjE1LCJ3b3Jrc3BhY2U6YXBpIjoxNSwid29ya3NwYWNlOmNvbnRlbnQiOjE1LCJ3b3Jrc3BhY2U6ZGF0YWJhc2UiOjE1LCJ3b3Jrc3BhY2U6ZGF0YXNvdXJjZTpsaXZlIjoxNSwid29ya3NwYWNlOmZpbGUiOjE1LCJ3b3Jrc3BhY2U6ZnVuY3Rpb24iOjE1LCJ3b3Jrc3BhY2U6cmVxdWVzdGhpc3RvcnkiOjE1LCJ3b3Jrc3BhY2U6dGFzayI6MTV9fX0sImlhdCI6MTczODg2ODc3NywibmJmIjoxNzM4ODY4Nzc3LCJhdWQiOiJ4YW5vOm1ldGEifQ.DCfBvtXzoCpTXZ5dYYoGwZtD6nxxUYZaCOXf9NkJv7NEz8SRSwgY33LWsQcXUzyQQOpqi9BJXgKgLBD6VFVPJfHTezkossi6WD5_gEh28l5T7QfbD26I8jqoDIbqeR0L74Y2rLFpBHkGhIw4sUTKk5gb9feBzHVd8HrDjt2q4Qy5C1ROox6Yu57YmSNhzeboO4vooSBrJLhaXsrEEvhKwcs7fW1RG8FRS90CS_-_bGAej_tdXi8TQft2BPmCvwjLoT9BUwGtT9QXAmtrQQaP9WXXFMf2PACP1pBGYpsSrcqcsnYBHRibXzDDoBVt4w3xXUzx7kguNrsIzTmW5aT8pfixV_9hnq_d5LiWe5kRVXyChc91JkSuJ6VE4BslXC1hJ4aw6bDiMAu76hTaxczfLnzUv9h69OWE3G3_eyVPDhaIlCY6HLj7juIqnnt10Nrp5puCcjo5FWvMJnunomMbufvO1xGmqwKwd2LrFYzHeft6Sf-e9WBWIl3Qo7-ZsG9LrDq9zLB9-m8bhkZtqVUxIOJHYGO7FpQnNQsQjwW2fYx1e7w89-0k1nu5VjJ4yHr3FGf7pGgiqyQ6eTB1APA-GfU6etVAMeIdjWUzJ4Tqyemr0_27gUmcZ9Grb3Tu3ssHLH2r-Dv59Ke7_g-WPuQCc6m3gNHcJ5_FQN7um8K5ADw',
+      email: 'robertjboulos@gmail.com'
+    }
+  },
+  duration: 599,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/auth/me 200 in 686ms
+[API Log] /api/mcp/credentials/6/validate: {
+  requestId: 'ac1dxl',
+  timestamp: '2025-08-29T19:24:50.346Z',
+  endpoint: '/api/mcp/credentials/6/validate',
+  method: 'POST',
+  url: 'http://localhost:3000/api/mcp/credentials/6/validate',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: { id: '6' },
+  response: {
+    credentialName: 'Snappy',
+    userName: 'Robert Boulos',
+    userEmail: 'robertjboulos@gmail.com',
+    tokenExpiresAt: 'never'
+  },
+  duration: 319,
+  error: undefined,
+  status: 'success'
+}
+ POST /api/mcp/credentials/6/validate 200 in 351ms
+ ✓ Compiled in 114ms
+[API Log] /api/mcp/credentials: {
+  requestId: 'paonz7',
+  timestamp: '2025-08-29T19:24:51.495Z',
+  endpoint: '/api/mcp/credentials',
+  method: 'GET',
+  url: 'http://localhost:3000/api/mcp/credentials',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    itemsReceived: 1,
+    curPage: 1,
+    nextPage: null,
+    prevPage: null,
+    offset: 0,
+    perPage: 20,
+    itemsTotal: 1,
+    pageTotal: 1,
+    items: [ [Object] ]
+  },
+  duration: 86,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/mcp/credentials 200 in 113ms
+[API Log] /api/mcp/credentials/6/validate: {
+  requestId: 'rrcvm6',
+  timestamp: '2025-08-29T19:24:52.506Z',
+  endpoint: '/api/mcp/credentials/6/validate',
+  method: 'POST',
+  url: 'http://localhost:3000/api/mcp/credentials/6/validate',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: { id: '6' },
+  response: {
+    credentialName: 'Snappy',
+    userName: 'Robert Boulos',
+    userEmail: 'robertjboulos@gmail.com',
+    tokenExpiresAt: 'never'
+  },
+  duration: 215,
+  error: undefined,
+  status: 'success'
+}
+ POST /api/mcp/credentials/6/validate 200 in 250ms
+[API Log] /api/mcp/credentials/6/validate: {
+  requestId: 'z22mno',
+  timestamp: '2025-08-29T19:25:03.241Z',
+  endpoint: '/api/mcp/credentials/6/validate',
+  method: 'POST',
+  url: 'http://localhost:3000/api/mcp/credentials/6/validate',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: { id: '6' },
+  response: {
+    credentialName: 'Snappy',
+    userName: 'Robert Boulos',
+    userEmail: 'robertjboulos@gmail.com',
+    tokenExpiresAt: 'never'
+  },
+  duration: 303,
+  error: undefined,
+  status: 'success'
+}
+ POST /api/mcp/credentials/6/validate 200 in 336ms
+ GET /dashboard 200 in 203ms
+ GET /shadcnblocks-admin-logo.svg 404 in 91ms
+[API Log] /api/mcp/credentials: {
+  requestId: 'c775xe',
+  timestamp: '2025-08-29T19:25:05.711Z',
+  endpoint: '/api/mcp/credentials',
+  method: 'GET',
+  url: 'http://localhost:3000/api/mcp/credentials',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    itemsReceived: 1,
+    curPage: 1,
+    nextPage: null,
+    prevPage: null,
+    offset: 0,
+    perPage: 20,
+    itemsTotal: 1,
+    pageTotal: 1,
+    items: [ [Object] ]
+  },
+  duration: 110,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/mcp/credentials 200 in 171ms
+[API Log] /api/auth/me: {
+  requestId: 'n8to0j',
+  timestamp: '2025-08-29T19:25:05.835Z',
+  endpoint: '/api/auth/me',
+  method: 'GET',
+  url: 'http://localhost:3000/api/auth/me',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    user: {
+      id: '17b6fc02-966c-4642-babe-e8004afffc46',
+      created_at: 1729648277250,
+      name: 'Robert',
+      api_key: 'eyJhbGciOiJSUzI1NiJ9.eyJ4YW5vIjp7ImRibyI6Im1hc3Rlcjp1c2VyIiwiaWQiOjQyODQ0LCJhY2Nlc3NfdG9rZW4iOnsia2V5aWQiOiI0NmVmM2ZiOC05ZWJiLTQwY2UtODNkMy1hYjcyYWQxZGRhZDEiLCJzY29wZSI6eyJ3b3Jrc3BhY2U6YWRkb24iOjE1LCJ3b3Jrc3BhY2U6YXBpIjoxNSwid29ya3NwYWNlOmNvbnRlbnQiOjE1LCJ3b3Jrc3BhY2U6ZGF0YWJhc2UiOjE1LCJ3b3Jrc3BhY2U6ZGF0YXNvdXJjZTpsaXZlIjoxNSwid29ya3NwYWNlOmZpbGUiOjE1LCJ3b3Jrc3BhY2U6ZnVuY3Rpb24iOjE1LCJ3b3Jrc3BhY2U6cmVxdWVzdGhpc3RvcnkiOjE1LCJ3b3Jrc3BhY2U6dGFzayI6MTV9fX0sImlhdCI6MTczODg2ODc3NywibmJmIjoxNzM4ODY4Nzc3LCJhdWQiOiJ4YW5vOm1ldGEifQ.DCfBvtXzoCpTXZ5dYYoGwZtD6nxxUYZaCOXf9NkJv7NEz8SRSwgY33LWsQcXUzyQQOpqi9BJXgKgLBD6VFVPJfHTezkossi6WD5_gEh28l5T7QfbD26I8jqoDIbqeR0L74Y2rLFpBHkGhIw4sUTKk5gb9feBzHVd8HrDjt2q4Qy5C1ROox6Yu57YmSNhzeboO4vooSBrJLhaXsrEEvhKwcs7fW1RG8FRS90CS_-_bGAej_tdXi8TQft2BPmCvwjLoT9BUwGtT9QXAmtrQQaP9WXXFMf2PACP1pBGYpsSrcqcsnYBHRibXzDDoBVt4w3xXUzx7kguNrsIzTmW5aT8pfixV_9hnq_d5LiWe5kRVXyChc91JkSuJ6VE4BslXC1hJ4aw6bDiMAu76hTaxczfLnzUv9h69OWE3G3_eyVPDhaIlCY6HLj7juIqnnt10Nrp5puCcjo5FWvMJnunomMbufvO1xGmqwKwd2LrFYzHeft6Sf-e9WBWIl3Qo7-ZsG9LrDq9zLB9-m8bhkZtqVUxIOJHYGO7FpQnNQsQjwW2fYx1e7w89-0k1nu5VjJ4yHr3FGf7pGgiqyQ6eTB1APA-GfU6etVAMeIdjWUzJ4Tqyemr0_27gUmcZ9Grb3Tu3ssHLH2r-Dv59Ke7_g-WPuQCc6m3gNHcJ5_FQN7um8K5ADw',
+      email: 'robertjboulos@gmail.com'
+    }
+  },
+  duration: 229,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/auth/me 200 in 295ms
+[API Log] /api/mcp/credentials/6/validate: {
+  requestId: 'rc9k0r',
+  timestamp: '2025-08-29T19:25:07.368Z',
+  endpoint: '/api/mcp/credentials/6/validate',
+  method: 'POST',
+  url: 'http://localhost:3000/api/mcp/credentials/6/validate',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: { id: '6' },
+  response: {
+    credentialName: 'Snappy',
+    userName: 'Robert Boulos',
+    userEmail: 'robertjboulos@gmail.com',
+    tokenExpiresAt: 'never'
+  },
+  duration: 204,
+  error: undefined,
+  status: 'success'
+}
+ POST /api/mcp/credentials/6/validate 200 in 246ms
+[API Log] /api/mcp/credentials/6/validate: {
+  requestId: '9hbmm',
+  timestamp: '2025-08-29T19:25:31.611Z',
+  endpoint: '/api/mcp/credentials/6/validate',
+  method: 'POST',
+  url: 'http://localhost:3000/api/mcp/credentials/6/validate',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: { id: '6' },
+  response: {
+    credentialName: 'Snappy',
+    userName: 'Robert Boulos',
+    userEmail: 'robertjboulos@gmail.com',
+    tokenExpiresAt: 'never'
+  },
+  duration: 421,
+  error: undefined,
+  status: 'success'
+}
+ POST /api/mcp/credentials/6/validate 200 in 468ms
+[API Log] /api/mcp/credentials/6/validate: {
+  requestId: 'jt7dlf',
+  timestamp: '2025-08-29T19:25:45.386Z',
+  endpoint: '/api/mcp/credentials/6/validate',
+  method: 'POST',
+  url: 'http://localhost:3000/api/mcp/credentials/6/validate',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: { id: '6' },
+  response: {
+    credentialName: 'Snappy',
+    userName: 'Robert Boulos',
+    userEmail: 'robertjboulos@gmail.com',
+    tokenExpiresAt: 'never'
+  },
+  duration: 315,
+  error: undefined,
+  status: 'success'
+}
+ POST /api/mcp/credentials/6/validate 200 in 364ms
+ ✓ Compiled in 126ms
+[API Log] /api/mcp/credentials/6/validate: {
+  requestId: 'qtb0tb',
+  timestamp: '2025-08-29T19:25:58.393Z',
+  endpoint: '/api/mcp/credentials/6/validate',
+  method: 'POST',
+  url: 'http://localhost:3000/api/mcp/credentials/6/validate',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: { id: '6' },
+  response: {
+    credentialName: 'Snappy',
+    userName: 'Robert Boulos',
+    userEmail: 'robertjboulos@gmail.com',
+    tokenExpiresAt: 'never'
+  },
+  duration: 689,
+  error: undefined,
+  status: 'success'
+}
+ POST /api/mcp/credentials/6/validate 200 in 737ms
+ ✓ Compiled /dashboard in 14ms
+ GET /dashboard 200 in 173ms
+[API Log] /api/mcp/credentials/6/validate: {
+  requestId: 'pacw3e',
+  timestamp: '2025-08-29T19:26:15.073Z',
+  endpoint: '/api/mcp/credentials/6/validate',
+  method: 'POST',
+  url: 'http://localhost:3000/api/mcp/credentials/6/validate',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: { id: '6' },
+  response: {
+    credentialName: 'Snappy',
+    userName: 'Robert Boulos',
+    userEmail: 'robertjboulos@gmail.com',
+    tokenExpiresAt: 'never'
+  },
+  duration: 339,
+  error: undefined,
+  status: 'success'
+}
+ POST /api/mcp/credentials/6/validate 200 in 402ms
+ GET /dashboard 200 in 142ms
+ GET /shadcnblocks-admin-logo.svg 404 in 97ms
+[API Log] /api/mcp/credentials: {
+  requestId: 'd5klke',
+  timestamp: '2025-08-29T19:26:17.510Z',
+  endpoint: '/api/mcp/credentials',
+  method: 'GET',
+  url: 'http://localhost:3000/api/mcp/credentials',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    itemsReceived: 1,
+    curPage: 1,
+    nextPage: null,
+    prevPage: null,
+    offset: 0,
+    perPage: 20,
+    itemsTotal: 1,
+    pageTotal: 1,
+    items: [ [Object] ]
+  },
+  duration: 330,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/mcp/credentials 200 in 372ms
+[API Log] /api/auth/me: {
+  requestId: 'i0zdg',
+  timestamp: '2025-08-29T19:26:18.115Z',
+  endpoint: '/api/auth/me',
+  method: 'GET',
+  url: 'http://localhost:3000/api/auth/me',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    user: {
+      id: '17b6fc02-966c-4642-babe-e8004afffc46',
+      created_at: 1729648277250,
+      name: 'Robert',
+      api_key: 'eyJhbGciOiJSUzI1NiJ9.eyJ4YW5vIjp7ImRibyI6Im1hc3Rlcjp1c2VyIiwiaWQiOjQyODQ0LCJhY2Nlc3NfdG9rZW4iOnsia2V5aWQiOiI0NmVmM2ZiOC05ZWJiLTQwY2UtODNkMy1hYjcyYWQxZGRhZDEiLCJzY29wZSI6eyJ3b3Jrc3BhY2U6YWRkb24iOjE1LCJ3b3Jrc3BhY2U6YXBpIjoxNSwid29ya3NwYWNlOmNvbnRlbnQiOjE1LCJ3b3Jrc3BhY2U6ZGF0YWJhc2UiOjE1LCJ3b3Jrc3BhY2U6ZGF0YXNvdXJjZTpsaXZlIjoxNSwid29ya3NwYWNlOmZpbGUiOjE1LCJ3b3Jrc3BhY2U6ZnVuY3Rpb24iOjE1LCJ3b3Jrc3BhY2U6cmVxdWVzdGhpc3RvcnkiOjE1LCJ3b3Jrc3BhY2U6dGFzayI6MTV9fX0sImlhdCI6MTczODg2ODc3NywibmJmIjoxNzM4ODY4Nzc3LCJhdWQiOiJ4YW5vOm1ldGEifQ.DCfBvtXzoCpTXZ5dYYoGwZtD6nxxUYZaCOXf9NkJv7NEz8SRSwgY33LWsQcXUzyQQOpqi9BJXgKgLBD6VFVPJfHTezkossi6WD5_gEh28l5T7QfbD26I8jqoDIbqeR0L74Y2rLFpBHkGhIw4sUTKk5gb9feBzHVd8HrDjt2q4Qy5C1ROox6Yu57YmSNhzeboO4vooSBrJLhaXsrEEvhKwcs7fW1RG8FRS90CS_-_bGAej_tdXi8TQft2BPmCvwjLoT9BUwGtT9QXAmtrQQaP9WXXFMf2PACP1pBGYpsSrcqcsnYBHRibXzDDoBVt4w3xXUzx7kguNrsIzTmW5aT8pfixV_9hnq_d5LiWe5kRVXyChc91JkSuJ6VE4BslXC1hJ4aw6bDiMAu76hTaxczfLnzUv9h69OWE3G3_eyVPDhaIlCY6HLj7juIqnnt10Nrp5puCcjo5FWvMJnunomMbufvO1xGmqwKwd2LrFYzHeft6Sf-e9WBWIl3Qo7-ZsG9LrDq9zLB9-m8bhkZtqVUxIOJHYGO7FpQnNQsQjwW2fYx1e7w89-0k1nu5VjJ4yHr3FGf7pGgiqyQ6eTB1APA-GfU6etVAMeIdjWUzJ4Tqyemr0_27gUmcZ9Grb3Tu3ssHLH2r-Dv59Ke7_g-WPuQCc6m3gNHcJ5_FQN7um8K5ADw',
+      email: 'robertjboulos@gmail.com'
+    }
+  },
+  duration: 934,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/auth/me 200 in 979ms
+[API Log] /api/mcp/credentials/6/validate: {
+  requestId: 'zd873',
+  timestamp: '2025-08-29T19:26:19.248Z',
+  endpoint: '/api/mcp/credentials/6/validate',
+  method: 'POST',
+  url: 'http://localhost:3000/api/mcp/credentials/6/validate',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: { id: '6' },
+  response: {
+    credentialName: 'Snappy',
+    userName: 'Robert Boulos',
+    userEmail: 'robertjboulos@gmail.com',
+    tokenExpiresAt: 'never'
+  },
+  duration: 250,
+  error: undefined,
+  status: 'success'
+}
+ POST /api/mcp/credentials/6/validate 200 in 288ms
+[API Log] /api/mcp/credentials/6/set-default: {
+  requestId: 'i4o2v5',
+  timestamp: '2025-08-29T19:26:28.972Z',
+  endpoint: '/api/mcp/credentials/6/set-default',
+  method: 'PUT',
+  url: 'http://localhost:3000/api/mcp/credentials/6/set-default',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: { id: '6' },
+  response: { success: true, message: 'Credential set as default' },
+  duration: 560,
+  error: undefined,
+  status: 'success'
+}
+ PUT /api/mcp/credentials/6/set-default 200 in 698ms
+[API Log] /api/mcp/credentials/6/validate: {
+  requestId: 'l0phev',
+  timestamp: '2025-08-29T19:26:33.553Z',
+  endpoint: '/api/mcp/credentials/6/validate',
+  method: 'POST',
+  url: 'http://localhost:3000/api/mcp/credentials/6/validate',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: { id: '6' },
+  response: {
+    credentialName: 'Snappy',
+    userName: 'Robert Boulos',
+    userEmail: 'robertjboulos@gmail.com',
+    tokenExpiresAt: 'never'
+  },
+  duration: 246,
+  error: undefined,
+  status: 'success'
+}
+ POST /api/mcp/credentials/6/validate 200 in 289ms
+[API Log] /api/mcp/credentials/6/validate: {
+  requestId: 'u67zjl',
+  timestamp: '2025-08-29T19:28:01.107Z',
+  endpoint: '/api/mcp/credentials/6/validate',
+  method: 'POST',
+  url: 'http://localhost:3000/api/mcp/credentials/6/validate',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: { id: '6' },
+  response: {
+    credentialName: 'Snappy',
+    userName: 'Robert Boulos',
+    userEmail: 'robertjboulos@gmail.com',
+    tokenExpiresAt: 'never'
+  },
+  duration: 2408,
+  error: undefined,
+  status: 'success'
+}
+ POST /api/mcp/credentials/6/validate 200 in 2460ms
+[API Log] /api/mcp/credentials/6/validate: {
+  requestId: 'bbnf4b',
+  timestamp: '2025-08-29T19:30:23.458Z',
+  endpoint: '/api/mcp/credentials/6/validate',
+  method: 'POST',
+  url: 'http://localhost:3000/api/mcp/credentials/6/validate',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: { id: '6' },
+  response: {
+    credentialName: 'Snappy',
+    userName: 'Robert Boulos',
+    userEmail: 'robertjboulos@gmail.com',
+    tokenExpiresAt: 'never'
+  },
+  duration: 474,
+  error: undefined,
+  status: 'success'
+}
+ POST /api/mcp/credentials/6/validate 200 in 542ms
+ GET /dashboard 200 in 86ms
+ GET /shadcnblocks-admin-logo.svg 404 in 75ms
+[API Log] /api/mcp/credentials: {
+  requestId: 'ygfvw',
+  timestamp: '2025-08-29T19:30:26.174Z',
+  endpoint: '/api/mcp/credentials',
+  method: 'GET',
+  url: 'http://localhost:3000/api/mcp/credentials',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    itemsReceived: 1,
+    curPage: 1,
+    nextPage: null,
+    prevPage: null,
+    offset: 0,
+    perPage: 20,
+    itemsTotal: 1,
+    pageTotal: 1,
+    items: [ [Object] ]
+  },
+  duration: 583,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/mcp/credentials 200 in 661ms
+[API Log] /api/auth/me: {
+  requestId: 'hpg04s',
+  timestamp: '2025-08-29T19:30:26.594Z',
+  endpoint: '/api/auth/me',
+  method: 'GET',
+  url: 'http://localhost:3000/api/auth/me',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    user: {
+      id: '17b6fc02-966c-4642-babe-e8004afffc46',
+      created_at: 1729648277250,
+      name: 'Robert',
+      api_key: 'eyJhbGciOiJSUzI1NiJ9.eyJ4YW5vIjp7ImRibyI6Im1hc3Rlcjp1c2VyIiwiaWQiOjQyODQ0LCJhY2Nlc3NfdG9rZW4iOnsia2V5aWQiOiI0NmVmM2ZiOC05ZWJiLTQwY2UtODNkMy1hYjcyYWQxZGRhZDEiLCJzY29wZSI6eyJ3b3Jrc3BhY2U6YWRkb24iOjE1LCJ3b3Jrc3BhY2U6YXBpIjoxNSwid29ya3NwYWNlOmNvbnRlbnQiOjE1LCJ3b3Jrc3BhY2U6ZGF0YWJhc2UiOjE1LCJ3b3Jrc3BhY2U6ZGF0YXNvdXJjZTpsaXZlIjoxNSwid29ya3NwYWNlOmZpbGUiOjE1LCJ3b3Jrc3BhY2U6ZnVuY3Rpb24iOjE1LCJ3b3Jrc3BhY2U6cmVxdWVzdGhpc3RvcnkiOjE1LCJ3b3Jrc3BhY2U6dGFzayI6MTV9fX0sImlhdCI6MTczODg2ODc3NywibmJmIjoxNzM4ODY4Nzc3LCJhdWQiOiJ4YW5vOm1ldGEifQ.DCfBvtXzoCpTXZ5dYYoGwZtD6nxxUYZaCOXf9NkJv7NEz8SRSwgY33LWsQcXUzyQQOpqi9BJXgKgLBD6VFVPJfHTezkossi6WD5_gEh28l5T7QfbD26I8jqoDIbqeR0L74Y2rLFpBHkGhIw4sUTKk5gb9feBzHVd8HrDjt2q4Qy5C1ROox6Yu57YmSNhzeboO4vooSBrJLhaXsrEEvhKwcs7fW1RG8FRS90CS_-_bGAej_tdXi8TQft2BPmCvwjLoT9BUwGtT9QXAmtrQQaP9WXXFMf2PACP1pBGYpsSrcqcsnYBHRibXzDDoBVt4w3xXUzx7kguNrsIzTmW5aT8pfixV_9hnq_d5LiWe5kRVXyChc91JkSuJ6VE4BslXC1hJ4aw6bDiMAu76hTaxczfLnzUv9h69OWE3G3_eyVPDhaIlCY6HLj7juIqnnt10Nrp5puCcjo5FWvMJnunomMbufvO1xGmqwKwd2LrFYzHeft6Sf-e9WBWIl3Qo7-ZsG9LrDq9zLB9-m8bhkZtqVUxIOJHYGO7FpQnNQsQjwW2fYx1e7w89-0k1nu5VjJ4yHr3FGf7pGgiqyQ6eTB1APA-GfU6etVAMeIdjWUzJ4Tqyemr0_27gUmcZ9Grb3Tu3ssHLH2r-Dv59Ke7_g-WPuQCc6m3gNHcJ5_FQN7um8K5ADw',
+      email: 'robertjboulos@gmail.com'
+    }
+  },
+  duration: 1000,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/auth/me 200 in 1077ms
+[API Log] /api/mcp/credentials/6/validate: {
+  requestId: 'qw1wvb',
+  timestamp: '2025-08-29T19:30:27.469Z',
+  endpoint: '/api/mcp/credentials/6/validate',
+  method: 'POST',
+  url: 'http://localhost:3000/api/mcp/credentials/6/validate',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: { id: '6' },
+  response: {
+    credentialName: 'Snappy',
+    userName: 'Robert Boulos',
+    userEmail: 'robertjboulos@gmail.com',
+    tokenExpiresAt: 'never'
+  },
+  duration: 214,
+  error: undefined,
+  status: 'success'
+}
+ POST /api/mcp/credentials/6/validate 200 in 248ms
+ ✓ Compiled in 146ms
+[API Log] /api/mcp/credentials: {
+  requestId: '8kjc0p',
+  timestamp: '2025-08-29T19:33:32.858Z',
+  endpoint: '/api/mcp/credentials',
+  method: 'GET',
+  url: 'http://localhost:3000/api/mcp/credentials',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    itemsReceived: 1,
+    curPage: 1,
+    nextPage: null,
+    prevPage: null,
+    offset: 0,
+    perPage: 20,
+    itemsTotal: 1,
+    pageTotal: 1,
+    items: [ [Object] ]
+  },
+  duration: 1034,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/mcp/credentials 200 in 1076ms
+[API Log] /api/mcp/credentials/6/validate: {
+  requestId: '7on8lk',
+  timestamp: '2025-08-29T19:34:17.309Z',
+  endpoint: '/api/mcp/credentials/6/validate',
+  method: 'POST',
+  url: 'http://localhost:3000/api/mcp/credentials/6/validate',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: { id: '6' },
+  response: {
+    credentialName: 'Snappy',
+    userName: 'Robert Boulos',
+    userEmail: 'robertjboulos@gmail.com',
+    tokenExpiresAt: 'never'
+  },
+  duration: 452,
+  error: undefined,
+  status: 'success'
+}
+ POST /api/mcp/credentials/6/validate 200 in 505ms
+[API Log] /api/mcp/credentials/6/validate: {
+  requestId: '5vudzc',
+  timestamp: '2025-08-29T19:34:22.278Z',
+  endpoint: '/api/mcp/credentials/6/validate',
+  method: 'POST',
+  url: 'http://localhost:3000/api/mcp/credentials/6/validate',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: { id: '6' },
+  response: {
+    credentialName: 'Snappy',
+    userName: 'Robert Boulos',
+    userEmail: 'robertjboulos@gmail.com',
+    tokenExpiresAt: 'never'
+  },
+  duration: 210,
+  error: undefined,
+  status: 'success'
+}
+ POST /api/mcp/credentials/6/validate 200 in 242ms
+[API Log] /api/mcp/credentials/6/validate: {
+  requestId: 'parxt',
+  timestamp: '2025-08-29T19:34:25.335Z',
+  endpoint: '/api/mcp/credentials/6/validate',
+  method: 'POST',
+  url: 'http://localhost:3000/api/mcp/credentials/6/validate',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: { id: '6' },
+  response: {
+    credentialName: 'Snappy',
+    userName: 'Robert Boulos',
+    userEmail: 'robertjboulos@gmail.com',
+    tokenExpiresAt: 'never'
+  },
+  duration: 1585,
+  error: undefined,
+  status: 'success'
+}
+ POST /api/mcp/credentials/6/validate 200 in 1632ms
+ ✓ Compiled in 159ms
+ GET /api/mcp/credentials 200 in 213ms
+ GET /dashboard 200 in 389ms
+ GET /shadcnblocks-admin-logo.svg 404 in 80ms
+[API Log] /api/mcp/credentials: {
+  requestId: 'c86gvt',
+  timestamp: '2025-08-29T19:34:47.655Z',
+  endpoint: '/api/mcp/credentials',
+  method: 'GET',
+  url: 'http://localhost:3000/api/mcp/credentials',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    itemsReceived: 1,
+    curPage: 1,
+    nextPage: null,
+    prevPage: null,
+    offset: 0,
+    perPage: 20,
+    itemsTotal: 1,
+    pageTotal: 1,
+    items: [ [Object] ]
+  },
+  duration: 504,
+  error: undefined,
+  status: 'success'
+}
+[API Log] /api/mcp/credentials: {
+  requestId: 'os6ne',
+  timestamp: '2025-08-29T19:34:48.126Z',
+  endpoint: '/api/mcp/credentials',
+  method: 'GET',
+  url: 'http://localhost:3000/api/mcp/credentials',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    itemsReceived: 1,
+    curPage: 1,
+    nextPage: null,
+    prevPage: null,
+    offset: 0,
+    perPage: 20,
+    itemsTotal: 1,
+    pageTotal: 1,
+    items: [ [Object] ]
+  },
+  duration: 642,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/mcp/credentials 200 in 694ms
+[API Log] /api/auth/me: {
+  requestId: 's34r5h',
+  timestamp: '2025-08-29T19:34:48.128Z',
+  endpoint: '/api/auth/me',
+  method: 'GET',
+  url: 'http://localhost:3000/api/auth/me',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    user: {
+      id: '17b6fc02-966c-4642-babe-e8004afffc46',
+      created_at: 1729648277250,
+      name: 'Robert',
+      api_key: 'eyJhbGciOiJSUzI1NiJ9.eyJ4YW5vIjp7ImRibyI6Im1hc3Rlcjp1c2VyIiwiaWQiOjQyODQ0LCJhY2Nlc3NfdG9rZW4iOnsia2V5aWQiOiI0NmVmM2ZiOC05ZWJiLTQwY2UtODNkMy1hYjcyYWQxZGRhZDEiLCJzY29wZSI6eyJ3b3Jrc3BhY2U6YWRkb24iOjE1LCJ3b3Jrc3BhY2U6YXBpIjoxNSwid29ya3NwYWNlOmNvbnRlbnQiOjE1LCJ3b3Jrc3BhY2U6ZGF0YWJhc2UiOjE1LCJ3b3Jrc3BhY2U6ZGF0YXNvdXJjZTpsaXZlIjoxNSwid29ya3NwYWNlOmZpbGUiOjE1LCJ3b3Jrc3BhY2U6ZnVuY3Rpb24iOjE1LCJ3b3Jrc3BhY2U6cmVxdWVzdGhpc3RvcnkiOjE1LCJ3b3Jrc3BhY2U6dGFzayI6MTV9fX0sImlhdCI6MTczODg2ODc3NywibmJmIjoxNzM4ODY4Nzc3LCJhdWQiOiJ4YW5vOm1ldGEifQ.DCfBvtXzoCpTXZ5dYYoGwZtD6nxxUYZaCOXf9NkJv7NEz8SRSwgY33LWsQcXUzyQQOpqi9BJXgKgLBD6VFVPJfHTezkossi6WD5_gEh28l5T7QfbD26I8jqoDIbqeR0L74Y2rLFpBHkGhIw4sUTKk5gb9feBzHVd8HrDjt2q4Qy5C1ROox6Yu57YmSNhzeboO4vooSBrJLhaXsrEEvhKwcs7fW1RG8FRS90CS_-_bGAej_tdXi8TQft2BPmCvwjLoT9BUwGtT9QXAmtrQQaP9WXXFMf2PACP1pBGYpsSrcqcsnYBHRibXzDDoBVt4w3xXUzx7kguNrsIzTmW5aT8pfixV_9hnq_d5LiWe5kRVXyChc91JkSuJ6VE4BslXC1hJ4aw6bDiMAu76hTaxczfLnzUv9h69OWE3G3_eyVPDhaIlCY6HLj7juIqnnt10Nrp5puCcjo5FWvMJnunomMbufvO1xGmqwKwd2LrFYzHeft6Sf-e9WBWIl3Qo7-ZsG9LrDq9zLB9-m8bhkZtqVUxIOJHYGO7FpQnNQsQjwW2fYx1e7w89-0k1nu5VjJ4yHr3FGf7pGgiqyQ6eTB1APA-GfU6etVAMeIdjWUzJ4Tqyemr0_27gUmcZ9Grb3Tu3ssHLH2r-Dv59Ke7_g-WPuQCc6m3gNHcJ5_FQN7um8K5ADw',
+      email: 'robertjboulos@gmail.com'
+    }
+  },
+  duration: 641,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/auth/me 200 in 695ms
+[API Log] /api/mcp/credentials/6/validate: {
+  requestId: 'kag5qx',
+  timestamp: '2025-08-29T19:34:50.139Z',
+  endpoint: '/api/mcp/credentials/6/validate',
+  method: 'POST',
+  url: 'http://localhost:3000/api/mcp/credentials/6/validate',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: { id: '6' },
+  response: {
+    credentialName: 'Snappy',
+    userName: 'Robert Boulos',
+    userEmail: 'robertjboulos@gmail.com',
+    tokenExpiresAt: 'never'
+  },
+  duration: 217,
+  error: undefined,
+  status: 'success'
+}
+ POST /api/mcp/credentials/6/validate 200 in 247ms
+[API Log] /api/mcp/credentials/6/validate: {
+  requestId: '9ijass',
+  timestamp: '2025-08-29T19:36:37.071Z',
+  endpoint: '/api/mcp/credentials/6/validate',
+  method: 'POST',
+  url: 'http://localhost:3000/api/mcp/credentials/6/validate',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: { id: '6' },
+  response: {
+    credentialName: 'Snappy',
+    userName: 'Robert Boulos',
+    userEmail: 'robertjboulos@gmail.com',
+    tokenExpiresAt: 'never'
+  },
+  duration: 719,
+  error: undefined,
+  status: 'success'
+}
+ POST /api/mcp/credentials/6/validate 200 in 771ms
+ GET /dashboard 200 in 70ms
+ GET /shadcnblocks-admin-logo.svg 404 in 87ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 124ms
+[API Log] /api/mcp/credentials: {
+  requestId: 'ld4zmr',
+  timestamp: '2025-08-29T19:36:40.657Z',
+  endpoint: '/api/mcp/credentials',
+  method: 'GET',
+  url: 'http://localhost:3000/api/mcp/credentials',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    itemsReceived: 1,
+    curPage: 1,
+    nextPage: null,
+    prevPage: null,
+    offset: 0,
+    perPage: 20,
+    itemsTotal: 1,
+    pageTotal: 1,
+    items: [ [Object] ]
+  },
+  duration: 345,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/mcp/credentials 200 in 472ms
+[API Log] /api/auth/me: {
+  requestId: 'nzdteb',
+  timestamp: '2025-08-29T19:36:41.317Z',
+  endpoint: '/api/auth/me',
+  method: 'GET',
+  url: 'http://localhost:3000/api/auth/me',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    user: {
+      id: '17b6fc02-966c-4642-babe-e8004afffc46',
+      created_at: 1729648277250,
+      name: 'Robert',
+      api_key: 'eyJhbGciOiJSUzI1NiJ9.eyJ4YW5vIjp7ImRibyI6Im1hc3Rlcjp1c2VyIiwiaWQiOjQyODQ0LCJhY2Nlc3NfdG9rZW4iOnsia2V5aWQiOiI0NmVmM2ZiOC05ZWJiLTQwY2UtODNkMy1hYjcyYWQxZGRhZDEiLCJzY29wZSI6eyJ3b3Jrc3BhY2U6YWRkb24iOjE1LCJ3b3Jrc3BhY2U6YXBpIjoxNSwid29ya3NwYWNlOmNvbnRlbnQiOjE1LCJ3b3Jrc3BhY2U6ZGF0YWJhc2UiOjE1LCJ3b3Jrc3BhY2U6ZGF0YXNvdXJjZTpsaXZlIjoxNSwid29ya3NwYWNlOmZpbGUiOjE1LCJ3b3Jrc3BhY2U6ZnVuY3Rpb24iOjE1LCJ3b3Jrc3BhY2U6cmVxdWVzdGhpc3RvcnkiOjE1LCJ3b3Jrc3BhY2U6dGFzayI6MTV9fX0sImlhdCI6MTczODg2ODc3NywibmJmIjoxNzM4ODY4Nzc3LCJhdWQiOiJ4YW5vOm1ldGEifQ.DCfBvtXzoCpTXZ5dYYoGwZtD6nxxUYZaCOXf9NkJv7NEz8SRSwgY33LWsQcXUzyQQOpqi9BJXgKgLBD6VFVPJfHTezkossi6WD5_gEh28l5T7QfbD26I8jqoDIbqeR0L74Y2rLFpBHkGhIw4sUTKk5gb9feBzHVd8HrDjt2q4Qy5C1ROox6Yu57YmSNhzeboO4vooSBrJLhaXsrEEvhKwcs7fW1RG8FRS90CS_-_bGAej_tdXi8TQft2BPmCvwjLoT9BUwGtT9QXAmtrQQaP9WXXFMf2PACP1pBGYpsSrcqcsnYBHRibXzDDoBVt4w3xXUzx7kguNrsIzTmW5aT8pfixV_9hnq_d5LiWe5kRVXyChc91JkSuJ6VE4BslXC1hJ4aw6bDiMAu76hTaxczfLnzUv9h69OWE3G3_eyVPDhaIlCY6HLj7juIqnnt10Nrp5puCcjo5FWvMJnunomMbufvO1xGmqwKwd2LrFYzHeft6Sf-e9WBWIl3Qo7-ZsG9LrDq9zLB9-m8bhkZtqVUxIOJHYGO7FpQnNQsQjwW2fYx1e7w89-0k1nu5VjJ4yHr3FGf7pGgiqyQ6eTB1APA-GfU6etVAMeIdjWUzJ4Tqyemr0_27gUmcZ9Grb3Tu3ssHLH2r-Dv59Ke7_g-WPuQCc6m3gNHcJ5_FQN7um8K5ADw',
+      email: 'robertjboulos@gmail.com'
+    }
+  },
+  duration: 1002,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/auth/me 200 in 1126ms
+ ✓ Compiled /dashboard/login in 322ms
+ GET /dashboard/login 200 in 377ms
+[API Log] /api/mcp/credentials: {
+  requestId: 'u3nrqc',
+  timestamp: '2025-08-29T19:37:03.133Z',
+  endpoint: '/api/mcp/credentials',
+  method: 'GET',
+  url: 'http://localhost:3000/api/mcp/credentials',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    itemsReceived: 1,
+    curPage: 1,
+    nextPage: null,
+    prevPage: null,
+    offset: 0,
+    perPage: 20,
+    itemsTotal: 1,
+    pageTotal: 1,
+    items: [ [Object] ]
+  },
+  duration: 910,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/mcp/credentials 200 in 1009ms
+[API Log] /api/mcp/credentials: {
+  requestId: 'qdhs77',
+  timestamp: '2025-08-29T19:37:03.475Z',
+  endpoint: '/api/mcp/credentials',
+  method: 'GET',
+  url: 'http://localhost:3000/api/mcp/credentials',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    itemsReceived: 1,
+    curPage: 1,
+    nextPage: null,
+    prevPage: null,
+    offset: 0,
+    perPage: 20,
+    itemsTotal: 1,
+    pageTotal: 1,
+    items: [ [Object] ]
+  },
+  duration: 288,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/mcp/credentials 200 in 335ms
+[API Log] /api/mcp/credentials/6/validate: {
+  requestId: 'j3lupr',
+  timestamp: '2025-08-29T19:37:43.097Z',
+  endpoint: '/api/mcp/credentials/6/validate',
+  method: 'POST',
+  url: 'http://localhost:3000/api/mcp/credentials/6/validate',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: { id: '6' },
+  response: {
+    credentialName: 'Snappy',
+    userName: 'Robert Boulos',
+    userEmail: 'robertjboulos@gmail.com',
+    tokenExpiresAt: 'never'
+  },
+  duration: 986,
+  error: undefined,
+  status: 'success'
+}
+ POST /api/mcp/credentials/6/validate 200 in 1051ms
+ GET /dashboard 200 in 67ms
+ GET /shadcnblocks-admin-logo.svg 404 in 78ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 93ms
+[API Log] /api/auth/me: {
+  requestId: 'kl7fp',
+  timestamp: '2025-08-29T19:37:46.905Z',
+  endpoint: '/api/auth/me',
+  method: 'GET',
+  url: 'http://localhost:3000/api/auth/me',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    user: {
+      id: '17b6fc02-966c-4642-babe-e8004afffc46',
+      created_at: 1729648277250,
+      name: 'Robert',
+      api_key: 'eyJhbGciOiJSUzI1NiJ9.eyJ4YW5vIjp7ImRibyI6Im1hc3Rlcjp1c2VyIiwiaWQiOjQyODQ0LCJhY2Nlc3NfdG9rZW4iOnsia2V5aWQiOiI0NmVmM2ZiOC05ZWJiLTQwY2UtODNkMy1hYjcyYWQxZGRhZDEiLCJzY29wZSI6eyJ3b3Jrc3BhY2U6YWRkb24iOjE1LCJ3b3Jrc3BhY2U6YXBpIjoxNSwid29ya3NwYWNlOmNvbnRlbnQiOjE1LCJ3b3Jrc3BhY2U6ZGF0YWJhc2UiOjE1LCJ3b3Jrc3BhY2U6ZGF0YXNvdXJjZTpsaXZlIjoxNSwid29ya3NwYWNlOmZpbGUiOjE1LCJ3b3Jrc3BhY2U6ZnVuY3Rpb24iOjE1LCJ3b3Jrc3BhY2U6cmVxdWVzdGhpc3RvcnkiOjE1LCJ3b3Jrc3BhY2U6dGFzayI6MTV9fX0sImlhdCI6MTczODg2ODc3NywibmJmIjoxNzM4ODY4Nzc3LCJhdWQiOiJ4YW5vOm1ldGEifQ.DCfBvtXzoCpTXZ5dYYoGwZtD6nxxUYZaCOXf9NkJv7NEz8SRSwgY33LWsQcXUzyQQOpqi9BJXgKgLBD6VFVPJfHTezkossi6WD5_gEh28l5T7QfbD26I8jqoDIbqeR0L74Y2rLFpBHkGhIw4sUTKk5gb9feBzHVd8HrDjt2q4Qy5C1ROox6Yu57YmSNhzeboO4vooSBrJLhaXsrEEvhKwcs7fW1RG8FRS90CS_-_bGAej_tdXi8TQft2BPmCvwjLoT9BUwGtT9QXAmtrQQaP9WXXFMf2PACP1pBGYpsSrcqcsnYBHRibXzDDoBVt4w3xXUzx7kguNrsIzTmW5aT8pfixV_9hnq_d5LiWe5kRVXyChc91JkSuJ6VE4BslXC1hJ4aw6bDiMAu76hTaxczfLnzUv9h69OWE3G3_eyVPDhaIlCY6HLj7juIqnnt10Nrp5puCcjo5FWvMJnunomMbufvO1xGmqwKwd2LrFYzHeft6Sf-e9WBWIl3Qo7-ZsG9LrDq9zLB9-m8bhkZtqVUxIOJHYGO7FpQnNQsQjwW2fYx1e7w89-0k1nu5VjJ4yHr3FGf7pGgiqyQ6eTB1APA-GfU6etVAMeIdjWUzJ4Tqyemr0_27gUmcZ9Grb3Tu3ssHLH2r-Dv59Ke7_g-WPuQCc6m3gNHcJ5_FQN7um8K5ADw',
+      email: 'robertjboulos@gmail.com'
+    }
+  },
+  duration: 368,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/auth/me 200 in 493ms
+[API Log] /api/mcp/credentials: {
+  requestId: 'na9num',
+  timestamp: '2025-08-29T19:37:47.664Z',
+  endpoint: '/api/mcp/credentials',
+  method: 'GET',
+  url: 'http://localhost:3000/api/mcp/credentials',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    itemsReceived: 1,
+    curPage: 1,
+    nextPage: null,
+    prevPage: null,
+    offset: 0,
+    perPage: 20,
+    itemsTotal: 1,
+    pageTotal: 1,
+    items: [ [Object] ]
+  },
+  duration: 1124,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/mcp/credentials 200 in 1253ms
+[API Log] /api/mcp/credentials: {
+  requestId: '69w56t',
+  timestamp: '2025-08-29T19:38:03.795Z',
+  endpoint: '/api/mcp/credentials',
+  method: 'POST',
+  url: 'http://localhost:3000/api/mcp/credentials',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: { credential_name: 'Test Workflow', xano_api_key: '1234' },
+  response: { success: true, id: 7 },
+  duration: 703,
+  error: undefined,
+  status: 'success'
+}
+ POST /api/mcp/credentials 200 in 764ms
+[API Log] /api/mcp/credentials: {
+  requestId: 'amw5sq',
+  timestamp: '2025-08-29T19:38:04.242Z',
+  endpoint: '/api/mcp/credentials',
+  method: 'GET',
+  url: 'http://localhost:3000/api/mcp/credentials',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    itemsReceived: 2,
+    curPage: 1,
+    nextPage: null,
+    prevPage: null,
+    offset: 0,
+    perPage: 20,
+    itemsTotal: 2,
+    pageTotal: 1,
+    items: [ [Object], [Object] ]
+  },
+  duration: 340,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/mcp/credentials 200 in 440ms
+[API Log] /api/mcp/credentials/7/validate: {
+  requestId: 'nghi77',
+  timestamp: '2025-08-29T19:38:12.942Z',
+  endpoint: '/api/mcp/credentials/7/validate',
+  method: 'POST',
+  url: 'http://localhost:3000/api/mcp/credentials/7/validate',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: { id: '7' },
+  response: { credentialName: 'Test Workflow' },
+  duration: 735,
+  error: undefined,
+  status: 'success'
+}
+ POST /api/mcp/credentials/7/validate 200 in 782ms
+[API Log] /api/mcp/credentials/7/set-default: {
+  requestId: 't2opik',
+  timestamp: '2025-08-29T19:38:16.655Z',
+  endpoint: '/api/mcp/credentials/7/set-default',
+  method: 'PUT',
+  url: 'http://localhost:3000/api/mcp/credentials/7/set-default',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: { id: '7' },
+  response: { success: true, message: 'Credential set as default' },
+  duration: 412,
+  error: undefined,
+  status: 'success'
+}
+ PUT /api/mcp/credentials/7/set-default 200 in 445ms
+[API Log] /api/mcp/credentials/6/set-default: {
+  requestId: 'osw7ee',
+  timestamp: '2025-08-29T19:38:20.901Z',
+  endpoint: '/api/mcp/credentials/6/set-default',
+  method: 'PUT',
+  url: 'http://localhost:3000/api/mcp/credentials/6/set-default',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: { id: '6' },
+  response: { success: true, message: 'Credential set as default' },
+  duration: 442,
+  error: undefined,
+  status: 'success'
+}
+ PUT /api/mcp/credentials/6/set-default 200 in 484ms
+[API Log] /api/mcp/credentials/6/validate: {
+  requestId: 'movdjc',
+  timestamp: '2025-08-29T19:38:24.619Z',
+  endpoint: '/api/mcp/credentials/6/validate',
+  method: 'POST',
+  url: 'http://localhost:3000/api/mcp/credentials/6/validate',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: { id: '6' },
+  response: {
+    credentialName: 'Snappy',
+    userName: 'Robert Boulos',
+    userEmail: 'robertjboulos@gmail.com',
+    tokenExpiresAt: 'never'
+  },
+  duration: 1662,
+  error: undefined,
+  status: 'success'
+}
+ POST /api/mcp/credentials/6/validate 200 in 1700ms
+[API Log] /api/mcp/credentials/7: {
+  requestId: 'l7x33m',
+  timestamp: '2025-08-29T19:38:34.659Z',
+  endpoint: '/api/mcp/credentials/7',
+  method: 'DELETE',
+  url: 'http://localhost:3000/api/mcp/credentials/7',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: { id: '7' },
+  response: { success: true, message: 'Credential deleted' },
+  duration: 406,
+  error: undefined,
+  status: 'success'
+}
+ DELETE /api/mcp/credentials/7 200 in 449ms
+ GET /dashboard 200 in 60ms
+[API Log] /api/mcp/credentials/6/validate: {
+  requestId: 'k73oy',
+  timestamp: '2025-08-29T19:39:11.533Z',
+  endpoint: '/api/mcp/credentials/6/validate',
+  method: 'POST',
+  url: 'http://localhost:3000/api/mcp/credentials/6/validate',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: { id: '6' },
+  response: {
+    credentialName: 'Snappy',
+    userName: 'Robert Boulos',
+    userEmail: 'robertjboulos@gmail.com',
+    tokenExpiresAt: 'never'
+  },
+  duration: 1545,
+  error: undefined,
+  status: 'success'
+}
+ POST /api/mcp/credentials/6/validate 200 in 1727ms
+ GET /dashboard 200 in 54ms
+ GET /shadcnblocks-admin-logo.svg 404 in 124ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 113ms
+[API Log] /api/auth/me: {
+  requestId: 'in2mat',
+  timestamp: '2025-08-29T19:39:14.318Z',
+  endpoint: '/api/auth/me',
+  method: 'GET',
+  url: 'http://localhost:3000/api/auth/me',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    user: {
+      id: '17b6fc02-966c-4642-babe-e8004afffc46',
+      created_at: 1729648277250,
+      name: 'Robert',
+      api_key: 'eyJhbGciOiJSUzI1NiJ9.eyJ4YW5vIjp7ImRibyI6Im1hc3Rlcjp1c2VyIiwiaWQiOjQyODQ0LCJhY2Nlc3NfdG9rZW4iOnsia2V5aWQiOiI0NmVmM2ZiOC05ZWJiLTQwY2UtODNkMy1hYjcyYWQxZGRhZDEiLCJzY29wZSI6eyJ3b3Jrc3BhY2U6YWRkb24iOjE1LCJ3b3Jrc3BhY2U6YXBpIjoxNSwid29ya3NwYWNlOmNvbnRlbnQiOjE1LCJ3b3Jrc3BhY2U6ZGF0YWJhc2UiOjE1LCJ3b3Jrc3BhY2U6ZGF0YXNvdXJjZTpsaXZlIjoxNSwid29ya3NwYWNlOmZpbGUiOjE1LCJ3b3Jrc3BhY2U6ZnVuY3Rpb24iOjE1LCJ3b3Jrc3BhY2U6cmVxdWVzdGhpc3RvcnkiOjE1LCJ3b3Jrc3BhY2U6dGFzayI6MTV9fX0sImlhdCI6MTczODg2ODc3NywibmJmIjoxNzM4ODY4Nzc3LCJhdWQiOiJ4YW5vOm1ldGEifQ.DCfBvtXzoCpTXZ5dYYoGwZtD6nxxUYZaCOXf9NkJv7NEz8SRSwgY33LWsQcXUzyQQOpqi9BJXgKgLBD6VFVPJfHTezkossi6WD5_gEh28l5T7QfbD26I8jqoDIbqeR0L74Y2rLFpBHkGhIw4sUTKk5gb9feBzHVd8HrDjt2q4Qy5C1ROox6Yu57YmSNhzeboO4vooSBrJLhaXsrEEvhKwcs7fW1RG8FRS90CS_-_bGAej_tdXi8TQft2BPmCvwjLoT9BUwGtT9QXAmtrQQaP9WXXFMf2PACP1pBGYpsSrcqcsnYBHRibXzDDoBVt4w3xXUzx7kguNrsIzTmW5aT8pfixV_9hnq_d5LiWe5kRVXyChc91JkSuJ6VE4BslXC1hJ4aw6bDiMAu76hTaxczfLnzUv9h69OWE3G3_eyVPDhaIlCY6HLj7juIqnnt10Nrp5puCcjo5FWvMJnunomMbufvO1xGmqwKwd2LrFYzHeft6Sf-e9WBWIl3Qo7-ZsG9LrDq9zLB9-m8bhkZtqVUxIOJHYGO7FpQnNQsQjwW2fYx1e7w89-0k1nu5VjJ4yHr3FGf7pGgiqyQ6eTB1APA-GfU6etVAMeIdjWUzJ4Tqyemr0_27gUmcZ9Grb3Tu3ssHLH2r-Dv59Ke7_g-WPuQCc6m3gNHcJ5_FQN7um8K5ADw',
+      email: 'robertjboulos@gmail.com'
+    }
+  },
+  duration: 617,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/auth/me 200 in 711ms
+[API Log] /api/mcp/credentials: {
+  requestId: '2g29na',
+  timestamp: '2025-08-29T19:39:15.293Z',
+  endpoint: '/api/mcp/credentials',
+  method: 'GET',
+  url: 'http://localhost:3000/api/mcp/credentials',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    itemsReceived: 1,
+    curPage: 1,
+    nextPage: null,
+    prevPage: null,
+    offset: 0,
+    perPage: 20,
+    itemsTotal: 1,
+    pageTotal: 1,
+    items: [ [Object] ]
+  },
+  duration: 1526,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/mcp/credentials 200 in 1697ms
+ ○ Compiling /dashboard/settings ...
+ ✓ Compiled /dashboard/settings in 509ms
+ GET /dashboard/settings 200 in 554ms
+ GET /dashboard/login 200 in 45ms
+ GET /dashboard 200 in 48ms
+[API Log] /api/mcp/credentials: {
+  requestId: '6vgdkl',
+  timestamp: '2025-08-29T19:39:29.096Z',
+  endpoint: '/api/mcp/credentials',
+  method: 'GET',
+  url: 'http://localhost:3000/api/mcp/credentials',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    itemsReceived: 1,
+    curPage: 1,
+    nextPage: null,
+    prevPage: null,
+    offset: 0,
+    perPage: 20,
+    itemsTotal: 1,
+    pageTotal: 1,
+    items: [ [Object] ]
+  },
+  duration: 519,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/mcp/credentials 200 in 613ms
+[API Log] /api/mcp/credentials: {
+  requestId: 'ctc37',
+  timestamp: '2025-08-29T19:39:29.350Z',
+  endpoint: '/api/mcp/credentials',
+  method: 'GET',
+  url: 'http://localhost:3000/api/mcp/credentials',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    itemsReceived: 1,
+    curPage: 1,
+    nextPage: null,
+    prevPage: null,
+    offset: 0,
+    perPage: 20,
+    itemsTotal: 1,
+    pageTotal: 1,
+    items: [ [Object] ]
+  },
+  duration: 201,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/mcp/credentials 200 in 244ms
+ ✓ Compiled in 193ms
+[API Log] /api/mcp/credentials: {
+  requestId: 'qjy81o',
+  timestamp: '2025-08-29T19:40:09.669Z',
+  endpoint: '/api/mcp/credentials',
+  method: 'GET',
+  url: 'http://localhost:3000/api/mcp/credentials',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    itemsReceived: 1,
+    curPage: 1,
+    nextPage: null,
+    prevPage: null,
+    offset: 0,
+    perPage: 20,
+    itemsTotal: 1,
+    pageTotal: 1,
+    items: [ [Object] ]
+  },
+  duration: 3055,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/mcp/credentials 200 in 3234ms
+ GET /dashboard 200 in 318ms
+ GET /shadcnblocks-admin-logo.svg 404 in 84ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 57ms
+[API Log] /api/mcp/credentials: {
+  requestId: 'ez9gfs',
+  timestamp: '2025-08-29T19:40:38.396Z',
+  endpoint: '/api/mcp/credentials',
+  method: 'GET',
+  url: 'http://localhost:3000/api/mcp/credentials',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    itemsReceived: 1,
+    curPage: 1,
+    nextPage: null,
+    prevPage: null,
+    offset: 0,
+    perPage: 20,
+    itemsTotal: 1,
+    pageTotal: 1,
+    items: [ [Object] ]
+  },
+  duration: 790,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/mcp/credentials 200 in 883ms
+[API Log] /api/auth/me: {
+  requestId: 'gxyva72',
+  timestamp: '2025-08-29T19:40:38.398Z',
+  endpoint: '/api/auth/me',
+  method: 'GET',
+  url: 'http://localhost:3000/api/auth/me',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    user: {
+      id: '17b6fc02-966c-4642-babe-e8004afffc46',
+      created_at: 1729648277250,
+      name: 'Robert',
+      api_key: 'eyJhbGciOiJSUzI1NiJ9.eyJ4YW5vIjp7ImRibyI6Im1hc3Rlcjp1c2VyIiwiaWQiOjQyODQ0LCJhY2Nlc3NfdG9rZW4iOnsia2V5aWQiOiI0NmVmM2ZiOC05ZWJiLTQwY2UtODNkMy1hYjcyYWQxZGRhZDEiLCJzY29wZSI6eyJ3b3Jrc3BhY2U6YWRkb24iOjE1LCJ3b3Jrc3BhY2U6YXBpIjoxNSwid29ya3NwYWNlOmNvbnRlbnQiOjE1LCJ3b3Jrc3BhY2U6ZGF0YWJhc2UiOjE1LCJ3b3Jrc3BhY2U6ZGF0YXNvdXJjZTpsaXZlIjoxNSwid29ya3NwYWNlOmZpbGUiOjE1LCJ3b3Jrc3BhY2U6ZnVuY3Rpb24iOjE1LCJ3b3Jrc3BhY2U6cmVxdWVzdGhpc3RvcnkiOjE1LCJ3b3Jrc3BhY2U6dGFzayI6MTV9fX0sImlhdCI6MTczODg2ODc3NywibmJmIjoxNzM4ODY4Nzc3LCJhdWQiOiJ4YW5vOm1ldGEifQ.DCfBvtXzoCpTXZ5dYYoGwZtD6nxxUYZaCOXf9NkJv7NEz8SRSwgY33LWsQcXUzyQQOpqi9BJXgKgLBD6VFVPJfHTezkossi6WD5_gEh28l5T7QfbD26I8jqoDIbqeR0L74Y2rLFpBHkGhIw4sUTKk5gb9feBzHVd8HrDjt2q4Qy5C1ROox6Yu57YmSNhzeboO4vooSBrJLhaXsrEEvhKwcs7fW1RG8FRS90CS_-_bGAej_tdXi8TQft2BPmCvwjLoT9BUwGtT9QXAmtrQQaP9WXXFMf2PACP1pBGYpsSrcqcsnYBHRibXzDDoBVt4w3xXUzx7kguNrsIzTmW5aT8pfixV_9hnq_d5LiWe5kRVXyChc91JkSuJ6VE4BslXC1hJ4aw6bDiMAu76hTaxczfLnzUv9h69OWE3G3_eyVPDhaIlCY6HLj7juIqnnt10Nrp5puCcjo5FWvMJnunomMbufvO1xGmqwKwd2LrFYzHeft6Sf-e9WBWIl3Qo7-ZsG9LrDq9zLB9-m8bhkZtqVUxIOJHYGO7FpQnNQsQjwW2fYx1e7w89-0k1nu5VjJ4yHr3FGf7pGgiqyQ6eTB1APA-GfU6etVAMeIdjWUzJ4Tqyemr0_27gUmcZ9Grb3Tu3ssHLH2r-Dv59Ke7_g-WPuQCc6m3gNHcJ5_FQN7um8K5ADw',
+      email: 'robertjboulos@gmail.com'
+    }
+  },
+  duration: 786,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/auth/me 200 in 879ms
+ ✓ Compiled in 155ms
+[API Log] /api/mcp/credentials/6/validate: {
+  requestId: '5v64h8',
+  timestamp: '2025-08-29T19:42:07.833Z',
+  endpoint: '/api/mcp/credentials/6/validate',
+  method: 'POST',
+  url: 'http://localhost:3000/api/mcp/credentials/6/validate',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: { id: '6' },
+  response: {
+    credentialName: 'Snappy',
+    userName: 'Robert Boulos',
+    userEmail: 'robertjboulos@gmail.com',
+    tokenExpiresAt: 'never'
+  },
+  duration: 1913,
+  error: undefined,
+  status: 'success'
+}
+ POST /api/mcp/credentials/6/validate 200 in 2123ms
+ GET /dashboard 200 in 249ms
+ GET /shadcnblocks-admin-logo.svg 404 in 174ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 117ms
+[API Log] /api/auth/me: {
+  requestId: '8m0uu',
+  timestamp: '2025-08-29T19:42:10.849Z',
+  endpoint: '/api/auth/me',
+  method: 'GET',
+  url: 'http://localhost:3000/api/auth/me',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    user: {
+      id: '17b6fc02-966c-4642-babe-e8004afffc46',
+      created_at: 1729648277250,
+      name: 'Robert',
+      api_key: 'eyJhbGciOiJSUzI1NiJ9.eyJ4YW5vIjp7ImRibyI6Im1hc3Rlcjp1c2VyIiwiaWQiOjQyODQ0LCJhY2Nlc3NfdG9rZW4iOnsia2V5aWQiOiI0NmVmM2ZiOC05ZWJiLTQwY2UtODNkMy1hYjcyYWQxZGRhZDEiLCJzY29wZSI6eyJ3b3Jrc3BhY2U6YWRkb24iOjE1LCJ3b3Jrc3BhY2U6YXBpIjoxNSwid29ya3NwYWNlOmNvbnRlbnQiOjE1LCJ3b3Jrc3BhY2U6ZGF0YWJhc2UiOjE1LCJ3b3Jrc3BhY2U6ZGF0YXNvdXJjZTpsaXZlIjoxNSwid29ya3NwYWNlOmZpbGUiOjE1LCJ3b3Jrc3BhY2U6ZnVuY3Rpb24iOjE1LCJ3b3Jrc3BhY2U6cmVxdWVzdGhpc3RvcnkiOjE1LCJ3b3Jrc3BhY2U6dGFzayI6MTV9fX0sImlhdCI6MTczODg2ODc3NywibmJmIjoxNzM4ODY4Nzc3LCJhdWQiOiJ4YW5vOm1ldGEifQ.DCfBvtXzoCpTXZ5dYYoGwZtD6nxxUYZaCOXf9NkJv7NEz8SRSwgY33LWsQcXUzyQQOpqi9BJXgKgLBD6VFVPJfHTezkossi6WD5_gEh28l5T7QfbD26I8jqoDIbqeR0L74Y2rLFpBHkGhIw4sUTKk5gb9feBzHVd8HrDjt2q4Qy5C1ROox6Yu57YmSNhzeboO4vooSBrJLhaXsrEEvhKwcs7fW1RG8FRS90CS_-_bGAej_tdXi8TQft2BPmCvwjLoT9BUwGtT9QXAmtrQQaP9WXXFMf2PACP1pBGYpsSrcqcsnYBHRibXzDDoBVt4w3xXUzx7kguNrsIzTmW5aT8pfixV_9hnq_d5LiWe5kRVXyChc91JkSuJ6VE4BslXC1hJ4aw6bDiMAu76hTaxczfLnzUv9h69OWE3G3_eyVPDhaIlCY6HLj7juIqnnt10Nrp5puCcjo5FWvMJnunomMbufvO1xGmqwKwd2LrFYzHeft6Sf-e9WBWIl3Qo7-ZsG9LrDq9zLB9-m8bhkZtqVUxIOJHYGO7FpQnNQsQjwW2fYx1e7w89-0k1nu5VjJ4yHr3FGf7pGgiqyQ6eTB1APA-GfU6etVAMeIdjWUzJ4Tqyemr0_27gUmcZ9Grb3Tu3ssHLH2r-Dv59Ke7_g-WPuQCc6m3gNHcJ5_FQN7um8K5ADw',
+      email: 'robertjboulos@gmail.com'
+    }
+  },
+  duration: 619,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/auth/me 200 in 700ms
+[API Log] /api/mcp/credentials: {
+  requestId: 'p7my7',
+  timestamp: '2025-08-29T19:42:11.049Z',
+  endpoint: '/api/mcp/credentials',
+  method: 'GET',
+  url: 'http://localhost:3000/api/mcp/credentials',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    itemsReceived: 1,
+    curPage: 1,
+    nextPage: null,
+    prevPage: null,
+    offset: 0,
+    perPage: 20,
+    itemsTotal: 1,
+    pageTotal: 1,
+    items: [ [Object] ]
+  },
+  duration: 757,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/mcp/credentials 200 in 902ms
+ GET /dashboard 200 in 85ms
+ GET /shadcnblocks-admin-logo.svg 404 in 199ms
+[API Log] /api/auth/me: {
+  requestId: 'zjdeil',
+  timestamp: '2025-08-29T19:42:47.705Z',
+  endpoint: '/api/auth/me',
+  method: 'GET',
+  url: 'http://localhost:3000/api/auth/me',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    user: {
+      id: '17b6fc02-966c-4642-babe-e8004afffc46',
+      created_at: 1729648277250,
+      name: 'Robert',
+      api_key: 'eyJhbGciOiJSUzI1NiJ9.eyJ4YW5vIjp7ImRibyI6Im1hc3Rlcjp1c2VyIiwiaWQiOjQyODQ0LCJhY2Nlc3NfdG9rZW4iOnsia2V5aWQiOiI0NmVmM2ZiOC05ZWJiLTQwY2UtODNkMy1hYjcyYWQxZGRhZDEiLCJzY29wZSI6eyJ3b3Jrc3BhY2U6YWRkb24iOjE1LCJ3b3Jrc3BhY2U6YXBpIjoxNSwid29ya3NwYWNlOmNvbnRlbnQiOjE1LCJ3b3Jrc3BhY2U6ZGF0YWJhc2UiOjE1LCJ3b3Jrc3BhY2U6ZGF0YXNvdXJjZTpsaXZlIjoxNSwid29ya3NwYWNlOmZpbGUiOjE1LCJ3b3Jrc3BhY2U6ZnVuY3Rpb24iOjE1LCJ3b3Jrc3BhY2U6cmVxdWVzdGhpc3RvcnkiOjE1LCJ3b3Jrc3BhY2U6dGFzayI6MTV9fX0sImlhdCI6MTczODg2ODc3NywibmJmIjoxNzM4ODY4Nzc3LCJhdWQiOiJ4YW5vOm1ldGEifQ.DCfBvtXzoCpTXZ5dYYoGwZtD6nxxUYZaCOXf9NkJv7NEz8SRSwgY33LWsQcXUzyQQOpqi9BJXgKgLBD6VFVPJfHTezkossi6WD5_gEh28l5T7QfbD26I8jqoDIbqeR0L74Y2rLFpBHkGhIw4sUTKk5gb9feBzHVd8HrDjt2q4Qy5C1ROox6Yu57YmSNhzeboO4vooSBrJLhaXsrEEvhKwcs7fW1RG8FRS90CS_-_bGAej_tdXi8TQft2BPmCvwjLoT9BUwGtT9QXAmtrQQaP9WXXFMf2PACP1pBGYpsSrcqcsnYBHRibXzDDoBVt4w3xXUzx7kguNrsIzTmW5aT8pfixV_9hnq_d5LiWe5kRVXyChc91JkSuJ6VE4BslXC1hJ4aw6bDiMAu76hTaxczfLnzUv9h69OWE3G3_eyVPDhaIlCY6HLj7juIqnnt10Nrp5puCcjo5FWvMJnunomMbufvO1xGmqwKwd2LrFYzHeft6Sf-e9WBWIl3Qo7-ZsG9LrDq9zLB9-m8bhkZtqVUxIOJHYGO7FpQnNQsQjwW2fYx1e7w89-0k1nu5VjJ4yHr3FGf7pGgiqyQ6eTB1APA-GfU6etVAMeIdjWUzJ4Tqyemr0_27gUmcZ9Grb3Tu3ssHLH2r-Dv59Ke7_g-WPuQCc6m3gNHcJ5_FQN7um8K5ADw',
+      email: 'robertjboulos@gmail.com'
+    }
+  },
+  duration: 563,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/auth/me 200 in 616ms
+[API Log] /api/mcp/credentials: {
+  requestId: '69nmo',
+  timestamp: '2025-08-29T19:42:47.716Z',
+  endpoint: '/api/mcp/credentials',
+  method: 'GET',
+  url: 'http://localhost:3000/api/mcp/credentials',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    itemsReceived: 1,
+    curPage: 1,
+    nextPage: null,
+    prevPage: null,
+    offset: 0,
+    perPage: 20,
+    itemsTotal: 1,
+    pageTotal: 1,
+    items: [ [Object] ]
+  },
+  duration: 577,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/mcp/credentials 200 in 627ms
+[API Log] /api/mcp/credentials/6/validate: {
+  requestId: '26m0aq',
+  timestamp: '2025-08-29T19:42:50.465Z',
+  endpoint: '/api/mcp/credentials/6/validate',
+  method: 'POST',
+  url: 'http://localhost:3000/api/mcp/credentials/6/validate',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: { id: '6' },
+  response: {
+    credentialName: 'Snappy',
+    userName: 'Robert Boulos',
+    userEmail: 'robertjboulos@gmail.com',
+    tokenExpiresAt: 'never'
+  },
+  duration: 263,
+  error: undefined,
+  status: 'success'
+}
+ POST /api/mcp/credentials/6/validate 200 in 304ms
+ GET /dashboard 200 in 96ms
+ GET /shadcnblocks-admin-logo.svg 404 in 157ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 134ms
+[API Log] /api/mcp/credentials: {
+  requestId: 'n5ao3x',
+  timestamp: '2025-08-29T19:43:15.052Z',
+  endpoint: '/api/mcp/credentials',
+  method: 'GET',
+  url: 'http://localhost:3000/api/mcp/credentials',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    itemsReceived: 1,
+    curPage: 1,
+    nextPage: null,
+    prevPage: null,
+    offset: 0,
+    perPage: 20,
+    itemsTotal: 1,
+    pageTotal: 1,
+    items: [ [Object] ]
+  },
+  duration: 570,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/mcp/credentials 200 in 752ms
+[API Log] /api/auth/me: {
+  requestId: 't7ywxl',
+  timestamp: '2025-08-29T19:43:15.086Z',
+  endpoint: '/api/auth/me',
+  method: 'GET',
+  url: 'http://localhost:3000/api/auth/me',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    user: {
+      id: '17b6fc02-966c-4642-babe-e8004afffc46',
+      created_at: 1729648277250,
+      name: 'Robert',
+      api_key: 'eyJhbGciOiJSUzI1NiJ9.eyJ4YW5vIjp7ImRibyI6Im1hc3Rlcjp1c2VyIiwiaWQiOjQyODQ0LCJhY2Nlc3NfdG9rZW4iOnsia2V5aWQiOiI0NmVmM2ZiOC05ZWJiLTQwY2UtODNkMy1hYjcyYWQxZGRhZDEiLCJzY29wZSI6eyJ3b3Jrc3BhY2U6YWRkb24iOjE1LCJ3b3Jrc3BhY2U6YXBpIjoxNSwid29ya3NwYWNlOmNvbnRlbnQiOjE1LCJ3b3Jrc3BhY2U6ZGF0YWJhc2UiOjE1LCJ3b3Jrc3BhY2U6ZGF0YXNvdXJjZTpsaXZlIjoxNSwid29ya3NwYWNlOmZpbGUiOjE1LCJ3b3Jrc3BhY2U6ZnVuY3Rpb24iOjE1LCJ3b3Jrc3BhY2U6cmVxdWVzdGhpc3RvcnkiOjE1LCJ3b3Jrc3BhY2U6dGFzayI6MTV9fX0sImlhdCI6MTczODg2ODc3NywibmJmIjoxNzM4ODY4Nzc3LCJhdWQiOiJ4YW5vOm1ldGEifQ.DCfBvtXzoCpTXZ5dYYoGwZtD6nxxUYZaCOXf9NkJv7NEz8SRSwgY33LWsQcXUzyQQOpqi9BJXgKgLBD6VFVPJfHTezkossi6WD5_gEh28l5T7QfbD26I8jqoDIbqeR0L74Y2rLFpBHkGhIw4sUTKk5gb9feBzHVd8HrDjt2q4Qy5C1ROox6Yu57YmSNhzeboO4vooSBrJLhaXsrEEvhKwcs7fW1RG8FRS90CS_-_bGAej_tdXi8TQft2BPmCvwjLoT9BUwGtT9QXAmtrQQaP9WXXFMf2PACP1pBGYpsSrcqcsnYBHRibXzDDoBVt4w3xXUzx7kguNrsIzTmW5aT8pfixV_9hnq_d5LiWe5kRVXyChc91JkSuJ6VE4BslXC1hJ4aw6bDiMAu76hTaxczfLnzUv9h69OWE3G3_eyVPDhaIlCY6HLj7juIqnnt10Nrp5puCcjo5FWvMJnunomMbufvO1xGmqwKwd2LrFYzHeft6Sf-e9WBWIl3Qo7-ZsG9LrDq9zLB9-m8bhkZtqVUxIOJHYGO7FpQnNQsQjwW2fYx1e7w89-0k1nu5VjJ4yHr3FGf7pGgiqyQ6eTB1APA-GfU6etVAMeIdjWUzJ4Tqyemr0_27gUmcZ9Grb3Tu3ssHLH2r-Dv59Ke7_g-WPuQCc6m3gNHcJ5_FQN7um8K5ADw',
+      email: 'robertjboulos@gmail.com'
+    }
+  },
+  duration: 592,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/auth/me 200 in 781ms
+[API Log] /api/mcp/credentials/6/validate: {
+  requestId: 'nqgsqc',
+  timestamp: '2025-08-29T19:43:16.654Z',
+  endpoint: '/api/mcp/credentials/6/validate',
+  method: 'POST',
+  url: 'http://localhost:3000/api/mcp/credentials/6/validate',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: { id: '6' },
+  response: {
+    credentialName: 'Snappy',
+    userName: 'Robert Boulos',
+    userEmail: 'robertjboulos@gmail.com',
+    tokenExpiresAt: 'never'
+  },
+  duration: 257,
+  error: undefined,
+  status: 'success'
+}
+ POST /api/mcp/credentials/6/validate 200 in 369ms
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'
+}
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 772ms
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page/app-build-manifest.json'
+}

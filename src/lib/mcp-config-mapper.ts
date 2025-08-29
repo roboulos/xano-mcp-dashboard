@@ -14,10 +14,10 @@ export function mapXanoToConfig(xano: XanoCredential): MCPConfiguration {
   // Parse preview data from validation result if available
   const preview = xano.validation_result
     ? {
-        totalEndpoints: xano.validation_result.endpoints?.length || 0,
-        totalTables: xano.validation_result.tables?.length || 0,
-        instanceName: xano.validation_result.name || xano.xano_instance_name,
-        email: xano.validation_result.email || xano.xano_instance_email,
+        credentialName: xano.validation_result.credentialName,
+        userName: xano.validation_result.userName,
+        userEmail: xano.validation_result.userEmail,
+        tokenExpiresAt: xano.validation_result.tokenExpiresAt,
       }
     : undefined;
 
@@ -25,8 +25,8 @@ export function mapXanoToConfig(xano: XanoCredential): MCPConfiguration {
     id: xano.id,
     name: xano.credential_name,
     apiKey: xano.xano_api_key,
-    instanceName: xano.xano_instance_name,
-    email: xano.xano_instance_email,
+    instanceName: xano.validation_result?.userName || xano.xano_instance_name,
+    email: xano.validation_result?.userEmail || xano.xano_instance_email,
     isActive: xano.is_active,
     isDefault: xano.is_default,
     status,
@@ -41,16 +41,9 @@ export function mapXanoToConfig(xano: XanoCredential): MCPConfiguration {
 }
 
 // Map frontend form data to Xano credential format
-export function mapFormToXano(formData: {
-  name: string;
-  apiKey: string;
-  instanceName?: string;
-  email?: string;
-}) {
+export function mapFormToXano(formData: { name: string; apiKey: string }) {
   return {
     credential_name: formData.name,
     xano_api_key: formData.apiKey,
-    xano_instance_name: formData.instanceName,
-    xano_instance_email: formData.email,
   };
 }
