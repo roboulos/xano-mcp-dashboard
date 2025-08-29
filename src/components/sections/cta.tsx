@@ -8,11 +8,11 @@ const CTA = () => {
       <div className="container">
         <div className="bg-card flex flex-col items-center justify-center gap-6 rounded-lg border p-14 text-center shadow-sm">
           <h2 className="text-3xl font-semibold lg:text-4xl">
-            Ready to Get Your AI Xano Developer?
+            Ready to Build 10x Faster with AI?
           </h2>
           <p className="text-muted-foreground max-w-2xl text-lg">
-            Transform how you build in Xano. Natural language to working APIs in
-            minutes. Your workspace, your AI assistant, instant results.
+            Join developers who are mastering AI-accelerated development in Xano. 
+            Get the MCP tools, weekly training calls, and expert guidance you need to succeed.
           </p>
           <div className="mt-4 flex flex-col gap-4 sm:flex-row">
             <Link href="/dashboard">
@@ -20,7 +20,7 @@ const CTA = () => {
                 size="lg"
                 className="bg-primary hover:bg-primary/90 px-8 shadow-xl transition-all duration-300"
               >
-                Connect Your Xano
+                Start Your Training
               </Button>
             </Link>
             <Link
@@ -33,7 +33,7 @@ const CTA = () => {
                 variant="outline"
                 className="px-8 shadow-xl transition-all duration-300"
               >
-                Book AI Developer Demo
+                Join Weekly Call
               </Button>
             </Link>
           </div>

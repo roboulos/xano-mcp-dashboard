@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
@@ -74,13 +73,6 @@ const Login = () => {
         <div className="flex flex-col gap-4">
           <Card className="mx-auto w-full max-w-sm border-slate-900/8 bg-white shadow-[0_12px_32px_rgba(2,6,23,0.12),0_4px_16px_rgba(2,6,23,0.08)] dark:border-slate-100/8 dark:bg-slate-900 dark:shadow-[0_12px_32px_rgba(0,0,0,0.5),0_4px_16px_rgba(0,0,0,0.3)]">
             <CardHeader className="flex flex-col items-center space-y-0">
-              <Image
-                src="/logo.svg"
-                alt="logo"
-                width={94}
-                height={18}
-                className="mb-7 dark:invert"
-              />
               <p className="mb-2 text-2xl font-bold text-slate-900 dark:text-slate-100">
                 Welcome back
               </p>

@@ -19,40 +19,38 @@ const Features = () => {
       <div className="container">
         <div className="mb-16 flex flex-col items-center gap-8">
           <Badge variant="outline" className="px-4 py-2 text-sm">
-            Value Proposition
+            The Complete System
           </Badge>
           <h2 className="max-w-4xl text-center text-3xl font-bold tracking-tight lg:text-5xl">
-            Why Xano AI Developer Transforms Your Backend
+            Master AI-Accelerated Development in Xano
           </h2>
           <p className="text-muted-foreground max-w-3xl text-center text-balance lg:text-xl">
-            Have your own AI Xano developer that builds within your existing
-            workspace. Works with Claude.ai, ChatGPT, Copilot, and any AI you
-            prefer.
+            Get the MCP tools, weekly training calls, and expert guidance you need to build 
+            10x faster. Learn from developers who've deployed 100+ production APIs with AI.
           </p>
         </div>
 
         <Tabs defaultValue="secure" className="mx-auto w-full max-w-6xl">
           <TabsList className="mb-12 grid h-12 w-full grid-cols-3">
             <TabsTrigger value="secure" className="text-base font-semibold">
-              🔒 Your Xano, Supercharged
+              🛠️ Proven MCP Tools
             </TabsTrigger>
             <TabsTrigger value="velocity" className="text-base font-semibold">
-              ⚡ Build 10x Faster
+              🎓 Weekly Training Calls
             </TabsTrigger>
             <TabsTrigger value="production" className="text-base font-semibold">
-              🚀 Production-Ready Instantly
+              🚀 Expert Guidance
             </TabsTrigger>
           </TabsList>
 
           <TabsContent value="secure" className="space-y-8">
             <div className="mb-8 text-center">
               <h3 className="mb-3 text-2xl font-bold">
-                AI builds within your existing Xano workspace
+                Battle-tested MCP tools that work with your AI
               </h3>
               <p className="text-muted-foreground text-lg">
-                Your AI developer works directly in your Xano instance. No
-                migration, no new platform to learn — just supercharged
-                development in the Xano you already know.
+                101+ Xano operations via MCP. Connect to Claude.ai, ChatGPT, or any AI assistant.
+                Build complete APIs, manage databases, and deploy instantly — all through natural language.
               </p>
             </div>
 
@@ -62,12 +60,11 @@ const Features = () => {
                   <div className="rounded-lg bg-green-100 p-2 dark:bg-green-900/20">
                     <Lock className="h-5 w-5 text-green-600 dark:text-green-400" />
                   </div>
-                  <h4 className="font-semibold">Works in your workspace</h4>
+                  <h4 className="font-semibold">Direct Xano integration</h4>
                 </div>
                 <p className="text-muted-foreground">
-                  AI understands your existing tables, APIs, and functions.
-                  Creates new endpoints following your patterns, using your
-                  authentication and security rules.
+                  MCP tools connect directly to your Xano workspace. Create tables,
+                  build APIs, manage auth — all through conversation with AI.
                 </p>
                 <div className="bg-muted rounded-lg p-4">
                   <div className="text-muted-foreground mb-2 text-sm">
@@ -84,7 +81,7 @@ const Features = () => {
                   </div>
                 </div>
                 <Button variant="outline" size="sm" className="w-full">
-                  Learn more →
+                  View MCP tools →
                 </Button>
               </Card>
 
@@ -149,12 +146,11 @@ Function Stack:
           <TabsContent value="velocity" className="space-y-8">
             <div className="mb-8 text-center">
               <h3 className="mb-3 text-2xl font-bold">
-                Natural language to working APIs
+                Join weekly calls with experienced Xano developers
               </h3>
               <p className="text-muted-foreground text-lg">
-                Skip documentation, avoid tutorials. Just describe what you want
-                to build and AI handles the complex Xano logic. From idea to
-                deployed API in minutes.
+                Every week, get live training on AI-accelerated development. Watch real builds,
+                ask questions, share challenges. Learn patterns that actually work in production.
               </p>
             </div>
 
@@ -164,11 +160,11 @@ Function Stack:
                   <div className="rounded-lg bg-indigo-100 p-2 dark:bg-indigo-900/20">
                     <Zap className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
                   </div>
-                  <h4 className="font-semibold">Skip the learning curve</h4>
+                  <h4 className="font-semibold">Live training every week</h4>
                 </div>
                 <p className="text-muted-foreground">
-                  Whether you're new to Xano or an expert, AI accelerates your
-                  development. Describe your goal, get working code instantly.
+                  Watch experienced developers build with AI in real-time. See exactly
+                  how to prompt, debug, and deploy production APIs.
                 </p>
                 <div className="space-y-2">
                   <div className="rounded-lg border border-purple-200 bg-purple-50 p-3 dark:border-purple-800 dark:bg-purple-900/10">
@@ -190,7 +186,7 @@ Function Stack:
                   </div>
                 </div>
                 <Button variant="outline" size="sm" className="w-full">
-                  Watch demo →
+                  Join next call →
                 </Button>
               </Card>
 
@@ -199,11 +195,11 @@ Function Stack:
                   <div className="rounded-lg bg-orange-100 p-2 dark:bg-orange-900/20">
                     <Users className="h-5 w-5 text-orange-600 dark:text-orange-400" />
                   </div>
-                  <h4 className="font-semibold">Complex logic made simple</h4>
+                  <h4 className="font-semibold">Ask questions, get answers</h4>
                 </div>
                 <p className="text-muted-foreground">
-                  Multi-table joins, conditional logic, external API calls — AI
-                  handles the complexity while you focus on the business logic.
+                  Stuck on authentication? Need help with webhooks? Get immediate
+                  help from developers who've solved these problems before.
                 </p>
                 <div className="space-y-2">
                   <div className="rounded-lg border border-amber-200 bg-amber-50 p-3 dark:border-amber-800 dark:bg-amber-900/10">
@@ -225,7 +221,7 @@ Function Stack:
                   </div>
                 </div>
                 <Button variant="outline" size="sm" className="w-full">
-                  See examples →
+                  See schedule →
                 </Button>
               </Card>
 
@@ -235,12 +231,12 @@ Function Stack:
                     <Database className="h-5 w-5 text-violet-600 dark:text-violet-400" />
                   </div>
                   <h4 className="font-semibold">
-                    Understands your Xano workspace
+                    Community of builders
                   </h4>
                 </div>
                 <p className="text-muted-foreground">
-                  AI knows your tables, relationships, and existing APIs.
-                  Suggests the right approach based on your current setup.
+                  Connect with other developers using AI to build faster.
+                  Share patterns, get feedback, solve problems together.
                 </p>
                 <div className="bg-muted space-y-2 rounded-lg p-3">
                   <div className="text-xs font-medium">Your Xano Resources</div>
@@ -264,7 +260,7 @@ Function Stack:
                   </div>
                 </div>
                 <Button variant="outline" size="sm" className="w-full">
-                  Connect Xano →
+                  Join community →
                 </Button>
               </Card>
             </div>
@@ -273,12 +269,11 @@ Function Stack:
           <TabsContent value="production" className="space-y-8">
             <div className="mb-8 text-center">
               <h3 className="mb-3 text-2xl font-bold">
-                AI-generated code follows Xano best practices
+                Expert guidance from production experience
               </h3>
               <p className="text-muted-foreground text-lg">
-                Built-in error handling • Optimized queries • Proper
-                authentication • Ready for production traffic from the moment
-                you deploy
+                Learn from developers who've built real SaaS products with Xano and AI.
+                Get patterns that work, avoid costly mistakes, ship faster.
               </p>
             </div>
 
@@ -288,11 +283,11 @@ Function Stack:
                   <div className="rounded-lg bg-purple-100 p-2 dark:bg-purple-900/20">
                     <Zap className="h-5 w-5 text-purple-600 dark:text-purple-400" />
                   </div>
-                  <h4 className="font-semibold">Instant deployment</h4>
+                  <h4 className="font-semibold">Production patterns</h4>
                 </div>
                 <p className="text-muted-foreground">
-                  AI creates, tests, and deploys your APIs in one flow. See
-                  changes live in your Xano dashboard immediately.
+                  Learn authentication flows, webhook handling, Stripe integration,
+                  and more. Get templates and examples from real applications.
                 </p>
                 <CodeBlock
                   code={`1. Connect your Xano workspace
@@ -304,7 +299,7 @@ Function Stack:
                   className="text-xs"
                 />
                 <Button variant="outline" size="sm" className="w-full">
-                  Get started →
+                  View patterns →
                 </Button>
               </Card>
 
@@ -313,11 +308,11 @@ Function Stack:
                   <div className="rounded-lg bg-pink-100 p-2 dark:bg-pink-900/20">
                     <Activity className="h-5 w-5 text-pink-600 dark:text-pink-400" />
                   </div>
-                  <h4 className="font-semibold">Quality you can trust</h4>
+                  <h4 className="font-semibold">Debugging & optimization</h4>
                 </div>
                 <p className="text-muted-foreground">
-                  Every API includes validation, error handling, and performance
-                  optimization. Ship with confidence.
+                  Learn how to debug AI-generated code, optimize queries, and
+                  handle edge cases. Real troubleshooting from real projects.
                 </p>
                 <div className="grid grid-cols-2 gap-2 text-xs">
                   <div className="bg-muted rounded p-2">
@@ -349,11 +344,11 @@ Function Stack:
                   <div className="rounded-lg bg-yellow-100 p-2 dark:bg-yellow-900/20">
                     <Users className="h-5 w-5 text-yellow-600 dark:text-yellow-400" />
                   </div>
-                  <h4 className="font-semibold">Works with any AI</h4>
+                  <h4 className="font-semibold">Ongoing support</h4>
                 </div>
                 <p className="text-muted-foreground">
-                  Use Claude.ai, ChatGPT, GitHub Copilot, or any AI you prefer.
-                  Your Xano workspace, your choice of AI assistant.
+                  Not just tools, but ongoing help. Weekly calls, community access,
+                  and direct guidance when you need it most.
                 </p>
                 <div className="space-y-2">
                   <div className="bg-muted flex items-center justify-between rounded p-2 text-xs">

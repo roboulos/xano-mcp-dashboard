@@ -51,7 +51,7 @@ interface HeroProps {
 }
 
 const Hero = ({
-  description = 'Like having your own AI Xano developer. Build APIs, manage databases, create workflows, and deploy instantly — all through natural conversation with any AI.',
+  description = 'Master AI-accelerated development with expert guidance. Join developers who are building 10x faster in Xano using our proven MCP tools and weekly training.',
   reviews = {
     count: 150,
     rating: 4.8,
@@ -103,14 +103,14 @@ const Hero = ({
                       textShadow: '0 2px 4px rgba(0,0,0,0.05)',
                     }}
                   >
-                    Supercharge your{' '}
+                    Build{' '}
                     <span className="gradient-text-database bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent dark:from-violet-400 dark:to-purple-400">
-                      Xano backend
+                      10x faster
                     </span>{' '}
-                    with{' '}
+                    in Xano with{' '}
                     <span className="gradient-text-ai bg-gradient-to-r from-orange-500 to-amber-500 bg-clip-text text-transparent dark:from-orange-400 dark:to-amber-400">
                       <TypewriterText
-                        words={['any AI', 'Claude.ai', 'Copilot', 'ChatGPT']}
+                        words={['AI assistance', 'Claude.ai', 'expert guidance', 'proven tools']}
                         typeSpeed={80}
                         deleteSpeed={40}
                         delayBetweenWords={2000}
