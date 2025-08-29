@@ -27,7 +27,7 @@ interface Props extends React.HTMLAttributes<HTMLElement> {
 export default function SidebarNav({ className, items, ...props }: Props) {
   const router = useRouter();
   const pathname = usePathname();
-  const [val, setVal] = useState(pathname ?? '/settings');
+  const [val, setVal] = useState(pathname ?? '/dashboard/settings');
 
   const handleSelect = (e: string) => {
     setVal(e);

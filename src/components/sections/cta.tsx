@@ -15,7 +15,7 @@ const CTA = () => {
             minutes. Your workspace, your AI assistant, instant results.
           </p>
           <div className="mt-4 flex flex-col gap-4 sm:flex-row">
-            <Link href="/dashboard/settings/universe-credentials">
+            <Link href="/dashboard">
               <Button
                 size="lg"
                 className="bg-primary hover:bg-primary/90 px-8 shadow-xl transition-all duration-300"

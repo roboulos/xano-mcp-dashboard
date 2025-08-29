@@ -134,7 +134,7 @@ const Hero = ({
 
                 {/* CTA Buttons */}
                 <div className="mb-8 flex flex-wrap gap-5">
-                  <Link href="/dashboard/settings/universe-credentials">
+                  <Link href="/dashboard">
                     <Button className="h-[58px] rounded-xl bg-gradient-to-r from-violet-600 to-purple-600 px-9 text-base font-semibold text-white shadow-lg transition-all duration-200 hover:scale-105 hover:shadow-xl hover:brightness-110 dark:from-violet-500 dark:to-purple-500">
                       Connect Your Xano
                     </Button>

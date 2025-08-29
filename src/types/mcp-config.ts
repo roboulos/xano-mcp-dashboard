@@ -4,8 +4,8 @@ export interface MCPConfiguration {
   id: string;
   name: string;
   apiKey: string;
-  apiUrl: string;
-  workspace: string;
+  instanceName?: string;
+  email?: string;
   isActive: boolean;
   status: ConnectionStatus;
   lastConnected?: Date;
@@ -14,14 +14,14 @@ export interface MCPConfiguration {
   preview?: {
     totalEndpoints?: number;
     totalTables?: number;
-    workspaceName?: string;
-    lastActivity?: Date;
+    instanceName?: string;
+    email?: string;
   };
 }
 
 export interface MCPConfigurationFormData {
   name: string;
   apiKey: string;
-  apiUrl: string;
-  workspace: string;
+  instanceName?: string;
+  email?: string;
 }

@@ -21,7 +21,7 @@ export default function XanoStats() {
             Connect your Xano workspace to get started
           </p>
           <Button size="sm" asChild>
-            <a href="/dashboard/settings/universe-credentials">Connect Now</a>
+            <a href="/dashboard">Connect Now</a>
           </Button>
         </CardContent>
       </Card>

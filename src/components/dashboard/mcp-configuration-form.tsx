@@ -3,7 +3,7 @@
 import { useState } from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Loader2, Info, Shield, Link, Tag } from 'lucide-react';
+import { Loader2, Info, Shield, Tag, User, Building } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 
@@ -46,11 +46,8 @@ const formSchema = z.object({
     .string()
     .min(1, 'API Key is required')
     .regex(/^xano_/, 'API Key must start with "xano_"'),
-  apiUrl: z.string().url('Must be a valid URL').min(1, 'API URL is required'),
-  workspace: z
-    .string()
-    .min(1, 'Workspace is required')
-    .max(50, 'Workspace must be less than 50 characters'),
+  instanceName: z.string().optional(),
+  email: z.string().email('Must be a valid email').optional(),
 });
 
 interface MCPConfigurationFormProps {
@@ -73,8 +70,8 @@ export function MCPConfigurationForm({
     defaultValues: {
       name: config?.name || '',
       apiKey: config?.apiKey || '',
-      apiUrl: config?.apiUrl || 'https://api.xano.com/',
-      workspace: config?.workspace || '',
+      instanceName: config?.instanceName || '',
+      email: config?.email || '',
     },
   });
 
@@ -84,7 +81,7 @@ export function MCPConfigurationForm({
       await onSubmit(data);
       onOpenChange(false);
       form.reset();
-    } catch (error) {
+    } catch {
       // In production, handle error appropriately
     } finally {
       setIsSubmitting(false);
@@ -167,23 +164,18 @@ export function MCPConfigurationForm({
 
             <FormField
               control={form.control}
-              name="apiUrl"
+              name="instanceName"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="flex items-center gap-2">
-                    <Link className="h-4 w-4" />
-                    API URL
+                    <Building className="h-4 w-4" />
+                    Instance Name
                   </FormLabel>
                   <FormControl>
-                    <Input
-                      type="url"
-                      placeholder="https://api.xano.com/prod"
-                      {...field}
-                      className="font-mono"
-                    />
+                    <Input placeholder="My Xano Instance" {...field} />
                   </FormControl>
                   <FormDescription>
-                    The base URL for your Xano API endpoints
+                    Optional: Name of your Xano instance
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -192,34 +184,22 @@ export function MCPConfigurationForm({
 
             <FormField
               control={form.control}
-              name="workspace"
+              name="email"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="flex items-center gap-2">
-                    Workspace ID
-                    <TooltipProvider>
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <Info className="text-muted-foreground h-3.5 w-3.5 cursor-help" />
-                        </TooltipTrigger>
-                        <TooltipContent className="max-w-[300px]">
-                          <p>
-                            Found in your Xano URL:
-                            xano.io/workspace/[workspace-id]
-                          </p>
-                        </TooltipContent>
-                      </Tooltip>
-                    </TooltipProvider>
+                    <User className="h-4 w-4" />
+                    Email
                   </FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="prod-workspace"
+                      type="email"
+                      placeholder="user@example.com"
                       {...field}
-                      className="font-mono"
                     />
                   </FormControl>
                   <FormDescription>
-                    Your Xano workspace identifier
+                    Optional: Email associated with this configuration
                   </FormDescription>
                   <FormMessage />
                 </FormItem>

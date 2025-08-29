@@ -113,7 +113,7 @@ export function MCPConfigurationCard({
         description: 'The API key has been copied to your clipboard.',
       });
       setTimeout(() => setCopiedApiKey(false), 2000);
-    } catch (error) {
+    } catch {
       toast({
         title: 'Failed to copy',
         description: 'Please try copying the API key manually.',
@@ -212,12 +212,23 @@ export function MCPConfigurationCard({
       <CardContent className="space-y-4">
         {/* Configuration Details */}
         <div className="space-y-3">
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-medium">Workspace</span>
-            <span className="text-muted-foreground text-sm">
-              {config.workspace}
-            </span>
-          </div>
+          {config.instanceName && (
+            <div className="flex items-center justify-between">
+              <span className="text-sm font-medium">Instance Name</span>
+              <span className="text-muted-foreground text-sm">
+                {config.instanceName}
+              </span>
+            </div>
+          )}
+
+          {config.email && (
+            <div className="flex items-center justify-between">
+              <span className="text-sm font-medium">Email</span>
+              <span className="text-muted-foreground text-sm">
+                {config.email}
+              </span>
+            </div>
+          )}
 
           <div className="flex items-center justify-between">
             <span className="text-sm font-medium">API Key</span>
@@ -269,22 +280,6 @@ export function MCPConfigurationCard({
               </TooltipProvider>
             </div>
           </div>
-
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-medium">API URL</span>
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <span className="text-muted-foreground max-w-[200px] cursor-help truncate text-sm">
-                    {config.apiUrl}
-                  </span>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p className="font-mono text-xs">{config.apiUrl}</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          </div>
         </div>
 
         {/* Connection Preview */}
@@ -294,6 +289,22 @@ export function MCPConfigurationCard({
               Connection Details
               <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-500" />
             </h4>
+            {(config.preview.instanceName || config.preview.email) && (
+              <div className="mb-3 space-y-1.5 text-sm">
+                {config.preview.instanceName && (
+                  <div className="text-muted-foreground">
+                    <span className="font-medium">Instance:</span>{' '}
+                    {config.preview.instanceName}
+                  </div>
+                )}
+                {config.preview.email && (
+                  <div className="text-muted-foreground">
+                    <span className="font-medium">Email:</span>{' '}
+                    {config.preview.email}
+                  </div>
+                )}
+              </div>
+            )}
             <div className="grid grid-cols-2 gap-3 text-sm">
               {config.preview.totalEndpoints && (
                 <div className="bg-primary/5 hover:bg-primary/10 flex items-center gap-2 rounded-md p-2 transition-colors">
@@ -388,4 +399,3 @@ export function MCPConfigurationCard({
     </Card>
   );
 }
-

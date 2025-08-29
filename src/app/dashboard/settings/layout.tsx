@@ -2,7 +2,6 @@ import {
   IconApps,
   IconChecklist,
   IconCoin,
-  IconNotification,
   IconTool,
   IconUser,
 } from '@tabler/icons-react';
@@ -15,32 +14,27 @@ const sidebarNavItems = [
   {
     title: 'General',
     icon: <IconTool />,
-    href: '/settings',
+    href: '/dashboard/settings',
   },
   {
     title: 'Profile',
     icon: <IconUser />,
-    href: '/settings/profile',
+    href: '/dashboard/settings/profile',
   },
   {
     title: 'Billing',
     icon: <IconCoin />,
-    href: '/settings/billing',
+    href: '/dashboard/settings/billing',
   },
   {
     title: 'Plans',
     icon: <IconChecklist />,
-    href: '/settings/plans',
+    href: '/dashboard/settings/plans',
   },
   {
     title: 'Connected Apps',
     icon: <IconApps />,
-    href: '/settings/connected-apps',
-  },
-  {
-    title: 'Notifications',
-    icon: <IconNotification />,
-    href: '/settings/notifications',
+    href: '/dashboard/settings/connected-apps',
   },
 ];
 
@@ -53,10 +47,7 @@ export default function SettingsLayout({ children }: Props) {
     <>
       <Header />
 
-      <div
-        data-layout="fixed"
-        className="flex flex-1 flex-col gap-4 overflow-hidden p-4"
-      >
+      <div className="flex flex-1 flex-col gap-4 p-4">
         <div className="space-y-0.5">
           <h1 className="text-xl font-bold tracking-tight md:text-2xl">
             Settings
@@ -65,13 +56,11 @@ export default function SettingsLayout({ children }: Props) {
             Update account preferences and manage integrations.
           </p>
         </div>
-        <div className="flex flex-1 flex-col space-y-8 overflow-auto md:space-y-2 md:overflow-hidden lg:flex-row lg:space-y-0 lg:space-x-12">
-          <aside className="lg:sticky lg:w-1/5">
+        <div className="flex flex-1 flex-col space-y-8 lg:flex-row lg:space-y-0 lg:space-x-12">
+          <aside className="lg:sticky lg:top-4 lg:w-1/5 lg:self-start">
             <SidebarNav items={sidebarNavItems} />
           </aside>
-          <div className="flex w-full overflow-y-scroll p-1 pr-4 md:overflow-y-hidden">
-            {children}
-          </div>
+          <div className="flex-1 pb-8">{children}</div>
         </div>
       </div>
     </>

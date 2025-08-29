@@ -248,9 +248,7 @@ Step 3: Connection Verified
                   Link your Xano workspace to unlock AI development powers
                 </p>
                 <Button variant="outline" size="sm" asChild>
-                  <a href="/dashboard/settings/universe-credentials">
-                    Start Setup →
-                  </a>
+                  <a href="/dashboard">Start Setup →</a>
                 </Button>
               </Card>
 

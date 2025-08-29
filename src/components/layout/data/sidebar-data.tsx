@@ -96,11 +96,6 @@ export const sidebarData: SidebarData = {
               icon: IconUser,
               url: '/dashboard/settings/profile',
             },
-            {
-              title: 'Xano Credentials',
-              icon: IconLock,
-              url: '/dashboard/settings/universe-credentials',
-            },
           ],
         },
       ],
