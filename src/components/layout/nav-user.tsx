@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 
 import {
   BadgeCheck,
-  Bell,
   ChevronsUpDown,
   CreditCard,
   LogOut,
@@ -119,12 +118,6 @@ export function NavUser({ user: propUser }: Props) {
                 <Link href="/dashboard/settings/billing">
                   <CreditCard />
                   Billing
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link href="/dashboard/settings/notifications">
-                  <Bell />
-                  Notifications
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuGroup>

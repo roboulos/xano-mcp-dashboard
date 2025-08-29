@@ -11,11 +11,12 @@ import SidebarNav from './components/sidebar-nav';
 import { Header } from '@/components/layout/header';
 
 const sidebarNavItems = [
-  {
-    title: 'General',
-    icon: <IconTool />,
-    href: '/dashboard/settings',
-  },
+  // Hidden General tab
+  // {
+  //   title: 'General',
+  //   icon: <IconTool />,
+  //   href: '/dashboard/settings',
+  // },
   {
     title: 'Profile',
     icon: <IconUser />,
@@ -36,7 +37,7 @@ const sidebarNavItems = [
     icon: <IconApps />,
     href: '/dashboard/settings/connected-apps',
   },
-];
+].filter(Boolean); // Filter out any undefined items
 
 interface Props {
   children: React.ReactNode;

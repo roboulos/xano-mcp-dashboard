@@ -38,6 +38,57 @@ export function MCPConfigurations() {
   >();
   const { toast } = useToast();
 
+  // Auto-validate credentials that need validation
+  const autoValidateCredentials = useCallback(async (configs: MCPConfiguration[]) => {
+    const authToken = localStorage.getItem('authToken');
+    if (!authToken) return;
+
+    // Find all credentials that need validation (no preview data)
+    const needsValidation = configs.filter(config => !config.preview);
+    
+    // Validate each credential
+    for (const config of needsValidation) {
+      try {
+        const response = await fetch(`/api/mcp/credentials/${config.id}/validate`, {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+            'Content-Type': 'application/json',
+          },
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          // Update configuration status based on validation result
+          const isValid = !!(data.credentialName && data.userName);
+          
+          setConfigurations(prevConfigs =>
+            prevConfigs.map(c =>
+              c.id === config.id
+                ? {
+                    ...c,
+                    status: isValid ? 'connected' : 'error',
+                    lastConnected: isValid ? new Date() : c.lastConnected,
+                    updatedAt: new Date(),
+                    preview: isValid ? {
+                      credentialName: data.credentialName,
+                      userName: data.userName,
+                      userEmail: data.userEmail,
+                      tokenExpiresAt: data.tokenExpiresAt,
+                    } : c.preview,
+                  }
+                : c
+            )
+          );
+        }
+      } catch (error) {
+        // Silently handle errors for auto-validation
+        console.error(`Failed to auto-validate credential ${config.id}:`, error);
+      }
+    }
+  }, []);
+
   // Fetch credentials from API
   const fetchCredentials = useCallback(async () => {
     try {
@@ -77,6 +128,11 @@ export function MCPConfigurations() {
         mapXanoToConfig(cred)
       );
       setConfigurations(mappedConfigs);
+      
+      // Auto-validate credentials after loading with a slight delay
+      setTimeout(() => {
+        autoValidateCredentials(mappedConfigs);
+      }, 500);
     } catch (error) {
       toast({
         title: 'Error loading configurations',
@@ -89,7 +145,7 @@ export function MCPConfigurations() {
     } finally {
       setIsLoading(false);
     }
-  }, [toast]);
+  }, [toast, autoValidateCredentials]);
 
   // Load configurations on mount
   useEffect(() => {
