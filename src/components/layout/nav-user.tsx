@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 import {
   BadgeCheck,
@@ -26,17 +27,32 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from '@/components/ui/sidebar';
+import { useAuth } from '@/contexts/auth-context';
 
 interface Props {
-  user: {
+  user?: {
     name: string;
     email: string;
     avatar: string;
   };
 }
 
-export function NavUser({ user }: Props) {
+export function NavUser({ user: propUser }: Props) {
   const { isMobile } = useSidebar();
+  const { user: authUser, logout } = useAuth();
+  const router = useRouter();
+
+  // Use auth context user or fallback to prop user
+  const user = authUser || propUser;
+
+  const handleLogout = async () => {
+    await logout();
+    router.push('/login');
+  };
+
+  if (!user) {
+    return null;
+  }
 
   return (
     <SidebarMenu>
@@ -49,7 +65,9 @@ export function NavUser({ user }: Props) {
             >
               <Avatar className="h-8 w-8 rounded-lg">
                 <AvatarImage src={user.avatar} alt={user.name} />
-                <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                <AvatarFallback className="rounded-lg">
+                  {user.name ? user.name.charAt(0).toUpperCase() : 'U'}
+                </AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
                 <span className="truncate font-semibold">{user.name}</span>
@@ -68,7 +86,9 @@ export function NavUser({ user }: Props) {
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                 <Avatar className="h-8 w-8 rounded-lg">
                   <AvatarImage src={user.avatar} alt={user.name} />
-                  <AvatarFallback className="rounded-lg">SN</AvatarFallback>
+                  <AvatarFallback className="rounded-lg">
+                    {user.name ? user.name.charAt(0).toUpperCase() : 'U'}
+                  </AvatarFallback>
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-semibold">{user.name}</span>
@@ -79,26 +99,26 @@ export function NavUser({ user }: Props) {
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem asChild>
-                <Link href="/settings/profile">
+                <Link href="/dashboard/settings/profile">
                   <BadgeCheck />
                   Profile
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link href="/settings/billing">
+                <Link href="/dashboard/settings/billing">
                   <CreditCard />
                   Billing
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link href="/settings/notifications">
+                <Link href="/dashboard/settings/notifications">
                   <Bell />
                   Notifications
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem onClick={handleLogout}>
               <LogOut />
               Log out
             </DropdownMenuItem>

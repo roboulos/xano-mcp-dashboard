@@ -5,7 +5,7 @@ export function createRequestLogger(request: NextRequest, endpoint: string) {
   const requestId = Math.random().toString(36).substring(7);
 
   return {
-    async logRequest(body: any, response: any, error?: any) {
+    async logRequest(body: unknown, response: unknown, error?: unknown) {
       const endTime = Date.now();
       const duration = endTime - startTime;
 
@@ -16,19 +16,24 @@ export function createRequestLogger(request: NextRequest, endpoint: string) {
         method: request.method,
         url: request.url,
         userAgent: request.headers.get('user-agent'),
-        ip: request.headers.get('x-forwarded-for') || 
-            request.headers.get('x-real-ip') || 
-            'unknown',
+        ip:
+          request.headers.get('x-forwarded-for') ||
+          request.headers.get('x-real-ip') ||
+          'unknown',
         body: this.sanitizeBody(body),
         response: this.sanitizeResponse(response),
         duration,
         error: error ? String(error) : undefined,
-        status: response.error ? 'error' : 'success',
+        status:
+          response && typeof response === 'object' && 'error' in response
+            ? 'error'
+            : 'success',
       };
 
       // In production, you might want to send this to a logging service
-      // For now, just console.log in development
+      // For now, just log in development
       if (process.env.NODE_ENV === 'development') {
+        // eslint-disable-next-line no-console
         console.log(`[API Log] ${endpoint}:`, logEntry);
       }
 
@@ -36,28 +41,28 @@ export function createRequestLogger(request: NextRequest, endpoint: string) {
       return logEntry;
     },
 
-    sanitizeBody(body: any) {
-      if (!body) return body;
-      
+    sanitizeBody(body: unknown) {
+      if (!body || typeof body !== 'object') return body;
+
       // Remove sensitive data
-      const sanitized = { ...body };
-      if (sanitized.password) sanitized.password = '[REDACTED]';
-      if (sanitized.api_key) sanitized.api_key = '[REDACTED]';
-      if (sanitized.authToken) sanitized.authToken = '[REDACTED]';
-      
+      const sanitized = { ...body } as Record<string, unknown>;
+      if ('password' in sanitized) sanitized.password = '[REDACTED]';
+      if ('api_key' in sanitized) sanitized.api_key = '[REDACTED]';
+      if ('authToken' in sanitized) sanitized.authToken = '[REDACTED]';
+
       return sanitized;
     },
 
-    sanitizeResponse(response: any) {
-      if (!response) return response;
-      
+    sanitizeResponse(response: unknown) {
+      if (!response || typeof response !== 'object') return response;
+
       // Remove sensitive data from response
-      const sanitized = { ...response };
-      if (sanitized.authToken) {
+      const sanitized = { ...response } as Record<string, unknown>;
+      if ('authToken' in sanitized) {
         sanitized.authToken = '[REDACTED]';
       }
-      
+
       return sanitized;
-    }
+    },
   };
 }

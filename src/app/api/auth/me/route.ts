@@ -9,7 +9,7 @@ export async function GET(request: NextRequest) {
 
   try {
     const authHeader = request.headers.get('authorization');
-    
+
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
       return NextResponse.json(
         { error: 'Authorization header required' },
@@ -23,7 +23,7 @@ export async function GET(request: NextRequest) {
     const response = await fetch(`${XANO_API_BASE}/auth/me`, {
       method: 'GET',
       headers: {
-        'Authorization': `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
       },
     });

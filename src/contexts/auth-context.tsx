@@ -6,6 +6,7 @@ interface User {
   id: string;
   name: string;
   email: string;
+  avatar?: string;
   api_key?: string;
   created_at?: number;
 }
@@ -14,6 +15,7 @@ interface AuthContextType {
   user: User | null;
   isLoading: boolean;
   fetchUser: () => Promise<void>;
+  logout: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -33,7 +35,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       const response = await fetch('/api/auth/me', {
         headers: {
-          'Authorization': `Bearer ${authToken}`,
+          Authorization: `Bearer ${authToken}`,
           'Content-Type': 'application/json',
         },
       });
@@ -46,12 +48,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         localStorage.removeItem('authToken');
         setUser(null);
       }
-    } catch (error) {
-      console.error('Failed to fetch user:', error);
+    } catch {
       setUser(null);
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const logout = async () => {
+    localStorage.removeItem('authToken');
+    setUser(null);
   };
 
   useEffect(() => {
@@ -59,7 +65,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, isLoading, fetchUser }}>
+    <AuthContext.Provider value={{ user, isLoading, fetchUser, logout }}>
       {children}
     </AuthContext.Provider>
   );

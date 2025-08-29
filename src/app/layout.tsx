@@ -3,10 +3,10 @@ import localFont from 'next/font/local';
 
 import type { Metadata } from 'next';
 
-import { AuthProvider } from '@/contexts/auth-context';
 import { SmoothScrollProvider } from '@/components/smooth-scroll-provider';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
+import { AuthProvider } from '@/contexts/auth-context';
 import './globals.css';
 
 const dmSans = localFont({

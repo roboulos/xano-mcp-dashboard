@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -57,7 +58,7 @@ const Login = () => {
         });
         setIsLoading(false);
       }
-    } catch (error) {
+    } catch {
       toast({
         title: 'Error',
         description: 'An error occurred. Please try again.',
@@ -95,7 +96,9 @@ const Login = () => {
                     placeholder="Enter your email"
                     required
                     value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    onChange={e =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
                     disabled={isLoading}
                     className="border-slate-200 bg-white text-slate-900 transition-all duration-200 placeholder:text-slate-500 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-400 dark:focus:border-violet-400 dark:focus:ring-violet-400/20"
                   />
@@ -105,7 +108,9 @@ const Login = () => {
                       placeholder="Enter your password"
                       required
                       value={formData.password}
-                      onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                      onChange={e =>
+                        setFormData({ ...formData, password: e.target.value })
+                      }
                       disabled={isLoading}
                       className="border-slate-200 bg-white text-slate-900 transition-all duration-200 placeholder:text-slate-500 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-400 dark:focus:border-violet-400 dark:focus:ring-violet-400/20"
                     />
@@ -115,8 +120,11 @@ const Login = () => {
                       <Checkbox
                         id="remember"
                         checked={formData.rememberMe}
-                        onCheckedChange={(checked) => 
-                          setFormData({ ...formData, rememberMe: checked as boolean })
+                        onCheckedChange={checked =>
+                          setFormData({
+                            ...formData,
+                            rememberMe: checked as boolean,
+                          })
                         }
                         disabled={isLoading}
                         className="border-slate-300 data-[state=checked]:border-violet-600 data-[state=checked]:bg-violet-600 dark:border-slate-600 dark:data-[state=checked]:border-violet-500 dark:data-[state=checked]:bg-violet-500"
@@ -138,7 +146,7 @@ const Login = () => {
                   <Button
                     type="submit"
                     disabled={isLoading}
-                    className="mt-2 w-full bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 text-white shadow-md transition-all duration-200 hover:scale-[1.02] hover:shadow-lg hover:brightness-110 dark:from-violet-500 dark:via-purple-500 dark:to-indigo-500 disabled:opacity-50"
+                    className="mt-2 w-full bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 text-white shadow-md transition-all duration-200 hover:scale-[1.02] hover:shadow-lg hover:brightness-110 disabled:opacity-50 dark:from-violet-500 dark:via-purple-500 dark:to-indigo-500"
                   >
                     {isLoading ? 'Signing in...' : 'Log in'}
                   </Button>
