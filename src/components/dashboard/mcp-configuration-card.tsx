@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+
 import {
   CheckCircle,
   XCircle,
@@ -14,6 +15,10 @@ import {
   Star,
   Database,
   Activity,
+  Copy,
+  Check,
+  AlertCircle,
+  Loader2,
 } from 'lucide-react';
 
 import { Badge } from '@/components/ui/badge';
@@ -32,6 +37,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
+import { useToast } from '@/hooks/use-toast';
 import { type MCPConfiguration } from '@/types/mcp-config';
 
 interface MCPConfigurationCardProps {
@@ -83,12 +95,32 @@ export function MCPConfigurationCard({
   onTestConnection,
 }: MCPConfigurationCardProps) {
   const [showApiKey, setShowApiKey] = useState(false);
+  const [copiedApiKey, setCopiedApiKey] = useState(false);
+  const { toast } = useToast();
   const statusConfig = getStatusConfig(config.status);
   const StatusIcon = statusConfig.icon;
 
   const maskedApiKey = config.apiKey
     ? `${config.apiKey.slice(0, 8)}...${config.apiKey.slice(-4)}`
     : '';
+
+  const copyApiKey = async () => {
+    try {
+      await navigator.clipboard.writeText(config.apiKey);
+      setCopiedApiKey(true);
+      toast({
+        title: 'API Key Copied',
+        description: 'The API key has been copied to your clipboard.',
+      });
+      setTimeout(() => setCopiedApiKey(false), 2000);
+    } catch (error) {
+      toast({
+        title: 'Failed to copy',
+        description: 'Please try copying the API key manually.',
+        variant: 'destructive',
+      });
+    }
+  };
 
   const formatDate = (date: Date) => {
     return new Intl.DateTimeFormat('en-US', {
@@ -101,16 +133,19 @@ export function MCPConfigurationCard({
 
   return (
     <Card
-      className={`relative transition-all duration-200 ${
+      className={`relative transition-all duration-200 hover:shadow-lg ${
         config.isActive
-          ? 'ring-2 ring-primary/20 border-primary/30 bg-primary/5'
-          : 'hover:border-primary/20'
+          ? 'ring-primary border-primary from-primary/5 to-primary/10 bg-gradient-to-br shadow-md ring-2'
+          : 'hover:border-primary/40 hover:shadow-md'
       }`}
     >
       {config.isActive && (
-        <div className="absolute -top-2 -right-2">
-          <Badge className="bg-primary/90 text-primary-foreground">
-            <Star className="mr-1 h-3 w-3 fill-current" />
+        <div className="animate-in fade-in zoom-in absolute -top-3 -right-3 duration-300">
+          <Badge className="bg-primary text-primary-foreground py-1 pr-3 pl-2 shadow-lg">
+            <div className="relative mr-1.5">
+              <Star className="h-3.5 w-3.5 fill-current" />
+              <div className="absolute inset-0 h-3.5 w-3.5 animate-pulse rounded-full bg-white/30" />
+            </div>
             Active
           </Badge>
         </div>
@@ -121,14 +156,26 @@ export function MCPConfigurationCard({
           <div className="space-y-1">
             <CardTitle className="text-lg">{config.name}</CardTitle>
             <CardDescription className="flex items-center gap-2">
-              <StatusIcon className={`h-4 w-4 ${statusConfig.color}`} />
+              <div className="relative">
+                <StatusIcon className={`h-4 w-4 ${statusConfig.color}`} />
+                {config.status === 'connected' && (
+                  <div className="absolute -top-0.5 -right-0.5 h-2 w-2 animate-pulse rounded-full bg-green-500" />
+                )}
+                {config.status === 'testing' && (
+                  <div className="absolute inset-0">
+                    <StatusIcon
+                      className={`h-4 w-4 ${statusConfig.color} animate-spin`}
+                    />
+                  </div>
+                )}
+              </div>
               {statusConfig.text}
             </CardDescription>
           </div>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="sm">
-                <Settings className="h-4 w-4" />
+              <Button variant="ghost" size="sm" className="hover:bg-primary/10">
+                <Settings className="h-4 w-4 transition-transform duration-200 hover:rotate-90" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
@@ -167,93 +214,178 @@ export function MCPConfigurationCard({
         <div className="space-y-3">
           <div className="flex items-center justify-between">
             <span className="text-sm font-medium">Workspace</span>
-            <span className="text-sm text-muted-foreground">{config.workspace}</span>
+            <span className="text-muted-foreground text-sm">
+              {config.workspace}
+            </span>
           </div>
-          
+
           <div className="flex items-center justify-between">
             <span className="text-sm font-medium">API Key</span>
-            <div className="flex items-center gap-2">
-              <span className="text-sm font-mono text-muted-foreground">
+            <div className="flex items-center gap-1">
+              <span className="text-muted-foreground font-mono text-sm select-none">
                 {showApiKey ? config.apiKey : maskedApiKey}
               </span>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setShowApiKey(!showApiKey)}
-                className="h-6 w-6 p-0"
-              >
-                {showApiKey ? (
-                  <EyeOff className="h-3 w-3" />
-                ) : (
-                  <Eye className="h-3 w-3" />
-                )}
-              </Button>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => setShowApiKey(!showApiKey)}
+                      className="hover:bg-primary/10 h-7 w-7 p-0"
+                    >
+                      {showApiKey ? (
+                        <EyeOff className="h-3.5 w-3.5" />
+                      ) : (
+                        <Eye className="h-3.5 w-3.5" />
+                      )}
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>{showApiKey ? 'Hide' : 'Show'} API Key</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={copyApiKey}
+                      className="hover:bg-primary/10 h-7 w-7 p-0"
+                    >
+                      {copiedApiKey ? (
+                        <Check className="h-3.5 w-3.5 text-green-500" />
+                      ) : (
+                        <Copy className="h-3.5 w-3.5" />
+                      )}
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>{copiedApiKey ? 'Copied!' : 'Copy API Key'}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             </div>
           </div>
 
           <div className="flex items-center justify-between">
             <span className="text-sm font-medium">API URL</span>
-            <span className="text-sm text-muted-foreground truncate max-w-[200px]">
-              {config.apiUrl}
-            </span>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <span className="text-muted-foreground max-w-[200px] cursor-help truncate text-sm">
+                    {config.apiUrl}
+                  </span>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p className="font-mono text-xs">{config.apiUrl}</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           </div>
         </div>
 
         {/* Connection Preview */}
         {config.status === 'connected' && config.preview && (
-          <div className="border-t pt-3 space-y-2">
-            <h4 className="text-sm font-medium text-muted-foreground">Connection Preview</h4>
+          <div className="animate-in fade-in slide-in-from-bottom-2 space-y-2 border-t pt-3 duration-300">
+            <h4 className="text-muted-foreground flex items-center gap-2 text-sm font-medium">
+              Connection Details
+              <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-500" />
+            </h4>
             <div className="grid grid-cols-2 gap-3 text-sm">
               {config.preview.totalEndpoints && (
-                <div className="flex items-center gap-2">
-                  <Activity className="h-4 w-4 text-primary" />
-                  <span className="font-medium">{config.preview.totalEndpoints}</span>
+                <div className="bg-primary/5 hover:bg-primary/10 flex items-center gap-2 rounded-md p-2 transition-colors">
+                  <Activity className="text-primary h-4 w-4" />
+                  <span className="font-medium">
+                    {config.preview.totalEndpoints}
+                  </span>
                   <span className="text-muted-foreground">endpoints</span>
                 </div>
               )}
               {config.preview.totalTables && (
-                <div className="flex items-center gap-2">
-                  <Database className="h-4 w-4 text-primary" />
-                  <span className="font-medium">{config.preview.totalTables}</span>
+                <div className="bg-primary/5 hover:bg-primary/10 flex items-center gap-2 rounded-md p-2 transition-colors">
+                  <Database className="text-primary h-4 w-4" />
+                  <span className="font-medium">
+                    {config.preview.totalTables}
+                  </span>
                   <span className="text-muted-foreground">tables</span>
                 </div>
               )}
             </div>
             {config.lastConnected && (
-              <div className="text-xs text-muted-foreground">
+              <div className="text-muted-foreground flex items-center gap-1 text-xs">
+                <Clock className="h-3 w-3" />
                 Last connected: {formatDate(config.lastConnected)}
               </div>
             )}
           </div>
         )}
 
+        {/* Error State */}
+        {config.status === 'error' && (
+          <div className="animate-in fade-in slide-in-from-bottom-2 border-t pt-3 duration-300">
+            <div className="bg-destructive/10 text-destructive flex items-start gap-2 rounded-md p-3">
+              <AlertCircle className="mt-0.5 h-4 w-4 flex-shrink-0" />
+              <div className="space-y-1">
+                <p className="text-sm font-medium">Connection Failed</p>
+                <p className="text-xs opacity-80">
+                  Check your API key and URL, then try again.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Quick Actions */}
         <div className="flex gap-2 pt-2">
-          <Button
-            variant={config.isActive ? 'secondary' : 'default'}
-            size="sm"
-            onClick={() => onTestConnection?.(config.id)}
-            disabled={config.status === 'testing'}
-            className="flex-1"
-          >
-            {config.status === 'testing' ? (
-              <Clock className="mr-2 h-4 w-4 animate-spin" />
-            ) : (
-              <PlayCircle className="mr-2 h-4 w-4" />
-            )}
-            Test Connection
-          </Button>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant={config.isActive ? 'secondary' : 'default'}
+                  size="sm"
+                  onClick={() => onTestConnection?.(config.id)}
+                  disabled={config.status === 'testing'}
+                  className="flex-1 transition-all"
+                >
+                  {config.status === 'testing' ? (
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  ) : (
+                    <PlayCircle className="mr-2 h-4 w-4" />
+                  )}
+                  Test Connection
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Verify that this configuration can connect to Xano</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+
           {!config.isActive && (
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => onSetActive?.(config.id)}
-            >
-              <Star className="h-4 w-4" />
-            </Button>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => onSetActive?.(config.id)}
+                    className="hover:bg-primary hover:text-primary-foreground transition-all"
+                  >
+                    <Star className="h-4 w-4" />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Set as active configuration for MCP tools</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           )}
         </div>
       </CardContent>
     </Card>
   );
 }
+

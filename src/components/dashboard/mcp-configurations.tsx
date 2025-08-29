@@ -1,7 +1,14 @@
 'use client';
 
-import { useState } from 'react';
-import { Plus } from 'lucide-react';
+import { useState, useEffect } from 'react';
+
+import { Plus, FileText, Shield, Sparkles, ArrowRight } from 'lucide-react';
+
+import { MCPConfigurationCard } from './mcp-configuration-card';
+import { MCPConfigurationForm } from './mcp-configuration-form';
+import { MCPConfigurationSkeleton } from './mcp-configuration-skeleton';
+import { MCPDeleteDialog } from './mcp-delete-dialog';
+import { MCPEmptyState } from './mcp-empty-state';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -11,8 +18,17 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { MCPConfigurationCard } from './mcp-configuration-card';
-import { type MCPConfiguration } from '@/types/mcp-config';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
+import { useToast } from '@/hooks/use-toast';
+import {
+  type MCPConfiguration,
+  type MCPConfigurationFormData,
+} from '@/types/mcp-config';
 
 // Mock data - in real implementation this would come from API/database
 const mockConfigurations: MCPConfiguration[] = [
@@ -67,30 +83,75 @@ const mockConfigurations: MCPConfiguration[] = [
 ];
 
 export function MCPConfigurations() {
-  const [configurations, setConfigurations] = useState<MCPConfiguration[]>(mockConfigurations);
+  const [configurations, setConfigurations] =
+    useState<MCPConfiguration[]>(mockConfigurations);
+  const [isLoading, setIsLoading] = useState(false);
+  const [showConfigForm, setShowConfigForm] = useState(false);
+  const [editingConfig, setEditingConfig] = useState<
+    MCPConfiguration | undefined
+  >();
+  const [deleteConfig, setDeleteConfig] = useState<
+    MCPConfiguration | undefined
+  >();
+  const { toast } = useToast();
+
+  // Simulate initial loading
+  useEffect(() => {
+    setIsLoading(true);
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleSetActive = (id: string) => {
+    const config = configurations.find(c => c.id === id);
+    if (!config) return;
+
     setConfigurations(prevConfigs =>
       prevConfigs.map(config => ({
         ...config,
         isActive: config.id === id,
       }))
     );
+
+    toast({
+      title: 'Active Configuration Updated',
+      description: `${config.name} is now the active configuration for MCP tools.`,
+    });
   };
 
   const handleEdit = (config: MCPConfiguration) => {
-    // TODO: Implement edit modal/form
-    console.log('Edit configuration:', config);
+    setEditingConfig(config);
+    setShowConfigForm(true);
   };
 
   const handleDelete = (id: string) => {
-    // TODO: Implement delete confirmation
-    setConfigurations(prevConfigs =>
-      prevConfigs.filter(config => config.id !== id)
-    );
+    const config = configurations.find(c => c.id === id);
+    if (config) {
+      setDeleteConfig(config);
+    }
   };
 
-  const handleTestConnection = (id: string) => {
+  const handleConfirmDelete = () => {
+    if (!deleteConfig) return;
+
+    setConfigurations(prevConfigs =>
+      prevConfigs.filter(config => config.id !== deleteConfig.id)
+    );
+
+    toast({
+      title: 'Configuration Deleted',
+      description: `${deleteConfig.name} has been removed.`,
+    });
+
+    setDeleteConfig(undefined);
+  };
+
+  const handleTestConnection = async (id: string) => {
+    const config = configurations.find(c => c.id === id);
+    if (!config) return;
+
     // Update status to testing
     setConfigurations(prevConfigs =>
       prevConfigs.map(config =>
@@ -100,44 +161,133 @@ export function MCPConfigurations() {
 
     // Simulate API call
     setTimeout(() => {
+      const success = Math.random() > 0.3;
       setConfigurations(prevConfigs =>
         prevConfigs.map(config =>
           config.id === id
             ? {
                 ...config,
-                status: Math.random() > 0.3 ? 'connected' : 'error',
-                lastConnected: new Date(),
+                status: success ? 'connected' : 'error',
+                lastConnected: success ? new Date() : config.lastConnected,
+                updatedAt: new Date(),
+                preview: success
+                  ? {
+                      ...config.preview,
+                      lastActivity: new Date(),
+                    }
+                  : config.preview,
+              }
+            : config
+        )
+      );
+
+      toast({
+        title: success ? 'Connection Successful' : 'Connection Failed',
+        description: success
+          ? `Successfully connected to ${config.name}.`
+          : 'Unable to establish connection. Please check your credentials.',
+        variant: success ? 'default' : 'destructive',
+      });
+    }, 2000);
+  };
+
+  const handleAddNew = () => {
+    setEditingConfig(undefined);
+    setShowConfigForm(true);
+  };
+
+  const handleSaveConfiguration = async (data: MCPConfigurationFormData) => {
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    if (editingConfig) {
+      // Update existing
+      setConfigurations(prevConfigs =>
+        prevConfigs.map(config =>
+          config.id === editingConfig.id
+            ? {
+                ...config,
+                ...data,
                 updatedAt: new Date(),
               }
             : config
         )
       );
-    }, 2000);
-  };
 
-  const handleAddNew = () => {
-    // TODO: Implement add new configuration modal/form
-    console.log('Add new configuration');
+      toast({
+        title: 'Configuration Updated',
+        description: `${data.name} has been updated successfully.`,
+      });
+    } else {
+      // Add new
+      const newConfig: MCPConfiguration = {
+        id: Date.now().toString(),
+        ...data,
+        isActive: configurations.length === 0,
+        status: 'inactive',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      };
+
+      setConfigurations(prevConfigs => [...prevConfigs, newConfig]);
+
+      toast({
+        title: 'Configuration Added',
+        description: `${data.name} has been created successfully.`,
+      });
+    }
+
+    setShowConfigForm(false);
+    setEditingConfig(undefined);
   };
 
   return (
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <div>
-          <h3 className="text-lg font-semibold">MCP Tool Configurations</h3>
-          <p className="text-sm text-muted-foreground">
+        <div className="space-y-1">
+          <div className="flex items-center gap-2">
+            <h3 className="text-xl font-semibold">MCP Tool Configurations</h3>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <div className="bg-primary/10 text-primary flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium">
+                    <Sparkles className="h-3 w-3" />
+                    {
+                      configurations.filter(c => c.status === 'connected')
+                        .length
+                    }{' '}
+                    Active
+                  </div>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Number of successfully connected configurations</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          </div>
+          <p className="text-muted-foreground text-sm">
             Manage your Xano API configurations for external MCP tools
           </p>
         </div>
-        <Button onClick={handleAddNew} className="gap-2">
+        <Button
+          onClick={handleAddNew}
+          className="gap-2 shadow-sm transition-all hover:shadow-md"
+          disabled={configurations.length >= 4}
+        >
           <Plus className="h-4 w-4" />
           Add Configuration
         </Button>
       </div>
 
       {/* Configurations Grid */}
-      {configurations.length > 0 ? (
+      {isLoading ? (
+        <div className="grid gap-4 md:grid-cols-1 lg:grid-cols-2">
+          {[1, 2].map(i => (
+            <MCPConfigurationSkeleton key={i} />
+          ))}
+        </div>
+      ) : configurations.length > 0 ? (
         <div className="grid gap-4 md:grid-cols-1 lg:grid-cols-2">
           {configurations.map(config => (
             <MCPConfigurationCard
@@ -151,39 +301,83 @@ export function MCPConfigurations() {
           ))}
         </div>
       ) : (
-        /* Empty State */
-        <Card className="col-span-full">
-          <CardContent className="flex flex-col items-center justify-center py-16 text-center">
-            <div className="rounded-full bg-muted p-4 mb-4">
-              <Plus className="h-8 w-8 text-muted-foreground" />
-            </div>
-            <CardTitle className="mb-2">No Configurations Found</CardTitle>
-            <CardDescription className="mb-6 max-w-md">
-              Get started by adding your first Xano workspace configuration.
-              This will allow external MCP tools to connect to your Xano backend.
-            </CardDescription>
-            <Button onClick={handleAddNew} className="gap-2">
-              <Plus className="h-4 w-4" />
-              Add Your First Configuration
-            </Button>
-          </CardContent>
-        </Card>
+        <MCPEmptyState onAddConfiguration={handleAddNew} />
       )}
 
       {/* Usage Instructions */}
-      <Card className="border-dashed">
-        <CardContent className="pt-6">
-          <div className="text-sm text-muted-foreground">
-            <p className="mb-2 font-medium">How to use with MCP tools:</p>
-            <ol className="space-y-1 pl-4 list-decimal">
-              <li>Add your Xano workspace API configuration above</li>
-              <li>Set one configuration as "Active" - this is what MCP tools will use</li>
-              <li>Test the connection to verify everything works</li>
-              <li>Your external MCP tools will automatically use the active configuration</li>
-            </ol>
+      <Card className="hover:border-primary/20 group border-dashed transition-colors">
+        <CardHeader className="pb-4">
+          <CardTitle className="flex items-center gap-2 text-base">
+            <FileText className="text-primary h-4 w-4" />
+            Quick Start Guide
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid gap-3">
+            {[
+              {
+                step: '1',
+                icon: Shield,
+                title: 'Add Configuration',
+                description: 'Connect your Xano workspace with API credentials',
+              },
+              {
+                step: '2',
+                icon: Sparkles,
+                title: 'Set Active',
+                description: 'Choose which configuration MCP tools should use',
+              },
+              {
+                step: '3',
+                icon: ArrowRight,
+                title: 'Start Using',
+                description: 'Your MCP tools will automatically connect',
+              },
+            ].map(item => (
+              <div
+                key={item.step}
+                className="hover:bg-primary/5 flex gap-3 rounded-lg p-3 transition-colors"
+              >
+                <div className="bg-primary/10 text-primary flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-sm font-semibold">
+                  {item.step}
+                </div>
+                <div className="space-y-0.5">
+                  <div className="flex items-center gap-2">
+                    <item.icon className="text-primary h-3.5 w-3.5" />
+                    <p className="text-sm font-medium">{item.title}</p>
+                  </div>
+                  <p className="text-muted-foreground text-xs">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="border-t pt-2">
+            <p className="text-muted-foreground flex items-center gap-1 text-xs">
+              <Shield className="h-3 w-3" />
+              Your API keys are securely stored and only accessible to you
+            </p>
           </div>
         </CardContent>
       </Card>
+
+      {/* Configuration Form Dialog */}
+      <MCPConfigurationForm
+        open={showConfigForm}
+        onOpenChange={setShowConfigForm}
+        config={editingConfig}
+        onSubmit={handleSaveConfiguration}
+      />
+
+      {/* Delete Confirmation Dialog */}
+      <MCPDeleteDialog
+        open={!!deleteConfig}
+        onOpenChange={open => !open && setDeleteConfig(undefined)}
+        configName={deleteConfig?.name || ''}
+        onConfirm={handleConfirmDelete}
+      />
     </div>
   );
 }

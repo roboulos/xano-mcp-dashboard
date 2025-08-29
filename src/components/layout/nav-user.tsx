@@ -33,7 +33,7 @@ interface Props {
   user?: {
     name: string;
     email: string;
-    avatar: string;
+    avatar?: string;
   };
 }
 
@@ -54,10 +54,10 @@ export function NavUser({ user: propUser }: Props) {
     if (isLoading) {
       return (
         <div className="flex items-center gap-2 px-3 py-2">
-          <div className="h-8 w-8 rounded-lg bg-muted animate-pulse"></div>
+          <div className="bg-muted h-8 w-8 animate-pulse rounded-lg"></div>
           <div className="flex-1">
-            <div className="h-4 w-20 bg-muted rounded animate-pulse mb-1"></div>
-            <div className="h-3 w-32 bg-muted rounded animate-pulse"></div>
+            <div className="bg-muted mb-1 h-4 w-20 animate-pulse rounded"></div>
+            <div className="bg-muted h-3 w-32 animate-pulse rounded"></div>
           </div>
         </div>
       );

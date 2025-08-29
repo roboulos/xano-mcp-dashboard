@@ -6,6 +6,7 @@ import type { Metadata } from 'next';
 import { SmoothScrollProvider } from '@/components/smooth-scroll-provider';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
+import { TooltipProvider } from '@/components/ui/tooltip';
 import { AuthProvider } from '@/contexts/auth-context';
 import './globals.css';
 
@@ -112,8 +113,10 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <AuthProvider>
-            <SmoothScrollProvider>{children}</SmoothScrollProvider>
-            <Toaster />
+            <TooltipProvider>
+              <SmoothScrollProvider>{children}</SmoothScrollProvider>
+              <Toaster />
+            </TooltipProvider>
           </AuthProvider>
         </ThemeProvider>
       </body>
