@@ -39,7 +39,7 @@ interface Props {
 
 export function NavUser({ user: propUser }: Props) {
   const { isMobile } = useSidebar();
-  const { user: authUser, logout } = useAuth();
+  const { user: authUser, logout, isLoading } = useAuth();
   const router = useRouter();
 
   // Use auth context user or fallback to prop user
@@ -51,6 +51,17 @@ export function NavUser({ user: propUser }: Props) {
   };
 
   if (!user) {
+    if (isLoading) {
+      return (
+        <div className="flex items-center gap-2 px-3 py-2">
+          <div className="h-8 w-8 rounded-lg bg-muted animate-pulse"></div>
+          <div className="flex-1">
+            <div className="h-4 w-20 bg-muted rounded animate-pulse mb-1"></div>
+            <div className="h-3 w-32 bg-muted rounded animate-pulse"></div>
+          </div>
+        </div>
+      );
+    }
     return null;
   }
 
