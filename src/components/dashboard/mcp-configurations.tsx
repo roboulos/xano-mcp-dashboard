@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 import { Plus, FileText, Shield, Sparkles, ArrowRight } from 'lucide-react';
 
@@ -19,67 +19,16 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { useToast } from '@/hooks/use-toast';
+import { mapXanoToConfig, mapFormToXano } from '@/lib/mcp-config-mapper';
 import {
   type MCPConfiguration,
   type MCPConfigurationFormData,
+  type XanoCredential,
 } from '@/types/mcp-config';
 
-// Mock data - in real implementation this would come from API/database
-const mockConfigurations: MCPConfiguration[] = [
-  {
-    id: '1',
-    name: 'Production Workspace',
-    apiKey: 'xano_prod_1234567890abcdef1234567890abcdef',
-    instanceName: 'Production Instance',
-    email: 'admin@production.com',
-    isActive: true,
-    status: 'connected',
-    lastConnected: new Date(Date.now() - 5 * 60 * 1000), // 5 minutes ago
-    createdAt: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000), // 30 days ago
-    updatedAt: new Date(Date.now() - 5 * 60 * 1000), // 5 minutes ago
-    preview: {
-      totalEndpoints: 47,
-      totalTables: 12,
-      instanceName: 'Production Instance',
-      email: 'admin@production.com',
-    },
-  },
-  {
-    id: '2',
-    name: 'Development Workspace',
-    apiKey: 'xano_dev_abcdef1234567890abcdef1234567890',
-    instanceName: 'Development Instance',
-    email: 'dev@example.com',
-    isActive: false,
-    status: 'connected',
-    lastConnected: new Date(Date.now() - 30 * 60 * 1000), // 30 minutes ago
-    createdAt: new Date(Date.now() - 15 * 24 * 60 * 60 * 1000), // 15 days ago
-    updatedAt: new Date(Date.now() - 30 * 60 * 1000), // 30 minutes ago
-    preview: {
-      totalEndpoints: 23,
-      totalTables: 8,
-      instanceName: 'Development Instance',
-      email: 'dev@example.com',
-    },
-  },
-  {
-    id: '3',
-    name: 'Staging Environment',
-    apiKey: 'xano_stage_fedcba0987654321fedcba0987654321',
-    instanceName: 'Staging Instance',
-    email: 'staging@example.com',
-    isActive: false,
-    status: 'error',
-    lastConnected: new Date(Date.now() - 2 * 60 * 60 * 1000), // 2 hours ago
-    createdAt: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000), // 7 days ago
-    updatedAt: new Date(Date.now() - 2 * 60 * 60 * 1000), // 2 hours ago
-  },
-];
-
 export function MCPConfigurations() {
-  const [configurations, setConfigurations] =
-    useState<MCPConfiguration[]>(mockConfigurations);
-  const [isLoading, setIsLoading] = useState(false);
+  const [configurations, setConfigurations] = useState<MCPConfiguration[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [showConfigForm, setShowConfigForm] = useState(false);
   const [editingConfig, setEditingConfig] = useState<
     MCPConfiguration | undefined
@@ -89,30 +38,114 @@ export function MCPConfigurations() {
   >();
   const { toast } = useToast();
 
-  // Simulate initial loading
-  useEffect(() => {
-    setIsLoading(true);
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
-    return () => clearTimeout(timer);
-  }, []);
+  // Fetch credentials from API
+  const fetchCredentials = useCallback(async () => {
+    try {
+      setIsLoading(true);
+      const authToken = localStorage.getItem('authToken');
+      if (!authToken) {
+        toast({
+          title: 'Authentication required',
+          description: 'Please log in to view configurations.',
+          variant: 'destructive',
+        });
+        return;
+      }
 
-  const handleSetActive = (id: string) => {
+      const response = await fetch('/api/mcp/credentials', {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      });
+
+      if (!response.ok) {
+        if (response.status === 401) {
+          toast({
+            title: 'Session expired',
+            description: 'Please log in again.',
+            variant: 'destructive',
+          });
+          // Handle logout/redirect
+          return;
+        }
+        throw new Error('Failed to fetch credentials');
+      }
+
+      const data = await response.json();
+      // Map Xano credentials to frontend format
+      const mappedConfigs = (data.items || []).map((cred: XanoCredential) =>
+        mapXanoToConfig(cred)
+      );
+      setConfigurations(mappedConfigs);
+    } catch (error) {
+      toast({
+        title: 'Error loading configurations',
+        description:
+          error instanceof Error
+            ? error.message
+            : 'Failed to load configurations',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  }, [toast]);
+
+  // Load configurations on mount
+  useEffect(() => {
+    fetchCredentials();
+  }, [fetchCredentials]);
+
+  const handleSetActive = async (id: number) => {
     const config = configurations.find(c => c.id === id);
     if (!config) return;
 
-    setConfigurations(prevConfigs =>
-      prevConfigs.map(config => ({
-        ...config,
-        isActive: config.id === id,
-      }))
-    );
+    try {
+      const authToken = localStorage.getItem('authToken');
+      if (!authToken) {
+        toast({
+          title: 'Authentication required',
+          description: 'Please log in to update configurations.',
+          variant: 'destructive',
+        });
+        return;
+      }
 
-    toast({
-      title: 'Active Configuration Updated',
-      description: `${config.name} is now the active configuration for MCP tools.`,
-    });
+      const response = await fetch(`/api/mcp/credentials/${id}/set-default`, {
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to set as default');
+      }
+
+      // Update local state
+      setConfigurations(prevConfigs =>
+        prevConfigs.map(config => ({
+          ...config,
+          isActive: config.id === id,
+          isDefault: config.id === id,
+        }))
+      );
+
+      toast({
+        title: 'Active Configuration Updated',
+        description: `${config.name} is now the active configuration for MCP tools.`,
+      });
+    } catch (error) {
+      toast({
+        title: 'Error updating configuration',
+        description:
+          error instanceof Error
+            ? error.message
+            : 'Failed to update configuration',
+        variant: 'destructive',
+      });
+    }
   };
 
   const handleEdit = (config: MCPConfiguration) => {
@@ -120,69 +153,136 @@ export function MCPConfigurations() {
     setShowConfigForm(true);
   };
 
-  const handleDelete = (id: string) => {
+  const handleDelete = (id: number) => {
     const config = configurations.find(c => c.id === id);
     if (config) {
       setDeleteConfig(config);
     }
   };
 
-  const handleConfirmDelete = () => {
+  const handleConfirmDelete = async () => {
     if (!deleteConfig) return;
 
-    setConfigurations(prevConfigs =>
-      prevConfigs.filter(config => config.id !== deleteConfig.id)
-    );
+    try {
+      const authToken = localStorage.getItem('authToken');
+      if (!authToken) {
+        toast({
+          title: 'Authentication required',
+          description: 'Please log in to delete configurations.',
+          variant: 'destructive',
+        });
+        return;
+      }
 
-    toast({
-      title: 'Configuration Deleted',
-      description: `${deleteConfig.name} has been removed.`,
-    });
+      const response = await fetch(`/api/mcp/credentials/${deleteConfig.id}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+          'Content-Type': 'application/json',
+        },
+      });
 
-    setDeleteConfig(undefined);
+      if (!response.ok) {
+        throw new Error('Failed to delete credential');
+      }
+
+      // Update local state
+      setConfigurations(prevConfigs =>
+        prevConfigs.filter(config => config.id !== deleteConfig.id)
+      );
+
+      toast({
+        title: 'Configuration Deleted',
+        description: `${deleteConfig.name} has been removed.`,
+      });
+
+      setDeleteConfig(undefined);
+    } catch (error) {
+      toast({
+        title: 'Error deleting configuration',
+        description:
+          error instanceof Error
+            ? error.message
+            : 'Failed to delete configuration',
+        variant: 'destructive',
+      });
+    }
   };
 
-  const handleTestConnection = async (id: string) => {
+  const handleTestConnection = async (id: number) => {
     const config = configurations.find(c => c.id === id);
     if (!config) return;
 
-    // Update status to testing
-    setConfigurations(prevConfigs =>
-      prevConfigs.map(config =>
-        config.id === id ? { ...config, status: 'testing' } : config
-      )
-    );
+    try {
+      const authToken = localStorage.getItem('authToken');
+      if (!authToken) {
+        toast({
+          title: 'Authentication required',
+          description: 'Please log in to test connections.',
+          variant: 'destructive',
+        });
+        return;
+      }
 
-    // Simulate API call
-    setTimeout(() => {
-      const success = Math.random() > 0.3;
+      // Update status to testing
+      setConfigurations(prevConfigs =>
+        prevConfigs.map(config =>
+          config.id === id ? { ...config, status: 'testing' } : config
+        )
+      );
+
+      const response = await fetch(`/api/mcp/credentials/${id}/validate`, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Validation failed');
+      }
+
+      // Update configuration status based on validation result
       setConfigurations(prevConfigs =>
         prevConfigs.map(config =>
           config.id === id
             ? {
                 ...config,
-                status: success ? 'connected' : 'error',
-                lastConnected: success ? new Date() : config.lastConnected,
+                status: data.valid ? 'connected' : 'error',
+                lastConnected: data.valid ? new Date() : config.lastConnected,
                 updatedAt: new Date(),
-                preview: success
-                  ? {
-                      ...config.preview,
-                      lastActivity: new Date(),
-                    }
-                  : config.preview,
               }
             : config
         )
       );
 
       toast({
-        title: success ? 'Connection Successful' : 'Connection Failed',
-        description: success
-          ? `Successfully connected to ${config.name}.`
-          : 'Unable to establish connection. Please check your credentials.',
-        variant: success ? 'default' : 'destructive',
+        title: data.valid ? 'Connection Successful' : 'Connection Failed',
+        description:
+          data.message ||
+          (data.valid
+            ? `Successfully connected to ${config.name}.`
+            : 'Unable to establish connection. Please check your credentials.'),
+        variant: data.valid ? 'default' : 'destructive',
       });
-    }, 2000);
+    } catch (error) {
+      // Reset status on error
+      setConfigurations(prevConfigs =>
+        prevConfigs.map(config =>
+          config.id === id ? { ...config, status: 'error' } : config
+        )
+      );
+
+      toast({
+        title: 'Error testing connection',
+        description:
+          error instanceof Error ? error.message : 'Failed to test connection',
+        variant: 'destructive',
+      });
+    }
   };
 
   const handleAddNew = () => {
@@ -202,96 +302,58 @@ export function MCPConfigurations() {
         return;
       }
 
-      // Call our API to save the API key to Xano
-      const response = await fetch('/api/mcp/save-config', {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${authToken}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          api_key: data.apiKey,
-        }),
-      });
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(result.error || 'Failed to save configuration');
-      }
-
-      // Extract validation info from Xano response
-      const validationInfo = result.validation_result;
-      const isValid = validationInfo?.is_valid === 200;
-      const userInfo = validationInfo?.user_info;
+      const xanoData = mapFormToXano(data);
 
       if (editingConfig) {
-        // Update existing
-        setConfigurations(prevConfigs =>
-          prevConfigs.map(config =>
-            config.id === editingConfig.id
-              ? {
-                  ...config,
-                  ...data,
-                  status: isValid ? 'connected' : 'error',
-                  lastConnected: isValid ? new Date() : config.lastConnected,
-                  updatedAt: new Date(),
-                  preview:
-                    isValid && userInfo
-                      ? {
-                          totalEndpoints: userInfo.endpoints?.length || 0,
-                          totalTables: userInfo.tables?.length || 0,
-                          instanceName: userInfo.name || data.instanceName,
-                          email: userInfo.email || data.email,
-                        }
-                      : config.preview,
-                }
-              : config
-          )
+        // Update existing credential
+        const response = await fetch(
+          `/api/mcp/credentials/${editingConfig.id}`,
+          {
+            method: 'PATCH',
+            headers: {
+              Authorization: `Bearer ${authToken}`,
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(xanoData),
+          }
         );
+
+        if (!response.ok) {
+          const error = await response.json();
+          throw new Error(error.error || 'Failed to update configuration');
+        }
+
+        // Refresh the list to get updated data
+        await fetchCredentials();
 
         toast({
           title: 'Configuration Updated',
-          description: `${data.name} has been ${isValid ? 'validated and ' : ''}updated successfully.`,
+          description: `${data.name} has been updated successfully.`,
         });
       } else {
-        // Add new
-        const newConfig: MCPConfiguration = {
-          id: Date.now().toString(),
-          ...data,
-          isActive: configurations.length === 0,
-          status: isValid ? 'connected' : 'error',
-          lastConnected: isValid ? new Date() : undefined,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-          preview:
-            isValid && userInfo
-              ? {
-                  totalEndpoints: userInfo.endpoints?.length || 0,
-                  totalTables: userInfo.tables?.length || 0,
-                  instanceName: userInfo.name || data.instanceName,
-                  email: userInfo.email || data.email,
-                }
-              : undefined,
-        };
+        // Create new credential
+        const response = await fetch('/api/mcp/credentials', {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(xanoData),
+        });
 
-        setConfigurations(prevConfigs => [...prevConfigs, newConfig]);
+        const result = await response.json();
+
+        if (!response.ok) {
+          throw new Error(result.error || 'Failed to save configuration');
+        }
+
+        // Refresh the list to get the new credential
+        await fetchCredentials();
 
         toast({
           title: 'Configuration Added',
-          description: `${data.name} has been ${isValid ? 'validated and ' : ''}created successfully.`,
-          variant: isValid ? 'default' : 'destructive',
+          description: `${data.name} has been created successfully.`,
         });
-
-        // If validation failed, show more info
-        if (!isValid) {
-          toast({
-            title: 'API Key Validation Failed',
-            description:
-              'The API key could not be validated with Xano. Please check your API key and try again.',
-            variant: 'destructive',
-          });
-        }
       }
 
       setShowConfigForm(false);
@@ -360,10 +422,10 @@ export function MCPConfigurations() {
             <MCPConfigurationCard
               key={config.id}
               config={config}
-              onSetActive={handleSetActive}
+              onSetActive={id => handleSetActive(id)}
               onEdit={handleEdit}
-              onDelete={handleDelete}
-              onTestConnection={handleTestConnection}
+              onDelete={id => handleDelete(id)}
+              onTestConnection={id => handleTestConnection(id)}
             />
           ))}
         </div>

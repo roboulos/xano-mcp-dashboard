@@ -48,10 +48,10 @@ import { type MCPConfiguration } from '@/types/mcp-config';
 
 interface MCPConfigurationCardProps {
   config: MCPConfiguration;
-  onSetActive?: (id: string) => void;
+  onSetActive?: (id: number) => void;
   onEdit?: (config: MCPConfiguration) => void;
-  onDelete?: (id: string) => void;
-  onTestConnection?: (id: string) => void;
+  onDelete?: (id: number) => void;
+  onTestConnection?: (id: number) => void;
 }
 
 const getStatusConfig = (status: MCPConfiguration['status']) => {
