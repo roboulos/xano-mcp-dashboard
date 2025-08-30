@@ -48,14 +48,25 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(errorResponse, { status: 400 });
     }
 
-    // Return the auth token
+    // Return the auth token and set cookie
     const responseData = {
       authToken: data.authToken,
       message: 'Login successful',
     };
 
     await logger.logRequest(body, responseData);
-    return NextResponse.json(responseData);
+
+    // Create response with cookie
+    const apiResponse = NextResponse.json(responseData);
+    apiResponse.cookies.set('authToken', data.authToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      maxAge: 60 * 60 * 24 * 7, // 7 days
+      path: '/',
+    });
+
+    return apiResponse;
   } catch (error) {
     // Log error in production environment differently
     // eslint-disable-next-line no-console
