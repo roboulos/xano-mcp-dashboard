@@ -1,0 +1,966 @@
+Robert Boulos | 00:00
+Okay. So now, could you please go into Workspace 7 and delete all the test API groups? There are a few of them. And do the same thing in Workspace 8. Just delete any test API groups.
+And in Workspace 1, if we have any there, just do the same thing. So, one seven and eight.
+Hello.
+Luke | 01:19
+Hey. Robert.
+Robert Boulos | 01:20
+Hey, how are you doing?
+Luke | 01:22
+How are you doing?
+Robert Boulos | 01:23
+Yeah, I'm good. I just saw your messages, so I'm happy to help, and let's do it.
+Luke | 01:31
+Cool, be with me.
+Robert Boulos | 01:31
+Let's just get it back up and going. I'm happy you could make the time because I have to figure it out.
+I have to see what's happening. So, let's see.
+Luke | 01:42
+Yeah, sure. Let's have a look where's the sha.
+Robert Boulos | 01:50
+The solution might just end up being that I'll just give you the link to the new one because I don't know if there's a problem between the old two because, in Xano themselves, they could change their APIs and everything.
+But I have a version that's working as we speak. I'm using it. This might just be how you end up using the new version, but let's just see.
+Luke | 02:17
+Right, what we've got you can see on my screen. Yeah.
+Robert Boulos | 02:20
+Yes.
+Luke | 02:23
+Okay, so, let's see. The thing is, I've gone around in a loop a few times, and it's... Let's kill that off, right? And let's just kill off.
+Robert Boulos | 02:33
+Let me. What I'll do is let me think. I think I'm going to test it out from my side because I'm going to see how that goes. One second.
+Luke | 02:50
+Call I beg.
+Robert Boulos | 02:52
+Let me in.
+Luke | 03:00
+So I'm using the old MTP snappy AI, right?
+Robert Boulos | 03:04
+Yep.
+Luke | 03:04
+Log in. Actually, it's no good on Safari. Let's do it in Chrome. Do it, do do.
+Robert Boulos | 03:25
+Okay, let me get the URL.
+Let's see. Okay, I'm going to grab this URL. I'm coming back here. Okay, and let me almost... It's tested. Hang on, say it in... Is that our original essay? Okay, signing in, yes, exactly.
+Luke | 04:23
+Is that the snapp you sign in here.
+Robert Boulos | 04:29
+Just paste, let me... Okay, it worked. Trying to use your... Let's see, one second.
+Luke | 04:51
+The part, which I think is checking the snappy credentials part, right? That's what I'm doing. Yeah, because that works. Who I'm saying...
+Yeah, you're authenticated. Then if it says, "Right, go get some instance details and things like that.
+Robert Boulos | 05:09
+You know, honestly, it's working on my side, so let's just.
+Luke | 05:13
+Yeah, you can see tables and all that.
+Robert Boulos | 05:15
+Yeah, it just... I literally just signed in and it worked for me.
+So let's take a look at your side.
+Luke | 05:20
+MARLBS alright, just so that you're fully sort of trusting everything that's been done so far.
+Robert Boulos | 05:21
+I just want to make sure. Right? Because that's important. Like that. That tells us, like, you know where to focus. So, let's now come over here.
+Luke | 05:32
+If I go to the account meta, yeah, I'll create one. I've got one there, but I can happily create another one right now.
+Robert Boulos | 05:42
+Let me, yeah, for sure. Go for it. I'm just thinking, what would be a real acid test to know exactly what's happening when you put in the API key and then you click save on the website, what happens?
+Luke | 06:03
+Is that it's fine, right? So, I've got my yeah, so if I just get my SAP key.
+Robert Boulos | 06:06
+Like shows you it tells you, "Hey, this is your instance and this is your email.
+Luke | 06:14
+So my latest one for Impact is that one there. Created it this morning because I was like, "Is it the keys? Are they gone out of sync?" What's happening?
+Robert Boulos | 06:27
+It could be.
+Luke | 06:27
+So this one I just created.
+Robert Boulos | 06:29
+I would like to let's see, we'll take a step.
+Luke | 06:37
+I put that in there and do that.
+Robert Boulos | 06:37
+Yeah, so, yeah, okay, good.
+Luke | 06:40
+It will say connected. And there's my logging for that system, right?
+Robert Boulos | 06:42
+Perfect. Now just EYJHB GC.
+Luke | 06:44
+So that implies the keys.
+Robert Boulos | 06:47
+Yeah, I'm gonna check actually the backend while you do that so I can just make sure it looks good on this side.
+Luke | 06:48
+The key, the K right?
+Robert Boulos | 06:53
+So your key is there, it's saved, you've just saved it. Let's just make sure. And I'm sure it's there because there's no other way it would be there.
+But let's just double-check. Users.
+What email did you use, by the way, just so I could just find your account.
+Luke | 07:20
+This one is... So the account that I'm logged in to Snapp you with is lu@frontlinedashcommunication.com. I want to contact.
+Robert Boulos | 07:33
+Its contact at frontline dot communicate, right? I think... Okay, no worries, no worries. I was just making sure. Okay, cool, and you're okay? So there's a key, okay, that's fine, so that's saved back here.
+Luke | 07:44
+That's one.
+Robert Boulos | 07:53
+Okay. Let's take it step by step. Let's do the next step. Let's y.
+Luke | 07:59
+So then I open Claude or Claude code. And usually it will trigger the authenticated snappy, but I only just did it before we contacted, right? So I think that gets cashed.
+Robert Boulos | 08:12
+Let's do this. Well, how do you set it up from here? Do you do the config or what does that look like for you?
+Luke | 08:28
+So we did it together, way back in the day, as it were.
+Robert Boulos | 08:31
+Okay, fine.
+Luke | 08:32
+About a month ago. [Laughter].
+Robert Boulos | 08:33
+Okay. Yeah, right. That's exactly why I asked because there are a few different ways. So let's do... Click on your name in the bottom left side of the page or window, and we'll do settings, and then we'll do developer in the bottom left, and then we'll do added config in the top left, and then we're just going to double-click on exactly.
+Luke | 08:44
+Y exactly that's it.
+Is it that one there? Right, so I've got my impact one down there, and that's working.
+Robert Boulos | 09:11
+Okay, I see. Okay, now, here's the thing. I think I know what the issue is. I think the issue is that you have two of them because the thing is that with these tools, they don't like when they have duplicates.
+That's one thing about MCPS in general, so they could be... I'm just saying that this, as soon as I see two of the same, I just... There are alarm bells ringing in my head, so.
+Luke | 09:46
+Well, that's not snappy. That's a direct connection to one of the Xanosystems.
+Robert Boulos | 09:53
+Okay, never mind. I thought this was SE, so this is.
+Luke | 09:55
+Yeah, so that one is Ink Pack's own MTP.
+Robert Boulos | 09:59
+I see. Okay, cool, never mind. I thought you had two of the Snappy ones, so that's cool.
+Luke | 10:06
+No, you advised against that.
+Robert Boulos | 10:06
+Like, what MC pin tool do you have?
+Luke | 10:08
+So I've never... Sorry, this is just... I've been in just a quick... In this particular system.
+Robert Boulos | 10:10
+What MCP tool do you have?
+And I'm just kind of curious.
+Luke | 10:26
+Yeah, Ink Pack, I created it. Come on, it's all right in it.
+Robert Boulos | 10:33
+It's okay. Go back. [Laughter] I'll help you first and then you can tell me.
+Luke | 10:37
+I created just in this bit, right?
+Robert Boulos | 10:37
+[Laughter] Yeah, nice and cool, you got that nice.
+Luke | 10:40
+So in the AI, there's an NPC server there is, right? That one there, and it's got a handful of tools and this, I use all of this for adding data into the system. Yeah, and to sort of demo the potential for them having basically conversations with their system right in the future.
+Robert Boulos | 10:55
+All right.
+Exactly, very good, it's amazing.
+Luke | 11:06
+Yeah, and for a while, all of this, like this being in here completely worked, right?
+Robert Boulos | 11:06
+Okay, let's go back in, let's.
+Luke | 11:14
+It's been working for quite a while.
+Robert Boulos | 11:16
+Yeah, no, I'll show you.
+Luke | 11:18
+But. But something happened and I had to read.
+Robert Boulos | 11:23
+I'll show you, though, I think because I think we can fix this pretty easily.
+Luke | 11:24
+Yeah. CO.
+Robert Boulos | 11:27
+Like, let's actually go. Let's go back to that conflict, actually to where you were just on that screen and then where it says the URL for snappy.
+Luke | 11:32
+Yep.
+Robert Boulos | 11:35
+Let's just copy the entire URL. So yeah, exactly. So we'll copy the whole thing, and then we're going to go back to our desktop, and then we're going to exit from this setting screen.
+Luke | 11:45
+AL right.
+Robert Boulos | 11:49
+So we want to just... Actually, sorry. Go to click on connectors on the left. And then now, where it says... Okay, this is exactly what I want to check. Where it says, actually, it's already there, so where it says, Xano, FL CI, I believe.
+So this we're going to click on configure for that.
+Luke | 12:16
+You just get the whole... These bad boys, right?
+Robert Boulos | 12:17
+Okay, so then let's do X-top, right for this. Now where it says, Snappy, local dev... I want to get rid of that.
+Luke | 12:31
+So this is a custom one, right? So added in the GUI and this one, this local dev is the one in the file, right? That's that one.
+Robert Boulos | 12:38
+Yeah, I know. But, like, let's. But I don't want to have both like this is actually now potentially conflicting. Maybe to have both. So what we'll do is, let's we only want one of them, so probably better, honestly to let's go back to Claude for a second, and let's get rid of the custom one, and let's just remove that.
+Luke | 12:50
+Okay.
+Yeah, sure. Boom.
+Robert Boulos | 13:14
+Perfect.
+And now let's just restart Claude for this stuff entirely.
+Okay? And let's do settings, let's see what's happening there. Okay, let's just wait a second for it. Okay, what happens? You click on configure for Snappy local dev, okay?
+Luke | 13:46
+You get this.
+Robert Boulos | 13:48
+Okay, interesting. Everything's off.
+Luke | 13:48
+And we pretty much switched everything else, yeah.
+Robert Boulos | 13:53
+Interesting. Let's do X-top, right? Can we?
+It didn't trigger the O-flow. Here's what I'd like you to do, actually, click on the AD custom connector. Yeah, perfect. Then we'll just type in just Xano and then just paste in, if you still have it, just paste in that URL.
+Luke | 14:22
+Nope, no, it's not the problem.
+Robert Boulos | 14:22
+No, that's all right, which is a control A exactly.
+Luke | 14:29
+I get it there, poop, do you not do anything here? Then no, okay, right, boom, that's the contact. Yeah, boom, open Claude. Okay, cool, check it back, happy days, yep, test.
+Robert Boulos | 14:36
+I just do it, it would be fine. No, there's nothing there. Now, we'll just wait a second for it. Let's do connect next to it. Okay, that's encouraging, yep.
+Perfect, yep. Now, let's do, can you click on the... Yeah, like or let's do that little... There's a slider button, exit plus, perfect, and let's click on the Xano one.
+Okay, let's just do a test. Go in there and just ask it. Hopefully, it does it.
+Yeah, I would always allow it.
+It's encouraging. Let's keep pushing. Let's see what else could.
+Luke | 16:08
+That is encouraging.
+Excellent, cool. That seems to be... We think we're back.
+Robert Boulos | 16:34
+Okay.
+Luke | 16:36
+So basically, this is because this was a thing when we first set it up, right? We set up Claude Desktop and then we went straight to Claude code and we were messing about.
+Then I ended up with this situation where here you've got the custom one added via the guy.
+Robert Boulos | 16:57
+Yes.
+Luke | 16:58
+And then this one. Yeah, but I think this one had to be in the local file for Claude code to work.
+Robert Boulos | 17:07
+Yeah, because actually now because and this is the thing, it's like cloud code has had, updates since we did this and it now there are other ways to install it into cloud code. It doesn't require it to be here in your config anymore.
+Then there's continuously... It is possible that there was an update on the Claude Desktop side where they have these two different configurations. One of them is going to be through Google, the other one is in your local dev.
+It's a lot of the time, especially if there's a duplicate situation, it'll just stop working. It's very prone to failing silently, but at the same time, we can always fix it. So this is the easiest way we got.
+Luke | 18:00
+Let me ask you another question quickly. See this one, right? This Inc MCP, right? This is a Xano-hosted MCP server, right?
+Robert Boulos | 18:09
+Yes.
+Luke | 18:10
+When you go there, the instructions look a bit old. They tell you to put basically this into the right?
+Robert Boulos | 18:18
+Yeah.
+Luke | 18:19
+And like you say, they even offer a newer... They offer a streaming hyperlink rather than the SSC, but their instructions use the SSC and then obviously putting the token in here is probably what people don't like about it yet.
+But when you do a custom one, if you do add a custom connector.
+Robert Boulos | 18:34
+Yes.
+Luke | 18:37
+And if I was to put my. You know that URL there is this client ID and key.
+Robert Boulos | 18:43
+You'd use this? Well, not really... Like no, that's a thing.
+Luke | 18:46
+Is that stuff? Is that the key? No. It's not. Is.
+Robert Boulos | 18:52
+It's like Xano's implementation of it is actually not the most effective implementation because of a lot of reasons, but basically the way because they want to be the platform. They've put themselves technically... It's just become more of a challenge for them in order to offer an easy way for people to even implement it, to even access it like this. They don't have a very smooth way of connecting, and it's just been that way since the beginning, since they launched, which is kind of sucks because every other aspect...
+It's like there are some strengths to it. I like how you can turn their functions into tools for MCP, but yes, to say that connecting to it is not the best experience... This is what we're stuck with for now with Xano.
+Again, it depends on where you're using it. When it comes to using a here and Claude code, we're trying to make it authenticated. Basically, if we're trying to protect it, then you have to do this.
+If you don't care about protection, if you just don't want the token, if you don't care if there's a token, then likely I would say 9 out of 10 because I'm just trying to remember. Then it will actually work.
+You can just put in that URL into Claude's desktop, and it'll work. But the issue is authentication. Xano cannot provide that authentication flow within the context of everything else they're doing. There's just no... They don't have that mechanism to go and redirect you back to Xano and bring you back here.
+That's the key part: to take you, and they just don't have that. I think that it would just require them to really rethink how their entire off-service even works. If that makes sense, right?
+Luke | 21:05
+So but you've effectively done that, right? Because I offer to you, and then you send the token, so you could offer a service, right?
+Robert Boulos | 21:13
+That's true. Yes, I did it.
+Luke | 21:19
+Where for I've built an MTP server, right? The only way I can connect to it a Xano hosted one, right, is this itway, right? Whereas if you if the address was, you know, some other server, right?
+Robert Boulos | 21:31
+Yes, unfortunately. Well, the address I yes, basically like w yes, it just that yeah.
+Luke | 21:42
+I like you host the server, right?
+Then in the settings, it's that, and then the key, like you do today. Then potentially, it would make it more accessible. Xano. Any Xano MCP server could be more accessible via a small robot third-party tool.
+Robert Boulos | 22:03
+That's true, actually. That's actually... Well, right now, if I were to help with that, then it would be more along the lines of just helping you get set up with or setting it up for you in the sense of just putting it on your own server.
+So it wouldn't be like an Xano MCP server, it would just be... Which I think, anyways, probably is the... I mean, there's... It would mean that, and let me just think about that for a second.
+Luke | 22:40
+Is your MCP Snappy MCP not a Xano-hosted thing? It's a you've coded that bad boy.
+Robert Boulos | 22:44
+No, it's on Cloudflare.
+Yeah, I think it's crazy.
+Luke | 22:47
+Yeah, it's interesting. It's interesting because obviously, another aspect of it is I can add this to the desktop because, obviously, on the desktop, this is a JSON file, right?
+Robert Boulos | 23:00
+Yeah.
+Luke | 23:00
+But your one because it's a custom one, right?
+I can add it to Claude in the browser, right?
+Robert Boulos | 23:13
+Yeah. on the Yeah, as long as I wouldn't say.
+Luke | 23:14
+Yeah, which, no, I can. I've tried it, right?
+Robert Boulos | 23:17
+You can't.
+Luke | 23:17
+And that means is it works on the phone and an iPad and anything.
+Robert Boulos | 23:18
+[Laughter].
+Luke | 23:24
+Whereas these ones, these local DEBs, you can't add them to the phone or the browser or the thing, right?
+Robert Boulos | 23:28
+Yes, exactly.
+Luke | 23:30
+But your one, this one I've been building. That's why you can see that shot of me sitting by the pole building by the phone because you've done it this way.
+Robert Boulos | 23:35
+You was thinking about that too. Yeah, that's true, I was thinking about that the other day too.
+Luke | 23:41
+[Laughter] How did I do it?
+Robert Boulos | 23:43
+I'm was like, "How did Luke even get that on the phone?" I was thinking.
+Luke | 23:46
+Yeah, no, I worked it out. You do it in the browser and then it works on any other device.
+Robert Boulos | 23:50
+I'm was like, "I don't even..." I was just thinking, "How did he even get that?" Because I was looking at him like, "I don't even have it on my phone, okay.
+Luke | 23:56
+Yeah, it took a while. I kept going because I kept bouncing back and forth, and I was like, "Why is it not appearing there?" Then at some point, the desktop forced me to go into the browser, right? It was like an authentication thing.
+Then I was like, "Hold on a minute, it's not here either." Let me add it here.
+Robert Boulos | 24:12
+Yes, the local one doesn't work.
+Luke | 24:12
+And could. I can't do the local Debian stuff, but I could do yours.
+Robert Boulos | 24:18
+That's the thing. As long as it's the combination of it
+not actually doing any processing on your phone, it's all happening on Cloudflare. Yes, the way because it's on, basically, as soon as the way that I prefer...
+I think the way everybody anyway should design their MCPS is just the way that I did it with Cloudflare because it just allows you to be able to drop it in and just know that it works. It's pretty much future-proof to a certain degree because it's an open protocol.
+The roadmap for it is open. The spec is more or less agreed upon for the future. Which is why, even right now, I set up this server in March basically, and I haven't had to really make any structural changes to it since because CloudDesktop has had updates, everything else has had updates. My server just keeps running.
+So I'm just saying that I can't say the same for Xan because Xan, whatever they're using, is not up to the latest spec. Sometimes it stops working because CloudDesktop might get an update or
+so on. So yeah, I would say that there are strengths to the way Xan... You half asked it. Basically, that's the main thing. It sucks because they have some great reasons to be offering this service.
+Answer, great. You can put in the functions, use them as tools, but then it's like, I want to share it with somebody. It's like I got to share this. And you start to lose some of that. I mean, well, if it's a pen in the s to connect to, then that's pretty bad.
+Luke | 26:09
+[Laughter] Can you see what I'm writing? [Laughter] Yeah.
+Robert Boulos | 26:16
+Let me see.
+Demo then add. But you're right. It could be a service. Honestly, let me... That's fine. I swear, I might just end up giving you the access actually right now to the new one, and then you can just tell me if it solves the problems because honestly.
+Luke | 26:53
+So is this the one with your middleware layer?
+Robert Boulos | 26:59
+Yes. Yeah, the middleware.
+Luke | 27:01
+Interesting, but it's the middle.
+Robert Boulos | 27:02
+You know what? Screw it.
+Luke | 27:03
+It's the middleware layer that you've added over the top of the same 100 and X tools.
+Right? Is that right?
+Robert Boulos | 27:09
+Yes, I kind of... The thing is that I really went into a lot of different...
+Once I really got into it, I discovered that, for better or for worse, in a lot of ways, it actually really benefits from having over 100 plus tools because it allows it to really... Granularly, it just works better with the tools. It Git Hub, yes, it takes up more context, but in a certain way.
+But really, the biggest benefit I found was not so much reducing the number of tools. I found it was actually in just making it really good at building endpoints, which would be interesting to see how you do that.
+Luke | 27:51
+And want to... Yeah, I can't wait to build some stuff here, just quickly.
+Robert Boulos | 27:55
+Let's do it.
+Right now, I'll just give it to you right now.
+Luke | 27:59
+Let's see this look. Xano create advanced field, create an enum with free values.
+Robert Boulos | 28:00
+Yp.
+Luke | 28:03
+It comes back and says, "Yeah, I've done it, yeah. Successful success with credit."
+However, if I say check the schema.
+Robert Boulos | 28:13
+I like it, the bats... Let's see, in a field.
+Luke | 28:29
+And then says "Get table with script." But it's not going to work because it used to be able to edit via the script.
+Robert Boulos | 28:32
+Yeah, that's in... Let me.
+Luke | 28:38
+But basically, the update table with script used to be the bit that... That's where I would add the enum values.
+Robert Boulos | 28:39
+So let's the.
+Luke | 28:46
+And it's not just an enum, it's basic.
+Robert Boulos | 28:47
+Yeah, we.
+Luke | 28:50
+It's all anything with child RESTS. Yeah, so like an object filled with the child structure, it can't add those either, but look, I know you're busy with your new thing. At some point, there's just this handful. There's only a few of them, right? There's only a few tiny bits that don't quite work.
+Robert Boulos | 29:12
+I've, you know, I've kind of realized that this is something that like, more and more people are using as a tool. So this might end up becoming something that I put an offering behind it in the sense of like, so that I can take it more seriously, to be honest and actually provide nobody is.
+Luke | 29:30
+Yeah, I was going to... I really want to ask you about that, right? What's your... Because I'm not paying you for any of this right now, Robert, right? [Laughter] That's right.
+Robert Boulos | 29:38
+And [Laughter] I see it as likely.
+Luke | 29:41
+So where do you see yourself going? What's your vision, what's your plan?
+Robert Boulos | 29:50
+I mean, I'm bouncing around a few different ideas, but what I'm seeing is that I basically provide an offer where I can do a weekly meeting and I have
+access to the tool. I'm just basically bundling what seems to be what's necessary. It's like having conversations with me consistently and everything that surrounds that, the support that comes with that, access to the tool, and that seems to be a good happy middle.
+Because my personal consulting rates don't really... They're not really for just troubleshooting stuff. Right now, my rate is $300 an hour, and that's fine for projects where we have a goal and everything, but for troubleshooting stuff, I'm not really in the business of
+that. That' not what I'm trying to apply that rate towards. So, at the same time, I want to take this seriously. So, I think that there has to be a way for me to take it seriously.
+I have to charge something for it. I have to think about it. I'm really looking for honesty and feedback from the people who want it. To be honest with you, I'm trying to get a read on what it is that you want and what would actually be like to give you more of whatever it is that you're enjoying.
+I think that it's more or less being able to access something. One way or another, we can be able to resolve things. That way, you get that security from it.
+But, yeah, that's something. That's what I'm.
+Luke | 31:55
+Well, I'm a realist, Robert. As soon as I realize that this is something I depend on, right? I'm like, "Shit, I need to urgently try and get in contact with Robert." Let's hope I'll try all the channels.
+I know. Let's hope you see something, right? I've got no number, no real way to sort of get your help necessarily, right? I appreciate you coming back to me today. Then I'm like, "Okay, at some point, you're going to have to come down on a way of formalizing this because I depend on it now." right?
+Robert Boulos | 32:34
+I know.
+Luke | 32:34
+I really want it.
+Robert Boulos | 32:35
+That's what I've realized.
+Luke | 32:35
+I look to the point where we discussed it on Wednesday where I actually want to get my best DB developer and to get him to try it. I'm a bit dubious about adoption, right?
+But for me, in some cases, the more developer you are, the less patience you have. You have to sit there with AI and change your workflow, right? Because you can just go and look, I'm just building this, right?
+Robert Boulos | 33:01
+Yeah?
+Luke | 33:01
+But I honestly think it will transform their workflow, speed things up, get them further down the line than they are today, right?
+Robert Boulos | 33:07
+Yeah.
+Luke | 33:09
+But they have to be willing to adopt it. So I want to do it as a test. Will he adopt it? Won't he adopt it? I'm not going to force it upon him, right? I just want to see.
+I'll give him... I'll show him. I'll even give him all my docs that would help. Or give... I'll show him the new one, right? Potentially, yeah, but I would like to see whether a hardcore SQL DBA type person is going to actually even be interested in this, right? Eva? Eva is going to be like, yeah.
+Robert Boulos | 33:39
+Yeah, well, to be honest with you, too, it's like.
+Luke | 33:41
+He's going to be like, right.
+Robert Boulos | 33:44
+I don't know if I would even accept... If I'm hiring a developer to do work for me, I think I would expect them to be open to the tools.
+Because there's just no way. I just know that.
+Luke | 33:57
+Well, this is it.
+Robert Boulos | 33:58
+You know. He's going to be faster with it.
+Luke | 34:01
+I so my new strategy going forward. So I hire... In the UK, yeah, it's relatively cheap to hire a young person,
+18, 19, 20-year-old to do stuff, right? And that's how I got into it. I joined a software company, and then just picked it up, right? They threw books at me, shot me in front of machines, and I learned things, right?
+I love that investment in people. So, I'm quite happy to help train people.
+Robert Boulos | 34:40
+Yeah. Yeahmm.
+Luke | 34:41
+I've been training people all my life, and I've been looking at... There are a few.
+I've got them doing other things, but there are partners. I've been showing them what I'm doing, and they're all excited, and I'm like, "Okay, I can..." They don't know much about systems, they don't know much about databases necessarily, but that's all learnable, right? At the same time.
+It is a steeper curve here, right? There's a lot to learn. Whereas the DBA, it would just be great if you picked up the tool and just ran with it, right? But part of me suspects that he's going to be a bit reluctant.
+Robert Boulos | 35:10
+Yeah.
+Luke | 35:13
+So I've got this sort of. Yeah, absolutely right. Long term. I see. I'm only really going to be interested in people that are gonna be like, working in this kind of workflow.
+Robert Boulos | 35:23
+Yeah.
+Luke | 35:24
+Yeah.
+Robert Boulos | 35:26
+I was just going to say that I think that... Again, like I said, I'm going to put an offer that involves basically access to the tool and access to me, right?
+Discussions around a tool and how to use it. I'm a devolved... My background is all technical, and I can basically help with that lift, right?
+There's a way to look at it in terms of... Of like, helping to drive the adoption and enjoy and enjoying the use of the tool. I can help with that, basically. I can show them and I can tell them, "Hey, this is how you do it."
+I've had those kinds of conversations many times with very technical people, and they usually end up loving the tool as long as it's just introduced, really showing them how they can make their lives easier and maybe not necessarily take away their job.
+Yeah, I can definitely help with that.
+Luke | 36:38
+So do you want to... Were you going to give me a new account in the new system then? Is that the plan?
+Robert Boulos | 36:42
+Yeah. Let's do this. I'm going to actually give you access here, so I'm going to drop this into the chat, so it's actually going to be really easy.
+Luke | 36:44
+Let's have a look.
+Robert Boulos | 37:01
+It's SAPI MCP Turbo. Okay, so this URL is the same, it's the same process actually as what we just did. It's just a different URL, so everything else is the same.
+Luke | 37:10
+Okay, it's the Turbo version, so.
+Robert Boulos | 37:12
+There's the Turbo. I'm kind of nervous.
+Luke | 37:19
+And is it the same?
+Robert Boulos | 37:19
+Let's.
+Luke | 37:21
+Is it the same account on, it's literally the same account.
+Robert Boulos | 37:23
+Yeah, so take this and let's go to... Yes, same account.
+Luke | 37:29
+Okay, so yeah.
+Robert Boulos | 37:30
+So we'll go back to Claude and then we can actually come back into your settings and then we'll just get rid of what we just added from connectors on the left side.
+Luke | 37:41
+Just to. Well, yeah, sorry, right, get rid of that disconnect.
+Robert Boulos | 37:42
+Just there you go.
+Luke | 37:53
+I'll close it, open it and se.
+Robert Boulos | 38:02
+So. You would say, though, that it probably would be better. I think now is the time, probably for me to make an actual offering around it, because I'm starting to feel like it actually would, excuse exces.
+Luke | 38:13
+Well, like you said, you got to think about it like you know, I it's not actually disappeared remove let's do that.
+Robert Boulos | 38:21
+Yeah. Let's just... We can just delete it, Maybe.
+Luke | 38:25
+Maybe I only did disconnect. Hold on.
+Sorry. Let me kill that.
+Robert Boulos | 38:28
+That's okay.
+Luke | 38:39
+But you know, Robert, I understand it. I of course, when something's for free, it's nice, right? But I respect it, and I need it. So I want you to take it seriously, or want you to take me as a customer seriously, right? So.
+Robert Boulos | 38:59
+Of course. For sure. I didn't really know. I think that once I started doing the weekly meetings is when I realized how much people enjoy using the tool. So that has opened my eyes, actually. You've really opened my eyes to it, to be honest, more than anything.
+So I think, probably it's a good idea. Let's do connect and then it should do the same flow.
+Luke | 39:28
+Yeah, I use the same account
+Robert Boulos | 39:28
+But this is going to be very interesting. Yes. SE account.
+Luke | 39:35
+Alry so before we start, your middleware layer was focused around the functions. Yeah, functions and endpoints, not table builds and everything else.
+Robert Boulos | 39:48
+Yeah, well, there's a lot of.
+Luke | 39:50
+But.
+Robert Boulos | 39:52
+You know, honestly, I've been working on it now for a while. I and so there are changes in a lot of different ways. That even across the other tools sales come. I'm curious to see in general how it does for you. Let's do if we did you restart it, by the way, or no, actually no, should be fine.
+Luke | 40:17
+This has already started.
+Robert Boulos | 40:17
+Okay, cool.
+Luke | 40:19
+That is Xano Turbo there.
+Robert Boulos | 40:20
+Perfect. So then let's do, let's ask it to build an endpoint for you. I'd be kind of curious, actually, if you wouldn't mind.
+Luke | 40:31
+Okay, this is Test Zoey connection GA as I just used a new tool set of tools. I understand part of that.
+Robert Boulos | 40:47
+By the way, you really should. I think I would recommend recording. Just using a free recording app to help you. I mean the typing. I would go crazy if I had to type all of it.
+Luke | 41:01
+What was the one you used? I think you told me once.
+Robert Boulos | 41:04
+Super Whisper is actually what I use now.
+Luke | 41:05
+Super whisper.
+Robert Boulos | 41:07
+Yeah, it's free.
+Luke | 41:09
+All one words.
+Robert Boulos | 41:10
+I yep, just like that.
+Luke | 41:10
+He could whisper.
+I think when I had a look, I think there was more than one whisper. I got a bit confused. [Laughter] Hold on.
+Robert Boulos | 41:22
+I know they have like Whisper X there's a few different ones. Let's go back to.
+Luke | 41:27
+Did that not work?
+Robert Boulos | 41:28
+This is you're good here. This is the one you can close if you go back to the one. It should be open if we go to Claude destop.
+Luke | 41:35
+Firefox.
+Robert Boulos | 41:37
+Okay, cool. So it's working. So let's do it. I can ask it to build an endpoint in a new API group and see how it does.
+Luke | 41:54
+Yeah.
+Robert Boulos | 42:34
+Isum. Okay, I see.
+What details about it.
+Luke | 42:58
+Awesome.
+Robert Boulos | 43:05
+Alright, this will be interesting. Yeah, using the SDK, I see.
+Luke | 43:16
+So what was it doing there? Deploy SDK CO where is it? Deploying it to the memory of this session.
+Robert Boulos | 43:23
+All perfect. They created it so it's deploying it to your end, to your Xan API group. So, yeah, like I created an SDK that basically translates it, not just translates it, but provides rules essentially that says, "Hey, this is what this syntax is like, a language that adapts to what the AI is trying to do.
+Luke | 43:31
+With the S. St. K.
+Robert Boulos | 43:53
+So let's actually go into your workspace and let's just see what it made on Xano. It is like going to Xano. Sometimes it is actually the worst part. It's like, "Here we go.
+Luke | 44:10
+That it? Yes, that's it.
+Robert Boulos | 44:10
+Yep, most likely. Can just click inside.
+All right, there we go. Now it's looking like a legit endpoint. So you can see it uses the filters properly. It's actually using Xano to... Right, you can actually see that it uses the set objects right?
+Luke | 44:27
+Look at that. Yeah.
+Robert Boulos | 44:34
+If you have used... I mean, I think especially as somebody who uses building functions or endpoints quite a lot, I feel like you will notice the difference.
+Luke | 44:48
+I'm sorry, I got my family knocking at the front door here.
+Robert Boulos | 44:50
+I think that you will know it.
+Luke | 44:53
+Have a look at a function I built without your middleware layer.
+Robert Boulos | 44:58
+Sure.
+Luke | 44:59
+Let's do this one right. So, like you can see it's not using filters at all.
+Robert Boulos | 45:11
+It's not using filters. Can you see there's no idea that they really exist.
+Luke | 45:13
+It's not really like it's achieving my goals, but it's not.
+Robert Boulos | 45:17
+It's not achieving it.
+Luke | 45:18
+I reckon if I got it to look at that one and say, "Now, rebuild it." I reckon it'll do it differently.
+Robert Boulos | 45:19
+Yeah, it would, it wouldn't even... I would say that, yes and no. Actually, maybe it would give it a try.
+Luke | 45:34
+Or if I gave it the same criteria, the same purpose, building a function to do XY and Z, which was a lot.
+Robert Boulos | 45:39
+Yes, yeah, but it would leverage filters.
+Luke | 45:42
+There was a lot more involved with building this one, right? I had to set up quite a bit, but yeah, I reckon it would probably achieve it in different ways, so it'd be interesting to compare the results, right?
+Robert Boulos | 45:49
+Yeah.
+Luke | 45:56
+I in my Claude here, right?
+I've got... If you go to the project and you go to "Let's do this one," right, you've got... Look, those are little documents, little lessons that we've learned, like DB has, right? So it kept using "DB has"
+Yeah.
+Robert Boulos | 46:24
+Yeah, I, this is so this is it like I what I might mention, I've basically created this is like I've basically created a language that it that adapts to whatever the heck because the AI seems like whatever, you know, we ask the AI to go build, right, and all of a sudden it starts to use.
+Luke | 46:25
+So then eventually... But you've basically covered all that ground. Right?
+Robert Boulos | 46:47
+Yeah, like it says, I'm going to start to try this language, that language.
+Luke | 46:48
+Yes.
+Robert Boulos | 46:49
+I'm going to try to throw everything, but I've noticed that it only tries a certain amount of stuff, right? So what I'm doing is I'm adapting to it. It actually doesn't even notice that it's making mistakes most of the time, because I automatically will...
+I have a whole bunch of different cases that say, "Okay, it's going to refer to updating a table." It's going to say possibly "DB update" or "DB edit" or "DB change" or "DB", but all of those I like...
+I've made a list of all the options that it uses and then just translated it into the right one. So it's... It's a way of making sure that the AI can't mess it up anymore in a lot of ways, because it's automatically switching over and teaching at the same time.
+Luke | 47:33
+Look at this one, right? This was quite an early one, right? Function run, yeah... But it tried function... I didn't know what it was trying, right?
+Robert Boulos | 47:35
+Yeah, function run. Yeah, it's impossible.
+Luke | 47:40
+Function. I was like, "Call this function from that function", blah.
+It tried it multiple times, and then it basically said, "I can't do it, can't be done." And I'm like, "Yeah, I don't believe you.
+Robert Boulos | 47:51
+You're right, it's it.
+Luke | 47:53
+I don't believe you. Then all I did was set up a test one, a demo one, a function calling a function.
+I said, "Go look at that function." Then it went.
+Robert Boulos | 48:01
+Yeah, exactly, right.
+Luke | 48:01
+It literally went.
+Robert Boulos | 48:05
+And all of a sudden it's possible, it's like.
+Luke | 48:08
+And then it did it and then I said, "Write a document so you don't do that again. But you... yeah, so where it randomly tries... function requests or some other garbage, you're steering it. You're middleware steering it to the right cos and the right syntax.
+Robert Boulos | 48:22
+Yeah. It's basically taking it... It's turning it into the right syntax and giving it a message saying, "We've switched. We have switched this to fix it for you." Learn like in the future, remember this.
+But we have taken care of it for you. But this is what you should have put. So I just... And so it just keeps on, hopefully. I think what will be the proof? I think actually, I'm interested to see how it goes for you just in using the tool because you're the first person other than me who's built an endpoint with it.
+But the reason I'm sharing it really with you is because I do believe, based on my testing, that it will work. Well, I have no doubt that it will work for you much better than the way the current tool is with the building endpoints.
+There's no way that it goes backwards.
+Luke | 49:15
+Yeah, well, just looking at that one little endpoint, I think it's making better use of Xano than what it's been doing for me so far.
+Robert Boulos | 49:26
+Yeah, ask it. Let's do something. Let's maybe ask it for a more complex endpoint. Maybe we can just see how it does right now if we.
+Luke | 49:27
+I've eventually got there.
+Well, I'll tell you what, let me just go back. Let me. I don't want to pick a massive one. Right. Hello.
+Robert Boulos | 49:49
+[Laughter] I'm really happed.
+Luke | 49:50
+My baby boy has been sat next to me. Let's do a.
+Robert Boulos | 49:57
+Honestly, though, it's very encouraging to see how much you enjoy using the. The tool. I think... It's really encouraging. I think that I do agree...
+It's just something about how much... That it's a good way to build... I'm happy that you enjoy building. I'm happy you enjoy building with it, because it's something I'm trying to figure out, what it means for a tool because it's...
+Yeah. It's just a new way of building software, and it's kind of blowing my mind a little bit.
+I would just sell it and create a new endpoint rebuild, but yeah, just make it as an endpoint.
+I've this will be interesting.
+Luke | 51:09
+What was the name of that endpoint Group.
+Robert Boulos | 51:12
+Test something.
+Luke | 51:14
+Testc.
+Robert Boulos | 51:14
+Yeah, API group. Yeah. That's fine. Let's see. I mean, this is already.
+Luke | 52:01
+Yeah, that is exactly what it does.
+Robert Boulos | 52:02
+This is... This is already why I would want a developer even to use the tools, because at the very least, they should be able to... It helps them understand what the heck is going on more quickly.
+Luke | 52:09
+Well, this is it. Someone else has written this, that is exactly what it does, [Laughter].
+Robert Boulos | 52:15
+Yeah, right. So, it's like I would... Even if a developer doesn't want to build, they did it. It says it did it so you can go back into the group and check.
+Luke | 52:27
+Right? Okay, what's it doing there then?
+Robert Boulos | 52:28
+So let's go back. Jeez, did it? It just... exactly.
+Luke | 52:32
+I was just having a look at it.
+Robert Boulos | 52:34
+It's just pulling in those Anoscript and just wants to see what it made. Now, let's see. I'm kind of curious about what the heck it made.
+Luke | 52:39
+Let's have a duplicate. This page. Somebody called me here. Robert, Maco, are you okay?
+Robert Boulos | 52:47
+No worries. No worries. You give it, you can take it.
+Speaker 3 | 52:56
+Can I ask you?
+Luke | 52:57
+Yeah.
+Speaker 3 | 53:00
+I use a hair iron in my room, I think I turned it up, but I was like, "Did I turn it up?
+Luke | 53:08
+Okay, I'll go check. Yeah, we'll go check. I'll get it.
+Speaker 3 | 53:15
+It's, next to my bed.
+Luke | 53:18
+Yeah, so Charlotte's just walking up there now, she's going to have a look. Okay, no worries, Maco, we'll let you know. Thanks, bye. Right, so the original one was V2 closer and it's a guide to the API test.
+Robert Boulos | 53:30
+Alright, so let's go to API, yeah, exactly, let's see what the heck... made. Okay, seven functions. Interesting so what the heck did it make here? Create a variable with 16 filters. Let's click on that one, the bottom one, the very bottom.
+Yeah, this is the one I'm curious about. Okay, so it goes and it creates all of this. Let's see, this is what I would do. I would personally tell it now, just update it, like, just take it and be like, "Okay, make it better because the whole point is that now."
+So because now the point is that actually, it even... well, actually, that happens if I click run it's kind of interesting. Let's see. Unable to locate our... Okay, it doesn't have the thing. Let's do activity.
+Luke | 54:31
+This is why Jimmy does this. I got this when running it.
+Robert Boulos | 54:38
+True. And you know, this is the thing, it's that I now it's able to actually build and have it succeed and then iterate. So if it's able to more than likely 80% of the time succeed when it actually submits it, then it's able to then maybe do two or three cycles and then get you know.
+Luke | 55:02
+Yeah, this is quite normal for me to get some, you know. You know, I get an error like that traceback error type thing, or.
+Robert Boulos | 55:12
+This is interesting.
+Luke | 55:12
+Or I get a result and it's not what I'm
+Then the first thing I do is I just give it back and I say, "Look, this is what's happening.
+Robert Boulos | 55:16
+Yeah.
+Luke | 55:20
+And it says... It often says, "I know what's going on, but I don't always trust that, but at least it's having a [Laughter].
+Robert Boulos | 55:28
+And that's the thing, it's like, now, okay, let's go back and take a look at it, actually.
+Luke | 55:36
+Five eight, nine, is it really?
+Robert Boulos | 55:39
+So now it's going to be...
+I think what it did is it deleted it and made a new one. But let's see.
+Luke | 55:43
+Yeah, I got that. Jesus, I'll be really up there. It's still got sixteen filters here, but let's give it a run, let's have a little look.
+Robert Boulos | 55:49
+I'm at like 16,000. I think at minus is insane.
+Luke | 55:58
+It's only got a credit.
+Like, whoa, this happens from time to time.
+Robert Boulos | 56:02
+Just doing this thing. This is a Claude Desktop quirk.
+Luke | 56:08
+Yeah, it's fun. I just kill them off. Hold on, get credit.
+Robert Boulos | 56:09
+It can you do activate debuger?
+Luke | 56:16
+I know what it is. It's because we've put no input right line A. Let's do 14, let's do a balanced date of what's the date today.
+Robert Boulos | 56:21
+I see. Yeah.
+Luke | 56:27
+It is the 2025 dash 08 dash 29. And the description is. Test. The Turbo.
+Robert Boulos | 56:40
+Okay, let's do activate debugger and let's go. We'll close the C variable on the left side so we just see where it made it to. Okay, so just made the last one.
+Okay, so it says what argument? Six, so it doesn't like how it's empty, so let's do cancel. Let's click on let's go inside for create variable to look at.
+Luke | 57:08
+This one, o.
+Robert Boulos | 57:08
+Yeah, exactly. And then, let's just then it top right.
+And then it'll let you do it. And then let's just open this. And then let's come down versus calculation. I think that's the problem. Let's do let's just, like dis sayable it just for a second. Like with the eyeball, I think the.
+Luke | 57:40
+What, this one?
+Robert Boulos | 57:41
+Yeah, we'll just to say, but like overset, like we'll just hover over on set and we'll just do exactly.
+Luke | 57:47
+I see. Right, never, we go.
+Robert Boulos | 57:49
+And then we'll just do.
+Luke | 57:49
+Okay, yeah.
+Robert Boulos | 57:50
+And then we'll just click run on the top left again, click on save. Sorry, my bed.
+Yeah, and you do run text filter requires an integer float. What is it? Not like filter 6 argument one value filter 6 filter. Let's can we count from the top, which is the which one is number seven, because it'll just, but yeah, and then seven and because it'll start from zero, so this will be, can we click on that, actually?
+Luke | 58:20
+Two of these sets, yeah, 1234567, calculation, execute that. Now, that should be a date. That should be a date.
+Robert Boulos | 58:40
+That's all, yeah. Let's come down there and just click on or type out now again versus a timestamp. We'll just do now. I need to apply. Okay, that's interesting. Do save and run.
+Okay, five, six text filter requires a boolean string or float. Okay, this is the last weird thing. Let's click on it again. It's got to be one of those. This is actually something I've been trying to figure out.
+It's like this type of... There's another timestamp if you actually go back up on this line. I thought I saw one. If you just go up a bit more, maybe I thought I saw a... But there it is. No, that's a difference. Never mind. Text path, text input, credit line, DP... what?
+Luke | 59:42
+Very.
+Robert Boulos | 59:47
+Path text variable, calculated text function.
+Luke | 59:50
+This one here seems a bit weird. Executed at now.
+Robert Boulos | 59:53
+Yeah, that is weird. See? So where it says original, the function and then integer, the next one after the original function.
+Luke | 01:00:04
+The song.
+Robert Boulos | 01:00:04
+ID yeah, that's the one.
+Luke | 01:00:05
+Yeah.
+Robert Boulos | 01:00:06
+So we want to just disable that. I just out of curiosity and then do save and then run.
+Luke | 01:00:20
+Interesting. I'm not sure we fully understood what we're trying to achieve there. But anyway.
+Robert Boulos | 01:00:28
+Text filter requires integer. This is very strange. Activated a debugger. Text input requires a... Let's do... But let's click back on a response. I know it's for one of those... It's obviously one of those filters. I was trying to figure out which one it is. Now, at this point, let's do X top right and then open this. Why the heck is it just giving such a tough time? Function 84 and that's text... Let's go down a bit more. I'm curious about...
+Because these values themselves, they have the values behind.
+Luke | 01:01:23
+That balance you?
+Robert Boulos | 01:01:40
+Personally, what I would do is actually... This is one of those situations where I would have... I would even just ask the AI to iterate on it.
+That's why I'm trying to get.
+Luke | 01:01:49
+Yeah. Normally that's what I do. I would give it that.
+Robert Boulos | 01:01:51
+And then what I'm trying to do is build up... Actually, right now, one of the good things about the tool is that it actually pulls the schema automatically. So
+if you ask it, right now I'm actually using it, and I tell it, "Hey, I'm building out a frontend." And I tell it, and so it's able to pull out the information from it. So that is to say that what I'm working on is essentially a way for it to test, send the payload automatically, and then be able to see this and then iterate, right? Just figure out its own stuff out.
+So apologies for this. I have to figure it out.
+Luke | 01:02:29
+No, don't worry about it. Look, I've hit... It's rare, with a fairly complex one, for it to go straight away, but I... To be honest, I look at one and... I think I should have been a little bit more verbose with what I wanted it to do, because what he's doing and I feel some of it doesn't quite make sense anyway.
+Right? So the next thing I would go is I can see 16 filters in the seventh step of the process, right? Can you just explain to me what they all mean? Because some of them are referencing the original function.
+Robert Boulos | 01:03:04
+Yeah. exactly.
+Luke | 01:03:06
+I don't...
+I know I don't need that. The design of what I asked for has no purpose for any of this right?
+Robert Boulos | 01:03:10
+Yeah.
+Luke | 01:03:12
+So then I would say, "Well, get rid of it. It doesn't need to do that." Or I would just say, "No, I want to build a fresh one from start. These are the criteria, this is what I want you to build.
+So I will... I will have a play with this, and I will, just like I did with the other one, start with some small functions and then get a bit bigger, right?
+Robert Boulos | 01:03:34
+Yes.
+Luke | 01:03:34
+I've got so much work to do on both projects. Robert, I can very quickly start using this and then I'll let you know straight away because it was like when I first used your tools and started. I switched over to functions just from tables. I wasn't getting fairly messy results initially. It took a while for me to... all those different documents in the context and all that stuff is what led to getting much better results.
+Robert Boulos | 01:04:02
+No.
+Luke | 01:04:10
+Right?
+Robert Boulos | 01:04:10
+Yeah, for sure.
+Luke | 01:04:12
+And suspect that there is the distinct possibility that your middle middleware layer and then my little layer of stuff here might be competing. So I might just start a fresh project. I put the business logic in because that always helps, right?
+Robert Boulos | 01:04:33
+Sure, yes, yeah.
+Luke | 01:04:36
+I put a bit of a history of where we're at and then just get... Don't have any of this stuff in there.
+Right? Then I'm relying on your middleware.
+Robert Boulos | 01:04:43
+YP.
+Luke | 01:04:45
+Exactly, right, so I know it's cleaner, I know it's fresher, and then I can literally give it a trial and I'll let you know how it's going on, right?
+Robert Boulos | 01:04:55
+Yeah, cool, sounds good. I am happy to hear that.
+Luke | 01:05:00
+Me, just us. We're just whipping up one for an example.
+But it's quite... It's definitely the approach here is completely different to what it's been doing, right? I can tell you that now.
+Robert Boulos | 01:05:10
+Yeah. This is where it has once it has an awareness of the filters of Xano, which it does now. It's able to actually leverage them because Xano filters let you do way more things, right?
+It allows you to count or to do, you know, to transform time stamps, to transform data, to push into an array, to take all these types of manipulations that, now that the middleware makes it known to the system that you can build this way, that it allows it to do much more. I found, it's like a whole other side to Xano that I'm trying to put into the hands of the AI. I'm like, "If you build, you should be building."
+This is really all you can do. All the things that you can really do. So, yeah, I'm... It's tricky, obviously, but that's why... At this point, it's now 80%.
+You can see it just there are those few things that I'm just trying to refine, and yeah, no, I appreciate you just helping me out with that too. I'm yeah, let's... We'll be in contact again soon, obviously.
+Luke | 01:06:22
+When you've had a thought about the commercial side, if you want to just run it past right?
+Robert Boulos | 01:06:27
+Yeah, absolutely.
+Luke | 01:06:29
+You want to check it past me before you go public with your plans if you want that kind of feedback to say, "Hey, Lu, is this going to work?" Just write me a note. I'll have another call.
+Yeah, I'm happy to chat with you next week.
+Robert Boulos | 01:06:42
+I for sure. And that's what I'm trying to do. I'm trying to... I'm going to have a think about it for just the next day or two, and then... That's totally my intention, is to keep you on the same page because you're one of the people who are really heavily using the tools.
+So, really, whatever works for you is a very big part of my North Star. I'm trying to figure out what works.
+Luke | 01:07:10
+Two.
+Robert Boulos | 01:07:12
+And guess, would you be thinking of AX? I believe his name was right. Are you still working with him?
+Luke | 01:07:17
+A JAJ yes.
+Robert Boulos | 01:07:18
+AJ?
+Luke | 01:07:19
+So I would ultimately see... Because there are other people who work around me and stuff. I would want to... Not immediately, but eventually. Yes, certainly, I want AJ, but then there are a few other people I want to get on board, right?
+Robert Boulos | 01:07:35
+For sure.
+Luke | 01:07:35
+Some of the younger people that I think are probably... Are better spent training some young people how to do all this.
+Yeah.
+Robert Boulos | 01:07:43
+Yeah, for sure.
+Luke | 01:07:43
+And make a bit of a firm producing stuff for clients fairly quickly, right? With a young team. Obviously, there's the whole paying for X number of accounts and all that kind of stuff, right?
+So, it's not just the one account. Eventually, I'd be interested in potentially having multiple accounts, right? Not for me, but for staff and things like that, right? So, yes, I'm interested in any way helping you to develop your strategy and your costings.
+If I can help in any way, no problem, right? But, yeah, I'll let you. I'll let you have time to think about it. You let me know.
+Robert Boulos | 01:08:36
+Absolutely, for sure.
+Luke | 01:08:36
+And you know I can become your first customer. Then Robert... [Laughter].
+Robert Boulos | 01:08:42
+I appreciate it. And, yeah, I mean, like, it's interesting because, like I said, I was, I have, well, I have, clients. And I obviously, like, we've worked before and like, we've, you know, done a different type of consulting before and like, a different type of building.
+Luke | 01:08:55
+S.
+Robert Boulos | 01:08:58
+It's just I didn't I'm just very cautious all the time. Like, I'm just like I'm.
+Luke | 01:09:06
+Fair enough.
+Robert Boulos | 01:09:07
+Yeah.
+Luke | 01:09:07
+Well, look, even if you don't do a very public thing right now, right? If you just took on a small number of Keen beta users, right?
+Robert Boulos | 01:09:18
+Yes.
+Luke | 01:09:18
+And then said, well, look, I'm going to take a fee, and I'm gonna keep that community small for now, and I'm going to use you guys to help me develop this thing further.
+Right? You know, it doesn't have to. You don't have to go full public right now, Robert. You can go. You can do it in stages, right?
+Robert Boulos | 01:09:38
+For sure, I think.
+Luke | 01:09:41
+But up to you. It depends. If you want the millions rolling in, you've got to start somewhere.
+Robert Boulos | 01:09:42
+Yeah, exactly.
+Luke | 01:09:44
+[Laughter].
+Robert Boulos | 01:09:45
+I I think that if I'm going to do this, which just seems more and more like I will, that I will want to do it at a level that allows me to be able to solve the problem, which is that my ability to focus on it... Right? And so for me to focus on it, I have to... I have to push hard enough so that it's like, "Okay, this is doing well enough that I don't have to think about all the other things which are currently pulling me away and the other clients in the older work."
+But yeah, really, this is how we get there. So I'm going to totally let you know about where I land on that, and it's going to be something that just keeps giving you more of what you want.
+That's my total intention just to make you happier.
+Luke | 01:10:32
+Yeah, there was a guy in your call, the English guy, right?
+Robert Boulos | 01:10:32
+So I think then this will be good. Yes, shame.
+Luke | 01:10:40
+The last guy, yeah. Shane, right, Ducky shocked me. I did not know, to be honest, Robert, that you were putting these up on YouTube. I certainly wouldn't have expected someone to go, "I watched the video, and Luke mentioned blah, and then that's helped me out." That I was gobsmacked. I had no idea. I actually clicked on that video. What video?
+You slightly sped things up and stuff, right? I was like, "Look, terrible..." [Laughter] I hate myself on the video, so I might be a little bit more conscious about what I say now. Robert, it's all right, it's all good.
+Robert Boulos | 01:11:15
+Apologies, I didn't know that.
+Luke | 01:11:18
+It's good. Do you know what? I was like, "Wow. If I've helped someone, that's a great thing." right?
+Robert Boulos | 01:11:22
+That's the thing. Great. I've sometimes put up videos and somebody'd be like, "I watched that video." The one where you talk about this... I'm like, "God, I'm like, you watch the whole video. I'm like, "I can't even watch five minutes of that video without..." It's like, "I hate the way that I..." I would put it up. I'm like, I hate this video. People are gonna hate it.
+And then somebody will message him like, I love that video so much. So yeah, no, for sure I'm push.
+Luke | 01:11:46
+So that guy's Shane. Like, I kind of like he's in the UK. I was bit like, maybe. Maybe he might be someone I could talk to. Or that. Is he in your snappy community?
+Robert Boulos | 01:11:58
+He is, yeah, like he Shane is a great guy.
+Luke | 01:11:59
+He is.
+Robert Boulos | 01:12:02
+And that's part of why I'm even like and that's part of the offer, I suppose that I'm putting together, which is that like it's not just access to the tool, but I think like what benefits is like when I am able to bring in first of all, everybody together, but even bring in like Ray joins the causes too.
+Luke | 01:12:18
+Well, yeah.
+Robert Boulos | 01:12:18
+And like, you know, yeah, like when you start to put everyone, like, together.
+Luke | 01:12:18
+I was an impressive set of people on that call there. Robert... [Laughter].
+Robert Boulos | 01:12:24
+I think that in a lot of ways, it's not just the tool. We end up discussing everything, the latest stuff that we're all working on, which when you put that together, you really get it.
+I mean, you get the people who are you. If you were to put your developers into that conversation, I can't imagine that it wouldn't be a beneficial thing for them, and for you, it would basically be like, "Hey, just listen to these guys." Instead of me explaining it to you, they'll explain it.
+Luke | 01:12:54
+No, was interesting that everyone was approaching it from different points of view. Obviously, they've all got different interests in MC as a subject.
+Robert Boulos | 01:13:00
+Yeah, for sure.
+Luke | 01:13:06
+You know, Wes and his developer guy actually approaching the AI the APIs from Xano, right?
+Robert Boulos | 01:13:06
+And, yeah.
+Luke | 01:13:14
+And they went and at the end of it, maybe we'll try Snappy.
+Robert Boulos | 01:13:15
+Yes, yeah.
+Luke | 01:13:20
+[Laughter].
+Robert Boulos | 01:13:21
+He's like, okay, [Laughter] but, you know, well, and I like, yeah, there's, people who have messaged me and they are, you know, like, more invisible like, but they use a tool very heavily, and then they just don't.
+But they're just not social media people. Like they just... They only want to... But to say that what they are, they're very hardcore developers. So that was encouraging. So they're not... They don't have a LinkedIn, and they don't have anything, but they... So they're wrapped up in their towel in the dungeon somewhere.
+But they use a tool. So that's what makes me feel optimistic that I think the conversations that we're having with that group would blend themselves well to putting your developers into that conversation.
+I think then, we'd do it. It would be productive, that would be for sure.
+Luke | 01:14:16
+Cool. All right, well, I might try and find Shane on Snappy School and reach out to it.
+Robert Boulos | 01:14:21
+Yeah, for sure.
+Luke | 01:14:25
+[Laughter] Yeah, cool.
+Robert Boulos | 01:14:25
+And we'll be in contact soon. I will let you know what I land on, but it'll be something that makes everybody happy first.
+Luke | 01:14:33
+Cheers. Robert. Thanks for getting back to me and helping me out today. Cheers.
+Robert Boulos | 01:14:36
+Yeah, of course. See, Luke.
+Luke | 01:14:38
+Thanks a lot.
+Robert Boulos | 01:14:38
+Have a good one. Bye.

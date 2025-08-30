@@ -35,25 +35,25 @@ const FAQ = ({
       id: 'faq-2',
       question: 'How secure is my data?',
       answer:
-        "Your data security is our top priority. All connections use OAuth 2.0 and API key authentication, your Xano workspace remains isolated, and AI only builds what you explicitly request. We follow Xano's security best practices and never store your data.",
+        'Start with read-only credentials if you want (like West\'s healthcare team did). OAuth 2.0 when you\'re ready. Work in a branch to test safely. We never store your Xano data - everything runs through your own API keys. Nick from Australia even booked a call first because it "seemed too good to be true."',
     },
     {
       id: 'faq-3',
-      question: 'Do I need to change my Xano setup?',
+      question: 'What makes this different from other AI tools?',
       answer:
-        'No! Xano AI Developer works with your existing Xano workspace exactly as it is. No migration, no new platform to learn, no changes to your current APIs. Just connect and start building faster with AI assistance.',
+        'TypeScript SDK with guardrails + middleware feedback loop. While other tools generate broken XanoScript with green expressions everywhere, ours uses Xano filters properly, leverages all 200+ operations, and gives the AI actual error feedback to fix issues. Result: "80-90% first-try success" (Robert).',
     },
     {
       id: 'faq-4',
-      question: 'What can AI build in my Xano workspace?',
+      question: "Who's actually using this?",
       answer:
-        'AI can create complete API endpoints, design database schemas, implement authentication flows, set up background tasks, create webhooks, build complex queries with joins and aggregations, add input validation, and implement error handling - all following Xano best practices.',
+        'Luke builds client platforms (even from a pool in Greece on his phone). Shane cut 4-hour tasks to 2 minutes. Nick runs automation in Australia. West & John use it for healthcare systems. Developers who tried building their own MCP tools switched to this. Even Ray Deck uses and recommends it.',
     },
     {
       id: 'faq-5',
-      question: 'How much control do I have?',
+      question: 'What are MCP Wednesday calls?',
       answer:
-        'You have complete control. AI shows you exactly what it plans to build before creating anything. You can review, modify, or reject any suggestion. All changes happen in your Xano workspace where you can see, test, and roll back anything.',
+        "Weekly live sessions where Robert builds endpoints, answers questions, and shows new techniques. Luke, Shane, West, Ray and others regularly attend. You'll see real builds, real problems solved, real results. Not marketing - actual development.",
     },
     {
       id: 'faq-6',

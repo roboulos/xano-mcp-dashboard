@@ -32,7 +32,6 @@ import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { TypewriterText } from '@/components/ui/typewriter-text';
 
 interface HeroProps {
   description?: string;
@@ -51,7 +50,6 @@ interface HeroProps {
 }
 
 const Hero = ({
-  description = 'Master AI-accelerated development with expert guidance. Join developers who are building 10x faster in Xano using our proven MCP tools and weekly training.',
   reviews = {
     count: 150,
     rating: 4.8,
@@ -103,25 +101,13 @@ const Hero = ({
                       textShadow: '0 2px 4px rgba(0,0,0,0.05)',
                     }}
                   >
-                    Stop struggling with{' '}
+                    The Framework for{' '}
                     <span className="gradient-text-ai bg-gradient-to-r from-orange-500 to-amber-500 bg-clip-text text-transparent dark:from-orange-400 dark:to-amber-400">
-                      AI development
-                    </span>
-                    .<br />
-                    Get{' '}
-                    <span className="gradient-text-database bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent dark:from-violet-400 dark:to-purple-400">
-                      weekly Xano training
+                      AI-Powered
                     </span>{' '}
-                    from someone who's{' '}
-                    <TypewriterText
-                      words={['actually shipping', 'building real apps', 'in production', 'getting results']}
-                      typeSpeed={80}
-                      deleteSpeed={40}
-                      delayBetweenWords={2000}
-                      cursor={true}
-                      cursorChar="|"
-                      className="inline"
-                    />
+                    <span className="gradient-text-database bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent dark:from-violet-400 dark:to-purple-400">
+                      Xano Development
+                    </span>
                   </h1>
                 </div>
 
@@ -132,24 +118,24 @@ const Hero = ({
                     opacity: '0.8',
                   }}
                 >
-                  Join the only Xano AI training program with live weekly calls. Watch me build real features, 
-                  debug your code together, and learn patterns that actually work in production. 
-                  Includes MCP tools that connect Xano directly to Claude/ChatGPT.
+                  Stop debugging broken AI code. Build in 2 minutes what used to
+                  take 4 hours. Ship with confidence using battle-tested MCP
+                  tools and weekly expert guidance.
                 </p>
-                
+
                 {/* Trust Indicators */}
                 <div className="mb-8 flex flex-wrap gap-4 text-sm">
                   <div className="flex items-center gap-2 rounded-full bg-green-50 px-3 py-1 text-green-700 dark:bg-green-900/20 dark:text-green-400">
-                    <span className="text-lg">🔥</span>
-                    <span>Last week: Built complete Stripe integration in 22 min</span>
+                    <span className="text-lg">⚡</span>
+                    <span>100+ MCP tools ready</span>
                   </div>
                   <div className="flex items-center gap-2 rounded-full bg-blue-50 px-3 py-1 text-blue-700 dark:bg-blue-900/20 dark:text-blue-400">
-                    <span className="text-lg">👥</span>
-                    <span>47 developers actively shipping</span>
+                    <span className="text-lg">🎯</span>
+                    <span>80% deployment success rate</span>
                   </div>
                   <div className="flex items-center gap-2 rounded-full bg-purple-50 px-3 py-1 text-purple-700 dark:bg-purple-900/20 dark:text-purple-400">
-                    <span className="text-lg">⏱️</span>
-                    <span>First API live on Day 1</span>
+                    <span className="text-lg">📅</span>
+                    <span>Live weekly training</span>
                   </div>
                 </div>
 
@@ -157,7 +143,7 @@ const Hero = ({
                 <div className="mb-8 flex flex-wrap gap-5">
                   <Link href="/dashboard">
                     <Button className="h-[58px] rounded-xl bg-gradient-to-r from-violet-600 to-purple-600 px-9 text-base font-semibold text-white shadow-lg transition-all duration-200 hover:scale-105 hover:shadow-xl hover:brightness-110 dark:from-violet-500 dark:to-purple-500">
-                      Join Next Week's Training Call →
+                      Get Instant Access →
                     </Button>
                   </Link>
                   <Link
@@ -169,14 +155,15 @@ const Hero = ({
                       variant="outline"
                       className="h-[58px] rounded-xl border-slate-900/10 px-9 text-base font-semibold text-slate-900 transition-all duration-200 hover:border-slate-900/20 hover:bg-slate-900/5 dark:border-slate-100/10 dark:text-slate-100 dark:hover:border-slate-100/20 dark:hover:bg-slate-100/5"
                     >
-                      Watch Me Build Live (Free Preview)
+                      See It Work in 2 Minutes
                     </Button>
                   </Link>
                 </div>
-                
+
                 {/* Urgency */}
                 <p className="text-sm text-slate-600 dark:text-slate-400">
-                  <span className="font-semibold">Next cohort starts Monday.</span> Weekly calls capped at 20 developers for quality Q&A.
+                  <span className="font-semibold">Join 40+ developers</span>{' '}
+                  shipping faster with AI they can trust.
                 </p>
               </div>
             </div>

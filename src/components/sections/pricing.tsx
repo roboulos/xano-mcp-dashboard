@@ -11,44 +11,46 @@ import { cn } from '@/lib/utils';
 
 const plans = [
   {
-    name: 'Xano AI Developer Free',
-    monthlyPrice: '$0',
-    yearlyPrice: '$0',
-    description: 'Perfect for exploring AI development in Xano',
+    name: 'Starter',
+    monthlyPrice: '$99',
+    yearlyPrice: '$79',
+    description: 'Perfect for solo developers and small teams',
     features: [
-      '50 AI builds per month',
-      'Basic Xano workspace connection',
-      'Community support',
-      'Access to example templates',
-      'Standard API generation',
+      '100+ MCP tools',
+      'TypeScript SDK access',
+      'Community Discord',
+      'Monthly office hours',
+      'Basic error handling',
     ],
   },
   {
-    name: 'Xano AI Developer Pro',
-    monthlyPrice: '$299',
-    yearlyPrice: '$249',
+    name: 'Pro',
+    monthlyPrice: '$499',
+    yearlyPrice: '$399',
+    description: 'Most popular - includes weekly training calls',
     features: [
-      'Unlimited AI builds',
-      'Complex workflow automation',
-      '5 expert hours per month',
-      'Custom function libraries',
-      'Background task automation',
+      'Everything in Starter',
+      'Weekly MCP Wednesday calls',
+      'Advanced middleware',
+      'Custom SDK patterns',
       'Priority support',
-      'Team collaboration tools',
+      'Cookbook templates',
+      'Direct Q&A with Robert',
     ],
   },
   {
-    name: 'Xano AI Developer Enterprise',
-    monthlyPrice: 'Custom',
+    name: 'Enterprise',
+    monthlyPrice: '$2k+',
     yearlyPrice: 'Custom',
+    description: 'Healthcare-grade security and dedicated support',
     features: [
-      'Everything in Pro plus...',
-      'Dedicated Xano AI specialist',
-      'Private AI deployment',
-      'Custom AI training',
-      'Advanced security & compliance',
-      'White-label options',
-      '24/7 enterprise support',
+      'Everything in Pro',
+      'Read-only credential setup',
+      'Private onboarding',
+      'Custom security review',
+      'Dedicated Slack channel',
+      'SLA guarantees',
+      'White-glove migration',
     ],
   },
 ];
@@ -61,12 +63,11 @@ export const Pricing = ({ className }: { className?: string }) => {
       <div className="container max-w-5xl">
         <div className="space-y-4 text-center">
           <h2 className="text-2xl font-semibold tracking-tight md:text-4xl lg:text-5xl">
-            Investment That Pays For Itself
+            Less Than One Hour of Debugging
           </h2>
           <p className="text-muted-foreground mx-auto max-w-xl leading-snug font-medium text-balance">
-            Save thousands in training costs and preserve decades of Universe
-            expertise. Start free, scale with your needs, protect your
-            institutional knowledge.
+            Save hours of debugging time every week. Get live training, proven
+            tools, and a framework that actually works.
           </p>
         </div>
 
@@ -75,7 +76,7 @@ export const Pricing = ({ className }: { className?: string }) => {
             <Card
               key={plan.name}
               className={`${
-                plan.name === 'Universe Expert Pro'
+                plan.name === 'Pro'
                   ? 'outline-primary origin-top outline-4'
                   : ''
               }`}
@@ -86,22 +87,24 @@ export const Pricing = ({ className }: { className?: string }) => {
                   <div className="space-y-1">
                     <div className="text-muted-foreground text-lg font-medium">
                       {isAnnual ? plan.yearlyPrice : plan.monthlyPrice}{' '}
-                      {plan.name !== 'Universe Expert Access' &&
-                        plan.monthlyPrice !== 'Custom' && (
+                      {plan.name !== 'Enterprise' &&
+                        !plan.monthlyPrice.includes('Custom') &&
+                        !plan.monthlyPrice.includes('+') && (
                           <span className="text-muted-foreground">
                             per month
                             {isAnnual ? ' (billed annually)' : ''}
                           </span>
                         )}
-                      {plan.monthlyPrice === 'Custom' && (
+                      {(plan.monthlyPrice === 'Custom' ||
+                        plan.monthlyPrice.includes('+')) && (
                         <span className="text-muted-foreground">pricing</span>
                       )}
                     </div>
                   </div>
                 </div>
 
-                {plan.name !== 'Universe Expert Access' &&
-                plan.monthlyPrice !== 'Custom' ? (
+                {plan.name !== 'Enterprise' &&
+                !plan.monthlyPrice.includes('+') ? (
                   <div className="flex items-center gap-2">
                     <Switch
                       checked={isAnnual}
@@ -131,15 +134,13 @@ export const Pricing = ({ className }: { className?: string }) => {
 
                 <Button
                   className="w-fit"
-                  variant={
-                    plan.name === 'Universe Expert Pro' ? 'default' : 'outline'
-                  }
+                  variant={plan.name === 'Pro' ? 'default' : 'outline'}
                 >
-                  {plan.name === 'Universe Expert Access'
-                    ? 'Start Free'
-                    : plan.name === 'Universe Expert Enterprise'
+                  {plan.name === 'Starter'
+                    ? 'Start Building'
+                    : plan.name === 'Enterprise'
                       ? 'Contact Sales'
-                      : 'Start Pro Trial'}
+                      : 'Get Pro Access'}
                 </Button>
               </CardContent>
             </Card>

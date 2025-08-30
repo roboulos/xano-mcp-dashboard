@@ -17,60 +17,49 @@ import { cn } from '@/lib/utils';
 
 const items = [
   {
-    quote: "We're misusing Mainline as a CRM and it still works!",
-    author: 'Amy Chase',
-    role: 'PM',
-    company: 'Mercury Finance',
+    quote:
+      "Built my client's entire platform from Greece - by the pool, on my phone. The AI handles Xano better than manual coding now.",
+    author: 'Luke',
+    role: 'Platform Builder',
+    company: 'UK',
     image: '/testimonials/amy-chase.webp',
+    context: 'Remote development success',
   },
   {
-    quote: 'I was able to replace 80% of my team with Mainline bots.',
-    author: 'Jonas Kotara',
-    role: 'Lead Engineer',
-    company: 'Mercury Finance',
+    quote:
+      'What used to take 4 hours now takes 2 minutes. Created a pattern library to make it even faster.',
+    author: 'Shane',
+    role: 'Developer',
+    company: 'UK',
     image: '/testimonials/jonas-kotara.webp',
+    context: '120x speed improvement',
   },
   {
-    quote: 'Founder Mode is hard enough without having a really nice PM app.',
-    author: 'Kevin Yam',
-    role: 'Founder',
-    company: 'Mercury Finance',
+    quote:
+      'Was skeptical at first, but after seeing it work live, I knew this was game-changing for Xano development.',
+    author: 'Nick',
+    role: 'Automation Developer',
+    company: 'Australia',
     image: '/testimonials/kevin-yam.webp',
+    context: 'From skeptic to believer',
   },
   {
-    quote: 'I can use the tool as a substitute from my PM.',
-    author: 'Kundo Marta',
-    role: 'Founder',
-    company: 'Mercury Finance',
+    quote:
+      "Started with read-only access for our healthcare client. Now it's our primary development workflow.",
+    author: 'West',
+    role: 'Healthcare Tech',
+    company: 'Enterprise',
     image: '/testimonials/kundo-marta.webp',
+    context: 'Enterprise-grade security',
   },
   {
-    quote: "We're misusing Mainline as a CRM and it still works!",
-    author: 'Amy Chase',
-    role: 'PM',
-    company: 'Mercury Finance',
+    quote:
+      '80-90% success rate on first try. The SDK and middleware make AI development actually reliable.',
+    author: 'Robert Boulos',
+    role: 'Creator',
+    company: 'Snappy MCP',
     image: '/testimonials/amy-chase.webp',
-  },
-  {
-    quote: 'I was able to replace 80% of my team with Mainline bots.',
-    author: 'Jonas Kotara',
-    role: 'Lead Engineer',
-    company: 'Mercury Finance',
-    image: '/testimonials/jonas-kotara.webp',
-  },
-  {
-    quote: 'Founder Mode is hard enough without having a really nice PM app.',
-    author: 'Kevin Yam',
-    role: 'Founder',
-    company: 'Mercury Finance',
-    image: '/testimonials/kevin-yam.webp',
-  },
-  {
-    quote: 'I can use the tool as a substitute from my PM.',
-    author: 'Kundo Marta',
-    role: 'Founder',
-    company: 'Mercury Finance',
-    image: '/testimonials/kundo-marta.webp',
+    context: 'Built from experience',
   },
 ];
 
@@ -87,15 +76,13 @@ export const Testimonials = ({
         <div className="container">
           <div className="space-y-4">
             <h2 className="text-2xl font-semibold tracking-tight md:text-4xl lg:text-5xl">
-              Trusted by product builders
+              Real Developers, Real Results
             </h2>
             <p className="text-muted-foreground max-w-md leading-snug font-medium">
-              Mainline is built on the habits that make the best product teams
-              successful: staying focused, moving quickly, and always aiming for
-              high-quality work.
+              From our weekly MCP Wednesday calls and active community.
             </p>
             <Button variant="outline" className="shadow-md">
-              Read our Customer Stories <ArrowRight className="size-4" />
+              Join MCP Wednesday <ArrowRight className="size-4" />
             </Button>
           </div>
 
@@ -127,13 +114,20 @@ export const Testimonials = ({
                           <blockquote className="text-primary font-sans text-lg leading-none! font-medium md:text-xl lg:text-2xl">
                             {testimonial.quote}
                           </blockquote>
-                          <div className="space-y-0.5">
-                            <div className="font-semibold">
-                              {testimonial.author}, {testimonial.role}
+                          <div className="space-y-2">
+                            <div className="space-y-0.5">
+                              <div className="font-semibold">
+                                {testimonial.author}, {testimonial.role}
+                              </div>
+                              <div className="text-muted-foreground text-sm">
+                                {testimonial.company}
+                              </div>
                             </div>
-                            <div className="text-muted-foreground text-sm">
-                              {testimonial.company}
-                            </div>
+                            {testimonial.context && (
+                              <div className="text-muted-foreground text-xs italic">
+                                {testimonial.context}
+                              </div>
+                            )}
                           </div>
                         </div>
                       </CardContent>

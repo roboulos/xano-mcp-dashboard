@@ -1,0 +1,448 @@
+Robert Boulos | 00:00
+Hey, Luke, how are you doing?
+Cool, I'm good.
+Luke | 00:07
+Recording stopped.
+Robert Boulos | 00:07
+I'm just going to restart the recording just so I can actually have it locally recorded. So one second, let me see where the heck it is because the record is on the computer.
+Luke | 00:20
+Recording in progress.
+Robert Boulos | 00:20
+All right, cool or how you doing co?
+Luke | 00:30
+I tried several things. After your last MTP Wednesday that I attended two weeks ago, I switched over to my app client to INPC and I'm working there.
+Robert Boulos | 00:41
+Yes.
+Luke | 00:50
+I was in Greece last week by the pool.
+Robert Boulos | 00:51
+Okay, nice. Thank yes.
+Luke | 00:56
+Working very early in the morning when there was no one around and a little bit in the evening, occasionally, even on my phone.
+Right? So I got.
+Robert Boulos | 01:02
+Nice.
+Luke | 01:02
+I got everything working on my phone, too.
+Robert Boulos | 01:06
+I think you like some of this stuff, by the way.
+Luke | 01:06
+And. Yeah, I put a post up. Right, check the post.
+Robert Boulos | 01:11
+I by the way, I really loved the post.
+Luke | 01:12
+[Laughter].
+Robert Boulos | 01:13
+I thought it was... I think there's no other... There's no better way really to describe the core idea of it.
+I think that really sums up in a nutshell, right? It's like the concept is... You know, be doing whatever the heck you want to do and be having something else good happening in the background. Hey, West. How are you?
+Speaker 3 | 01:35
+Yeah, it's Robert, how are you doing? Hey, Luke, how are doing?
+Robert Boulos | 01:38
+Good, great.
+Luke | 01:39
+Hey. West. You're right.
+Robert Boulos | 01:43
+I'm happy you guys know each other.
+Luke | 01:46
+We met on [Laughter].
+Robert Boulos | 01:47
+Okay, cool. I actually think... So one thing I was working on just now was finally getting the MCP tool to build endpoints more reliably in a better way than it's ever been built before. Finally.
+It was something that was... By the way, West, my apologies. I've just been slow to get back to my emails. I was actually meeting... It was always on my list.
+Then I just kept getting sucked back into this whole MCP thing. Hopefully, you guys will be happy with the progress. I'm going to just actually show my screen and I'll show you. We'll probably just put it this way.
+If you guys are using the MCP tool, then you'll probably know that it doesn't always build endpoints on the first shot. That's something that I've been... Not just a first shot, but even the way that it will build it will be in some kind of crazy way. It just requires refining and all that stuff.
+So, these endpoints were all built by the MCP tool. I don't know if you can tell, but basically, it just leverages filters really well now. It leverages the way that it builds in a way that looks more like a human being actually developed it rather than just having a green expression syntax everywhere.
+So, if I look at, for example, "Get Order Details", this is what I've been trying to drive towards: to control the AIIS output so that we're able to have it. I can look at this and I can say, "Okay, I don't..." It's not creating a bottleneck for me.
+It's getting that much closer to... Okay, this is 90% of the way there. And then truly, it's like only 10% left of just refining it. So this was behind all of this, there's like a thousand headaches.
+But I can show you actually, let me just see what this is. Where am I? Okay, here, let me move this. I can say, "Okay, we are... going to record myself actually going to say, 'Okay, we are doing a demo.
+Please go ahead and build into a new API group in Workspace 8, create some endpoints, and just show me what you can do.'"
+Okay, so we'll see. Live demonstrations are always fun, but let's see. Okay, so it's going... It's creating a group as it usually does. 12:02 for the Snappy demo and Workspace 8. Let's see.
+Okay, cool. So the way this works, basically, what I did was I created an SDK for Xanoscript. Essentially, I went to Helenbeck. I decided that because the thing is that I think that the realization for me was that essentially what really helps in development is to get feedback, right?
+You can see right now, it failed. But what we don't see is that it received feedback on why it failed. It's getting... There's now a step in between that provides link checking essentially. So now, because when it's just raw Xanoscript, it's a language that doesn't have any feedback for the AI in terms of what actually went wrong,
+I did something. I created, as a JavaScript language, an abstraction on top of it in the form of the SDK, that tells it, "Okay, if this went wrong, then you're supposed to switch this or you're supposed to switch that."
+Then it will basically be able to take that feedback and refine what it's doing in terms of how it's using the SDK. It prevents it from even being able to deploy anything that is ugly, essentially.
+I've removed the options for it to even... I put it on guardrails, essentially. So that's okay, you can create this. If you try to create an object, it's going to automatically apply filter syntax. You can see this was a longer one, and just now it deploys right.
+Well, this is good. Basically, I've spent quite a bit of time trying to get it to this point, which is where I realized that this is where it could actually succeed this way.
+So if I go and I look into 1202, let's see, let me come into 1202 and I look at some of these endpoints. So this is quick order. I can see that the way it created it, it just used this, for example, multiply right, and it multiplied by the quantity. The AI has no idea the way that it tried to get this to be built was almost 100%. I could tell it tried to literally just put here's a value, here's a product price,
+and we're just going to multiply it by quantity, right, with just the asterisk. But that doesn't... But so what the SDK does is it automatically will convert that into pipeline filter syntax and array. Thank you. Pleasure to have you here, very nice to see you.
+And yeah, that's it. It was a shout-out to West. So, Ray, the thing I was just actually covering was just that I got the MCP tool to be building in a way that I think is just lowering, let's say, the bottleneck. It goes and creates something,
+but then it's not recognizable to us, and it just looks ugly. Now it doesn't do that anymore. The SDK essentially has been created so that it leverages the filters properly and does all kinds of auto conversions.
+So if it sees like there's a price and it wants to do a star, like an asterisk to multiply, it'll change it automatically into pipeline syntax and drop it in that way. And so when I look at, for example, these endpoints, these were all created actually by AI in one shot.
+Now, it just only takes a couple of tries, and then it'll go through this linting cycle and just get this feedback from the middleware. Then you'll get something like this, which is when I look at this, I can see that it's using filters properly to build up these objects like this. This works, sits nicely
+in Xano. It's true for pretty much every part of this, which means less rework and probably I don't really know yet what this will lead to, honestly. It's like the thing that just builds more things.
+So which is the whole point, it's like what... I think that's the part that I'm looking forward to, Laura, is what will be built with this that now that this hopefully will even streamline it quicker.
+So, yeah, that's my quick sermon on what's going on with this right now.
+rhdeck@gmail.com | 10:32
+Cool. So I'm curious because you've been more plugged into how the API works and what you're able to build to the MCP servers, are you able to build MCP servers with the MCP server?
+Robert Boulos | 10:46
+You know, I've actually been thinking about that because I think, yes, you can absolutely, and that's a very interesting point. It's now at the point where this probably would be the easiest way to build an MCP server. Actually, if I think about it,
+any of these... If I come over and I click into MCP servers on the side here and I click on add MCP server, if I'm able to create those functions very easily, then it's essentially just one click to turn them into tools for an MCP server.
+Then it's just like MCPS all the way down. But yes, I would.
+rhdeck@gmail.com | 11:32
+Well, actually, I was wondering whether your MCP server, whether the metad API that your MCP server uses is able to access those components directly, or whether it requires that manual step in the middle.
+Robert Boulos | 11:39
+YP manual. I think that's the part. Yeah. Still requires you to go in. Which, as far as... Yeah, but to answer, yes, that final stage of it...
+So, you'd have to come in and use it as an AI tool obviously and just save it. But, yeah, it doesn't let you do that programmatically. Yeah, for sure.
+Luke | 12:06
+Okay, that's.
+rhdeck@gmail.com | 12:07
+Helpation.
+Robert Boulos | 12:11
+And so, yeah, we'll see. I'm just testing it a little bit still, but I finally had to break through with it recently.
+So, I'm happy to put this out there because I know that there are some people who the number one complaint I get about the tool is that it takes too many tries to build functions like. And so this is like a direct response to that part of it.
+I there's the outside feedback that I'll get every once in a while, but it usually just one or two people will say that. But when it comes to functions, I doubt that's something that always keeps knocking back on my door.
+It's like in Fight Club. If you want to join Fight Club, you've got to stand on the porch for three days. And this one's been standing on the porch for a while. So, yeah, it's almost there, and John and Shane welcome.
+rhdeck@gmail.com | 13:14
+Go.
+Robert Boulos | 13:18
+John, I believe this is the first time you've dropped in to make your acquaintance.
+Speaker 5 | 13:27
+Yeah. Nice to meet you guys. I was a little late. I had to get the web version of Zoom, but I made it.
+Robert Boulos | 13:32
+No, worse co and Shane, I don't Shane, I think I know you just missed a maybe just the beginning of the talk, but I think but I'm going to be releasing soon.
+Speaker 5 | 13:37
+I'm really interested and excited.
+Robert Boulos | 13:48
+Essentially some improvements like that will finally be realized by the MCP tool in building endpoint functions like more reliably in a proper way. But yeah, let's we can just go around. I believe. Lu, you were the first one in here. Let's turn it back to you. Was there anything on top of mind? Any questions about MCP? I know you used the tool itself.
+So please let me know if you have something on top of mind.
+Luke | 14:24
+Awful. Just, like I'm I am building functions every day with this thing now, right? And finding it easier and easier to use.
+Robert Boulos | 14:32
+True.
+Luke | 14:36
+When I get issues, I get it to examine it, document things so it can refer to those documents as we go.
+Yeah, I've hit a couple of little bits. The odd tool that you've built that doesn't seem to work right? So the last time I was on this call, I said some formal way of letting you know something ain't working.
+I think if you try to rename a function, Robert, it won't work.
+Robert Boulos | 15:05
+Rename a function.
+Luke | 15:05
+It uses a tool called "rename function", and it just won't work there. There are things like that.
+Robert Boulos | 15:09
+Yeah, okay, point taken.
+Luke | 15:15
+So a way to let you know this ain't working would be a great thing you hit them.
+Robert Boulos | 15:21
+This might be the way. This might be the way. Right here as you speak, but.
+Luke | 15:29
+So I've got a small list of them, Robert.
+Speaker 6 | 15:31
+Maybe I'll just.
+Luke | 15:32
+Whittle them off, but yeah. Enums enum values are still current. Addam and renaming functions.
+Robert Boulos | 15:39
+He bread of.
+Luke | 15:41
+There's little bits that don't work, but for the most part, I work around it, and for the most part, I'm producing what I need to produce.
+So to be honest, I think the only other thing I would say is when you're coming to make changes, please be aware I'm having great success with the tools as they are.
+Robert Boulos | 16:01
+Yeah, I'm leaving it for right it.
+Luke | 16:02
+So let's not interrupt a successful workflow and introduce changes in a nice, respectful way. Don't mess me about these. Is there any way that we can... I think last time you mentioned that you might introduce this middleware layer as a separate release so that we could try it separately from the existing MCP tools potentially.
+Robert Boulos | 16:25
+Yeah, exactly. I think that probably the best... My approach is to just make previous versions continuously available. So I think that way you get the best of both worlds because there will always be...
+I think just because of this, and this is something that I've just come to my own realization about, is that there's a lot of stuff in the tool because it's so widespread. There are over one hundred tools in it. The only way for me to find out is actually through people using it.
+So yeah, we're on the same page, though, about that previous versions will continue to be available. And, yeah, for sure, because there's been a few times when it's gone down.
+That's when I realized that it was actually something useful that I was building because my phone would blow up with messages all of a sudden, and that's how I would know it was down. I was like, "True."
+Okay, so people are actually using this thing?
+Luke | 17:26
+Lucky I don't have your phone. [Laughter].
+Robert Boulos | 17:29
+Yeah. Sounds good. Wes, how are you doing?
+Speaker 3 | 17:38
+I'm doing great. It's great to be here, excited to see this come together and improve it. I think, candidly, I think I tried the tool early or a couple of months ago when it was maybe less developed.
+At that point, I think I ran into the context window issue quite a bit. Then, I'm like, "But at that time, I didn't really understand fully what was possible per se."
+I'm like, "Isn't this just like programmatic API usage?" And so then we started building something internally. So John, here is on the rarely Def team, and he was the one I mentioned that was the full-time engineer on our team.
+So then we started developing some of these tools internally a little bit, but it was like we were just using two, I believe it was two of the beta API endpoints, which was the read function and the read API logic.
+That was helpful for my personal projects, and I believe, John, you're using that more on a day-to-day basis, I think. But we haven't done as much of the right stuff. I believe we tried to do that internally to create an MCP server that would write X analogic internally, but we ran into a lot of issues.
+So, yeah, I just want to jump in to see where you are. But Snappy and us, we're hesitant to just do programmatic write operations, I think in general. Our main core client is in the healthcare space, and we're just a little bit worried about jumping too quickly on something and screwing something up.
+Well, because it's built on beta endpoints and stuff, I feel I'm like, "Yeah, John, let's join this call.
+Robert Boulos | 19:36
+Yeah.
+Speaker 3 | 19:40
+I think that's the smartest people in programmatic development using the platforms as a service.
+So I joined this to be the dumbest person in the room and just see how I could better understand the space, issues, and the state of it.
+Robert Boulos | 20:00
+No, I appreciate you joining, and I'm happy to hear that you tried to use the endpoints yourself. I think that. I think, yeah, like that's really been my the cross, I suppose that I've been carrying for, like, the last few months was to try to get that under control. I would just say that when it comes to... If you're working in a client environment with a tool, one thing I've done is just create a new branch within Xano, and then that way you can just let it work in that other branch and then not have to worry about necessarily overwriting anything.
+But that is something that I'm happy to get into. I'm actually curious about your experience as well with what it was like to use to build the Xanoscript because not a lot of people have tried
+it. So that's actually... I'm curious about that.
+Speaker 3 | 21:04
+The experience is very short. It was just like, we tried a little. I tried a little bit on like, a personal project. I'm like, I think it. I mean it. RA I think like what you showed at the beginning of the call was like, this makes a ton of sense that you need like that there needs to be some guardrails, air checking, retry logic, and then that's a whole layer that I'm like, I don't we're not going to get into that. I'm always going to get into that now with a personal project, Jack, but I'm, like, really excited to see it.
+And, yeah, Ray, I realized that term programmatic development, it's kind of a little bit of a [Laughter] what it's kind of a what's the proper word, not an oxymoron, but like, it's it feels redundant and it's recursive.
+Robert Boulos | 21:38
+Yeah, I like that term, too.
+rhdeck@gmail.com | 21:51
+Yeah, it's rec. That's exactly what it is anyway.
+Speaker 3 | 21:56
+But yeah, super excited to be here.
+Robert Boulos | 21:57
+Nine, for sure.
+Speaker 3 | 21:57
+And Thanks for hosting, Robert.
+Robert Boulos | 22:01
+And I'll actually I'll show my screen, and I'll show you a bit of like to answer the question, like of like how do you did I add guardrails? Basically, the guardrails are an SDK that takes the XanoScript library underneath it and leverages it to expose it as this type of JavaScript-like language.
+And, it's like the lanes of the bowling alley; it just lets it balance, but without falling in the gutter. That's something that... It's just turned into a type of Rube Goldberg machine where there are so many different factors in it, and some parts of it are trying to convert, while other parts are trying to actually catch and then teach as feedback. Altogether, there are a bunch of mechanisms happening in it.
+But altogether, what basically is it? If I look at one of these routes, let me just take an example of how it actually turns into something. Let me find something that will show what the final verified logic looks like. Da. Let me complete.
+Sorry, I'm just trying to find something that will really show what the language looks like after. Okay, there's a good example. So, this is just what it turns into. Basically, to say that so that the AI is able to just say, "I want to create an endpoint."
+This is the name of it, this is the verb, this is the description, and this is the input, is it required or not? Instead of telling it, "Did you have to put a question mark?" For example, in XanoScript, all the decisions they make... I'm not sure, but it's not easy for AI to pick up on it because they just have no idea.
+So, describing it this way, by what it expects it leads to success quicker. It's translating this into XanoScript and presenting it in a way that this is what its intuition will lead it to.
+First, it's like the figures that this is the way that it should communicate, and then you're able to on this logic, it's only going to output a certain type of XanoScript. It's always going to handle it. It's not going to let, for example, if you create a...
+This is where I really found out about the little quirks of Xano and Xano script, which was in the sense that if you have a response that you're trying to return, you can have a plain object in the root of it.
+But if you want to start to use the set filters, you have to do that at the object level. If you don't do it that way, then it's going to break. So, what that day does is that it arranges all of that. It automatically converts things that just won't work and then converts other situations into what will represent itself better while presenting itself as this type of syntax for the AI to deal with.
+So, yeah, to say that this is what I ended up with as being the way that I went ahead with it... To be honest, it was a lot more work than I ever thought it would be.
+Speaker 3 | 25:49
+[Laughter].
+Robert Boulos | 25:51
+Like, I knew it was going to be this hard, I don't even know if I would have started, but
+I thought it was going to be a two-week thing. It turned out to take two months, but now I've gone to the point where I'm playing whack-a-mole where I've whacked enough moles, and there's only one mole that pops up every once in a while.
+So I'm like, "Okay, so I think this is getting to the point where it's even usable for me." So I'm turning around, and I guess that's the asset test for me. It needs to work for me.
+Now that I'm in that stage where I genuinely am turning around and saying, "Okay, I need to build... I'm here in Visual Studio, and I want to build something for two to actually help with delivering the service, right?"
+I'm building other MCP tools and I'm trying to coordinate all of that. And then I started to think, "Okay, let me try to use a tool." Then I told it, "Go build this endpoint." It would just build it perfectly. I'm like, "Okay, fine, now we're getting there, right?"
+This is where it becomes real. Then if it works for me and if I can click "Run" and they're working the first try, which is happening now, 80% to 90% of the time, where I can just click "Run" and it just works.
+I'm like, "Okay, then that's a very good feeling, as well, obviously." So maybe it was worth it. We'll see. But just to show you, I guess, transparently what kind of... what I'm going through to make it happen.
+I have this XanoScript library of components. You could see these are all the operations. So if I look at the filter, it's all the filters. I could write a whole book about filters on Xano.
+That's the thing about Xano: the way filters are related to functions and how they are very closely tied together. That's something that has to be handled in a very specific way for
+it to result in XanoScript. So it's the same thing for all the math operations, the objects, streaming, utilities, variables, and different stuff you can do.
+So that's where it led me down, Basically.
+Speaker 3 | 28:23
+Super cool scene.
+Robert Boulos | 28:26
+Sure. Yeah, I'm happy to. I know that again. I don't know if I would... What will really make me happy is when I really put it into everybody's hands and then just...
+Have it be something that benefits everyone. Because then it'll feel like something more real, and then everyone can tell me how it's messing up, and then we can start the next stage so we can see my problems evolve.
+rhdeck@gmail.com | 29:02
+You thought West made a really interesting point about the concern of having it go right on its own. That's actually a solvable problem. I think about it from a design point of view.
+It's like having a mode, or maybe it could even be the way a person registers for the toll in the first place that says, "Don't write what you want to do instead." Return the Xano script as text so that it is then getting displayed back to West. He can examine it, copy-paste, do what he's going to do with it.
+Putting it in a position where he can get more speed out of it without having to have nearly the level of trust. So it becomes like the read-only mode, and the read-write that allows him to get that, and just to build trust with it, right?
+Because as he sees, "Hey, this is good. You can move into the yellow mode.
+Speaker 3 | 29:55
+And say that read-only features like we're using them more just to see, wow.
+Robert Boulos | 29:56
+Fa.
+Speaker 3 | 30:02
+Like is INS, that step is just so... You said it, it develops a lot of trust validating. I'd say it's been insanely helpful and just magical to ask an AI, "Explain this thing I have in Xano for it to work like that." It was an "aha" moment for me.
+Robert Boulos | 30:30
+I agree. I think that. Yeah, having a read only mode for sure. I actually had somebody who called me yesterday from a set up, a meeting with me from Australia.
+And because I couldn't believe that this tool could work. And then, I don't know, he came to me through YouTube, and then he said he got to the point where he logged in, and then he just thought that the website looked too sketchy, so he needed to call me first.
+Just make sure that this was legit because he's like, "I'm not putting my API key in there." He's like, "But I'm so curious about this. I hope this is so real that I have to call this guy to know."
+I told him, "Yeah, it's a website. It's ugly. You can use it, but yeah, to say that, trust it." It is something that I can appreciate how it might be a little scary, and I'm always there where I'm sitting with it, but yeah, I can imagine that probably the goal is to just let it do its own thing and just let it build and so on.
+But as you said, there's so much to be gained even just from the level of discovery that allows you to do it through a project and just the amount that it's able to pull out of it in terms of context and information, at least.
+Well, I find it helpful, and when you use it, actually, I'm curious, do you use it in Claude code or like, what's the environment? Do you and John use it in.
+Speaker 3 | 32:08
+So we don't even... We don't use candidly, we don't use Snappy right now. We're just using those two beta endpoints and then some of the rest of the endpoints.
+Robert Boulos | 32:14
+True.
+Speaker 3 | 32:18
+I'm not sure if we're actually using... I developed something in a personal project, then John started developing something in our own internal client projects.
+It was just the... Yeah, programmatically reading the Xenoscript functions and API endpoints. I think if I went a step beyond that too. For us, it's like programmatically read the content or the request history of the test data environment. Once we start to run into bugs and things like that,
+that would be helpful. We have a lot of Convoy data in one of our current plant projects. So seeing that structure in our database or, sorry, in the actual database content of a test data source, it's just like the readability of seeing all those things is our first step.
+And, yeah, I think after this we're going to have to try out the Snappy and provision as Xano credential for not just reading it.
+Robert Boulos | 33:23
+Just to read, right? You could always change the credential. Actually, that's one way to do it. Don't have it, be able to write a around.
+Speaker 3 | 33:31
+And that's maybe the unsolicited thing is just showing people that they can get all that context while they're developing, I think, is huge.
+You don't have to get... I think that's why I actually revoked credentials. I'm like, "Actually, there's definitely something in my contract with my clients that I shouldn't be doing."
+So, I mean that not really half-joking, but I really like how even Xano does it, and they have a credential for web access. If you're using Web, that's just reading stuff that's not proprietary.
+So, in a similar way, I'm not sure if Web actually does say something like, "Well, we don't actually touch any of your production data.
+Robert Boulos | 34:13
+Yeah.
+Speaker 3 | 34:22
+We don't need access to that. Don't worry about that.
+Because what you're giving us doesn't even allow us to do that. If you set the credential properly. And I feel like that would be... I know I need to go to Zapp to do that and give that credential to Snappy.
+But just some... Maybe that would help others too, with the kind of... Instead of needing to call you. Well, don't worry about... You can just start with the read, and I don't have access to any of this other stuff.
+Robert Boulos | 34:47
+Yeah, true, it's actually something.
+Speaker 3 | 34:49
+Anyway.
+Robert Boulos | 34:53
+No, it's good advice, actually, and I think I like workarounds anyway because they buy me more time until I get around to it.
+But yeah, I appreciate that. I just appreciate you sharing your experience with it, and I recommend it if you just use the tool. I just want to mention one thing that came up. I'm working on a tool because I figured it might be helpful. It would just be something that automatically tests endpoints. I found that there was a way to see through that in the sense that I could automatically have that middleware step, which just pulls the schema automatically and then starts and puts together the payload automatically and does that CL request again, automatically and just packages all those three or four different steps and then just returns back to say, "Is this now a curl test?" CL verified because I noticed that was something that, when it comes back in again, building trust, there's this feedback loop that I'm trying, which is why I like using Xan. Because it does offer that graphic interface, but it would be nice.
+Speaker 3 | 35:48
+He.
+Robert Boulos | 36:02
+This is just in my something that is more. I'm still formulating and bringing it, you know, to the table.
+But yeah, to say that, you know, it would be nice if it was able to just say, hey, go test this endpoint and then just a tool call will happen. And it already did three or four steps and then tested it automatically. Again, I think in pursuit of that idea of like, "You can just let it do its thing and say, 'Hey, build this thing for me.'"
+Then part of it instead of saying, "Okay, test these endpoints that it has to figure out." Well, how do I formulate a curve across properly to make that to Xano? Then what do I need to make that? To formulate that request, I need a canonical ID from the API group, but it doesn't know all that stuff just by default, right?
+So just to make that easier. But, yeah, that just came to mind as you're mentioning like getting that information, like you're getting the results of what's happened and stuff like that. Yeah. I just want to actually... Just see you, John. Just want to ask you if...
+If there's anything on top of mind for yourself.
+Speaker 3 | 37:22
+Man.
+Speaker 5 | 37:25
+Well, first of all, looking at some of the screen sharing that you have of your SDK, I could see because we spent maybe a few hours of time so I could put together a really simple beta MCP server with the beta endpoints.
+And just with the time that I've spent with it, I can see that because Westson mentioned to me when he was playing with it, he was mentioning how workflow-heavy this sort of a design is because Xano, coupled so much of like you were showing those types... You know what I mean?
+Then filters. Then you have data types and you have filters that are restricted to data types. So that's coupled.
+Robert Boulos | 38:16
+Yes.
+Speaker 5 | 38:17
+And you... Ha. You just have so much heavy coupling and control over the process that I could see you and.
+Robert Boulos | 38:23
+And to context as well.
+Speaker 5 | 38:25
+And you codified it. So.
+Robert Boulos | 38:27
+Yeah, and to context as well. Because if you have certain filters that work for a certain type, but only if you create a variable, but then you want to have that same type, but it's the conditional error, then you're not... It's not going to be the same options that are available.
+Luke | 38:30
+Yeah.
+Success is a mari.
+Robert Boulos | 38:42
+And only way to know that is through the GI, because it'll tell you it'll restrict what you're able to do or not.
+Luke | 38:44
+Yeah.
+Robert Boulos | 38:50
+But Xanoscript doesn't provide any indication. So that was like something I was beating my head on the wall, you know, for a while.
+Speaker 5 | 38:54
+Yeah, I was gonna say I could see you've deep-dived a lot on Xano, definitely.
+Robert Boulos | 38:58
+Cause I just it's. I feel like I'm. I'm wondering if there's somebody out there who's working on the same thing at the same time. And I feel that because I know that I figure that I don't know another way to solve this. I figure that.
+But it kind of turned into just leveraging TYPESCRIPT basically because then it would that was really the if I was to say actually that credit to Ray really because Ray, you give me that amazing advice, which was to just fundamentally build it in TYPESCRIPT.
+And then it just was able to very early on create that positive feedback loop for me where, it was able to raise errors all the way down to like, okay, TOS from the library. Am I using the library properly? Am I using the SK properly? Then I'm going to leverage thek. Am I leveraging that properly and just go down the chain?
+And I don't know if this is honestly would have been possible if it wasn't if I didn't approach it with TYPESCRIPT from the beginning. So I just want to raise that. Like if there is all of this if fundamentally none of this would have worked, probably if I didn't make that one, decision.
+So thank you, Ray. For that, I appreciate it.
+Speaker 5 | 40:24
+Yeah. In the little bit of time that I've had to play with the one that we built outside of Claude code or inside of Klein or inside of Cursor or whatever. I've just been like... Because we don't have any workflow-specific tools,
+it's just all bare, barebones single tools on the MCV server that I built. So I've just been using prompt strategy to assemble tools in a particular order with some instructions, but seeing the level of detail and how tightly you've used TypeScript to really restrict, like you're saying, guidelines on what to produce, I think that's really useful information for me. [Laughter].
+Robert Boulos | 41:09
+Yeah, for sure. If that's something that you find yourself diving into, I'm always happy to discuss this topic because probably I can count on one hand how many people want to really talk about programming with TypeScript.
+It's not a lot of people, but yeah, happy to be of help and happy that you're seeing benefit from the tool. I would recommend it if you do feel comfortable using the tool.
+I think it would be helpful, but I will work on making it more trustworthy in whatever way it needs to be. It's pretty trustworthy. I mean, I haven't had to do anything bad for me personally, so, yeah, okay, go ahead.
+Speaker 3 | 41:59
+What I was going to say is the view documentation link on the... I just go into the mind marketer growth trust mindset, the view documentation thing is currently broken, so it's like... It did some of those.
+Robert Boulos | 42:12
+This, yeah, that website is going to be replaced. I have the whole new website ready.
+Speaker 3 | 42:18
+Okay.
+Robert Boulos | 42:20
+And so what you're going to say is... Probably, hopefully, in the next three days or so, that website will just disappear and then the new one will entirely replace it.
+Ray, I'm just reading your comment. Trus has made it of the little things. And Shane, appreciate your patience. Just wanted to say hello. And happy to know what's going on.
+Speaker 6 | 42:56
+Hello, yeah, thank you. Just want to start by saying you're beaming so much it's like a little baby and just will smile. It is really good. So I've been on a journey of using Snappy MCP. I started with Crawled Desktop. I was probably hitting it in 60% success rate. We've been creating APIs and custom functions.
+Then I came across the video with you and Luke, who's in this room, and he said he made a master book of how to get the AI to do things. So yes, I spent the last couple of weeks about three hours making a Snappy cookbook, which is about 1500 lines, and it blew my mind. Yesterday, when I added that cookbook to the AI, it created this function which probably would have taken me about four hours in two minutes.
+And yeah, it was blown away.
+Robert Boulos | 43:54
+Yes.
+Speaker 6 | 43:56
+I took on your suggestion about CED code and the resume function is one just amazingly its own.
+Robert Boulos | 44:02
+Yes.
+Speaker 6 | 44:08
+So before we called Desktop, I was having to back up the chats and then get that knowledge from the previous chat without compromising any of the quality into the new chat.
+That's really helped using the agents.
+Robert Boulos | 44:24
+9.
+Speaker 6 | 44:24
+But I think the only one question I do have, maybe changing the subject slightly, is that you touched on MCP I think you called it Playwright, where you had coed code basically open up the front end website and it was a clicking buttons and stuff.
+Robert Boulos | 44:40
+Yes.
+Speaker 6 | 44:43
+Just one question on that. Is that possible to work with live sites? Or that only local hosted.
+Robert Boulos | 44:52
+Live sites and local-hosted. I'll show you right now how you can do that. I will show my screen. I think it's actually one of the most useful MCPs that I've come across.
+So the Playwright MCP. So I'm just going to Google "Playwright MCP" and then I'm going to come over to the repo for it. Scroll down and I'm just looking for Cloud Code and here's the CL command.
+After I copy it, I always use Visual Studio with Cloud Code, but basically, this is how easy it is to install. If you click on the very top right, there's the toggle panel, which just opens up your terminal at the bottom, and then you just paste that one line of code, and that's it. I already have it installed here.
+Well, actually, let me just double-check. Maybe I do already have it installed here, but after you... Let me just... Whoops, if I just do it again... So it says it already exists, but that's it. Like once you hit that one command, it's already installed.
+So you would just close the terminal or whatever you want, and once you restart Cloud Code, it would be there and actually do... Then there's a whole bunch of interesting things that happen as a result of this. I've actually even used this to help with the development of the tool itself, because then I'm able to have it see the results of what it looks like on the front end. As in terms of what it is, how do we avoid green expressions and text, and move more towards the syntax that results in what leverages Xano as strength?
+But to say that, using your MCP Playwright tool opens Xano actually. Then we'll see. But yeah, this works with live sites, and it's really helpful, and it's able to even just resize the screen for itself.
+So let's say you're developing something and you wanted to... So for actually, there you go. Perfect. So it's actually probably not too long ago I signed in, so I can now just control it, and I don't even have to be on the screen, which is what I like about using Playwright.
+So it can take its own screenshots, it can resize into mobile, it can do different dimensions and all of that stuff and then enter that positive feedback loop. For I would say especially for something visual, you're able to get past that hurdle of it not fully understanding what its code is actually resulting in and whether or not it is actually an acceptable result. You're able to cut through that because you can have it actually view the results.
+Especially if you tell it to, if you set it up in a way that it is not the one who is evaluating those results, if there's another agent that evaluates the results because that's more unbiased. It tends to be happy with whatever it ends up with, no matter what it seems like. It takes a screenshot at the end.
+Speaker 6 | 48:17
+Hey.
+Robert Boulos | 48:17
+It's like, perfect, looks amazing. If you tell it that you're going to take that screenshot and then you're going to send it over to a Gemini 2.5 or send it over to GPT-5, which you can do using Consult 7, which is another MCP tool
+that you can install with just one line: you can start to have the AIIS grind against each other, and you get much better-looking results. I can get something that I put together using that technique, and it looks, I think, noticeably better than what you'd get if you didn't have it able to see what it's actually doing.
+So, yeah, I just wanted to hopefully that's helpful.
+Speaker 6 | 49:10
+Yes. I'm not sure if it will be usable in my use case. Could I run it just to see your feedback?
+Robert Boulos | 49:18
+Yeah, of course.
+Speaker 6 | 49:19
+So basically, I'm building in WeWeb, and the idea behind using Playwright was rather than me physically testing the front-end to ensure all the functions are working properly, I was hoping to be a bit cheeky and get AI to run a few tests just to ensure that the feedback is getting back while I'm doing something else.
+Robert Boulos | 49:41
+Yes, yeah, no, a hundred percent, even for this, I'll tell it.
+Speaker 6 | 49:44
+Is that possible? Is there something better or is that.
+Robert Boulos | 49:51
+Hey, open up Playwright. I want you to try to log in, and I want you to figure out because it has the MCP right for Xano, the snappy MCP so it's able to see what the backend is able to do now to actually try to log in from the front end and make it work right.
+It's able to massage the components into something that makes sense end-to-end. So yeah, I can't, the way that you described it, I think is probably the way I'm using it right now. I would say that,
+and I'm assuming that it's just going to... You mean like going to the deployed website? Even if it was actually you, you could even maybe even have it. I'd be curious about it. Using WeWeb itself. That would be kind of funny, but
+yeah, to say that in terms of logging in and testing and actually trying to use it, it can do that for sure.
+Speaker 6 | 50:50
+Perfect? I really appreciate it. Yeah, I just wasn't sure if it was more functionality towards actually hard coding like in Claude code and going back and iterating over the code itself and changing it, opposed to just testing features.
+But I'm going to give it a little try and see what happens.
+Robert Boulos | 51:07
+Yeah, for sure. I mean, yeah, definitely when it comes to testing features, I've made for example, there was I was working on like a chat type of interface, and I would have it go and actually use the chat.
+So it will come in, it will type in something and then hit enter, and it'll obviously appear there and then or it won't appear, and then it has access to all of the server logs which are being dumped into a file.
+And so it immediately knows, okay, I'm going to do a test, I'm going to do something. It won't work or it will work. Then I'm going to look at the server logs. The information has to be there, one way or another.
+Because everything is there, and so you enter like a loop that way, and you can get more done, I would say you can get the results that you want. Basically, it'll be able to figure it out.
+Speaker 6 | 52:00
+Jason, thank you.
+Robert Boulos | 52:01
+Yeah, of course. For sure, we're making it around fast today. We have. Yeah. Go ahead.
+Luke | 52:09
+Can I tell you a couple of happily snappy to snappy incidents, but just a quick couple.
+Robert Boulos | 52:13
+Sure.
+Luke | 52:16
+One was whilst I was sitting by the pool in Greece last week, one of my developers was off ill, and he'd been working on quite a large function. This is a big piece. It writes this sort of ledger record from pulling data from everywhere.
+It wasn't working 100%, and when I look at it, it's like, "Well, what the hell is this doing?" Right? So I just asked Snappy to Claude to take a look, break it down, and told it what I thought I knew. It thought it was doing and what it thought it was doing wrong, and it just helped me fix the problems, right?
+I mean, it was amazing. I wasn't able to pick up someone else's work and just finish it. Yeah, that was a great thing. Then, right, you asked about making MCP tools that you can't see the MCP stuff in Xano from what I can tell, but what I had done is I got a client system and built functions and endpoints and table items in this system, but I didn't want to load data through it, right?
+Robert Boulos | 53:06
+5.
+Luke | 53:31
+So what I did is I made some basic functions, which I then you can make that MCP tool call that function, right? So I made some functions just to load different static data points, different hierarchy data in the new app that I'm building, right?
+So then I had a bunch of MCP tools in the app cell, which I then added to Claude as well. Then the system I'm migrating from the old system, we're effectively rebuilding as a two-tier higher data hierarchy, right? Clients, campaigns. The new systems got four-tier credit line contract, a whole different structure to it, and I wanted to upload a whole load of client data and static into the new system so I could begin some sort of testing scenarios. It was so easy. I just gave it the two beta sheets from the old system. It had already built the MCP tools, so we didn't understand the hierarchy in the new system.
+It said, I think I know what to do with this. Do you mean this? I corrected just a couple of aspects, a couple of data points. Then I was able to very quickly import all the config from one system to another without any real ETL or programmatically redefining all that data and restructuring it to fit the new system.
+I just asked the AR to do it and they did it all in a day. It was lovely. [Laughter] And it's repeatable, right? I could just. [Laughter] So, yeah, I'm a big Snap snap.
+Robert Boulos | 55:15
+Yeah, happy snappy.
+Luke | 55:16
+You fan if you't tell seven.
+Robert Boulos | 55:20
+I like happy snappy stories. I was actually gonna ask how has it been. Luke with cause I know you have a you have an interesting situation because I like as you mentioned, you have developers and you're able to combine.
+You know, it sounds like in a really good way, like moving, like, to 80 90% of the way with the tool. And then you're closing this gap with this where this essential like human in the loop stepping in either yourself or. Or with another developer. I'm. It sounds like it's working out.
+I mean, I was gonna ask how it's going, but it sounds like you've.
+Luke | 55:56
+It's worth quite well, to be honest.
+Robert Boulos | 55:56
+Like it's.
+Luke | 55:59
+It seems to be almost dipping around where I like. I like the way Dad is now giving me my outputs and structuring my functions, right?
+As I've got different developers doing different things, you can see different styles in there. Yeah. So, I actually... It was a bit cheeky. I said, "Take a look at this function that somebody else had built, and I said, just redo it in your style." [Laughter] Make the output a bit better in the style that we've been producing so far.
+I actually now prefer the AI version to one of my developers. So, let's hope we didn't see this anytime soon. Yeah, that's it. It seems to be flipping round a little bit. I've yet to hit the point where...
+This is what I was expecting, right? I get that 80-90% that Ray likes to say. Yeah, then I need to go back to my developer. I need my human. So far, I've been managing to overcome all the obstacles building functions that far, and haven't had to get my developer inch.
+Robert Boulos | 57:19
+Nice and even with it's still a learning platform. I was going to ask you, is it still in the context? Have you found that it's helping basically with something that I, as far as I know, you can correct me if I'm wrong, but it's something meaningful. I would just say that in the sense that it's not just like a little hobby project, but it sounds like it's really helping with trying to build out a platform.
+Luke | 57:50
+Yeah, absolutely. We with the illness and the holidays in August and other things, you know, productivity took a nose dive in allit right across two separate projects, and, I was able to overcome a few obstacles to keep things going.
+Robert Boulos | 58:02
+M.
+Luke | 58:12
+And then this week we've been looking at well, I guess there's another question for you, Robert. Right, because I actually want to add I want to get my developers using it. So far as trusting my way, I've said so I know what the risks here, right?
+So I didn't give it to anyone else, it's me. I'm taking the risks. And now I'm quite confident with it and what it can do and how to stop it from making mistakes. Yeah, you know, it never deletes anything now, right?
+I've adamantly told it's to stop deleting things.
+Robert Boulos | 58:44
+Yeah.
+Luke | 58:47
+Yeah, [Laughter] and it doesn't do that. I put all that in my context and workflow and instructions, type information, right? So he knows the way I want to work.
+Yeah. So now I want to get other people involved. I want to expand the users here. Robert, I guess I want multiple accounts with you really, and I guess you need to think yeah.
+Robert Boulos | 59:12
+Is a good problem. I appreciate that more is that I can work on providing more, and that's what... For sure, this is definitely inspiring for it. Yeah, I'll take that.
+Luke | 59:30
+Shang brought up was using Claude the Desktop, right? So I'm still using both, quite like using the Desktop, certainly if I'm actually doing stuff by the pool on the phone, right?
+I had to upgrade from Pro to the next one, whatever it is, Max or whatever it is, right? Because I was hitting limits and.
+Robert Boulos | 59:49
+Yes.
+Luke | 59:51
+And either there's been an upgrade or that's what came with the package. I don't know, but today, I was able to reference other chats, the chats that ran out of memory.
+Yeah, and you hit the limit in a chat. So you got to abandon that chat, start another chat, and you can read other chats now. So now I can just go look at every chat in the project and understand what I've done so far on X and it goes, yeah, I've found three chats with that conversation in... Bup pop up and now it's just recontextualizing itself in a fresh chat.
+Robert Boulos | 01:00:16
+What's your time name?
+Luke | 01:00:26
+So I don't quite know whether that was an upgrade or part of my upgrade of the package, but that's actually... That was really beneficial today.
+Robert Boulos | 01:00:28
+Very interesting.
+Luke | 01:00:34
+[Laughter].
+Speaker 6 | 01:00:36
+Yeah, I did notice that the other day as well.
+Robert Boulos | 01:00:41
+Very cool.
+I'm you guys, thank you very much. I know we're just over the hour, but thank you really, just really for me, it's an inspiration to it's very motivating for me to just continue making this will better.
+So thank you all for coming, and we'll be doing it again next week. It will be a pleasure to see you guys here again. You all have a good one. See you. Bye.

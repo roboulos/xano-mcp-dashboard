@@ -1,0 +1,245 @@
+rhdeck@gmail.com | 00:00
+Meet UPP was a banger yesterday.
+Robert Boulos | 00:04
+No.
+rhdeck@gmail.com | 00:05
+Hey, Robert, we're just talking about you. We're going to talk about the state of MCP more broadly. Daniel was discussing how it's getting much more into the discourse capital D discourse.
+Robert Boulos | 00:11
+Four nice. Yeah, and that's why I'm joining here. It's actually to be part of the discourse as well. This has become one of my most interesting meetings of the week.
+rhdeck@gmail.com | 00:32
+You know why? It's because Daniel is here.
+Robert Boulos | 00:34
+Yes, for sure.
+rhdeck@gmail.com | 00:35
+Makes. No, that's a really good point. So are there any particular aspects of MCCA P that you're sort of seeing popping up more?
+Speaker 3 | 00:42
+DAO seeing tons of different products wanting to MCP their product or create an MCP out of it. Just this past week I saw, for example, Flutter Flow release their MCP server, and it has some pretty interesting tools for creating custom widgets or components, as well as validating, which I found interesting.
+rhdeck@gmail.com | 01:14
+Yep, that's pretty cool. I think it makes me think about what was the name of the adjacent visual feedback flutter tool that you showed me back at NCS? You just be the founder.
+Speaker 3 | 01:31
+Yeah, Noah.
+rhdeck@gmail.com | 01:33
+Noah. The, yeah, the ability to get some of that control without having to be inside the interface, it has a lot of merit to it. What you're doing, of course, with Snappy, Robert, and I've been seeing... The theme that I've been seeing in the last week...
+I think it had been happening before that, but it does see it. It feels like it's number twenty-three. I'm seeing it everywhere. The idea of having a configuration file and you edit that configuration file and then you press deploy and it goes...
+I mean, the issue of the idea, infrastructure as configuration, is not super new, right? Per se. But the idea of it being simplified and optimized to work with AI systems is a bit newer, and I'm excited about that. Hey, Tim. Hello.
+Speaker 3 | 02:34
+I'm really excited about all this configuration. I saw what you posted, not only with what was it, the ADK? Google's ADK was taking that approach as well as something else you had posted.
+rhdeck@gmail.com | 02:53
+But manifest build.
+Speaker 3 | 02:54
+Yeah, and I think it's really interesting because, if you think about it, no-code platforms are anyways, right? They're just configurations. So it'd be interesting to see whether those platforms end up capitalizing on that or not.
+rhdeck@gmail.com | 03:20
+We've got a summit work group of people making developer tools for Xano. It was my turn to present today, and I was shown behind the scenes of how it works right through the network tab, in terms of the relationship to the application backend.
+It's funny. When you look at the convert, which is the endpoint used for both the assistant and when you make a change in the Xenoscript view, how it actually sends something. The type it gives is function colon schema, giving up like this is what this thing is.
+It's a schema, to your point. It's all just... Of course, at some level, everything's just a data structure, but there's a level in here that is just tough. It's actually a skinny structure, right? As opposed to an abstract syntax tree, which is a super complicated data structure as you would do it through writing arbitrary JavaScript code. There's an aspect in here.
+Then I think the YAMLs partially tell that tale of how a lot of what we build, if it can be articulated using something, not just a generalized graph but something specific that's a tree, can be radically simplified in terms of our representation of it.
+That's what the animal can do. But it keeps them from going off the rails, you know, so much. Right? The other company I'm seeing going down that skinny route is... I don't know if you've played much with Xano yet.
+From Phil out. Phil Laken is actually a big fan. I think his new ROLEDEX thing is built on Xano, and the thing is, it's using a... Vibrant chat coding, friend-end type approach, but very skinny as for making Phil fill out forms plus this very specific kind of workflow, and because it's constraining, the thing that creates on the back end... It is, yeah, the hallucination risks go way down.
+So this idea of making it skinny in order to get a little bit more on rails... I found it to be pretty interesting as a side effect of this idea of the schema or the YAML orientation.
+Speaker 3 | 05:46
+It's really interesting that you brought up looking at the endpoints of how Xano works, because I've been building out the conversation parser for Session Bridge in order to import your data from Claude and ChatGPT, and their data structures tell a lot about how they think about things, which is really interesting.
+Yeah, it gives you... I hate the word, but it demystifies it, right? Because it gives you that firsthand look at how they're solving it.
+rhdeck@gmail.com | 06:26
+Yeah, there's a law. I don't know if it's Parkinson's law or whatever. It says, like, the structure of a company drives... It says, the structure of a company drives... You know what products are going to look like. I think there's a parallel that the data structure will tell you a whole lot about how the product thinks, which then tells you how the company thinks.
+So, yeah, good on you, man. I love getting down to that level of just looking at the data structures and the implied data structures. Because I'm a giant nerve, that's why. But just give me it.
+It gives insight. It's like an X-ray of the brain.
+Speaker 3 | 07:02
+Exactly. I realized I kept crashing my laptop every time I tried to open up my JSON file because it was so big. So, I ended up finding a tool, I think it's called "Diffbot", but it's just for viewing large amounts of JSON. It's a Mac OS app that I found, but now I can view it with a nice little clickable tree, just like a Canon Santa, without it crashing.
+rhdeck@gmail.com | 07:39
+That's fantastic. Would you mind sharing that? Over and premature adopter or something for sure? Yeah, I feel like I built a career on talking to coders and saying, "Go look at the data."
+But it does feel like I'm after maybe taking a break from that over the course of the last 18 months, I've been finding myself saying that a lot again because the data really doesn't seem to be driving the bus much more down.
+There's more insight to be gained from it. I am, right now, living a lot of my life with depth tools just to find out how these systems are thinking behind the scenes. I've learned you have to have DI tools on the beginning because so many of them... Xano, by the way, does this too. Are using web sockets, right?
+If you don't have it open at the very beginning of the life cycle, you won't find out about the web socket transport, which means you don't get your tap on it, which has been a little bit of an interesting thing. Tim, can I ask?
+But we're going around the room and asking a question like, "What do you know today that you did not know this time last week?" In the context of AI or MCP?
+Speaker 4 | 08:49
+Yeah, the context of AI/MCP is the keyword there because, as you know, I've been very in marketing land working on structure and so forth for what I'm working on now. But.
+rhdeck@gmail.com | 09:03
+But if I recall, too. I mean, let's not discount just because I said, "But if I recall," you know, adjacent to and working with quite a lot of data. For that question, I wouldn't want to discount the kind of work you're doing.
+Speaker 4 | 09:15
+Yeah. So I said this before this week, and I'll reiterate that the thing that keeps coming up for me that is the "aha" this week has been how much tools are speeding up to just fill in the gaps. You don't have to customize as
+I'm looking at marketing operations, and I'm like, "Well, okay, should I build this in-house? Should I build it in NA?" Then I go, "Here's somebody that just said a tool that does exactly what I need. Why am I building this when there's a tool I could just turn on for what I need to do?" Get it done right away. I always... Having the capability to build things out is always nice because then you can go back and say, "Okay, if I just use this tool right now, let's see how they did the best practices and what they did and where it's not right for me, and then we can customize and build that out later."
+So my "aha" this week is the thing I know this week is that I should look... Just like I would with a SaaS tool. Just like I would with any kind of basic document feature that I want for working in a document or a dev feature or a dev tool that I would want. I first looked for the tool on that before I built it.
+Right. Is there a tool or is there a package you can import or something? Yeah, whereas I haven't been doing that with AI, I've been thinking about how I build this. This week, it's been more like I need to start just looking because people have them out there.
+It's going fast. It's the Wild West, and it's starting to take shape. It's still the Wild West of all the different options, and people are brand new in their tools and bleeding edge. But they're out there to try.
+rhdeck@gmail.com | 11:09
+Yeah, they really are. I think of this as a downstream effect of both the no-code influence over the course of the last five years and the DIY coding just in the course of the last twelve months. People can now afford to create platforms and tools that will be used by a smaller number of people.
+That means instead of trying to go in for something that's going to be used by 10,000 people, you are much more likely to find a tool that's used by you and the three hundred other people who are like you. We were discussing this in the Office Hours podcast with you. He saw the site, there's a very fun little site called Brainrot.com, and it's all about making brain-raw videos, right?
+But he... Obviously, you can tell by the gradients it's five-code together, but because he was able to assemble it and say, "Wait, instead of you figuring out how to go make those Brainrot videos, I've got a solution here."
+It's much closer to what you're looking for. He's not going to have 10,000 customers. It doesn't even really lend itself to recurring revenue because you make it, you extract your video, you move on.
+But he can still make money from it. What it's really doing is making money from his social media, his content creator presence, and he's found a way to relatively inexpensively turn that into the manifestation of his reputation in the form of code that people then want and solve this problem for them.
+Then he can go make the next one that will create money and the second order effect of that is like your situation, right? Where you can go and find tools that wait, "Hey, that works for me."
+I don't need to worry about the fact that it's over here and I need it over here. I need to figure out how to do all the work to get over to GE, or I don't need to start totally de novo and make something new myself.
+That we sort of the build-it-from-scratch approach, which even that's cheaper now, right? Because of the price, because of the competitive pressure of that being cheaper, that actually drives down the cost of these micromarket things. Whereas previously, micromarket would have implied relatively high price points.
+Speaker 4 | 13:16
+Yeah, it's kind of interesting. I had a friend this week I was talking to, and we've talked before about Microsite's offerings and how you know what those look like. He comes up with different ideas.
+He was saying this way. He said, Tim, I'm not even thinking micro anymore. I'm trying to think nano. How can I build one feature as an MCP tool or a simple because he goes, "I could spin up the front end so easy with what we call BI coding tools to be able to just put a simple form that collects some information and runs that very simple functionality."
+So that was something I thought about this week, too, as he was saying we're going smaller, and I'm wondering how many of these tools that I'm seeing where these people don't have any infrastructure around them so they're not going to grow. The UX on these tools is not the best, but it solves a problem, and that's all that matters for people that need it to have that problem.
+But they're not going to grow unless they build out more of a structure. To your point, they're building a social community and so forth to offer services and whatever, and they just have this tool that they needed. Xano was built that way, right? Originally, it was a tool that they needed.
+rhdeck@gmail.com | 14:47
+Tools kind of like that way, right?
+Speaker 4 | 14:48
+Yeah. And I'm wondering about these ones that won't grow into a full tool. Will they go the traditional route and be either consumed, acquired, or replaced by a bigger tool that adds that functionality in?
+Because they see the popularity of it. Or will we democratize into a network of tools that we've talked about over the last 18 months or whatever? Where it used to be API endpoints. We thought, everybody's gonna have these. Originally, it was distributed functions on the web, and then it became API endpoints, and now it's MCP tools.
+But will people have these micro functionalities that other tools consume just to do the function? Will these things turn into it now that it's easier for people to actually create those instead of just thinking of them?
+rhdeck@gmail.com | 15:46
+It's a good point. Dania, are you hearing that?
+Speaker 3 | 15:50
+Yeah. I'm just something that I... When Tim was talking, it reminded me of when I discovered PowerSync, which was the offline-first DB sync tool. But it's interesting because the story behind PowerSync is that it was developed as a side product.
+So I guess the company behind it has their own no-code, low-code builder app builder, and it's specifically targeted for the construction management industry. This was a requirement for so many of the people building on their platform.
+So it became its own product when they implemented it, and then they started marketing it as its own product as well. So just I think PowerSync itself is now bigger than the main product it came from.
+Speaker 4 | 16:55
+That's like Slack, right? They were a game company that had a few million in the bank. They said, "We're not making it." What do we want to do? And they pivoted over to building their internal communication
+Yeah.
+rhdeck@gmail.com | 17:10
+Go ahead, please.
+Speaker 4 | 17:12
+I was just expanding on upon that thought of it that solving the problem is more important than the technology. If you come, if you identify a problem and solve a problem, how you deliver that is less important.
+I think than identifying it.
+rhdeck@gmail.com | 17:37
+Could you expand on that just a little bit? I thought the identifying it was an interesting verb to land on.
+Speaker 4 | 17:41
+Yeah, because in all these cases, the Powers, the Slack, Xano, so forth, they were tools that they're using in their service or their other product and their... They identified a problem that they had that other people later would identify with.
+So, just identifying that problem and then having the skill set internally to solve that problem because you're not seeing a solution right there to me is the magic potion. Identify the problem and then have the capability to solve the problem. Then how you deliver it out is secondary.
+A lot of people, I think, come from this solution and say, "I'm going to build an AI to build an MCP tool and so forth, trying to take the skills that they have been reversing into the problem."
+The products and services that work are the ones that are prop... This is as you call an eternal truth, right? I'm not coming up with this new, but it's interesting as I was just thinking about what was common amongst those brands we just listed. They all didn't... They were going this path and then identified a very key problem. They
+had this capability to solve it and then boom, that's the thing that took off. Yeah, you know.
+rhdeck@gmail.com | 19:12
+I hear that. But I think you and I as marketing professionals too, I think there is a temptation among many product professionals, and I think we've all seen companies that do this a lot. That shall not be named that focus on the definition internally, right?
+We have this skill, we can't make this thing happen. We have identified this problem, and then your hope is that your internal understanding matches that of the market. My favorite story of a company's founding, actually, is my brother-in-law's. Where it was his boss, starting his company.
+He was watching this other guy building this piece of technology. He still looks at it and says, "I can sell that." That's the difference between a product and a project and a business. The ability to sell both, having and having the reputation right in the market and the skill to be able to distribute into folks.
+I have talked to lots of founders who have made wonderful products, but on paper, they should have sold that, they should have done far better than they did. Including, not for nothing, a comparative Xano or whatever.
+They just didn't take off. I think a lot of it comes down to a failure to sell. That's one of the reasons why I think the Brainbot story is so interesting because he took something where he doesn't really have the super technical skill set to make it happen. He has identified a need.
+More importantly, he has a reputation, and he can be selling into that reputation, turning their rep into monetizing their reputation through people's purchase of code. Then, how does he make more money? Does he do it by expanding the product maybe a little bit? The real thing he needs to do is expand his reputation.
+When I look at these companies that have grown, what I see most important is that they expand their reputation in the market. That could come in the form of personal branding, which I think is far more doable in the last five years than it was ten years ago. The.
+And I think that becomes really important and exciting. That's one of the reasons why I'm very bullish on Daniel's career long term because he's great at being out there in the market. On Robert, Robert's doing wonderful work in terms of improving his personal brand as well. You can do this corporately as well.
+I've seen some of these bit dev tools go out and do that where they've learned the lesson that what they're selling is not a product; they're selling their brand, and they're selling, and the brand is really the company.
+The reason why a large company is going to purchase your product is because they trust you as a company because you're a vector, not a point. How does that reputation work? I think there was probably a true thing maybe twenty years ago that technology domain knowledge and marketing understanding or salesmanship were so distributed that it was very unlikely you'd have a company that has all three.
+I would posit that, a lot of the technical understanding part has just been a product of time. More people now have more technical capacity at the same point in their careers, twenty years later because, as I keep on hearing, I took that in school right now. What I do with my career after that, I took.
+That's the story of a lot of people coming, even a sea change. It's one of the reasons why I think the be coding stuff is gaining the takeoff it does because people think they have this idea of entitlement they can make an app, right?
+Then the tool is making it a matter of minutes to hours to be able to actually make that kind of thing happen. What do they have after that? They might have domain expertise that they're applying into it, they might have market reputation that they could apply into that.
+I think when they have two of those things, that's where you get a lot of power in the market engine, right? And that the AI and the AI tooling has done in the meantime is make it so that the more arcane or occult knowledge of how technology works becomes less of a barrier to being able to get into the market and be able to seriously leverage some combination of your domain expertise and your reputation to be able to get into the market, which is something I find exciting about this. It allows the kinds of micro SaaS tools that you were describing and then, "Hey, I have understanding of this market."
+I have understanding of the problem that they're facing, and I have the reputation that they're ready to buy stuff from me. When I have that magic triangle, there's a business to be done. I can be proctizing more smoothly now because I have access to these next-generation tooling.
+Speaker 4 | 24:12
+It's interesting. You said several times that you need to grow, right? So, I agree with you that you need that to grow. On my end, what I was saying was to identify the problem and the solution was to be able to offer a value, I guess is what I should say. There
+are a lot of people out there, and I guess where I was thinking was looking at some of these tools and looking at these people's social media and saying they're not going to grow because they're missing those components you're talking about there. They have some domain expertise, but maybe they aren't framing it as we're going to add more features and more products into this domain expertise to grow.
+McDonald's doesn't sell one thing, but In-N-Out does. Interestingly, if you know In-N-Out on the West Coast, their menu is just a couple of items: cheeseburgers and fries.
+But they specialized in that. They built that market of that community that wants to go to their burger burghers over... And so as I was thinking about it, as you were talking, I think you need that to grow.
+As somebody who looks at where the growth opportunities are in companies, I can see that you've got to have that package. But there are people today that I don't know if they're looking to grow that tool; they're just putting the tool out there and making a little money off of it.
+That's not their... That's not like I'm going to build a whole company around this, and in order to grow... The other thought I was having was that you have to have what I was talking about, that you have to identify the real problem-solution, product-market fit component. The part you're talking about is the ability to amplify that.
+If you don't have that first seed, companies do this as they grow, they lose sight, and they lose sight of what they originally were solving and they start losing their market because they're trying to grow, they're trying to cover more and more. I was just watching a clip from Isaac Azuma on David Letterman in 1980, and it was fascinating seeing him talk about where technology was and his sci-fi visions of where the future was going.
+He was talking about how he was writing in the 1940s. I don't know when he was born, but he was talking about how radio you had to really dial in and know all the technology to really get the radio to tune in.
+Then he was talking about 1980s. Now you just turn it on and pick a channel, right? He's talking about television and so forth. I've seen the same thing happening right now where you're still having to tool all the pieces together for AI to get what you want.
+But it's getting easier, and as that happens, I'm hoping that we see more tools that people aren't even necessarily looking to grow. It's just putting it out there as a component that's a building block that's easy to use. Just the way MPM packages are today, people put them out there, they're not expecting... I came up with this MPM package, and it's going to be the next big logo that's going to raise millions of dollars.
+rhdeck@gmail.com | 27:39
+Yeah, that's a really good point. There's a question of what your expectation is, right? Of profit and business and where that's really coming from. I haven't... Nice to see you, sir, been a week.
+Speaker 5 | 27:54
+Nice to see you. Nice to see you, everyone. It's a very interesting conversation. Yeah, I think, yep, just thinking through it. I think, yeah, there are people who are trying to do that. Said, I'm not trying to build a big product, but maybe the piece that they get from that is what Ray... You touched it.
+It's just because they're not building a big product doesn't mean they're not building a brand for themselves. I think that's what they do with building. There's so many guys, especially now that you see guys like Theo, who is now, I'd say, killing it with YouTube, rechat, built, upload thing, and all these other little products that are not big in themselves, but he's known for that because I mean, some people are using them. Or the guys doing open code.
+I think they have a couple of things that some of the guys have done, which I just think they did a terminal best something that you could use to order coffee. Okay, and guys liked it. So, they've built reputations around that for themselves that they can cash on if they want to or when they want to. I don't know.
+But then I think there's the direction of guys who are building products that they hope to make money from, and we probably don't know who those people are, but the company. And I think there's two different... Yeah, but well, maybe what's important is that we keep building, and if we try to get out of it...
+Yeah, but very good points. Maybe I'm just curious at TI, which camp do you find yourself in.
+Speaker 4 | 29:39
+In relation to what's the option you're talking about.
+Speaker 5 | 29:42
+Trying to build a product to scale it. So, trying to build a business out of it, or trying to build a product just for usefulness? Yeah.
+Speaker 4 | 29:54
+I am in a different camp, a little bit. Because right now, I'm in a transitional state. So, I'm looking at changing my paradigm from looking at building a product to building a system and building a community. To raise the point there.
+Right now, I'm working on my wife's project, and she's got a company that I'm building out a marketing system to take the best from the best in class from different places and put them together. Step one is just to get it working right. Learning and getting it working. Step two is to automate.
+So, I'm going to automate through AI, automating various parts of this funnel. Then step three is to turn that into a system that I will bring to a community myself.
+I'm going to try to build that community around that system, offer the services to do that, and then step three is to actually turn that into a repeatable AI product that can do it for me, right?
+The more I automate, the more I can offer that as a product service instead of a human service. So, I've seen this done by other people. We're talking about that, and I've watched Ray talk about this.
+So, I'm looking at this going, I can do this. I can take what I know, systemize it, prove it out with friends and family that I have, and then turn it. But knowing the big picture is to get to that end result of a product that automates this all for somebody else to do through a tool.
+So, I would say ultimately, it's in that latter camp of growth, given that I'm in marketing and tech marketing, right? I know the technology side, and you can't be in marketing without growth. So that's where I would be.
+But I'm fascinated and love the concept of my friend working on micros as nano tools. That fascinates me all the time. I'm like, "Man, maybe I should just work on solving small problems instead of big problems."
+But my way, my brain works, is I try to solve big problems. How about yourself, Ivan?
+Speaker 5 | 32:27
+Yeah, I think I come from the business side of the world where it's really about how can you make this thing grow and how can it make money and hopefully a lot of it, right? I think that growth or that financial machine is an interesting incentive, and I think it has driven technology a lot, and I think it has allowed companies to innovate and do so many things.
+I think it can get a bit confusing sometimes, but I think that, and this might be my limited view of the world, it will be interesting to hear from Ray and other people. But I think when people are in a place where they have something big working, a product that is working, I think it's then that they are clearer-headed. I think they're more able to produce more useful stuff regardless of the financial reward. I'm not sure that makes sense.
+It's almost the other way around. So I feel like having the freedom you can allow you to build stuff that you want to build, regardless of whether or not it works, because you just want to do it. So yeah.
+So I think I'm in the camp of trying to get growth and trying to get the things to work. And then, yeah, I'm not sure if it's under the other, but anyhow, yeah, I think I need both.
+Speaker 4 | 34:04
+It seems like the groundbreakers are always the people that weren't focused on making for profit; they were just solving problems. Then you have the money makers that come along and jump on that trend, they find that trend or that new tech step and they jump on to make money off of it.
+Speaker 5 | 34:27
+Well, it depends. I'm not too sure. I mean, if you think of Microsoft, Google, that's not going to solve the DAS. Let's go to OpenAI, but that's a big.
+Speaker 4 | 34:38
+Like let's say OpenAI like originally it was a nonprofit, right? It was about research and AI and so forth. Yeah, but there were some players. I mean MUSC was involved and so forth that were jump on guys.
+But they but I think that the original thought was how do we progress? AI and it wasn't how do we turn this they didn't they kind of stumbled into if I understand correctly from what I've looked at and correct me if anybody knows that I'm wrong here, but they stumbled into Chatg fi as that unicorn that took off, right? They didn't know that the market was that hungry for it and ready to utilize it as a chat bot.
+Robert Boulos | 35:30
+Yeah, I would just I just want to kind of just say this because this is kind of interesting, just as far as OpenAI goes and chat chipt. I was watching this video. I can remember who it was on stage, but he was saying basically like how if you go back and you trace the origin of chat G PT, that the exact place where it started, where what it started at was actually a redded chat bot like, you know, sitting the that's how it started. It was literally a guy sitting.
+You know, that was that's what OpenAI was at the time. And that's that project which seemed useless. The time would directly lead to what ChatGPT is today. So I think he was just trying to draw a through line between what this person was who was tinkering into something that is now changing the world.
+That's what it looked like at the time. It was literally a bot that was intended to just chat with people and read it. It said it wasn't doing a very good job, obviously, but they didn't know what it was going to become, obviously, but...
+Then you could just see how much it transformed.
+rhdeck@gmail.com | 36:40
+That's a good point. One of the distinctions I think we're getting at is the direction from which you're coming, right? We talk about the groundbreakers, people who are starting with a tech go insight, right?
+Then they bring it to market, and then there are... But Tim, I'm using your term here. The money makers who start with a market insight and then go apply some technology to it to go solve it. I gotta say, of those, the second is an easier way to make money than the first.
+One reason why I look at some of these other businesses, particularly the micro businesses we were talking about, is that they seem to be based on a market or domain insight. As long as that goes with having a reputation, then there's a lot there. It's one of the reasons why I'm big into personal branding because I think the more you have, the more successful you are. With me, I had a conversation with... I had a little bit of an exit interview with the company I'd invested in, who was... His comment at the end was, "Look, great. I sold my network.
+You know, I sold everyone who was ready to buy for me. And then I ran out of people to sell to. This was no more money. Okay, what do you do about that? I shut down the company. No, that's not what you do.
+Because building reputation is work, right? It's just not the work that he thought he was signing up for. I think that becomes really important. Whatever direction you come from, you've got to then grow that, keep growing that network and grow people who are willing to buy it from you and modulate the product so that people are willing to buy it, and more willing to buy it from you, in order for that to work.
+I don't think it's become very easy when you're internal to think about the platonic ideal of the product when in fact it's about. Okay, what does the market actually respond to? That can be sometimes not exactly what we thought or wished.
+When I think about people like Altman, who has wonderful tech in Time, but he's a former president of Y.I., the guy's a marketer through and through. So, yeah, sure, it was technically nonprofit at the beginning, but they had a big advantage that not only do they have the money, they pirate at crazy amounts of money, and not only the money to be able to basically build a research lab.
+That's what the opening of Air was found to be, right? Then Muscle was going crazy, owning a competitor or whatever else, but the... It was basically opening Air and DeepMind, and maybe a couple of other shops didn't really get quite as much lift,
+but the Air thing had Altman, right? And Altman out there selling, and when I think about Jobs, as an innovator, yes, he was a great designer, but he was a fabulous salesman and being able to get the leverage on that.
+The question is, how good do you have to be, and how much do you have to break through the strictures, right? In order to be able to have a successful business. My hope by my germ belief is that the nature of the technology is that it decreases the threshold of the number of things you need to be great at as an organization in order to be able to reach a plateau of success, right? Whereas previously, because it was much harder to get any success, it created, I think, a much more imbalanced distribution of results, which is one of the reasons why this return of capital is because you have a winner-take-all.
+But you have this situation where you can get a few customers and you can get a few customers and you can get a few customers. Now everybody's making money, right? But nobody's getting rich. That creates a scenario which should be scary as heck to the venture capitalists because now there's a long tail where just all these little companies are taking away the business from the thing that you just tried to invest $100 million in.
+Speaker 4 | 40:31
+It's interesting. It's almost like that's the way the world used to work back in medieval times, whatever. But you had this just right. You had your local baker because they didn't have the infrastructure, the ability, and the capital to expand out and distribute their bread beyond their town, right?
+So you had all these... You had your local person, but it's interesting. Napoleon Hill, Oprah, and other people's ideas, other people's efforts, and other people's money were the formula he came up with from the barons.
+But during the Gilded Age, thinking rich was the book. But what's interesting to me is that during that Industrial Revolution and the Gilded Age, that's when things consolidated into these people that we're going to coin the term moneymakers. They were the ones who knew that formula to come in and take the idea that was taking off, had the capital to go get other people to work it, and turn it into a system and a process, right?
+Just turn it away, like the Henry Ford assembly line, and do that. But it's almost like technology now that ideas are becoming easier and cheaper because AI helps us with that, and social networks and so forth help us with that. The other people's efforts. AI is now replacing the efforts of humans, and so we're making it cheaper to do to utilize that to use not my efforts.
+It's interesting you're bringing up other people's money that's investment capital. It's like, well, now maybe it's just micro investments back. People are getting different sites for micro investments.
+So maybe you just are like, "Hey, I can pull this together. I need a little bit to sustain me, but I'm going to run this thing as a one-shot." Like Sean was talking about yesterday.
+rhdeck@gmail.com | 42:37
+Or if cash flow can just support it, there's a bit of like, "What is the capital requirement for these things to work?" I think that leads to other bigger questions in capital markets. What I'd like to do, Tim, with your permission, is... Yeah, it was really... I'm not sure what I'm doing around AI, and then we turn it into this great now, which has been absolutely fantastic.
+So what I want to do is leave this as an open question for people's minds because I think this would be a great thing for people to be mulling over in the coming week. That's my objective for the mastermind.
+With your permission, ask the same question I asked you of Ivan and Michris, who have joined us since, and I've been asking the same question at the beginning. They've asked each person so far. We've had a little segment that goes with each of them, and I encourage you to check them out after the video comes out too. What have you seen in the last week in AI? What do you know today that you'd not know a week ago?
+Speaker 5 | 43:40
+Yeah. Okay. I was almost going to ask Dimitris to go first, but I'll tell you, I probably haven't searched as wide and deep, but what I know based on things that we've been doing and maybe mentor models that have been working through 1...
+I've found myself using Claude a lot more, believe it or not, than ChatGPT code or some of the other things. I think the difference between being hard-working and being smart. I think the Claude models are more hard-working.
+I think GPT-5, with all the things you might like or not like about it, is generally smarter. So I think the mental model for me is... Maybe I thought more about this after watching Alexander's video and all that stuff.
+I've used some variations of some of those things, and sometimes, yeah, you have Claude telling you, "I've done this whole big thing, and it's now production-ready." We've all seen that ad somewhere, and it's all ready to go.
+Then you get GPT-5 to check it out, and there's... Yeah, it's been quarter-half done. So I think... Maybe the mentor model for me is coming back to that almost composition of tools, this whole idea of one tool.
+I think it's a composition of tools and understanding or learning how to work with the tools that matter to you. Yeah, that fits your workflow. I found that even getting super organized with a tool that isn't smart enough sometimes doesn't solve those things.
+The last thing I'd say is, on the other hand, when there's things that GPT-5 might be smart at, but if it doesn't have enough information about stuff, I can't get GPT-5 to call context 7 MCP, for example, it just doesn't do it.
+So then I need to go to Sont to get context 7 and then try and... So it's... Yeah, that's where I'm at. So maybe not anything as fresh, but I think that's what I learned this week, let's say. And probably two weeks ago.
+rhdeck@gmail.com | 45:54
+Yeah. Well, actually, that point about context 7 is actually a pretty useful point just by itself. I'm going to go investigate that a little bit because I didn't appreciate that GP5 was hidden from that. OpenAI definitely has more persnickety requirements about what it wants from MCP tools on which ones it's willing to call.
+And that the difference isn't totally transparent. I don't know if it's still true, but as of even just a couple of weeks ago, Xanos MBS were invisible to OpenAI, so trying to figure out how to make that work and how to make these things universal, I think, leaks into that. Super cool, man. I thank you for sharing that.
+Dimitris, can I ask you to ask? Ask you the question of the hour. What do you know today that you did not know a week ago in the world of AI?
+Dimitrius | 46:45
+Guys, the project I'm working on the most recent time is how to build a digital twin. So I started as a total newbie in this term and started learning first from Ray and then from the rest of the team on those AI sessions. This week I had two wins. The first win was that I was able to burn out myself by reading or watching all YouTube videos on IBM's website. This is an incredible channel. They explained extremely well how the digital twin works and what the critical difference is between the simulators. The thing about the Digital Twin is that it can live collect data and retrain the model and give you on-demand results based on the most recent inputs.
+The second thing is that the previous weeks I shared here my troubles and my challenges achieving, creating a proof of concept for an AI digital twin. The most common suggestion was to create abstracts and summaries of the great context.
+Well-structured context. I used tags generated by AI and using Zapier, the chatbot can give us very faster results. Totally faster and more accurate results immediately from the same context.
+But the thing is that we have as an extra the summaries, two different summaries and the tags. It works fine. Now my next step is how to move from this proof of concept to the final deliverable. Creating an environment where we're going to have agents where each agent will do specific, very specific actions.
+Like the first one from what I have in my mind is to find the right records to give the response, and the second agent has to get this as input and return the response. So I'm investigating that and I'm very glad having the progress on this project.
+rhdeck@gmail.com | 49:19
+Super cool, man. The I mean the IBM is was a wonderful insight. So I've always been very impressed by their YouTube channel. How did you come to discover that as being the right way to, you know, learn on the topic?
+Dimitrius | 49:39
+I started watching multiple videos on YouTube explaining because I wanted to understand deeper what it is. Because it's not that I have a CSV uploaded on a chat bot and asking questions, yeah, it's not really something deeper, something greater.
+So it was a little bit hard for me to understand the hidden differences. The main point was easy, but I had a thing. So I watched multiple videos. The top one was from IBM on my searches, and I saw that IBM or they have two videos explaining it like talking to a little child.
+So for me, as a new bit was so efficient to understand it worked. Then I used the Mackenzie block, which is my starting point. I think, to be honest, basically, for Mackenzie, I had a totally different approach. People with lawsuits who just have a prestige and move for on the snob style on the street.
+But this is totally incorrect from my perspective. From the blog, they have very... They have totally descriptive blog posts, explaining every single thing about it and real cases of how it can be used. So, I use these data sources and spend more time on that.
+And I don't know if that's for this conversation, but what I'm thinking is to start creating two case studies for myself and start sharing the journey on these case studies on my media. The first one is creating the digital twin of myself using only the transcript because most of my interaction with people is on transcripts.
+And the second one is to bring some fun and a different approach to the audience by creating a twin for sports. So, twinning athletes by feeding their sports data because all of them have a health record and start using them to make predictions for the health and so on.
+rhdeck@gmail.com | 52:15
+That's super cool. All right, well, with the comments we have left, I want to ask Robert, who now has... By the way, he's got a weekly series now where he's talking to MC every week on Wednesdays at 01:00 pm my time, and a bunch of people come and there's discussion around...
+You know your Snappy MC server, but that's not the only thing you're doing in this world. What is it? We're heading towards the end of August. What are you thinking about for September in your corner of the MC universe?
+Robert Boulos | 52:54
+I think, actually, it's kind of funny because I have some ideas, but I actually wanted to run it by you. It's like... But so there's actually maybe a bit of a preview of what I would be discussing with you anyway.
+But what I'm thinking is that sometimes I look at one thing. I mean, I have these great people who are showing up and they're very excited and they'd like to use a tool, and it's just something that opens up a door even into further conversations.
+I think it reminds me a little bit of what you were saying, Tim, which is that you can build this product and you can build a community around it. And not only is there value behind the product itself, just opening the door to further conversations within the context of the product, but everything that else comes behind it creates this beginning point for a lot of other conversations. It establishes trust.
+So you know this, not like there are people who are using the tool, but then they actually want... They have a desire to come talk about the tool and to learn more about Xano and have interesting discussions around that and everything else. The fact that it's an MCP tool and the qualities about that make it unique, in what it's able to connect to, and the discussions that we can have around it.
+Then the other thing that makes me think is right now, I'm... It's pretty much at this stage where I've had this recent development with it where now it's able to build endpoints very reliably and in the style that really leverages Xano to its strength.
+I know how hard I worked on it, so I know it's going to be... I mean, between the MCP tool and the fact that it has the way that it's designed with over 100 tools and now the fact that it's powered by an SDK underneath it, it would take even Xano themselves quite a while to start. I think I have a few months head start,
+and I don't think that they're going to start today. So all I'm saying is that I think that there's a monetization opportunity there, and I think that it would just be something that I would look forward to doing.
+It would get people used to the feeling of them making a smaller purchase and then making a bigger purchase. I think it's an entry point for starting to work with me because I've been trying to find out a balance of how to make money but stay on the market. There was actually something once that we talked about, which is that I think personally it's hard to make money. No, I think that it's hard to make money and stay on the market, and that's what I'm trying to achieve with this.
+It's like AI, those are the characteristics that I like about it. The fact that people... Again, the fact that even that, what I think was six people that showed up yesterday, and every week there's been people showing up, so yeah, I'm just trying to pay attention to that.
+I think just trying to wrap up the qualities all into an offer that gives them more of what they want, right? And enables me to give them more because they are asking for more and they want more. To development...
+If I don't honestly, if I don't charge for it, then I'm never going to take it seriously. I think that that's their concern because they are investing their time. They like the tool. They're asking me for more things, and I'm always like, "Yeah, okay, I'll do it."
+Then I go and I focus on something else, and I thought, "Well, okay, probably they would rather... Most people, I think they'd rather me set up something so that they're able to help contribute or ensure the longevity of it so that that's where my mind is at.
+rhdeck@gmail.com | 57:15
+Alright, man, but we're we start with AI, we head into a an entrepreneurial call to action.
+Robert Boulos | 57:21
+No.
+rhdeck@gmail.com | 57:22
+I completely agree with Ivan, go be that money maker.
+All right, well, then I think I've done with you all for the month. It has been a joy getting to work with. Obviously, yes, we're gonna be doing office hours today and tomorrow. But this... This is fantastic. I look forward to having continuing discussions in the new month next week. Cos by.

@@ -1,16 +1,8 @@
-import {
-  Database,
-  Zap,
-  Lock,
-  Activity,
-  Users,
-  CheckCircle,
-} from 'lucide-react';
+import { Database, Zap, Activity, CheckCircle } from 'lucide-react';
 
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { CodeBlock } from '@/components/ui/code-block';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const Features = () => {
@@ -19,133 +11,120 @@ const Features = () => {
       <div className="container">
         <div className="mb-16 flex flex-col items-center gap-8">
           <Badge variant="outline" className="px-4 py-2 text-sm">
-            Real Results, Not Theory
+            TypeScript SDK + Middleware
           </Badge>
           <h2 className="max-w-4xl text-center text-3xl font-bold tracking-tight lg:text-5xl">
-            The Shortcut to AI Development That Actually Works
+            Why This AI Doesn't Break Like The Others
           </h2>
           <p className="text-muted-foreground max-w-3xl text-center text-balance lg:text-xl">
-            Weekly Xano training. Real builds. Real results. Join developers who are shipping 
-            production APIs in minutes, not months.
+            Weekly Xano training. Real builds. Real results. Join developers who
+            are shipping production APIs in minutes, not months.
           </p>
         </div>
 
         <Tabs defaultValue="secure" className="mx-auto w-full max-w-6xl">
           <TabsList className="mb-12 grid h-12 w-full grid-cols-3">
             <TabsTrigger value="secure" className="text-base font-semibold">
-              🔥 What You'll Build
+              ❌ Why AI Fails in Xano
             </TabsTrigger>
             <TabsTrigger value="velocity" className="text-base font-semibold">
-              🎓 How You'll Learn
+              ✅ How We Fixed It
             </TabsTrigger>
             <TabsTrigger value="production" className="text-base font-semibold">
-              💰 Your Investment
+              📈 Real Developer Stories
             </TabsTrigger>
           </TabsList>
 
           <TabsContent value="secure" className="space-y-8">
             <div className="mb-8 text-center">
               <h3 className="mb-3 text-2xl font-bold">
-                Watch: Build These in Your First Week
+                The Problem With AI + Xano
               </h3>
-              <p className="text-muted-foreground text-lg">
-                Stop wondering if AI can really help. These are actual features built by members 
-                in their first weekly training calls.
-              </p>
             </div>
 
             <div className="grid gap-8 lg:grid-cols-3">
               <Card className="space-y-4 p-6">
                 <div className="flex items-center gap-3">
-                  <div className="rounded-lg bg-green-100 p-2 dark:bg-green-900/20">
-                    <Lock className="h-5 w-5 text-green-600 dark:text-green-400" />
+                  <div className="rounded-lg bg-red-100 p-2 dark:bg-red-900/20">
+                    <span className="text-xl">🚫</span>
                   </div>
-                  <h4 className="font-semibold">Complete User Auth System</h4>
+                  <h4 className="font-semibold">No Feedback Loop</h4>
                 </div>
                 <p className="text-muted-foreground">
-                  <span className="font-semibold text-green-600 dark:text-green-400">8 minutes</span> to build login, 
-                  signup, password reset, JWT tokens. What used to take days.
+                  XanoScript gives zero error details. AI just sees "failed."
                 </p>
                 <div className="bg-muted rounded-lg p-4">
                   <div className="text-muted-foreground mb-2 text-sm">
-                    Thursday's Live Build:
+                    What AI sees:
+                  </div>
+                  <div className="space-y-1 font-mono text-xs">
+                    <div className="text-red-600">Error: Expression failed</div>
+                    <div className="text-slate-600">Line: ???</div>
+                    <div className="text-slate-600">Reason: ???</div>
+                    <div className="text-slate-600">Fix: ???</div>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-600 dark:text-slate-400">
+                  Result: You spend hours debugging, or give up entirely.
+                </p>
+              </Card>
+
+              <Card className="space-y-4 p-6">
+                <div className="flex items-center gap-3">
+                  <div className="rounded-lg bg-red-100 p-2 dark:bg-red-900/20">
+                    <span className="text-xl">⚠️</span>
+                  </div>
+                  <h4 className="font-semibold">No Guardrails</h4>
+                </div>
+                <p className="text-muted-foreground">
+                  AI generates invalid syntax, green expressions everywhere,
+                  doesn't use filters.
+                </p>
+                <div className="bg-muted rounded-lg p-4">
+                  <div className="text-muted-foreground mb-2 text-sm">
+                    AI generates:
+                  </div>
+                  <div className="space-y-1 font-mono text-xs">
+                    <div className="text-red-600">
+                      $user.name + " logged in"
+                    </div>
+                    <div className="text-red-600">
+                      if ($count &gt; 10) {'{ ... }'}
+                    </div>
+                    <div className="text-red-600">
+                      created_at.format('MM/DD')
+                    </div>
+                  </div>
+                  <div className="text-muted-foreground mt-2 text-xs">
+                    None of this works in Xano.
+                  </div>
+                </div>
+              </Card>
+
+              <Card className="space-y-4 p-6">
+                <div className="flex items-center gap-3">
+                  <div className="rounded-lg bg-red-100 p-2 dark:bg-red-900/20">
+                    <span className="text-xl">❓</span>
+                  </div>
+                  <h4 className="font-semibold">No Context</h4>
+                </div>
+                <p className="text-muted-foreground">
+                  AI doesn't know Xano's 200+ filters or when to use them.
+                </p>
+                <div className="bg-muted rounded-lg p-4">
+                  <div className="text-muted-foreground mb-2 text-sm">
+                    Xano has:
                   </div>
                   <div className="space-y-1 text-xs">
-                    <div className="flex justify-between">
-                      <span>• User table with proper fields</span>
-                      <span className="text-green-600">2 min</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>• Signup/login endpoints</span>
-                      <span className="text-green-600">3 min</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>• JWT authentication</span>
-                      <span className="text-green-600">2 min</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>• Password reset flow</span>
-                      <span className="text-green-600">1 min</span>
-                    </div>
+                    <div>• 200+ filter operations</div>
+                    <div>• Specific pipeline syntax</div>
+                    <div>• Table vs API operations</div>
+                    <div>• Complex auth patterns</div>
+                  </div>
+                  <div className="text-muted-foreground mt-2 text-xs">
+                    AI knows: Almost none of this.
                   </div>
                 </div>
-                <Button variant="outline" size="sm" className="w-full">
-                  See it built live →
-                </Button>
-              </Card>
-
-              <Card className="space-y-4 p-6">
-                <div className="flex items-center gap-3">
-                  <div className="rounded-lg bg-purple-100 p-2 dark:bg-purple-900/20">
-                    <Database className="h-5 w-5 text-purple-600 dark:text-purple-400" />
-                  </div>
-                  <h4 className="font-semibold">Stripe Payment Integration</h4>
-                </div>
-                <p className="text-muted-foreground">
-                  <span className="font-semibold text-green-600 dark:text-green-400">22 minutes</span> for checkout, 
-                  webhooks, subscription management. Normally a week of work.
-                </p>
-                <div className="bg-muted rounded-lg p-4">
-                  <div className="text-muted-foreground mb-2 text-sm">
-                    Member result from last week:
-                  </div>
-                  <div className="text-sm">
-                    <p className="mb-2">"<em>I've been trying to add Stripe for 2 months. 
-                    We did it together in one call.</em>"</p>
-                    <p className="text-xs text-slate-600 dark:text-slate-400">- Marcus, SaaS founder</p>
-                  </div>
-                </div>
-                <Button variant="outline" size="sm" className="w-full">
-                  Learn more →
-                </Button>
-              </Card>
-
-              <Card className="space-y-4 p-6">
-                <div className="flex items-center gap-3">
-                  <div className="rounded-lg bg-violet-100 p-2 dark:bg-violet-900/20">
-                    <Users className="h-5 w-5 text-violet-600 dark:text-violet-400" />
-                  </div>
-                  <h4 className="font-semibold">Real-time Dashboard API</h4>
-                </div>
-                <p className="text-muted-foreground">
-                  <span className="font-semibold text-green-600 dark:text-green-400">15 minutes</span> to aggregate data, 
-                  calculate metrics, return formatted JSON. Skip the SQL headaches.
-                </p>
-                <div className="space-y-2">
-                  <div className="bg-muted flex items-center gap-2 rounded p-2 text-xs">
-                    <CheckCircle className="h-3 w-3 text-green-600" />
-                    <span>Input validation</span>
-                    <span className="text-green-600">Auto-added</span>
-                  </div>
-                  <div className="bg-muted flex items-center gap-2 rounded p-2 text-xs">
-                    <CheckCircle className="h-3 w-3 text-green-600" />
-                    <span>Error responses</span>
-                    <span className="text-green-600">Configured</span>
-                  </div>
-                </div>
-                <Button variant="outline" size="sm" className="w-full">
-                  Learn more →
-                </Button>
               </Card>
             </div>
           </TabsContent>
@@ -153,121 +132,110 @@ const Features = () => {
           <TabsContent value="velocity" className="space-y-8">
             <div className="mb-8 text-center">
               <h3 className="mb-3 text-2xl font-bold">
-                Every Thursday 2pm EST: Live Xano Builds, Your Questions Answered
+                The Solution: SDK + Middleware
               </h3>
               <p className="text-muted-foreground text-lg">
-                This isn't another course with pre-recorded videos. It's live training where we build 
-                together, debug your actual code, and solve real problems.
+                We built an SDK with guardrails that achieves 80-90% first-try
+                success rate.
               </p>
             </div>
 
             <div className="grid gap-8 lg:grid-cols-3">
               <Card className="space-y-4 p-6">
                 <div className="flex items-center gap-3">
-                  <div className="rounded-lg bg-indigo-100 p-2 dark:bg-indigo-900/20">
-                    <Zap className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
+                  <div className="rounded-lg bg-green-100 p-2 dark:bg-green-900/20">
+                    <Zap className="h-5 w-5 text-green-600 dark:text-green-400" />
                   </div>
-                  <h4 className="font-semibold">Live coding, not videos</h4>
+                  <h4 className="font-semibold">TypeScript SDK</h4>
                 </div>
                 <p className="text-muted-foreground">
-                  Watch me build real features with AI. See every prompt, every debug step, 
-                  every deployment. No editing, no hiding mistakes.
+                  Enforces valid XanoScript, auto-converts to filter syntax,
+                  provides linting.
                 </p>
-                <div className="space-y-2">
-                  <div className="rounded-lg border border-purple-200 bg-purple-50 p-3 dark:border-purple-800 dark:bg-purple-900/10">
-                    <div className="mb-1 text-xs font-medium text-purple-600 dark:text-purple-400">
-                      You describe
+                <div className="bg-muted rounded-lg p-4">
+                  <div className="text-muted-foreground mb-2 text-sm">
+                    SDK converts:
+                  </div>
+                  <div className="space-y-1 font-mono text-xs">
+                    <div className="text-green-600">
+                      dbQuery('users', {'{ filter: { ... } }'})
                     </div>
-                    <div className="text-sm">
-                      "I need an API that returns inactive users with their last
-                      activity date"
+                    <div className="text-green-600">↓</div>
+                    <div className="text-green-600">
+                      Valid XanoScript with filters
                     </div>
                   </div>
-                  <div className="rounded-lg border border-green-200 bg-green-50 p-3 dark:border-green-800 dark:bg-green-900/10">
-                    <div className="mb-1 text-xs font-medium text-green-600 dark:text-green-400">
-                      AI builds
-                    </div>
-                    <div className="font-mono text-sm">
-                      GET /api/users/inactive → Full Xano function
-                    </div>
+                  <div className="text-muted-foreground mt-2 text-xs">
+                    Type-safe, validated, production-ready
                   </div>
                 </div>
                 <Button variant="outline" size="sm" className="w-full">
-                  Join next call →
+                  See SDK docs →
                 </Button>
               </Card>
 
               <Card className="space-y-4 p-6">
                 <div className="flex items-center gap-3">
-                  <div className="rounded-lg bg-orange-100 p-2 dark:bg-orange-900/20">
-                    <Users className="h-5 w-5 text-orange-600 dark:text-orange-400" />
+                  <div className="rounded-lg bg-green-100 p-2 dark:bg-green-900/20">
+                    <Activity className="h-5 w-5 text-green-600 dark:text-green-400" />
                   </div>
-                  <h4 className="font-semibold">Your code, debugged live</h4>
+                  <h4 className="font-semibold">Middleware Layer</h4>
                 </div>
                 <p className="text-muted-foreground">
-                  Share your screen. Show your errors. Get help in real-time. 
-                  No more Stack Overflow guessing.
+                  Catches errors, provides feedback, retries with corrections.
                 </p>
-                <div className="space-y-2">
-                  <div className="rounded-lg border border-amber-200 bg-amber-50 p-3 dark:border-amber-800 dark:bg-amber-900/10">
-                    <div className="mb-1 text-xs font-medium text-amber-600 dark:text-amber-400">
-                      Complex requirement
-                    </div>
-                    <div className="text-sm">
-                      "Aggregate user stats, join with payments, filter by
-                      subscription tier"
-                    </div>
+                <div className="bg-muted rounded-lg p-4">
+                  <div className="text-muted-foreground mb-2 text-sm">
+                    Feedback loop:
                   </div>
-                  <div className="rounded-lg border border-green-200 bg-green-50 p-3 dark:border-green-800 dark:bg-green-900/10">
-                    <div className="mb-1 text-xs font-medium text-green-600 dark:text-green-400">
-                      AI delivers
-                    </div>
-                    <div className="font-mono text-sm">
-                      Complete function stack with joins, filters & transforms
-                    </div>
+                  <div className="space-y-1 text-xs">
+                    <div>1. Catch error before deploy</div>
+                    <div>2. Return actionable feedback</div>
+                    <div>3. Auto-retry with fix</div>
+                    <div>4. Test endpoint automatically</div>
+                  </div>
+                  <div className="mt-2 text-xs font-semibold text-green-600">
+                    Result: It just works.
                   </div>
                 </div>
                 <Button variant="outline" size="sm" className="w-full">
-                  See schedule →
+                  Learn more →
                 </Button>
               </Card>
 
               <Card className="space-y-4 p-6">
                 <div className="flex items-center gap-3">
-                  <div className="rounded-lg bg-violet-100 p-2 dark:bg-violet-900/20">
-                    <Database className="h-5 w-5 text-violet-600 dark:text-violet-400" />
+                  <div className="rounded-lg bg-green-100 p-2 dark:bg-green-900/20">
+                    <Database className="h-5 w-5 text-green-600 dark:text-green-400" />
                   </div>
-                  <h4 className="font-semibold">
-                    Community of builders
-                  </h4>
+                  <h4 className="font-semibold">100+ MCP Tools</h4>
                 </div>
                 <p className="text-muted-foreground">
-                  Connect with other developers using AI to build faster.
-                  Share patterns, get feedback, solve problems together.
+                  Every Xano API endpoint mapped and optimized for AI use.
                 </p>
                 <div className="bg-muted space-y-2 rounded-lg p-3">
-                  <div className="text-xs font-medium">Your Xano Resources</div>
+                  <div className="text-xs font-medium">Coverage includes:</div>
                   <div className="grid grid-cols-2 gap-1 text-xs">
                     <div className="flex items-center gap-1">
                       <CheckCircle className="h-3 w-3 text-green-500" />
-                      <span className="font-mono">Database Tables</span>
+                      <span>Database operations</span>
                     </div>
                     <div className="flex items-center gap-1">
                       <CheckCircle className="h-3 w-3 text-green-500" />
-                      <span className="font-mono">API Groups</span>
+                      <span>API management</span>
                     </div>
                     <div className="flex items-center gap-1">
                       <CheckCircle className="h-3 w-3 text-green-500" />
-                      <span className="font-mono">Functions</span>
+                      <span>Auth systems</span>
                     </div>
                     <div className="flex items-center gap-1">
                       <CheckCircle className="h-3 w-3 text-green-500" />
-                      <span className="font-mono">Addons</span>
+                      <span>Background tasks</span>
                     </div>
                   </div>
                 </div>
                 <Button variant="outline" size="sm" className="w-full">
-                  Join community →
+                  View all tools →
                 </Button>
               </Card>
             </div>
@@ -276,109 +244,122 @@ const Features = () => {
           <TabsContent value="production" className="space-y-8">
             <div className="mb-8 text-center">
               <h3 className="mb-3 text-2xl font-bold">
-                Compare Your Options
+                Real Developer Stories
               </h3>
               <p className="text-muted-foreground text-lg">
-                One client project pays for a full year. Most members recoup their investment 
-                in Week 1 through time saved.
+                From our weekly MCP Wednesday calls and community.
               </p>
             </div>
 
-            <div className="grid gap-8 lg:grid-cols-3">
-              <Card className="space-y-4 p-6 border-2 border-red-200 dark:border-red-800">
+            <div className="grid gap-8 lg:grid-cols-1">
+              <Card className="space-y-4 p-6">
                 <div className="flex items-center gap-3">
-                  <div className="rounded-lg bg-red-100 p-2 dark:bg-red-900/20">
-                    <span className="text-xl">❌</span>
+                  <div className="rounded-lg bg-blue-100 p-2 dark:bg-blue-900/20">
+                    <span className="text-xl">🇬🇧</span>
                   </div>
-                  <h4 className="font-semibold">Without Training</h4>
-                </div>
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between">
-                    <span>Enterprise Consultant</span>
-                    <span className="font-semibold text-red-600">$10,000/mo</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Senior Developer</span>
-                    <span className="font-semibold text-red-600">$12,000/mo</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Trial & Error</span>
-                    <span className="font-semibold text-red-600">6 months wasted</span>
+                  <div>
+                    <h4 className="font-semibold">
+                      Luke (UK) - From Skeptic to Evangelist
+                    </h4>
+                    <p className="text-muted-foreground text-sm">
+                      Platform Builder
+                    </p>
                   </div>
                 </div>
-                <div className="bg-red-50 dark:bg-red-900/10 rounded p-2 text-xs text-red-700 dark:text-red-400">
-                  Plus: Broken code, missed deadlines, no support
-                </div>
-              </Card>
-
-              <Card className="space-y-4 p-6 border-2 border-green-500 dark:border-green-400 relative">
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                  BEST VALUE
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="rounded-lg bg-green-100 p-2 dark:bg-green-900/20">
-                    <span className="text-xl">✅</span>
-                  </div>
-                  <h4 className="font-semibold">Xano AI Accelerator</h4>
-                </div>
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between">
-                    <span>Weekly live training calls</span>
-                    <span className="font-semibold text-green-600">Included</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>MCP tools (worth $2,000)</span>
-                    <span className="font-semibold text-green-600">Included</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Direct Q&A support</span>
-                    <span className="font-semibold text-green-600">Included</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Community access</span>
-                    <span className="font-semibold text-green-600">Included</span>
-                  </div>
-                </div>
-                <div className="bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-lg p-3 text-center">
-                  <div className="text-2xl font-bold">$997/month</div>
-                  <div className="text-xs opacity-90">Cancel anytime</div>
-                </div>
-                <Button className="w-full bg-green-600 hover:bg-green-700 text-white">
-                  Start Today →
-                </Button>
+                <p className="text-lg">
+                  Built a complete client platform from Greece - by the pool, on
+                  his phone. Now prefers the AI to manual development.
+                </p>
               </Card>
 
               <Card className="space-y-4 p-6">
                 <div className="flex items-center gap-3">
                   <div className="rounded-lg bg-blue-100 p-2 dark:bg-blue-900/20">
-                    <span className="text-xl">💡</span>
+                    <span className="text-xl">🇬🇧</span>
                   </div>
-                  <h4 className="font-semibold">Tools-Only Option</h4>
-                </div>
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between">
-                    <span>MCP tools access</span>
-                    <span className="font-semibold">Included</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Weekly training calls</span>
-                    <span className="text-slate-400 line-through">Not included</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Direct Q&A support</span>
-                    <span className="text-slate-400 line-through">Not included</span>
+                  <div>
+                    <h4 className="font-semibold">
+                      Shane (UK) - 4 Hours → 2 Minutes
+                    </h4>
+                    <p className="text-muted-foreground text-sm">Developer</p>
                   </div>
                 </div>
-                <div className="bg-blue-50 dark:bg-blue-900/10 rounded-lg p-3 text-center">
-                  <div className="text-xl font-bold">$497/month</div>
-                  <div className="text-xs">Upgrade anytime</div>
-                </div>
-                <p className="text-xs text-center text-slate-600 dark:text-slate-400">
-                  Start here if you want to try the tools first
+                <p className="text-lg">
+                  Reduced a 4-hour complex function build to just 2 minutes.
+                  Created a 1,500-line cookbook to train the AI on patterns.
                 </p>
-                <Button variant="outline" size="sm" className="w-full">
-                  Tools only →
-                </Button>
+              </Card>
+
+              <Card className="space-y-4 p-6">
+                <div className="flex items-center gap-3">
+                  <div className="rounded-lg bg-blue-100 p-2 dark:bg-blue-900/20">
+                    <span className="text-xl">🇦🇺</span>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold">
+                      Nick (Australia) - Trust Through Proof
+                    </h4>
+                    <p className="text-muted-foreground text-sm">
+                      Automation Developer
+                    </p>
+                  </div>
+                </div>
+                <blockquote className="text-lg italic">
+                  "This seemed too good to be true... I booked a call before
+                  entering my API key."
+                </blockquote>
+                <blockquote className="text-lg font-semibold text-green-600 italic">
+                  "We're at the front of something big."
+                </blockquote>
+                <p className="text-muted-foreground text-sm">
+                  Now building automation systems.
+                </p>
+              </Card>
+
+              <Card className="space-y-4 p-6">
+                <div className="flex items-center gap-3">
+                  <div className="rounded-lg bg-blue-100 p-2 dark:bg-blue-900/20">
+                    <span className="text-xl">🏥</span>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold">
+                      West & John (Healthcare) - Enterprise Adoption
+                    </h4>
+                    <p className="text-muted-foreground text-sm">
+                      Healthcare Tech
+                    </p>
+                  </div>
+                </div>
+                <blockquote className="text-lg italic">
+                  "We started with read-only credentials for our healthcare
+                  client."
+                </blockquote>
+                <p className="text-muted-foreground text-sm">
+                  Now using for production healthcare systems. Gradual adoption
+                  for sensitive systems.
+                </p>
+              </Card>
+
+              <Card className="space-y-4 border-2 border-purple-500 p-6 dark:border-purple-400">
+                <div className="flex items-center gap-3">
+                  <div className="rounded-lg bg-purple-100 p-2 dark:bg-purple-900/20">
+                    <span className="text-xl">🚀</span>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold">Robert Boulos - Creator</h4>
+                    <p className="text-muted-foreground text-sm">Snappy MCP</p>
+                  </div>
+                </div>
+                <blockquote className="text-lg font-semibold text-purple-600 italic">
+                  "80-90% of the time, I click Run and it just works."
+                </blockquote>
+                <blockquote className="text-lg italic">
+                  "This wasn't possible before the SDK and middleware."
+                </blockquote>
+                <p className="text-muted-foreground text-sm">
+                  Built while solving his own Xano problems. Built 50 endpoints
+                  during a barbecue.
+                </p>
               </Card>
             </div>
           </TabsContent>

@@ -1,0 +1,191 @@
+Robert Boulos | 00:00
+He good, how are you doing, Canada?
+jon.p@xano.com | 00:01
+Hey Robert, how are you doing? Good, where are you calling from?
+Robert Boulos | 00:08
+I am near Toronto, I'm like 40 minutes away from Toronto.
+jon.p@xano.com | 00:08
+What?
+Robert Boulos | 00:12
+How about yourself?
+jon.p@xano.com | 00:13
+I'm calling from Austin, Texas.
+Robert Boulos | 00:15
+Cool nice really from where Berger who?
+jon.p@xano.com | 00:17
+You best burger I've ever had was in Toronto. Burger King. Believe it or not, you want to know why? I was in China for a few weeks, and that was the first taste of Western food that I had at the Burger King in the Toronto airport.
+Robert Boulos | 00:37
+Yeah, [Laughter] nice.
+jon.p@xano.com | 00:37
+And was like, "This Whopper is the best burger I've ever had in my life." So we spent some time in Toronto. I love Toronto, it's a great city.
+Robert Boulos | 00:46
+I think, Toronto is it's actually great that you. I mean, I agree with you, it's beautiful to visit. There's plenty to do if you're I think you went to the right place. Obviously, it's to go to Toronto and to, you know, like as a did you see Ripley's Aquarium?
+By the way?
+jon.p@xano.com | 01:04
+No, we didn't. We should have done that, though.
+Robert Boulos | 01:07
+That would be cool, but maybe next time.
+jon.p@xano.com | 01:09
+Yeah.
+Robert Boulos | 01:10
+Thank you, by the way, for taking the call.
+jon.p@xano.com | 01:11
+Yeah, totally.
+Robert Boulos | 01:13
+I appreciate that. I just sent a message because Ray told me, "You should message John."
+I said, "Sure, I'll message John." I messaged him, and I'm like, "John has no idea that I would know Ray or that I meet with him probably three times a week." Like, even this morning, I met with him because we were working on, I guess, him and me.
+And there's another person named Mihai Tath. He builds tools for Xano. So we're just part of a small group of people who build tools that extend and support Zoho, and I just felt like what he felt.
+I agree. I think it would just be cool to have a discussion to show you some of the stuff I'm working on. I think that, well, maybe it'll speak for itself, but basically, it's here.
+I will show my screen. Did you...? But just to preface, have you seen the extension or...? Have you ever seen that at all, or do you know about the MCP tool?
+jon.p@xano.com | 02:25
+That you've built?
+Robert Boulos | 02:26
+Yeah.
+jon.p@xano.com | 02:27
+No, I haven't. So, for contact, are you familiar with my role at all and any of that? Okay, cool.
+Robert Boulos | 02:37
+So I just know... I know I can appreciate that. I'm not sure. I don't know the inner workings of Xano.
+So, I don't know too much about what everybody's focus is. That's part of why I'm giving myself a reality check where I send a message to you and I'm like...
+I realize the world is very big. Xano has stuff that they're focused on. So, yeah, that's part of where I'm trying to gauge and see what the objectives of Xano are and see if the Xano script is important or if that's something that... There are a few things, just like the agents.
+Then there's the Xano script, then there's MCP, and building MCP within Xano, like the actual hosting of the servers in Xano. So, I can appreciate that there's a lot of that. That's a lot of different things to pursue.
+So, I guess from this side, what I've been focusing on is building out this MCP tool that lets you build in Xano. And I think where Ray was feeling that this might be relevant to what you're doing in Xano, like your own Xano. It would be the fact that he thinks that what I'm building might be interesting to enterprises.
+That's the main point because the tool that I'm building and more... So the people who are using it, I host a weekly MCP call and these people show up. A lot of them, they use a tool and then they use it in conjunction with a dev team.
+They have five devs, and so they're just giving the tool to their devs and they're seeing more productivity out of it there. It's being used in a context, and that's benefiting these efforts that are bringing more fruit to bear for the people who are using it, and at the individual level, I've... There are plenty of users who are using it for their own individual projects.
+But I would say that it's more within the context of people building for clients or building really meaningful platforms, and they're trying to see through the complexity of it. This is like an AI-powered developer essentially for them.
+The thing that I've been trying to crack has been XanoScript. That has been my goal for the last two months or so. Or since it was kind of shadowed dropped. Then I noticed it, and I'm doing this, so I'll show you. XanoScript is one hell of a thing.
+But basically, the MCP tool itself is authorized. Let me actually just rewind a little bit. This is where people are able to log in, and I'm actually going to improve this pretty soon. There's a new version coming, which is going to be... Where is the universe? Universe one...
+So it's going to look like this basically to improve trust a bit. But for now, this is what we've got. A person can come and log in, and after they sign up, I want to show how I distributed it a little bit because it explains a little bit about why people enjoy using it.
+So, people come, they go, and they log in. Then, they're able to just drop in their API key. Once they save it, there are just some brief instructions. All they have to do is essentially this. This is actually how easy it is. My documentation right now is terrible, but people still figure it out, so they just save this. You can save this entire thing and put it into your config, or you can just save this one line and then you're able to drop it into basically wherever you want.
+That's the main point. First of all, you can drop it in wherever you want, but personally, I prefer to use Visual Studio Code with Claude. All a person has to do to use it in this environment is come down to their terminal and they can just do Claude MC, whatever they want. I can call it Xano Turbo 2, for example.
+Then, I'm just going to paste that. Do double dash transport SS E and that's it. Once I do this, it's in the project, so I've already dropped it in. If I were to open a new conversation here and I'm going to do forward slash MCP, I can see Xano Turbo 2 is actually right there when it's connected like this. It's actually connected automatically.
+What makes it secure is the fact that if I were to actually want to use the tool, it's going to redirect me over to that login, right? So, this is where you don't expose your API key or anything. Again, like I mentioned for those teams where you have five people, these developers, there's this level of control that I'm building into it so that they can log into this dashboard, which is going to be like that. This is where I'm launching the improvements, which is so they can come and turn off people who are using the tool, for example, and control. I don't want anyone to use this tool. How much is this person using it?
+And so on. So, there's that visibility from this side of things. So, let me just log in and so that's it. You just log in with SIM credentials as logging into Snappy itself, and you can see it just as authentication successful.
+That means now you can use the tool. Let me actually do one thing really quickly because I want to remove the one that I just added because it's going to be a duplicate, and sometimes it doesn't like that. I'm just going to quickly terminate that one, open up a new one and...
+All right, let me just make sure I'm good here. Okay? So I have Xanooro there out. This is a new version of it. But to say basically, use your Zoho tool, go into Workspace, let's say seven and learn all about it.
+So this tool, I think, the big driving force behind it is really the ability for it to, well, first of all, the fact that I use it myself all the time. I think I'm basically dogfooting it.
+So, I genuinely find... I mean, I couldn't live without this tool at this point. Let's see if this is a new command, I'm not sure if it'll work, but let's see. This tool has over 100 tools in it which map to the Xano metadata.
+Then what I've done is basically created this middleware layer that creates MCP-friendly versions of the endpoints which stack more functionality on top of it, right? So it's like saying, "Instead of going straight to, for example, just creating an endpoint,
+let's do some type of check and get ahead of the user a little bit." Or if they try to create an endpoint but the API group doesn't exist, we're going to anticipate that, and we're going to return the API groups that do exist, because the AI client is going to naturally be wondering about that next. How do I know that?
+Because I bang my head against the wall many times with this thing. So, this is the voice of pain speaking. So, right now, what it's doing is just burning through and checking. I just told it to go and learn about the workspace.
+So it's just exploring and doing its thing. What's interesting about using it in this environment is that, obviously, I'm... This is something I've been... It's actually been a recurring theme in the weekly talks that I have, which is the fact that this connects to other things.
+So, from here, it connects. I have an MCP tool for Playwright, for example. I have, of course, the ability to... I'm connected to the IDE again. Enterprise. People who are working and really doing real development are connected to the IDE, let's say, in the context of these tools that are popular right now, like Lovable, Bolt, or whatever you...
+I have personally done it where I have a project in Xano, and I prefer to work from back to front with these projects, and you basically have this fantastic way of working, which is that you can directly let the AI see what the backend is. It can actually access everything and see what the canonical IDs are, see what the endpoints are, and be able to massage that relationship out to what the front end needs.
+So, it's like because it's right there in the middle, and it can push to GitHub from here, and it can connect to Playwright, like I said. It can actually take screenshots of the front end, resize it, and just have a remarkable amount of connectivity from here all the way into being able to actually build in Xano.
+So, it is quite something, basically. And actually, I want to show the things that I've been working on lately, which is like a demo. I'll create a new... Actually, I'll do it in the API group. As done. Let's say this is what I do. I'm going to actually show you how I actually use it.
+So I record myself speaking. So I tell it, as a demo. Go into Workspace 8 and check out the tables and the API groups and then create a new API group and then create some endpoints in that API group. I want to see how you do with doing that.
+And so I can just do that and then I'm just gonna delete the first part. And so it's like having a developer basically, right? Like having just like this machine that goes out for you. The... I pause there for a second because I'm talking.
+jon.p@xano.com | 13:51
+Yeah.
+Robert Boulos | 13:51
+Talking about Y yp absolutely.
+jon.p@xano.com | 13:52
+So. let me pitch it back to you in a simple way because my whole thing is I'm selling to enterprises, right? And it needs to be like a bite-sized representation of what it does.
+Then we can dive deeper later on. Basically what you're doing is you're connecting Xano to somebody's IDE where the code that they're creating in the IDE via Claude or whatever AI agent or copilot they want to use is then sending that information back to Xano.
+You can do that. I'm even getting too complex.
+Robert Boulos | 14:27
+Yes.
+jon.p@xano.com | 14:28
+It's basically a way of connecting Xano to your IDE so that you can vibe code and reverse engineer Xano outside of Xano.
+Robert Boulos | 14:35
+I think that that's actually. I think that the WAY the Best there was actually, in there was like in there. I think that the Best Way to describe it is what you said, which is the Way to Vibcode and Xano.
+jon.p@xano.com | 14:48
+Yeah.
+Robert Boulos | 14:49
+I think that there's probably as you said, there's probably more accurate ways even more than that, but the way that actually... But that describes probably 80% of what a person needs to understand really about it and really about what it feels like to interact with it. You can see here, actually, where we're getting into as endpoints being created.
+This is where it starts to get very interesting because creating endpoints. I could tell you a whole story about writing using XanoScript, but basically, XanoScript is fantastic
+and it's very powerful. It just needs guardrails. So I created basically an SDK that installs those guardrails. That makes it so that it's going to create valid XanoScript, but it's going to create XanoScript that leverages Xano to strengthen
+it. So, when you're using Xano from the frontend and you're using it from the graphic user interface, it's able to stop you from doing certain things. It's able to... That's... You don't really notice those things too much, but when you're using XanoScript, it doesn't have those guardrails.
+It's just that from the client's point of view, it's not trained on this proprietary language, so it's able to just create whatever it wants.
+I know this is going to make me look like a bit of a lunatic, but what I did was actually create an SDK that basically takes all of that and adds the ability for us to accomplish those two things, which is to create valid XanoScript and have it be opinionated.
+Because I leverage XanoScript, I don't want to see green expression syntax. I want to see variables, I want to see orange. I like that. I like it when it shows up in orange and uses those filters. Although we have over 200 filters in Xano,
+that's where the complexity comes in. It's about the relationship between filters and functions and so on. So I made a system basically that works with that. If I look at this, 1218 is the demo group that was created right now.
+If I come into 1218, I can see the endpoints that were created. And if I look at this, I will not build with filters like this unless this is beautiful. This looks like a person made it.
+You can see that it's using the tables and the system right. These are real endpoints that do real things, and it's using these filters. You could see that it's actually properly...
+I started back on this when the Xanoscryptical shadow dropped, and it was not coming out like this. I was really tearing my hair out for a while trying to get this. I have dragged it kicking and screaming into this result. Basically, now I can come into any one of these and you can see that they're all leveraging filters properly.
+If I come back actually and I look at it, I'll show you one action I was making just before this call, but just to show you as well, it can actually do further logic. Let's do a for each loop and then let's loop through them. Get the records. Push all that information into a variable, create that variable and then let's return back that information.
+So this is very... This is the reason why I wanted to do this, and that is Xano. Personally, I think that this is a great outcome because it's somewhere... I talked to people, and one of the biggest issues with the idea of coding is that you just don't have the ability in the output when it's in traditional code. Xano totally lets you.
+It's like I'm able to see it. Yes, of course, there is an investment. I'm trying to minimize the cognitive load, basically, and minimize the human bottleneck that just appears with every other option.
+If I'm going to do this and it's going to output it in a whole bunch of really crazy, really long syntax, which is just... Okay, fine. A brute force its way to some type of deployment, but it's not in a way that leverages down to strength.
+And then I haven't really solved the core problem, which is that, you know, somebody has to understand this and validate this and go through it and so that's like, you know, something that, I mean, this is really behind us. One thing, there's, like behind us one door's. There's a thousand other doors.
+Because this means that anybody can. I mean, I'm gonna p. I'm excited because I'm going to be using this now because I've just figured it out like two days ago, so like.
+jon.p@xano.com | 19:59
+Yeah.
+Robert Boulos | 20:00
+But now this gives me the chance to build more with it.
+It's like a machine; it builds more things. So, Yeah.
+jon.p@xano.com | 20:07
+I is the whole idea behind Xanoscript. When you look at ATMS, you can't train them on the visual side. It has to be a scripting language. So, when you're able to toggle back and forth between the Xano script, the visual function stack, and then ultimately the canvas view and other things like that, you'll be able to understand that context.
+Robert Boulos | 20:17
+Yes.
+jon.p@xano.com | 20:30
+If you're in different roles, but you'll be able to train models on that Xano script, and that's basically what you're doing with Snappy. You're making it very turnkey and plug and play. Once Snappy is released, I think this is going to be something pretty powerful because people just want it to work right away. They don't want to have to train their own model on it and do all the work that you've already done for this.
+Robert Boulos | 20:52
+Yeah, exactly. It's interesting because it's like playing Wolfram Alpha where the AI is going to... Anytime that I start up a new instance of an AI chat, and it doesn't know anything about this language that it's about to use, it's just going to jump straight into it immediately and just start to spit out something into Xano.
+So, what I've done is just create all of this logic to anticipate, like, "Okay, it tried to say create token or try to say authentic or this other AI refers to it as authentication by default." Another area.
+But there's a certain... Once you're accommodating for all these varieties of options, you eventually stop... You run into less and less errors. And that's I think where my biggest maybe contribution is. There are a few factors that are pushing towards that, generating this result.
+One of those key factors is really just that feedback loop, which is available when you use any other language because it's able to go and actually, before runtime, before deployment, see what the errors are and then get a detailed response and be like, "Okay, here's the issues." Right?
+This is not proper for this. So that's what the SDK does, basically, the abstraction that I've put on top of it.
+jon.p@xano.com | 22:24
+Yeah.
+Robert Boulos | 22:28
+It is familiar with what is supposed to be output, and it's familiar with the quirks of Xanoscript, the idiosyncrasies, or just even how to use Xanoscript in a way that just again, lends itself well to a visual defaultment.
+So, yeah, I.
+jon.p@xano.com | 22:53
+And are you... Is Claude like... What's your licensing agreement with Claude? Are you using a closed-off version, or is Claude being trained on Xanoscript as you put more and more Xanoscript into Claude.
+Robert Boulos | 23:08
+I mean, for me, by default, I'm. I'm using like I have it toggled off for, training on my data, basically, right? Like, and so I'm presuming that they're not training on anything.
+jon.p@xano.com | 23:19
+I see.
+Robert Boulos | 23:24
+And yeah, I would say that when it comes to Claude, really what I'm trying to do is actually have it... I mean, I have another MCP I'm trying to... I'm building an MCP client. I want to work with basically OpenAI, right?
+jon.p@xano.com | 23:41
+Yeah, absolutely.
+Robert Boulos | 23:41
+Like which is what I like about this tool as well. The tie... When the AI models come out, like when you know Claude, hopefully 4.5 comes out and 5 comes out. Nothing changes here on the technical side.
+But all of a sudden, this thing just got a new brain in it. Which actually then all of a sudden, without doing anything, you gain a whole bunch of capability. I started this off with Claude 3.5 and 3.7 came out, then 4 and 4.1, and every time that happened, I was like, "Whoa."
+This thing all of a sudden is quite a bit better at what it was doing just a few days ago. So there's a very interesting phenomenon where the position of this offering has been in an ideal position as the market keeps moving and as these things keep improving, it just naturally benefits from it.
+jon.p@xano.com | 24:42
+So what's the goal here? I only have a few minutes left because I do have to jump on another call, but ultimately, is the goal to integrate with Xano.
+Robert Boulos | 24:49
+They of course, and I appreciate that.
+jon.p@xano.com | 24:56
+Do you want to sell to Xanadu? Sell as an add-on to Xano?
+Robert Boulos | 24:59
+I don't have AI, I don't know.
+jon.p@xano.com | 24:59
+Like. just too early to know, I guess. Is that What?
+Robert Boulos | 25:04
+To be honest with you, all I know is that I do my best, and I like to build stuff.
+jon.p@xano.com | 25:06
+Okay.
+Robert Boulos | 25:11
+And. know that I've built a lot of stuff that people don't use in the past.
+I know what it feels like between building something that people like and what people don't like. This has... Whenever this has an issue, like because... If in the earlier days, sometimes it would go down or anything, my phone would just blow up from people.
+That's when I realized that this was useful, right? So, I'm just saying that I'm noticing this thing that people themselves are telling me, this is great. I felt like, "You know what? Let me just take Ray's advice and share it with John and that's it."
+If even if this is just interesting information to you, then I've already accomplished my goal.
+jon.p@xano.com | 25:52
+Yeah, I think this is interesting.
+Robert Boulos | 25:57
+And if it's anything more than that, then that would be amazing.
+jon.p@xano.com | 26:03
+It's certainly the direction we're trying to go, and the fact that it's already prepackaged is interesting. This call is being recorded. I'm going to take some snippets from this. Paul, there are a couple of people in particular internally that I want to surface this to and get their take.
+But I certainly appreciate you for bringing this up because I think it's very interesting. We're talking about this internally, so the fact that it's already turned key is, I think, really attractive.
+So let me surface some of this information around and get a pulse check on actionable items of how we can potentially engage moving forward.
+Robert Boulos | 26:41
+Sounds good. I am I'm here to help.
+jon.p@xano.com | 26:42
+Cool.
+Robert Boulos | 26:44
+I know you have another meeting, so I don't want to make you jump from one to the other at the last minute. Thank you very much. I just appreciate your time.
+jon.p@xano.com | 26:55
+Absolutely. I appreciate it. Well, thanks for showing me that. Anytime Ray says, "Hey, you got to talk to this person." I'm going to talk to that person. So I'm.
+Robert Boulos | 27:00
+Sounds good, for sure.
+jon.p@xano.com | 27:01
+I'm glad we're able to find some time here.
+Robert Boulos | 27:04
+Have a good one, John. Have a go one.
+jon.p@xano.com | 27:05
+Yep.
+Robert Boulos | 27:05
+See you.

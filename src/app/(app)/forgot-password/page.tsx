@@ -75,9 +75,11 @@ export default function ForgotPasswordPage() {
   return (
     <section className="flex min-h-screen items-center justify-center bg-gradient-to-br from-purple-50/40 via-white to-indigo-50/30 dark:from-slate-950 dark:via-purple-950/10 dark:to-indigo-950/20">
       <div className="container max-w-screen-xl px-6 py-28 lg:px-8 lg:py-32">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-slate-900 dark:text-slate-100">Forgot your password?</h1>
-          <p className="text-slate-600 dark:text-slate-400 mt-2">
+        <div className="mb-8 text-center">
+          <h1 className="text-3xl font-bold text-slate-900 dark:text-slate-100">
+            Forgot your password?
+          </h1>
+          <p className="mt-2 text-slate-600 dark:text-slate-400">
             No worries, we'll send you reset instructions
           </p>
         </div>
@@ -107,9 +109,9 @@ export default function ForgotPasswordPage() {
               </div>
             </CardContent>
             <CardFooter className="flex flex-col space-y-4">
-              <Button 
-                type="submit" 
-                className="w-full bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 text-white shadow-md transition-all duration-200 hover:scale-[1.02] hover:shadow-lg hover:brightness-110 disabled:opacity-50 dark:from-violet-500 dark:via-purple-500 dark:to-indigo-500" 
+              <Button
+                type="submit"
+                className="w-full bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 text-white shadow-md transition-all duration-200 hover:scale-[1.02] hover:shadow-lg hover:brightness-110 disabled:opacity-50 dark:from-violet-500 dark:via-purple-500 dark:to-indigo-500"
                 disabled={isLoading}
               >
                 {isLoading && (

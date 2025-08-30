@@ -3,12 +3,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
-import {
-  BadgeCheck,
-  ChevronsUpDown,
-  CreditCard,
-  LogOut,
-} from 'lucide-react';
+import { BadgeCheck, ChevronsUpDown, CreditCard, LogOut } from 'lucide-react';
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
