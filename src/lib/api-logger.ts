@@ -6,6 +6,11 @@ export function createRequestLogger(request: NextRequest, endpoint: string) {
 
   return {
     async logRequest(body: unknown, response: unknown, error?: unknown) {
+      // Disable logging in production to avoid file system issues
+      if (process.env.NODE_ENV === 'production') {
+        return;
+      }
+
       const endTime = Date.now();
       const duration = endTime - startTime;
 
@@ -30,14 +35,12 @@ export function createRequestLogger(request: NextRequest, endpoint: string) {
             : 'success',
       };
 
-      // In production, you might want to send this to a logging service
-      // For now, just log in development
+      // Only log in development
       if (process.env.NODE_ENV === 'development') {
         // eslint-disable-next-line no-console
         console.log(`[API Log] ${endpoint}:`, logEntry);
       }
 
-      // You could also save to file or database here
       return logEntry;
     },
 
