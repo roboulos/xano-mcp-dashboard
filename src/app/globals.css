@@ -511,3 +511,331 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* ========== Premium Hero Section Animations ========== */
+
+/* 1. AI-Powered — magical shimmer + glow underline */
+.gradient-text-ai {
+  background-image: linear-gradient(92deg, #FF7A1A 0%, #FF8A3B 22%, #FFB341 50%, #FFD277 72%, #FF8A3B 100%);
+  background-size: 250% 250%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 1px 0 rgba(0,0,0,.06), 0 6px 16px rgba(255,138,59,.28), 0 0 36px rgba(255,179,65,.25);
+  animation: aiShimmer 5.5s cubic-bezier(.22,1,.36,1) infinite;
+  position: relative;
+}
+.gradient-text-ai::after {
+  content: '';
+  position: absolute;
+  left: -2%;
+  right: -2%;
+  bottom: -0.25em;
+  height: 6px;
+  background: radial-gradient(60% 220% at 50% 50%, rgba(255,179,65,.65) 0%, rgba(255,138,59,0.0) 70%);
+  filter: blur(8px);
+  opacity: .9;
+  pointer-events: none;
+}
+.gradient-text-ai::before {
+  content: '';
+  position: absolute;
+  inset: -6px -2px;
+  background: conic-gradient(from 180deg at 50% 50%, rgba(255,255,255,.45), rgba(255,255,255,0) 60%, rgba(255,255,255,0) 300deg, rgba(255,255,255,.45));
+  mix-blend-mode: overlay;
+  filter: blur(14px);
+  animation: aiGlowPulse 3.8s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes aiShimmer {
+  0% { background-position: 0% 50% }
+  50% { background-position: 100% 50% }
+  100% { background-position: 0% 50% }
+}
+@keyframes aiGlowPulse {
+  0%,100% { opacity: .5 }
+  50% { opacity: 1 }
+}
+
+/* 2. Xano Development — deep violet gradient + animated grid scan */
+.gradient-text-database {
+  background-image:
+    linear-gradient(100deg, #8B5CF6 0%, #7C3AED 40%, #6D28D9 60%, #7C3AED 100%),
+    linear-gradient(0deg, rgba(255,255,255,0.08) 1px, rgba(255,255,255,0) 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.07) 1px, rgba(255,255,255,0) 1px);
+  background-size: 200% 200%, 100% 8px, 8px 100%;
+  background-position: 0% 50%, 0 0, 0 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 1px 0 rgba(0,0,0,.08), 0 8px 22px rgba(109,40,217,.35), 0 0 50px rgba(124,58,237,.40);
+  animation: dbShimmer 9s cubic-bezier(.22,1,.36,1) infinite, dbScan 18s linear infinite;
+  position: relative;
+}
+.gradient-text-database::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -0.35em; height: 10px;
+  background: radial-gradient(50% 60% at 50% 100%, rgba(124,58,237,.55), rgba(124,58,237,0) 70%);
+  filter: blur(10px);
+  opacity: .9;
+  pointer-events: none;
+}
+@keyframes dbShimmer {
+  0% { background-position: 0% 50%, 0 0, 0 0 }
+  50% { background-position: 100% 50%, 0 0, 0 0 }
+  100% { background-position: 0% 50%, 0 0, 0 0 }
+}
+@keyframes dbScan {
+  0%   { background-position: 0% 50%, 0 0, 0 0 }
+  50%  { background-position: 0% 50%, 0 -8px, -8px 0 }
+  100% { background-position: 0% 50%, 0 0, 0 0 }
+}
+
+/* 3. Ambient aurora behind headline */
+.aurora-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(1200px 800px at 10% 20%, rgba(255,160,64,.10), rgba(255,160,64,0) 60%),
+    radial-gradient(1000px 700px at 80% 10%, rgba(124,58,237,.12), rgba(124,58,237,0) 60%),
+    radial-gradient(900px 600px at 70% 70%, rgba(16,185,129,.10), rgba(16,185,129,0) 55%);
+  filter: blur(40px);
+  animation: auroraMove 24s ease-in-out infinite alternate;
+}
+@keyframes auroraMove {
+  0%   { transform: translate3d(0,0,0) scale(1) }
+  50%  { transform: translate3d(0,-6px,0) scale(1.02) }
+  100% { transform: translate3d(0,0,0) scale(1) }
+}
+:root.dark .aurora-bg {
+  background:
+    radial-gradient(1200px 800px at 10% 20%, rgba(255,160,64,.06), rgba(255,160,64,0) 60%),
+    radial-gradient(1000px 700px at 80% 10%, rgba(124,58,237,.10), rgba(124,58,237,0) 60%),
+    radial-gradient(900px 600px at 70% 70%, rgba(59,130,246,.08), rgba(59,130,246,0) 55%);
+  filter: blur(48px);
+}
+
+/* 4. Animated gradient border for chat container - Flowing effect */
+.gradient-border {
+  position: relative;
+  border-radius: 1rem;
+  background: linear-gradient(
+    90deg,
+    #8b5cf6,
+    #ec4899,
+    #f59e0b,
+    #22d3ee,
+    #8b5cf6,
+    #ec4899,
+    #f59e0b,
+    #22d3ee,
+    #8b5cf6
+  );
+  background-size: 300% 100%;
+  animation: border-flow 8s linear infinite;
+  padding: 2px;
+}
+.gradient-border > * {
+  background: white;
+  border-radius: calc(1rem - 2px);
+  position: relative;
+  z-index: 1;
+}
+.dark .gradient-border > * {
+  background: rgb(15 23 42);
+}
+@keyframes border-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: -300% 50%;
+  }
+}
+
+/* 5. Online indicator with glow + soft pulse ring */
+.status-dot {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 30% 30%, #a7f3d0, #10b981 60%, #065f46 100%);
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.7);
+}
+.status-dot::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: inherit;
+  border: 2px solid rgba(16, 185, 129, 0.35);
+  animation: pulse-ring 2.5s ease-out infinite;
+}
+@keyframes pulse-ring {
+  0%   { transform: scale(0.75); opacity: 0.7; }
+  80%  { transform: scale(1.5); opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* 6. Scroll fade overlays */
+.scroll-fade {
+  position: relative;
+  --fade-color: rgba(255, 255, 255, 1);
+}
+.dark .scroll-fade {
+  --fade-color: rgb(15, 23, 42);
+}
+.scroll-fade::before,
+.scroll-fade::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 24px;
+  pointer-events: none;
+  z-index: 2;
+  transition: opacity 200ms ease;
+}
+.scroll-fade::before {
+  top: 0;
+  background: linear-gradient(to bottom, var(--fade-color), transparent);
+  opacity: 1;
+}
+.scroll-fade::after {
+  bottom: 0;
+  background: linear-gradient(to top, var(--fade-color), transparent);
+  opacity: 1;
+}
+.scroll-fade[data-at-top="true"]::before {
+  opacity: 0;
+}
+.scroll-fade[data-at-bottom="true"]::after {
+  opacity: 0;
+}
+
+/* 7. Message appear animations */
+.msg-in {
+  animation: fade-in-up 260ms cubic-bezier(.22, .61, .36, 1) both;
+}
+.msg-out {
+  animation: fade-in-up 260ms cubic-bezier(.22, .61, .36, 1) both;
+}
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(4px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 8. Typing indicator */
+.typing {
+  display: inline-flex;
+  gap: 3px;
+  align-items: center;
+}
+.typing span {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: currentColor;
+  opacity: 0.5;
+  animation: typing-bounce 1s infinite;
+}
+.typing span:nth-child(2) { animation-delay: .15s; }
+.typing span:nth-child(3) { animation-delay: .30s; }
+@keyframes typing-bounce {
+  0%, 100% { transform: translateY(0); opacity: 0.35; }
+  50% { transform: translateY(-2px); opacity: 0.9; }
+}
+
+/* 9. Send button micro-flight */
+.send-btn .plane {
+  transition: transform .45s cubic-bezier(.22, .61, .36, 1), opacity .2s ease;
+}
+.send-btn:active .plane {
+  transform: translate(12%, -28%) rotate(12deg) scale(1.05);
+}
+.send-btn.sending .plane {
+  transform: translate(14px, -14px) rotate(15deg) scale(1.08);
+  opacity: 0;
+}
+
+/* 10. Dropdown chevron rotate */
+.dm-trigger[data-state="open"] .chev {
+  transform: rotate(180deg);
+}
+.dm-trigger .chev {
+  transition: transform 180ms ease;
+}
+
+/* 11. Badge sheen effect */
+.badge-sheen {
+  position: relative;
+  overflow: hidden;
+}
+.badge-sheen::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,.45), transparent);
+  transform: rotate(25deg) translateX(-120%);
+  transition: transform .8s ease;
+  pointer-events: none;
+}
+.badge-sheen:hover::after {
+  transform: rotate(25deg) translateX(250%);
+}
+
+/* 12. Table hover effect */
+.table-hover tr:hover {
+  background-color: rgba(15, 23, 42, 0.03);
+}
+.dark .table-hover tr:hover {
+  background-color: rgba(148, 163, 184, 0.08);
+}
+
+/* 13. Shimmer once effect */
+.shimmer-once {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer-once::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,.4) 25%, transparent 50%);
+  transform: translateX(-120%);
+  animation: shimmer 1.2s ease 1;
+}
+@keyframes shimmer {
+  to { transform: translateX(120%); }
+}
+
+/* 14. Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .gradient-text-ai, 
+  .gradient-text-ai::before,
+  .gradient-text-database,
+  .aurora-bg,
+  .gradient-border::before,
+  .status-dot::after,
+  .msg-in,
+  .msg-out,
+  .typing span,
+  .shimmer-once::after {
+    animation: none !important;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

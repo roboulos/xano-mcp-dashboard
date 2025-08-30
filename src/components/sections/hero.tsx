@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import Link from 'next/link';
 
@@ -78,6 +78,39 @@ const Hero = ({
   },
 }: HeroProps) => {
   const [toolExpanded, setToolExpanded] = useState(false);
+  const [atTop, setAtTop] = useState(true);
+  const [atBottom, setAtBottom] = useState(false);
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+  const [sending, setSending] = useState(false);
+
+  useEffect(() => {
+    const root = scrollRef.current;
+    if (!root) return;
+    const viewport = root.querySelector(
+      '[data-radix-scroll-area-viewport]'
+    ) as HTMLDivElement | null;
+    if (!viewport) return;
+
+    const update = () => {
+      setAtTop(viewport.scrollTop <= 0);
+      const bottom =
+        viewport.scrollHeight - viewport.clientHeight - viewport.scrollTop <= 1;
+      setAtBottom(bottom);
+    };
+
+    update();
+    viewport.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    return () => {
+      viewport.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+    };
+  }, []);
+
+  const onSend = () => {
+    setSending(true);
+    setTimeout(() => setSending(false), 550);
+  };
 
   return (
     <>
@@ -91,10 +124,10 @@ const Hero = ({
               <div className="max-w-[680px]">
                 <div className="relative">
                   {/* More dynamic background gradient behind headline */}
-                  <div className="absolute inset-0 -z-10 bg-gradient-to-r from-purple-500/15 via-indigo-500/10 via-violet-500/8 to-pink-500/10 blur-3xl dark:from-purple-500/8 dark:via-indigo-500/6 dark:via-violet-500/4 dark:to-pink-500/5"></div>
+                  <div className="aurora-bg"></div>
 
                   <h1
-                    className="hero-headline mb-8 text-4xl leading-[1.1] font-bold tracking-[-0.01em] text-slate-900 lg:text-[4rem] dark:text-slate-100"
+                    className="hero-headline mb-8 text-4xl leading-[1.1] font-bold tracking-[-0.02em] text-slate-900 lg:text-[4rem] dark:text-slate-100"
                     style={{
                       fontSize: 'clamp(2.5rem, 5vw, 4rem)',
                       fontWeight: '700',
@@ -103,10 +136,10 @@ const Hero = ({
                   >
                     The Framework for{' '}
                     <span className="gradient-text-ai bg-gradient-to-r from-orange-500 to-amber-500 bg-clip-text text-transparent dark:from-orange-400 dark:to-amber-400">
-                      AI-Powered
+                      AI-Accelerated
                     </span>{' '}
                     <span className="gradient-text-database bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent dark:from-violet-400 dark:to-purple-400">
-                      Xano Development
+                      Development
                     </span>
                   </h1>
                 </div>
@@ -170,122 +203,146 @@ const Hero = ({
 
             {/* Right Column - Claude Chat Interface (spans 6 columns) */}
             <div className="mt-8 lg:col-span-6 lg:mt-0">
-              <div className="mx-auto w-full max-w-[580px] overflow-hidden rounded-2xl border border-slate-900/8 bg-white shadow-[0_12px_32px_rgba(2,6,23,0.12),0_4px_16px_rgba(2,6,23,0.08)] transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(2,6,23,0.16),0_6px_20px_rgba(2,6,23,0.10)] lg:mx-0 dark:border-slate-100/8 dark:bg-slate-900 dark:shadow-[0_12px_32px_rgba(0,0,0,0.5),0_4px_16px_rgba(0,0,0,0.3)] dark:hover:shadow-[0_16px_40px_rgba(0,0,0,0.6),0_6px_20px_rgba(0,0,0,0.4)]">
-                {/* Header */}
-                <div className="bg-muted/30 dark:bg-muted/20 flex items-center justify-between border-b px-4 py-3 dark:border-slate-800">
-                  <div className="flex items-center gap-3">
-                    <Avatar className="h-8 w-8">
-                      <div className="flex h-full w-full items-center justify-center rounded-full bg-gradient-to-br from-orange-400 to-pink-400">
-                        <Bot className="h-4 w-4 text-white" />
-                      </div>
-                    </Avatar>
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-sm font-semibold">
-                          Claude 3.5 Sonnet
-                        </span>
-                        <Badge variant="secondary" className="text-xs">
-                          Xano AI Developer
-                        </Badge>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="h-2 w-2 rounded-full bg-green-400"></div>
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          className="h-6 w-6 p-0"
-                        >
-                          <ChevronDown className="h-3 w-3" />
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent>
-                        <DropdownMenuItem>Claude 3.5 Sonnet</DropdownMenuItem>
-                        <DropdownMenuItem>Claude 3.5 Haiku</DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                    <Button variant="ghost" size="sm" className="h-6 w-6 p-0">
-                      <MoreHorizontal className="h-3 w-3" />
-                    </Button>
-                  </div>
-                </div>
-
-                {/* Conversation */}
-                <ScrollArea className="h-96 p-4">
-                  <div className="space-y-4">
-                    {/* User Message */}
-                    <div className="flex justify-end">
-                      <div className="max-w-md rounded-xl border border-slate-900/5 bg-white px-5 py-4 text-sm dark:border-slate-700 dark:bg-slate-800">
-                        Create an API endpoint that returns users who signed up
-                        this week with their subscription status
+              <div className="gradient-border mx-auto w-full max-w-[580px] rounded-2xl shadow-[0_12px_32px_rgba(2,6,23,0.12),0_4px_16px_rgba(2,6,23,0.08)] transition-all duration-300 ease-out will-change-transform hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(2,6,23,0.16),0_6px_20px_rgba(2,6,23,0.10)] lg:mx-0 dark:shadow-[0_12px_32px_rgba(0,0,0,0.5),0_4px_16px_rgba(0,0,0,0.3)] dark:hover:shadow-[0_16px_40px_rgba(0,0,0,0.6),0_6px_20px_rgba(0,0,0,0.4)]">
+                <div className="overflow-hidden">
+                  {/* Header */}
+                  <div className="bg-muted/30 dark:bg-muted/20 flex items-center justify-between border-b px-4 py-3 dark:border-slate-800">
+                    <div className="flex items-center gap-3">
+                      <Avatar className="h-8 w-8">
+                        <div className="flex h-full w-full items-center justify-center rounded-full bg-gradient-to-br from-orange-400 to-pink-400">
+                          <Bot className="h-4 w-4 text-white" />
+                        </div>
+                      </Avatar>
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-sm font-semibold">
+                            Claude 3.5 Sonnet
+                          </span>
+                          <Badge variant="secondary" className="text-xs">
+                            Xano AI Developer
+                          </Badge>
+                        </div>
                       </div>
                     </div>
+                    <div className="flex items-center gap-2">
+                      <span className="status-dot" aria-label="Online" />
+                      <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            className="dm-trigger h-6 w-6 p-0"
+                          >
+                            <ChevronDown className="chev h-3 w-3" />
+                          </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent>
+                          <DropdownMenuItem>Claude 3.5 Sonnet</DropdownMenuItem>
+                          <DropdownMenuItem>Claude 3.5 Haiku</DropdownMenuItem>
+                        </DropdownMenuContent>
+                      </DropdownMenu>
+                      <Button variant="ghost" size="sm" className="h-6 w-6 p-0">
+                        <MoreHorizontal className="h-3 w-3" />
+                      </Button>
+                    </div>
+                  </div>
 
-                    {/* Assistant Message with Tool Call */}
-                    <div className="flex justify-start">
-                      <div className="max-w-lg space-y-3 rounded-xl bg-slate-50 px-5 py-4 text-sm dark:bg-slate-800/50">
-                        <p className="text-foreground">
-                          I'll create a new API endpoint in your Xano backend
-                          that returns users who signed up this week with their
-                          subscription details.
-                        </p>
+                  {/* Conversation */}
+                  <ScrollArea
+                    ref={scrollRef as React.RefObject<HTMLDivElement>}
+                    className="scroll-fade h-96 p-4"
+                    data-at-top={atTop}
+                    data-at-bottom={atBottom}
+                  >
+                    <div className="space-y-4">
+                      {/* User Message */}
+                      <div className="flex justify-end">
+                        <div className="msg-out max-w-md rounded-xl border border-slate-900/5 bg-white px-5 py-4 text-sm dark:border-slate-700 dark:bg-slate-800">
+                          Create an API endpoint that returns users who signed
+                          up this week with their subscription status
+                        </div>
+                      </div>
 
-                        <Collapsible
-                          open={toolExpanded}
-                          onOpenChange={setToolExpanded}
-                        >
-                          <CollapsibleTrigger asChild>
-                            <Button
-                              variant="ghost"
-                              size="sm"
-                              className="text-muted-foreground hover:text-foreground h-auto p-0 text-xs font-normal"
-                            >
-                              <Badge variant="outline" className="mr-2 text-xs">
-                                Xano Function
-                              </Badge>
-                              <span>142ms</span>
-                              <ChevronDown className="ml-1 h-3 w-3" />
-                            </Button>
-                          </CollapsibleTrigger>
-                          <CollapsibleContent className="mt-2">
-                            <Tabs defaultValue="summary" className="w-full">
-                              <TabsList className="grid h-8 w-full grid-cols-4">
-                                <TabsTrigger
-                                  value="summary"
-                                  className="text-xs"
+                      {/* Assistant Message with Tool Call */}
+                      <div className="flex justify-start">
+                        <div className="msg-in max-w-lg space-y-3 rounded-xl bg-slate-50 px-5 py-4 text-sm dark:bg-slate-800/50">
+                          <p className="text-foreground">
+                            I'll create a new API endpoint in your Xano backend
+                            that returns users who signed up this week with
+                            their subscription details.
+                          </p>
+
+                          <div className="text-muted-foreground mb-2 flex items-center gap-2 text-[11px]">
+                            <div className="typing text-slate-500 dark:text-slate-400">
+                              <span></span>
+                              <span></span>
+                              <span></span>
+                            </div>
+                            <span className="text-xs">
+                              Claude is thinking...
+                            </span>
+                          </div>
+
+                          <Collapsible
+                            open={toolExpanded}
+                            onOpenChange={setToolExpanded}
+                          >
+                            <CollapsibleTrigger asChild>
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                className="text-muted-foreground hover:text-foreground h-auto p-0 text-xs font-normal"
+                              >
+                                <Badge
+                                  variant="outline"
+                                  className="badge-sheen mr-2 text-xs"
                                 >
-                                  Summary
-                                </TabsTrigger>
-                                <TabsTrigger value="sql" className="text-xs">
-                                  SQL
-                                </TabsTrigger>
-                                <TabsTrigger value="json" className="text-xs">
-                                  JSON
-                                </TabsTrigger>
-                                <TabsTrigger value="trace" className="text-xs">
-                                  Trace
-                                </TabsTrigger>
-                              </TabsList>
-                              <TabsContent value="summary" className="mt-2">
-                                <div className="text-muted-foreground space-y-1 text-xs">
-                                  <p>
-                                    • API endpoint created:
-                                    /users/recent-signups
-                                  </p>
-                                  <p>
-                                    • Database query added with 7-day filter
-                                  </p>
-                                  <p>
-                                    • Response includes user + subscription data
-                                  </p>
-                                </div>
-                              </TabsContent>
-                              <TabsContent value="sql" className="mt-2">
-                                <CodeBlock
-                                  code={`// Xano Function Stack
+                                  Xano Function
+                                </Badge>
+                                <span className="shimmer-once">142ms</span>
+                                <ChevronDown className="ml-1 h-3 w-3" />
+                              </Button>
+                            </CollapsibleTrigger>
+                            <CollapsibleContent className="mt-2">
+                              <Tabs defaultValue="summary" className="w-full">
+                                <TabsList className="grid h-8 w-full grid-cols-4">
+                                  <TabsTrigger
+                                    value="summary"
+                                    className="text-xs"
+                                  >
+                                    Summary
+                                  </TabsTrigger>
+                                  <TabsTrigger value="sql" className="text-xs">
+                                    SQL
+                                  </TabsTrigger>
+                                  <TabsTrigger value="json" className="text-xs">
+                                    JSON
+                                  </TabsTrigger>
+                                  <TabsTrigger
+                                    value="trace"
+                                    className="text-xs"
+                                  >
+                                    Trace
+                                  </TabsTrigger>
+                                </TabsList>
+                                <TabsContent value="summary" className="mt-2">
+                                  <div className="text-muted-foreground space-y-1 text-xs">
+                                    <p>
+                                      • API endpoint created:
+                                      /users/recent-signups
+                                    </p>
+                                    <p>
+                                      • Database query added with 7-day filter
+                                    </p>
+                                    <p>
+                                      • Response includes user + subscription
+                                      data
+                                    </p>
+                                  </div>
+                                </TabsContent>
+                                <TabsContent value="sql" className="mt-2">
+                                  <CodeBlock
+                                    code={`// Xano Function Stack
 1. Database Request: Query all records
    Table: users
    Filter: created_at >= timestamp_sub(now, 7, "day")
@@ -295,88 +352,93 @@ const Hero = ({
 3. Sort: created_at DESC
 
 4. Return: {id, email, created_at, subscription}`}
-                                  language="javascript"
-                                  showCopy={false}
-                                  className="text-xs"
-                                />
-                              </TabsContent>
-                              <TabsContent value="json" className="mt-2">
-                                <CodeBlock
-                                  code={`{
+                                    language="javascript"
+                                    showCopy={false}
+                                    className="text-xs"
+                                  />
+                                </TabsContent>
+                                <TabsContent value="json" className="mt-2">
+                                  <CodeBlock
+                                    code={`{
   "endpoint": "/users/recent-signups",
   "method": "GET",
   "auth": "api_key",
   "response_count": 47
 }`}
-                                  language="json"
-                                  showCopy={false}
-                                  className="text-xs"
-                                />
-                              </TabsContent>
-                              <TabsContent value="trace" className="mt-2">
-                                <div className="text-muted-foreground space-y-1 text-xs">
-                                  <p>• Function created: 12ms</p>
-                                  <p>• API test run: 89ms</p>
-                                  <p>• Deployment: ready</p>
-                                </div>
-                              </TabsContent>
-                            </Tabs>
-                          </CollapsibleContent>
-                        </Collapsible>
+                                    language="json"
+                                    showCopy={false}
+                                    className="text-xs"
+                                  />
+                                </TabsContent>
+                                <TabsContent value="trace" className="mt-2">
+                                  <div className="text-muted-foreground space-y-1 text-xs">
+                                    <p>• Function created: 12ms</p>
+                                    <p>• API test run: 89ms</p>
+                                    <p>• Deployment: ready</p>
+                                  </div>
+                                </TabsContent>
+                              </Tabs>
+                            </CollapsibleContent>
+                          </Collapsible>
 
-                        <div className="text-foreground">
-                          <p className="mb-2">
-                            Created API endpoint that found{' '}
-                            <strong>47 new users</strong> this week. The
-                            endpoint is now live at{' '}
-                            <strong>/api:v1/users/recent-signups</strong>:
-                          </p>
+                          <div className="text-foreground">
+                            <p className="mb-2">
+                              Created API endpoint that found{' '}
+                              <strong>47 new users</strong> this week. The
+                              endpoint is now live at{' '}
+                              <strong>/api:v1/users/recent-signups</strong>:
+                            </p>
 
-                          <div className="bg-background mt-2 rounded border dark:border-slate-700 dark:bg-slate-900">
-                            <table className="w-full text-xs">
-                              <thead className="border-b">
-                                <tr className="text-left">
-                                  <th className="p-2 font-medium">Email</th>
-                                  <th className="p-2 font-medium">Joined</th>
-                                  <th className="p-2 font-medium">Plan</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr className="border-b">
-                                  <td className="p-2">alice@company.com</td>
-                                  <td className="p-2">Today</td>
-                                  <td className="p-2">Pro</td>
-                                </tr>
-                                <tr className="border-b">
-                                  <td className="p-2">bob@startup.io</td>
-                                  <td className="p-2">Yesterday</td>
-                                  <td className="p-2">Business</td>
-                                </tr>
-                                <tr>
-                                  <td className="p-2">carol@dev.co</td>
-                                  <td className="p-2">2 days ago</td>
-                                  <td className="p-2">Free</td>
-                                </tr>
-                              </tbody>
-                            </table>
+                            <div className="bg-background mt-2 rounded border dark:border-slate-700 dark:bg-slate-900">
+                              <table className="table-hover w-full text-xs">
+                                <thead className="border-b">
+                                  <tr className="text-left">
+                                    <th className="p-2 font-medium">Email</th>
+                                    <th className="p-2 font-medium">Joined</th>
+                                    <th className="p-2 font-medium">Plan</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr className="border-b">
+                                    <td className="p-2">alice@company.com</td>
+                                    <td className="p-2">Today</td>
+                                    <td className="p-2">Pro</td>
+                                  </tr>
+                                  <tr className="border-b">
+                                    <td className="p-2">bob@startup.io</td>
+                                    <td className="p-2">Yesterday</td>
+                                    <td className="p-2">Business</td>
+                                  </tr>
+                                  <tr>
+                                    <td className="p-2">carol@dev.co</td>
+                                    <td className="p-2">2 days ago</td>
+                                    <td className="p-2">Free</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </ScrollArea>
+                  </ScrollArea>
 
-                {/* Composer */}
-                <Separator />
-                <div className="p-4">
-                  <div className="flex gap-2">
-                    <Input
-                      placeholder="Tell me what to build in Xano..."
-                      className="flex-1"
-                    />
-                    <Button size="sm">
-                      <Send className="h-4 w-4" />
-                    </Button>
+                  {/* Composer */}
+                  <Separator />
+                  <div className="p-4">
+                    <div className="flex gap-2">
+                      <Input
+                        placeholder="Tell me what to build in Xano..."
+                        className="flex-1"
+                      />
+                      <Button
+                        size="sm"
+                        onClick={onSend}
+                        className={`send-btn ${sending ? 'sending' : ''}`}
+                      >
+                        <Send className="plane h-4 w-4" />
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </div>
