@@ -23,14 +23,19 @@ class ApiDebugLogger {
   private enabled: boolean;
 
   constructor() {
-    // Create logs directory if it doesn't exist
-    const logsDir = path.join(process.cwd(), 'logs');
-    if (!fs.existsSync(logsDir)) {
-      fs.mkdirSync(logsDir, { recursive: true });
-    }
-
-    this.logFile = path.join(logsDir, 'api-debug.log');
+    // Disable all file system operations in production
     this.enabled = process.env.NODE_ENV === 'development';
+
+    // Only set up file paths in development
+    if (this.enabled) {
+      const logsDir = path.join(process.cwd(), 'logs');
+      if (!fs.existsSync(logsDir)) {
+        fs.mkdirSync(logsDir, { recursive: true });
+      }
+      this.logFile = path.join(logsDir, 'api-debug.log');
+    } else {
+      this.logFile = ''; // Empty path in production
+    }
   }
 
   private sanitizeHeaders(

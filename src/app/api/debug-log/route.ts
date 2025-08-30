@@ -5,6 +5,13 @@ import path from 'path';
 
 // GET - Retrieve debug log contents
 export async function GET() {
+  // Disable in production
+  if (process.env.NODE_ENV === 'production') {
+    return NextResponse.json({
+      content: 'Debug logging is disabled in production.',
+    });
+  }
+
   try {
     const logPath = path.join(process.cwd(), 'logs', 'api-debug.log');
 
@@ -27,6 +34,14 @@ export async function GET() {
 
 // DELETE - Clear debug log
 export async function DELETE() {
+  // Disable in production
+  if (process.env.NODE_ENV === 'production') {
+    return NextResponse.json({
+      success: true,
+      message: 'Debug logging is disabled in production.',
+    });
+  }
+
   try {
     const logPath = path.join(process.cwd(), 'logs', 'api-debug.log');
 
