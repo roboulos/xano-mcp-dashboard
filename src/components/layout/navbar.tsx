@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import { ChevronRight } from 'lucide-react';
+import { useTheme } from 'next-themes';
 
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Button } from '@/components/ui/button';
@@ -47,13 +48,18 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const pathname = usePathname();
+  const { theme } = useTheme();
 
   return (
     <header className="bg-background/70 absolute top-5 left-1/2 z-50 w-[min(90%,700px)] -translate-x-1/2 rounded-full border backdrop-blur-md lg:top-12">
       <div className="flex items-center justify-between px-6 py-3">
         <Link href="/" className="flex shrink-0 items-center gap-2">
           <Image
-            src="/snappy-mcp-logo.svg"
+            src={
+              theme === 'dark'
+                ? '/snappy-logo-dark.svg'
+                : '/snappy-mcp-logo.svg'
+            }
             alt="Snappy MCP"
             width={160}
             height={40}
