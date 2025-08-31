@@ -14,7 +14,7 @@ const plans = [
     name: 'Starter',
     monthlyPrice: '$99',
     yearlyPrice: '$79',
-    description: 'Perfect for solo developers and small teams',
+    description: 'Perfect for Luke\'s "pool-side building" workflow',
     features: [
       '100+ MCP tools',
       'TypeScript SDK access',
@@ -24,12 +24,26 @@ const plans = [
     ],
   },
   {
+    name: 'Growth',
+    monthlyPrice: '$199',
+    yearlyPrice: '$159',
+    description: 'Enhanced development with additional features',
+    features: [
+      'Everything in Starter',
+      'Advanced SDK patterns',
+      'Enhanced middleware',
+      'Priority community support',
+      'Bi-weekly group calls',
+      'Extended documentation',
+    ],
+  },
+  {
     name: 'Pro',
     monthlyPrice: '$499',
     yearlyPrice: '$399',
-    description: 'Most popular - includes weekly training calls',
+    description: 'What Shane uses for "4 hours → 2 minutes" builds',
     features: [
-      'Everything in Starter',
+      'Everything in Growth',
       'Weekly MCP Wednesday calls',
       'Advanced middleware',
       'Custom SDK patterns',
@@ -42,7 +56,7 @@ const plans = [
     name: 'Enterprise',
     monthlyPrice: '$2k+',
     yearlyPrice: 'Custom',
-    description: 'Healthcare-grade security and dedicated support',
+    description: "West's healthcare-grade setup with priority support",
     features: [
       'Everything in Pro',
       'Read-only credential setup',
@@ -66,12 +80,13 @@ export const Pricing = ({ className }: { className?: string }) => {
             Less Than One Hour of Debugging
           </h2>
           <p className="text-muted-foreground mx-auto max-w-xl leading-snug font-medium text-balance">
-            Save hours of debugging time every week. Get live training, proven
-            tools, and a framework that actually works.
+            Robert's consulting rate: $300/hour. This tool costs less than that
+            per month. Join weekly MCP Wednesday calls. Ship endpoints that
+            work. Stop debugging XanoScript.
           </p>
         </div>
 
-        <div className="mt-8 grid items-start gap-5 text-start md:mt-12 md:grid-cols-3 lg:mt-20">
+        <div className="mt-8 grid items-start gap-5 text-start md:mt-12 md:grid-cols-4 lg:mt-20">
           {plans.map(plan => (
             <Card
               key={plan.name}

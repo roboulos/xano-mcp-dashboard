@@ -134,12 +134,13 @@ const Hero = ({
                       textShadow: '0 2px 4px rgba(0,0,0,0.05)',
                     }}
                   >
-                    The Framework for{' '}
+                    Build{' '}
                     <span className="gradient-text-ai bg-gradient-to-r from-orange-500 to-amber-500 bg-clip-text text-transparent dark:from-orange-400 dark:to-amber-400">
-                      AI-Accelerated
+                      10x Faster
                     </span>{' '}
+                    in Xano with{' '}
                     <span className="gradient-text-database bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent dark:from-violet-400 dark:to-purple-400">
-                      Development
+                      AI That Actually Works
                     </span>
                   </h1>
                 </div>
@@ -151,9 +152,9 @@ const Hero = ({
                     opacity: '0.8',
                   }}
                 >
-                  Stop debugging broken AI code. Build in 2 minutes what used to
-                  take 4 hours. Ship with confidence using battle-tested MCP
-                  tools and weekly expert guidance.
+                  Stop debugging green expression soup. Build in 2 minutes what
+                  used to take 4 hours. TypeScript SDK + middleware = AI that
+                  speaks fluent XanoScript.
                 </p>
 
                 {/* Trust Indicators */}
@@ -164,11 +165,11 @@ const Hero = ({
                   </div>
                   <div className="flex items-center gap-2 rounded-full bg-blue-50 px-3 py-1 text-blue-700 dark:bg-blue-900/20 dark:text-blue-400">
                     <span className="text-lg">🎯</span>
-                    <span>80% deployment success rate</span>
+                    <span>80-90% first-try success</span>
                   </div>
                   <div className="flex items-center gap-2 rounded-full bg-purple-50 px-3 py-1 text-purple-700 dark:bg-purple-900/20 dark:text-purple-400">
                     <span className="text-lg">📅</span>
-                    <span>Live weekly training</span>
+                    <span>Weekly MCP Wednesday calls</span>
                   </div>
                 </div>
 

@@ -18,7 +18,7 @@ import { cn } from '@/lib/utils';
 const items = [
   {
     quote:
-      "Built my client's entire platform from Greece - by the pool, on my phone. The AI handles Xano better than manual coding now.",
+      'I was in Greece last week by the pool... got everything working on my phone. I actually now prefer the AI version to one of my developers.',
     author: 'Luke',
     role: 'Platform Builder',
     company: 'UK',
@@ -27,7 +27,7 @@ const items = [
   },
   {
     quote:
-      'What used to take 4 hours now takes 2 minutes. Created a pattern library to make it even faster.',
+      'It created this function which probably would have taken me about four hours in two minutes.',
     author: 'Shane',
     role: 'Developer',
     company: 'UK',
@@ -36,7 +36,7 @@ const items = [
   },
   {
     quote:
-      'Was skeptical at first, but after seeing it work live, I knew this was game-changing for Xano development.',
+      "This seemed too good to be true... I booked a call before entering my API key. We're at the front of something big here.",
     author: 'Nick',
     role: 'Automation Developer',
     company: 'Australia',
@@ -45,21 +45,22 @@ const items = [
   },
   {
     quote:
-      "Started with read-only access for our healthcare client. Now it's our primary development workflow.",
+      "We started with read-only credentials for our healthcare client. Now it's part of our production workflow.",
     author: 'West',
-    role: 'Healthcare Tech',
+    role: 'Healthcare Tech Lead',
     company: 'Enterprise',
     image: '/testimonials/kundo-marta.webp',
     context: 'Enterprise-grade security',
   },
   {
     quote:
-      '80-90% success rate on first try. The SDK and middleware make AI development actually reliable.',
+      "80-90% of the time, I click Run and it just works. This wasn't possible before the SDK and middleware.",
     author: 'Robert Boulos',
     role: 'Creator',
     company: 'Snappy MCP',
     image: '/testimonials/amy-chase.webp',
     context: 'Built from experience',
+    featured: true,
   },
 ];
 
