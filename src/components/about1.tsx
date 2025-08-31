@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 import { CircleArrowRight, Files, Settings } from 'lucide-react';
 
 const About1 = () => {
@@ -15,11 +17,14 @@ const About1 = () => {
           </p>
         </div>
         <div className="grid gap-6 md:grid-cols-2">
-          <img
-            src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg"
-            alt="placeholder"
-            className="size-full max-h-96 rounded-2xl object-cover"
-          />
+          <div className="relative size-full max-h-96">
+            <Image
+              src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg"
+              alt="placeholder"
+              fill
+              className="rounded-2xl object-cover"
+            />
+          </div>
           <div className="bg-muted flex flex-col justify-between gap-10 rounded-2xl p-10">
             <p className="text-muted-foreground text-sm">OUR MISSION</p>
             <p className="text-lg font-medium">
@@ -90,11 +95,14 @@ const About1 = () => {
             </h2>
           </div>
           <div>
-            <img
-              src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg"
-              alt="placeholder"
-              className="mb-6 max-h-36 w-full rounded-xl object-cover"
-            />
+            <div className="relative mb-6 h-36 w-full">
+              <Image
+                src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg"
+                alt="placeholder"
+                fill
+                className="rounded-xl object-cover"
+              />
+            </div>
             <p className="text-muted-foreground">
               And we&apos;re looking for the right people to help us do it. If
               you&apos;re passionate about making change in the world, this

@@ -6,7 +6,7 @@ import {
   IconBrandVercel,
 } from '@tabler/icons-react';
 
-import { BadgeProps } from '@/components/ui/badge';
+import { type BadgeProps } from '@/components/ui/badge';
 
 export const routeViews = [
   {

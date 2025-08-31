@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { IconCheck, IconCopy } from '@tabler/icons-react';
 
-import { Button, ButtonProps } from '@/components/ui/button';
+import { Button, type ButtonProps } from '@/components/ui/button';
 import {
   Tooltip,
   TooltipContent,

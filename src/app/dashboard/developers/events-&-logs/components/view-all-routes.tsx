@@ -127,6 +127,7 @@ export default function ViewAllRouteDialog() {
                 className={
                   currentPage === 1 ? 'pointer-events-none opacity-50' : ''
                 }
+                size="default"
               />
             </PaginationItem>
             {[...Array(totalPages)].map((_, index) => (
@@ -134,6 +135,7 @@ export default function ViewAllRouteDialog() {
                 <PaginationLink
                   onClick={() => setCurrentPage(index + 1)}
                   isActive={currentPage === index + 1}
+                  size="icon"
                 >
                   {index + 1}
                 </PaginationLink>
@@ -149,6 +151,7 @@ export default function ViewAllRouteDialog() {
                     ? 'pointer-events-none opacity-50'
                     : ''
                 }
+                size="default"
               />
             </PaginationItem>
           </PaginationContent>

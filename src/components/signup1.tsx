@@ -33,6 +33,7 @@ const Signup1 = ({
         {/* Logo */}
         <div className="flex flex-col items-center gap-6 lg:justify-start">
           <a href={logo.url}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={logo.src}
               alt={logo.alt}

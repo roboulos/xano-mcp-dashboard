@@ -38,6 +38,25 @@ export function PaymentStatus() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    const fetchPaymentStatus = async () => {
+      try {
+        const response = await fetch(
+          `/api/stripe/payment-status?session_id=${sessionId}`
+        );
+        const data = await response.json();
+
+        if (response.ok) {
+          setPaymentDetails(data);
+        } else {
+          setError(data.error || 'Failed to fetch payment status');
+        }
+      } catch {
+        setError('An error occurred while checking payment status');
+      } finally {
+        setLoading(false);
+      }
+    };
+
     if (sessionId) {
       fetchPaymentStatus();
     } else {
@@ -45,25 +64,6 @@ export function PaymentStatus() {
       setError('No payment session found');
     }
   }, [sessionId]);
-
-  const fetchPaymentStatus = async () => {
-    try {
-      const response = await fetch(
-        `/api/stripe/payment-status?session_id=${sessionId}`
-      );
-      const data = await response.json();
-
-      if (response.ok) {
-        setPaymentDetails(data);
-      } else {
-        setError(data.error || 'Failed to fetch payment status');
-      }
-    } catch {
-      setError('An error occurred while checking payment status');
-    } finally {
-      setLoading(false);
-    }
-  };
 
   if (loading) {
     return (

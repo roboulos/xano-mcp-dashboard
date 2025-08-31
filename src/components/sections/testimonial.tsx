@@ -9,6 +9,7 @@ const Testimonial = () => {
             minutes. It's like having a senior Xano developer on the team 24/7.
           </q>
           <div className="flex flex-col items-center gap-2 sm:flex-row">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="https://api.dicebear.com/7.x/shapes/svg?seed=TechCorpLogo"
               alt="TechCorp"
