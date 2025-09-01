@@ -2819,3 +2819,33 @@ Import trace for requested module:
  ✓ Compiled in 304ms (1364 modules)
  ✓ Compiled in 2.6s (2642 modules)
  ✓ Compiled in 547ms (1364 modules)
+ ✓ Compiled in 781ms (1364 modules)
+ ✓ Compiled in 423ms (1364 modules)
+ ✓ Compiled in 318ms (1364 modules)
+ ⚠ Found a change in next.config.ts. Restarting the server to apply the changes...
+ ⚠ Port 3000 is in use, trying 3001 instead.
+ ⚠ Port 3001 is in use, trying 3002 instead.
+ ⚠ Port 3002 is in use, trying 3003 instead.
+   ▲ Next.js 15.0.4
+   - Local:        http://localhost:3003
+   - Environments: .env
+
+ ✓ Starting...
+ ⚠ Invalid next.config.ts options detected: 
+ ⚠     Unrecognized key(s) in object: 'isrMemoryCacheSize' at "experimental"
+ ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+(node:50050) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+   automatically enabled Fast Refresh for 1 custom loader
+ ✓ Ready in 3.3s
+ ⚠ Found a change in next.config.ts. Restarting the server to apply the changes...
+ ⚠ Port 3000 is in use, trying 3001 instead.
+   ▲ Next.js 15.0.4
+   - Local:        http://localhost:3001
+   - Environments: .env
+
+ ✓ Starting...
+(node:50754) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+   automatically enabled Fast Refresh for 1 custom loader
+ ✓ Ready in 1577ms
