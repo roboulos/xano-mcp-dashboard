@@ -51,8 +51,8 @@ const Navbar = () => {
   const { theme } = useTheme();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b">
-      <div className="container max-w-screen-xl mx-auto flex items-center justify-between px-6 py-4">
+    <header className="bg-background/95 fixed top-0 right-0 left-0 z-50 border-b backdrop-blur-sm">
+      <div className="container mx-auto flex max-w-screen-xl items-center justify-between px-6 py-4">
         <Link href="/" className="flex shrink-0 items-center gap-2">
           <Image
             src={
@@ -73,7 +73,7 @@ const Navbar = () => {
             {ITEMS.map(link =>
               link.dropdownItems ? (
                 <NavigationMenuItem key={link.label} className="">
-                  <NavigationMenuTrigger className="bg-transparent px-3 py-2 text-sm font-medium hover:text-muted-foreground data-[state=open]:text-muted-foreground">
+                  <NavigationMenuTrigger className="hover:text-muted-foreground data-[state=open]:text-muted-foreground bg-transparent px-3 py-2 text-sm font-medium">
                     {link.label}
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -105,7 +105,7 @@ const Navbar = () => {
                   <Link
                     href={link.href}
                     className={cn(
-                      'relative bg-transparent px-3 py-2 text-sm font-medium hover:text-muted-foreground transition-colors',
+                      'hover:text-muted-foreground relative bg-transparent px-3 py-2 text-sm font-medium transition-colors',
                       pathname === link.href && 'text-primary'
                     )}
                   >
@@ -121,9 +121,7 @@ const Navbar = () => {
         <div className="flex items-center gap-2.5">
           <ThemeToggle />
           <Link href="/login" className="max-lg:hidden">
-            <Button size="sm">
-              Login
-            </Button>
+            <Button size="sm">Login</Button>
           </Link>
 
           {/* Hamburger Menu Button (Mobile Only) */}

@@ -115,11 +115,11 @@ const Hero = ({
   return (
     <>
       {/* Hero Section - Premium Layout with Generous Spacing */}
-      <section className="relative flex min-h-[100vh] items-center overflow-hidden bg-background pt-24 pb-20">
+      <section className="bg-background relative flex min-h-[100vh] items-center overflow-hidden pt-24 pb-20">
         {/* Subtle background decoration */}
         <div className="absolute inset-0 -z-10">
-          <div className="absolute top-0 -left-4 h-72 w-72 rounded-full bg-primary/5 blur-3xl" />
-          <div className="absolute -bottom-4 right-0 h-72 w-72 rounded-full bg-primary/5 blur-3xl" />
+          <div className="bg-primary/5 absolute top-0 -left-4 h-72 w-72 rounded-full blur-3xl" />
+          <div className="bg-primary/5 absolute right-0 -bottom-4 h-72 w-72 rounded-full blur-3xl" />
         </div>
         <div className="container max-w-screen-xl px-6 lg:px-8">
           <div className="grid items-center gap-20 lg:grid-cols-12 lg:gap-24">
@@ -128,18 +128,15 @@ const Hero = ({
               {/* Content Block - All aligned to same left edge */}
               <div className="max-w-[680px]">
                 <div className="relative">
-
                   <h1
-                    className="hero-headline mb-8 text-4xl leading-[1.1] font-bold tracking-[-0.02em] text-foreground lg:text-[4rem]"
+                    className="hero-headline text-foreground mb-8 text-4xl leading-[1.1] font-bold tracking-[-0.02em] lg:text-[4rem]"
                     style={{
                       fontSize: 'clamp(2.5rem, 5vw, 4rem)',
                       fontWeight: '700',
                     }}
                   >
                     Build{' '}
-                    <span className="text-primary font-bold">
-                      10x Faster
-                    </span>{' '}
+                    <span className="text-primary font-bold">10x Faster</span>{' '}
                     in Xano with{' '}
                     <span className="text-primary font-bold">
                       AI That Actually Works
@@ -148,7 +145,7 @@ const Hero = ({
                 </div>
 
                 <p
-                  className="hero-subtitle mb-8 max-w-[600px] text-xl leading-[1.6] text-muted-foreground"
+                  className="hero-subtitle text-muted-foreground mb-8 max-w-[600px] text-xl leading-[1.6]"
                   style={{
                     fontSize: '1.25rem',
                   }}
@@ -160,15 +157,15 @@ const Hero = ({
 
                 {/* Trust Indicators */}
                 <div className="mb-8 flex flex-wrap gap-4 text-sm">
-                  <div className="flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-primary">
+                  <div className="bg-primary/10 text-primary flex items-center gap-2 rounded-full px-3 py-1">
                     <span className="text-lg">⚡</span>
                     <span>100+ MCP tools ready</span>
                   </div>
-                  <div className="flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-primary">
+                  <div className="bg-primary/10 text-primary flex items-center gap-2 rounded-full px-3 py-1">
                     <span className="text-lg">🎯</span>
                     <span>80-90% first-try success</span>
                   </div>
-                  <div className="flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-primary">
+                  <div className="bg-primary/10 text-primary flex items-center gap-2 rounded-full px-3 py-1">
                     <span className="text-lg">📅</span>
                     <span>Weekly MCP Wednesday calls</span>
                   </div>
@@ -177,7 +174,10 @@ const Hero = ({
                 {/* CTA Buttons */}
                 <div className="mb-8 flex flex-wrap gap-5">
                   <Link href="/dashboard">
-                    <Button size="lg" className="h-[58px] rounded-xl px-9 text-base font-semibold">
+                    <Button
+                      size="lg"
+                      className="h-[58px] rounded-xl px-9 text-base font-semibold"
+                    >
                       Get Instant Access →
                     </Button>
                   </Link>
@@ -197,7 +197,7 @@ const Hero = ({
                 </div>
 
                 {/* Urgency */}
-                <p className="text-sm text-muted-foreground">
+                <p className="text-muted-foreground text-sm">
                   <span className="font-semibold">Join 40+ developers</span>{' '}
                   shipping faster with AI they can trust.
                 </p>
@@ -206,7 +206,7 @@ const Hero = ({
 
             {/* Right Column - Claude Chat Interface (spans 6 columns) */}
             <div className="mt-8 lg:col-span-6 lg:mt-0">
-              <div className="mx-auto w-full max-w-[580px] rounded-2xl border bg-card shadow-lg transition-all duration-300 ease-out will-change-transform hover:-translate-y-1 hover:shadow-xl lg:mx-0">
+              <div className="bg-card mx-auto w-full max-w-[580px] rounded-2xl border shadow-lg transition-all duration-300 ease-out will-change-transform hover:-translate-y-1 hover:shadow-xl lg:mx-0">
                 <div className="overflow-hidden">
                   {/* Header */}
                   <div className="bg-muted/30 flex items-center justify-between border-b px-4 py-3">
@@ -260,7 +260,7 @@ const Hero = ({
                     <div className="space-y-4">
                       {/* User Message */}
                       <div className="flex justify-end">
-                        <div className="msg-out max-w-md rounded-xl border bg-card px-5 py-4 text-sm">
+                        <div className="msg-out bg-card max-w-md rounded-xl border px-5 py-4 text-sm">
                           Create an API endpoint that returns users who signed
                           up this week with their subscription status
                         </div>
@@ -268,7 +268,7 @@ const Hero = ({
 
                       {/* Assistant Message with Tool Call */}
                       <div className="flex justify-start">
-                        <div className="msg-in max-w-lg space-y-3 rounded-xl bg-muted px-5 py-4 text-sm">
+                        <div className="msg-in bg-muted max-w-lg space-y-3 rounded-xl px-5 py-4 text-sm">
                           <p className="text-foreground">
                             I'll create a new API endpoint in your Xano backend
                             that returns users who signed up this week with
@@ -455,14 +455,14 @@ const Hero = ({
         <div className="container max-w-screen-xl">
           <div className="flex flex-col items-center justify-between gap-8 lg:flex-row">
             {/* Database Support */}
-            <div className="flex items-center gap-6 text-sm text-muted-foreground">
+            <div className="text-muted-foreground flex items-center gap-6 text-sm">
               <div className="flex items-center gap-2">
                 <Database className="h-4 w-4" />
                 <span>Xano • No-code Backend • API-first</span>
               </div>
-              <div className="hidden h-1 w-1 rounded-full bg-muted-foreground/50 lg:block"></div>
+              <div className="bg-muted-foreground/50 hidden h-1 w-1 rounded-full lg:block"></div>
               <span>MCP Compatible</span>
-              <div className="hidden h-1 w-1 rounded-full bg-muted-foreground/50 lg:block"></div>
+              <div className="bg-muted-foreground/50 hidden h-1 w-1 rounded-full lg:block"></div>
               <span>SOC 2 Ready</span>
             </div>
 
