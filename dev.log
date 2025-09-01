@@ -1612,3 +1612,1201 @@ Require stack:
  GET /_next/static/chunks/app/(app)/layout.js 404 in 68ms
  GET /_next/static/chunks/app/(app)/not-found.js 404 in 67ms
  GET /_next/static/chunks/app/(app)/page.js 404 in 68ms
+ GET / 404 in 37ms
+ GET / 404 in 42ms
+ GET / 404 in 11ms
+ GET / 404 in 9ms
+ GET / 404 in 23ms
+ GET / 404 in 10ms
+ GET / 404 in 9ms
+ GET / 404 in 12ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 21ms
+ GET / 404 in 9ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 10ms
+ GET / 404 in 10ms
+ GET / 404 in 11ms
+ GET / 404 in 11ms
+ GET / 404 in 8ms
+ GET / 404 in 9ms
+ GET / 404 in 27ms
+ GET / 404 in 10ms
+ GET / 404 in 19ms
+ GET / 404 in 15ms
+ GET / 404 in 6ms
+ GET / 404 in 9ms
+ GET / 404 in 14ms
+ GET / 404 in 16ms
+ GET / 404 in 10ms
+ GET / 404 in 8ms
+ GET / 404 in 9ms
+ ✓ Compiled in 877ms (1362 modules)
+ GET / 404 in 30ms
+ GET / 404 in 7ms
+ GET / 404 in 13ms
+ GET / 404 in 8ms
+ GET / 404 in 9ms
+ GET / 404 in 9ms
+ GET / 404 in 15ms
+ GET / 404 in 7ms
+ GET / 404 in 10ms
+ GET / 404 in 10ms
+ GET / 404 in 8ms
+ GET / 404 in 22ms
+ GET / 404 in 8ms
+ GET / 404 in 7ms
+ GET / 404 in 9ms
+ GET / 404 in 10ms
+ GET / 404 in 10ms
+ GET / 404 in 9ms
+ GET / 404 in 6ms
+ GET / 404 in 17ms
+ GET / 404 in 11ms
+ GET / 404 in 10ms
+ GET / 404 in 15ms
+ GET / 404 in 6ms
+ GET / 404 in 9ms
+ GET / 404 in 16ms
+ GET / 404 in 8ms
+ GET / 404 in 8ms
+ GET / 404 in 10ms
+ GET / 404 in 10ms
+ GET / 404 in 9ms
+ GET / 404 in 9ms
+ GET / 404 in 23ms
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, lstat '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/(app)/page.js'
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving '../../../../.next/server/app/(app)/page' in /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server for build dependencies doesn't lead to expected result '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/(app)/page.js', but to 'Error: Can't resolve '../../../../.next/server/app/(app)/page' in '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ../../../../.next/server/app/(app)/page (expected /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/(app)/page.js)
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/require.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/require.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/load-components.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/load-components.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/utils.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/utils.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/options.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/options.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/index.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/index.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/webpack/loaders/next-barrel-loader.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/webpack/loaders/next-barrel-loader.js
+<w>  at resolve commonjs /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/webpack/loaders/next-barrel-loader.js
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving '../../../../.next/server/app/_not-found/page' in /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server for build dependencies doesn't lead to expected result '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/_not-found/page.js', but to 'Error: Can't resolve '../../../../.next/server/app/_not-found/page' in '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ../../../../.next/server/app/_not-found/page (expected /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/_not-found/page.js)
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/require.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/require.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/load-components.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/load-components.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/utils.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/utils.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/options.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/options.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/index.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/index.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/webpack/loaders/next-barrel-loader.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/webpack/loaders/next-barrel-loader.js
+<w>  at resolve commonjs /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/webpack/loaders/next-barrel-loader.js
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving '../../../../.next/server/app/dashboard/page' in /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server for build dependencies doesn't lead to expected result '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page.js', but to 'Error: Can't resolve '../../../../.next/server/app/dashboard/page' in '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ../../../../.next/server/app/dashboard/page (expected /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/page.js)
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/require.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/require.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/load-components.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/load-components.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/utils.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/utils.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/options.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/options.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/index.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/index.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/webpack/loaders/next-barrel-loader.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/webpack/loaders/next-barrel-loader.js
+<w>  at resolve commonjs /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/webpack/loaders/next-barrel-loader.js
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving '../../../../.next/server/app/api/auth/me/route' in /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server for build dependencies doesn't lead to expected result '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/api/auth/me/route.js', but to 'Error: Can't resolve '../../../../.next/server/app/api/auth/me/route' in '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ../../../../.next/server/app/api/auth/me/route (expected /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/api/auth/me/route.js)
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/require.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/require.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/load-components.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/load-components.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/utils.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/utils.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/options.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/options.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/index.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/index.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/webpack/loaders/next-barrel-loader.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/webpack/loaders/next-barrel-loader.js
+<w>  at resolve commonjs /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/webpack/loaders/next-barrel-loader.js
+ GET / 404 in 24ms
+ GET / 404 in 12ms
+ GET / 404 in 8ms
+ GET / 404 in 11ms
+ GET / 404 in 14ms
+ GET / 404 in 7ms
+ GET / 404 in 7ms
+ GET / 404 in 10ms
+ GET / 404 in 6ms
+ GET / 404 in 6ms
+ GET / 404 in 10ms
+ GET / 404 in 13ms
+ GET / 404 in 11ms
+ GET / 404 in 10ms
+ GET / 404 in 13ms
+ GET / 404 in 13ms
+ GET / 404 in 12ms
+ GET / 404 in 16ms
+ GET / 404 in 7ms
+ GET / 404 in 5ms
+ ✓ Compiled in 2.6s (2645 modules)
+ GET / 404 in 1385ms
+ GET / 404 in 11ms
+ GET / 404 in 24ms
+ GET / 404 in 16ms
+ GET / 404 in 52ms
+ GET / 404 in 11ms
+ GET / 404 in 11ms
+ GET / 404 in 12ms
+ GET / 404 in 106ms
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, lstat '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/api'
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving '../../../../.next/server/app/api/auth/me/route' in /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server for build dependencies doesn't lead to expected result '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/api/auth/me/route.js', but to 'Error: Can't resolve '../../../../.next/server/app/api/auth/me/route' in '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ../../../../.next/server/app/api/auth/me/route (expected /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/api/auth/me/route.js)
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/require.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/require.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/load-components.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/load-components.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/utils.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/utils.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/options.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/options.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+<w>  at resolve commonjs /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+ GET /dashboard 200 in 478ms
+ ○ Compiling /api/auth/me ...
+ ✓ Compiled /api/auth/me in 2.6s (1296 modules)
+[API Log] /api/auth/me: {
+  requestId: 'yb2n9',
+  timestamp: '2025-09-01T04:13:29.448Z',
+  endpoint: '/api/auth/me',
+  method: 'GET',
+  url: 'http://localhost:3000/api/auth/me',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    user: {
+      id: '17b6fc02-966c-4642-babe-e8004afffc46',
+      created_at: 1729648277250,
+      name: 'Robert',
+      api_key: 'eyJhbGciOiJSUzI1NiJ9.eyJ4YW5vIjp7ImRibyI6Im1hc3Rlcjp1c2VyIiwiaWQiOjQyODQ0LCJhY2Nlc3NfdG9rZW4iOnsia2V5aWQiOiI0NmVmM2ZiOC05ZWJiLTQwY2UtODNkMy1hYjcyYWQxZGRhZDEiLCJzY29wZSI6eyJ3b3Jrc3BhY2U6YWRkb24iOjE1LCJ3b3Jrc3BhY2U6YXBpIjoxNSwid29ya3NwYWNlOmNvbnRlbnQiOjE1LCJ3b3Jrc3BhY2U6ZGF0YWJhc2UiOjE1LCJ3b3Jrc3BhY2U6ZGF0YXNvdXJjZTpsaXZlIjoxNSwid29ya3NwYWNlOmZpbGUiOjE1LCJ3b3Jrc3BhY2U6ZnVuY3Rpb24iOjE1LCJ3b3Jrc3BhY2U6cmVxdWVzdGhpc3RvcnkiOjE1LCJ3b3Jrc3BhY2U6dGFzayI6MTV9fX0sImlhdCI6MTczODg2ODc3NywibmJmIjoxNzM4ODY4Nzc3LCJhdWQiOiJ4YW5vOm1ldGEifQ.DCfBvtXzoCpTXZ5dYYoGwZtD6nxxUYZaCOXf9NkJv7NEz8SRSwgY33LWsQcXUzyQQOpqi9BJXgKgLBD6VFVPJfHTezkossi6WD5_gEh28l5T7QfbD26I8jqoDIbqeR0L74Y2rLFpBHkGhIw4sUTKk5gb9feBzHVd8HrDjt2q4Qy5C1ROox6Yu57YmSNhzeboO4vooSBrJLhaXsrEEvhKwcs7fW1RG8FRS90CS_-_bGAej_tdXi8TQft2BPmCvwjLoT9BUwGtT9QXAmtrQQaP9WXXFMf2PACP1pBGYpsSrcqcsnYBHRibXzDDoBVt4w3xXUzx7kguNrsIzTmW5aT8pfixV_9hnq_d5LiWe5kRVXyChc91JkSuJ6VE4BslXC1hJ4aw6bDiMAu76hTaxczfLnzUv9h69OWE3G3_eyVPDhaIlCY6HLj7juIqnnt10Nrp5puCcjo5FWvMJnunomMbufvO1xGmqwKwd2LrFYzHeft6Sf-e9WBWIl3Qo7-ZsG9LrDq9zLB9-m8bhkZtqVUxIOJHYGO7FpQnNQsQjwW2fYx1e7w89-0k1nu5VjJ4yHr3FGf7pGgiqyQ6eTB1APA-GfU6etVAMeIdjWUzJ4Tqyemr0_27gUmcZ9Grb3Tu3ssHLH2r-Dv59Ke7_g-WPuQCc6m3gNHcJ5_FQN7um8K5ADw',
+      email: 'robertjboulos@gmail.com'
+    }
+  },
+  duration: 302,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/auth/me 200 in 3159ms
+[API Log] /api/auth/me: {
+  requestId: '9gm4ek',
+  timestamp: '2025-09-01T04:13:29.867Z',
+  endpoint: '/api/auth/me',
+  method: 'GET',
+  url: 'http://localhost:3000/api/auth/me',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    user: {
+      id: '17b6fc02-966c-4642-babe-e8004afffc46',
+      created_at: 1729648277250,
+      name: 'Robert',
+      api_key: 'eyJhbGciOiJSUzI1NiJ9.eyJ4YW5vIjp7ImRibyI6Im1hc3Rlcjp1c2VyIiwiaWQiOjQyODQ0LCJhY2Nlc3NfdG9rZW4iOnsia2V5aWQiOiI0NmVmM2ZiOC05ZWJiLTQwY2UtODNkMy1hYjcyYWQxZGRhZDEiLCJzY29wZSI6eyJ3b3Jrc3BhY2U6YWRkb24iOjE1LCJ3b3Jrc3BhY2U6YXBpIjoxNSwid29ya3NwYWNlOmNvbnRlbnQiOjE1LCJ3b3Jrc3BhY2U6ZGF0YWJhc2UiOjE1LCJ3b3Jrc3BhY2U6ZGF0YXNvdXJjZTpsaXZlIjoxNSwid29ya3NwYWNlOmZpbGUiOjE1LCJ3b3Jrc3BhY2U6ZnVuY3Rpb24iOjE1LCJ3b3Jrc3BhY2U6cmVxdWVzdGhpc3RvcnkiOjE1LCJ3b3Jrc3BhY2U6dGFzayI6MTV9fX0sImlhdCI6MTczODg2ODc3NywibmJmIjoxNzM4ODY4Nzc3LCJhdWQiOiJ4YW5vOm1ldGEifQ.DCfBvtXzoCpTXZ5dYYoGwZtD6nxxUYZaCOXf9NkJv7NEz8SRSwgY33LWsQcXUzyQQOpqi9BJXgKgLBD6VFVPJfHTezkossi6WD5_gEh28l5T7QfbD26I8jqoDIbqeR0L74Y2rLFpBHkGhIw4sUTKk5gb9feBzHVd8HrDjt2q4Qy5C1ROox6Yu57YmSNhzeboO4vooSBrJLhaXsrEEvhKwcs7fW1RG8FRS90CS_-_bGAej_tdXi8TQft2BPmCvwjLoT9BUwGtT9QXAmtrQQaP9WXXFMf2PACP1pBGYpsSrcqcsnYBHRibXzDDoBVt4w3xXUzx7kguNrsIzTmW5aT8pfixV_9hnq_d5LiWe5kRVXyChc91JkSuJ6VE4BslXC1hJ4aw6bDiMAu76hTaxczfLnzUv9h69OWE3G3_eyVPDhaIlCY6HLj7juIqnnt10Nrp5puCcjo5FWvMJnunomMbufvO1xGmqwKwd2LrFYzHeft6Sf-e9WBWIl3Qo7-ZsG9LrDq9zLB9-m8bhkZtqVUxIOJHYGO7FpQnNQsQjwW2fYx1e7w89-0k1nu5VjJ4yHr3FGf7pGgiqyQ6eTB1APA-GfU6etVAMeIdjWUzJ4Tqyemr0_27gUmcZ9Grb3Tu3ssHLH2r-Dv59Ke7_g-WPuQCc6m3gNHcJ5_FQN7um8K5ADw',
+      email: 'robertjboulos@gmail.com'
+    }
+  },
+  duration: 100,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/auth/me 200 in 415ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 553ms (2649 modules)
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /shadcnblocks-admin-logo.svg 404 in 661ms
+ GET /_next/static/webpack/327163b7411c8496.webpack.hot-update.json 404 in 388ms
+ GET /dashboard 200 in 148ms
+[API Log] /api/auth/me: {
+  requestId: 'mbqkf',
+  timestamp: '2025-09-01T04:13:30.767Z',
+  endpoint: '/api/auth/me',
+  method: 'GET',
+  url: 'http://localhost:3000/api/auth/me',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    user: {
+      id: '17b6fc02-966c-4642-babe-e8004afffc46',
+      created_at: 1729648277250,
+      name: 'Robert',
+      api_key: 'eyJhbGciOiJSUzI1NiJ9.eyJ4YW5vIjp7ImRibyI6Im1hc3Rlcjp1c2VyIiwiaWQiOjQyODQ0LCJhY2Nlc3NfdG9rZW4iOnsia2V5aWQiOiI0NmVmM2ZiOC05ZWJiLTQwY2UtODNkMy1hYjcyYWQxZGRhZDEiLCJzY29wZSI6eyJ3b3Jrc3BhY2U6YWRkb24iOjE1LCJ3b3Jrc3BhY2U6YXBpIjoxNSwid29ya3NwYWNlOmNvbnRlbnQiOjE1LCJ3b3Jrc3BhY2U6ZGF0YWJhc2UiOjE1LCJ3b3Jrc3BhY2U6ZGF0YXNvdXJjZTpsaXZlIjoxNSwid29ya3NwYWNlOmZpbGUiOjE1LCJ3b3Jrc3BhY2U6ZnVuY3Rpb24iOjE1LCJ3b3Jrc3BhY2U6cmVxdWVzdGhpc3RvcnkiOjE1LCJ3b3Jrc3BhY2U6dGFzayI6MTV9fX0sImlhdCI6MTczODg2ODc3NywibmJmIjoxNzM4ODY4Nzc3LCJhdWQiOiJ4YW5vOm1ldGEifQ.DCfBvtXzoCpTXZ5dYYoGwZtD6nxxUYZaCOXf9NkJv7NEz8SRSwgY33LWsQcXUzyQQOpqi9BJXgKgLBD6VFVPJfHTezkossi6WD5_gEh28l5T7QfbD26I8jqoDIbqeR0L74Y2rLFpBHkGhIw4sUTKk5gb9feBzHVd8HrDjt2q4Qy5C1ROox6Yu57YmSNhzeboO4vooSBrJLhaXsrEEvhKwcs7fW1RG8FRS90CS_-_bGAej_tdXi8TQft2BPmCvwjLoT9BUwGtT9QXAmtrQQaP9WXXFMf2PACP1pBGYpsSrcqcsnYBHRibXzDDoBVt4w3xXUzx7kguNrsIzTmW5aT8pfixV_9hnq_d5LiWe5kRVXyChc91JkSuJ6VE4BslXC1hJ4aw6bDiMAu76hTaxczfLnzUv9h69OWE3G3_eyVPDhaIlCY6HLj7juIqnnt10Nrp5puCcjo5FWvMJnunomMbufvO1xGmqwKwd2LrFYzHeft6Sf-e9WBWIl3Qo7-ZsG9LrDq9zLB9-m8bhkZtqVUxIOJHYGO7FpQnNQsQjwW2fYx1e7w89-0k1nu5VjJ4yHr3FGf7pGgiqyQ6eTB1APA-GfU6etVAMeIdjWUzJ4Tqyemr0_27gUmcZ9Grb3Tu3ssHLH2r-Dv59Ke7_g-WPuQCc6m3gNHcJ5_FQN7um8K5ADw',
+      email: 'robertjboulos@gmail.com'
+    }
+  },
+  duration: 88,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/auth/me 200 in 110ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 899ms (2651 modules)
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /shadcnblocks-admin-logo.svg 404 in 852ms
+ GET /favicon.ico 200 in 998ms
+ GET /_next/static/webpack/327163b7411c8496.webpack.hot-update.json 404 in 260ms
+[API Log] /api/auth/me: {
+  requestId: 'fq04i',
+  timestamp: '2025-09-01T04:13:31.811Z',
+  endpoint: '/api/auth/me',
+  method: 'GET',
+  url: 'http://localhost:3000/api/auth/me',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    user: {
+      id: '17b6fc02-966c-4642-babe-e8004afffc46',
+      created_at: 1729648277250,
+      name: 'Robert',
+      api_key: 'eyJhbGciOiJSUzI1NiJ9.eyJ4YW5vIjp7ImRibyI6Im1hc3Rlcjp1c2VyIiwiaWQiOjQyODQ0LCJhY2Nlc3NfdG9rZW4iOnsia2V5aWQiOiI0NmVmM2ZiOC05ZWJiLTQwY2UtODNkMy1hYjcyYWQxZGRhZDEiLCJzY29wZSI6eyJ3b3Jrc3BhY2U6YWRkb24iOjE1LCJ3b3Jrc3BhY2U6YXBpIjoxNSwid29ya3NwYWNlOmNvbnRlbnQiOjE1LCJ3b3Jrc3BhY2U6ZGF0YWJhc2UiOjE1LCJ3b3Jrc3BhY2U6ZGF0YXNvdXJjZTpsaXZlIjoxNSwid29ya3NwYWNlOmZpbGUiOjE1LCJ3b3Jrc3BhY2U6ZnVuY3Rpb24iOjE1LCJ3b3Jrc3BhY2U6cmVxdWVzdGhpc3RvcnkiOjE1LCJ3b3Jrc3BhY2U6dGFzayI6MTV9fX0sImlhdCI6MTczODg2ODc3NywibmJmIjoxNzM4ODY4Nzc3LCJhdWQiOiJ4YW5vOm1ldGEifQ.DCfBvtXzoCpTXZ5dYYoGwZtD6nxxUYZaCOXf9NkJv7NEz8SRSwgY33LWsQcXUzyQQOpqi9BJXgKgLBD6VFVPJfHTezkossi6WD5_gEh28l5T7QfbD26I8jqoDIbqeR0L74Y2rLFpBHkGhIw4sUTKk5gb9feBzHVd8HrDjt2q4Qy5C1ROox6Yu57YmSNhzeboO4vooSBrJLhaXsrEEvhKwcs7fW1RG8FRS90CS_-_bGAej_tdXi8TQft2BPmCvwjLoT9BUwGtT9QXAmtrQQaP9WXXFMf2PACP1pBGYpsSrcqcsnYBHRibXzDDoBVt4w3xXUzx7kguNrsIzTmW5aT8pfixV_9hnq_d5LiWe5kRVXyChc91JkSuJ6VE4BslXC1hJ4aw6bDiMAu76hTaxczfLnzUv9h69OWE3G3_eyVPDhaIlCY6HLj7juIqnnt10Nrp5puCcjo5FWvMJnunomMbufvO1xGmqwKwd2LrFYzHeft6Sf-e9WBWIl3Qo7-ZsG9LrDq9zLB9-m8bhkZtqVUxIOJHYGO7FpQnNQsQjwW2fYx1e7w89-0k1nu5VjJ4yHr3FGf7pGgiqyQ6eTB1APA-GfU6etVAMeIdjWUzJ4Tqyemr0_27gUmcZ9Grb3Tu3ssHLH2r-Dv59Ke7_g-WPuQCc6m3gNHcJ5_FQN7um8K5ADw',
+      email: 'robertjboulos@gmail.com'
+    }
+  },
+  duration: 141,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/auth/me 200 in 1033ms
+ GET /dashboard 200 in 99ms
+[API Log] /api/auth/me: {
+  requestId: 'jf0hzgb',
+  timestamp: '2025-09-01T04:13:32.172Z',
+  endpoint: '/api/auth/me',
+  method: 'GET',
+  url: 'http://localhost:3000/api/auth/me',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    user: {
+      id: '17b6fc02-966c-4642-babe-e8004afffc46',
+      created_at: 1729648277250,
+      name: 'Robert',
+      api_key: 'eyJhbGciOiJSUzI1NiJ9.eyJ4YW5vIjp7ImRibyI6Im1hc3Rlcjp1c2VyIiwiaWQiOjQyODQ0LCJhY2Nlc3NfdG9rZW4iOnsia2V5aWQiOiI0NmVmM2ZiOC05ZWJiLTQwY2UtODNkMy1hYjcyYWQxZGRhZDEiLCJzY29wZSI6eyJ3b3Jrc3BhY2U6YWRkb24iOjE1LCJ3b3Jrc3BhY2U6YXBpIjoxNSwid29ya3NwYWNlOmNvbnRlbnQiOjE1LCJ3b3Jrc3BhY2U6ZGF0YWJhc2UiOjE1LCJ3b3Jrc3BhY2U6ZGF0YXNvdXJjZTpsaXZlIjoxNSwid29ya3NwYWNlOmZpbGUiOjE1LCJ3b3Jrc3BhY2U6ZnVuY3Rpb24iOjE1LCJ3b3Jrc3BhY2U6cmVxdWVzdGhpc3RvcnkiOjE1LCJ3b3Jrc3BhY2U6dGFzayI6MTV9fX0sImlhdCI6MTczODg2ODc3NywibmJmIjoxNzM4ODY4Nzc3LCJhdWQiOiJ4YW5vOm1ldGEifQ.DCfBvtXzoCpTXZ5dYYoGwZtD6nxxUYZaCOXf9NkJv7NEz8SRSwgY33LWsQcXUzyQQOpqi9BJXgKgLBD6VFVPJfHTezkossi6WD5_gEh28l5T7QfbD26I8jqoDIbqeR0L74Y2rLFpBHkGhIw4sUTKk5gb9feBzHVd8HrDjt2q4Qy5C1ROox6Yu57YmSNhzeboO4vooSBrJLhaXsrEEvhKwcs7fW1RG8FRS90CS_-_bGAej_tdXi8TQft2BPmCvwjLoT9BUwGtT9QXAmtrQQaP9WXXFMf2PACP1pBGYpsSrcqcsnYBHRibXzDDoBVt4w3xXUzx7kguNrsIzTmW5aT8pfixV_9hnq_d5LiWe5kRVXyChc91JkSuJ6VE4BslXC1hJ4aw6bDiMAu76hTaxczfLnzUv9h69OWE3G3_eyVPDhaIlCY6HLj7juIqnnt10Nrp5puCcjo5FWvMJnunomMbufvO1xGmqwKwd2LrFYzHeft6Sf-e9WBWIl3Qo7-ZsG9LrDq9zLB9-m8bhkZtqVUxIOJHYGO7FpQnNQsQjwW2fYx1e7w89-0k1nu5VjJ4yHr3FGf7pGgiqyQ6eTB1APA-GfU6etVAMeIdjWUzJ4Tqyemr0_27gUmcZ9Grb3Tu3ssHLH2r-Dv59Ke7_g-WPuQCc6m3gNHcJ5_FQN7um8K5ADw',
+      email: 'robertjboulos@gmail.com'
+    }
+  },
+  duration: 95,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/auth/me 200 in 106ms
+ GET /shadcnblocks-admin-logo.svg 404 in 15ms
+[API Log] /api/auth/me: {
+  requestId: 'sy8mpe',
+  timestamp: '2025-09-01T04:13:32.257Z',
+  endpoint: '/api/auth/me',
+  method: 'GET',
+  url: 'http://localhost:3000/api/auth/me',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    user: {
+      id: '17b6fc02-966c-4642-babe-e8004afffc46',
+      created_at: 1729648277250,
+      name: 'Robert',
+      api_key: 'eyJhbGciOiJSUzI1NiJ9.eyJ4YW5vIjp7ImRibyI6Im1hc3Rlcjp1c2VyIiwiaWQiOjQyODQ0LCJhY2Nlc3NfdG9rZW4iOnsia2V5aWQiOiI0NmVmM2ZiOC05ZWJiLTQwY2UtODNkMy1hYjcyYWQxZGRhZDEiLCJzY29wZSI6eyJ3b3Jrc3BhY2U6YWRkb24iOjE1LCJ3b3Jrc3BhY2U6YXBpIjoxNSwid29ya3NwYWNlOmNvbnRlbnQiOjE1LCJ3b3Jrc3BhY2U6ZGF0YWJhc2UiOjE1LCJ3b3Jrc3BhY2U6ZGF0YXNvdXJjZTpsaXZlIjoxNSwid29ya3NwYWNlOmZpbGUiOjE1LCJ3b3Jrc3BhY2U6ZnVuY3Rpb24iOjE1LCJ3b3Jrc3BhY2U6cmVxdWVzdGhpc3RvcnkiOjE1LCJ3b3Jrc3BhY2U6dGFzayI6MTV9fX0sImlhdCI6MTczODg2ODc3NywibmJmIjoxNzM4ODY4Nzc3LCJhdWQiOiJ4YW5vOm1ldGEifQ.DCfBvtXzoCpTXZ5dYYoGwZtD6nxxUYZaCOXf9NkJv7NEz8SRSwgY33LWsQcXUzyQQOpqi9BJXgKgLBD6VFVPJfHTezkossi6WD5_gEh28l5T7QfbD26I8jqoDIbqeR0L74Y2rLFpBHkGhIw4sUTKk5gb9feBzHVd8HrDjt2q4Qy5C1ROox6Yu57YmSNhzeboO4vooSBrJLhaXsrEEvhKwcs7fW1RG8FRS90CS_-_bGAej_tdXi8TQft2BPmCvwjLoT9BUwGtT9QXAmtrQQaP9WXXFMf2PACP1pBGYpsSrcqcsnYBHRibXzDDoBVt4w3xXUzx7kguNrsIzTmW5aT8pfixV_9hnq_d5LiWe5kRVXyChc91JkSuJ6VE4BslXC1hJ4aw6bDiMAu76hTaxczfLnzUv9h69OWE3G3_eyVPDhaIlCY6HLj7juIqnnt10Nrp5puCcjo5FWvMJnunomMbufvO1xGmqwKwd2LrFYzHeft6Sf-e9WBWIl3Qo7-ZsG9LrDq9zLB9-m8bhkZtqVUxIOJHYGO7FpQnNQsQjwW2fYx1e7w89-0k1nu5VjJ4yHr3FGf7pGgiqyQ6eTB1APA-GfU6etVAMeIdjWUzJ4Tqyemr0_27gUmcZ9Grb3Tu3ssHLH2r-Dv59Ke7_g-WPuQCc6m3gNHcJ5_FQN7um8K5ADw',
+      email: 'robertjboulos@gmail.com'
+    }
+  },
+  duration: 68,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/auth/me 200 in 84ms
+ ⨯ TypeError: __webpack_modules__[moduleId] is not a function
+    at __webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./src/app/(app)/not-found.tsx:8:103)
+    at (rsc)/./src/app/(app)/not-found.tsx (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/(app)/page.js:518:1)
+    at Function.__webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at async createComponentStylesAndScripts (webpack://next/dist/src/server/app-render/create-component-styles-and-scripts.tsx:68:30)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:189:6)
+    at async (webpack://next/dist/src/server/app-render/create-component-tree.tsx:406:27)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:337:27)
+    at async getRSCPayload (webpack://next/dist/src/server/app-render/app-render.tsx:731:19)
+    at async renderToStream (webpack://next/dist/src/server/app-render/app-render.tsx:1656:25)
+    at async renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1353:19)
+    at async doRender (node_modules/next/src/server/base-server.ts:2666:21)
+    at async responseGenerator (node_modules/next/src/server/base-server.ts:3027:21)
+    at async DevServer.renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:3039:23)
+    at async DevServer.renderPageComponent (node_modules/next/src/server/base-server.ts:3597:15)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  66 |     : null
+  67 |
+> 68 |   const Comp = interopDefault(await getComponent())
+     |                              ^
+  69 |
+  70 |   return [Comp, styles, scripts]
+  71 | } {
+  page: '/'
+}
+ GET / 500 in 542ms
+ ⨯ TypeError: __webpack_modules__[moduleId] is not a function
+    at __webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./src/app/(app)/not-found.tsx:8:103)
+    at (rsc)/./src/app/(app)/not-found.tsx (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/(app)/page.js:518:1)
+    at Function.__webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at async createComponentStylesAndScripts (webpack://next/dist/src/server/app-render/create-component-styles-and-scripts.tsx:68:30)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:189:6)
+    at async (webpack://next/dist/src/server/app-render/create-component-tree.tsx:406:27)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:337:27)
+    at async getRSCPayload (webpack://next/dist/src/server/app-render/app-render.tsx:731:19)
+    at async renderToStream (webpack://next/dist/src/server/app-render/app-render.tsx:1656:25)
+    at async renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1353:19)
+    at async doRender (node_modules/next/src/server/base-server.ts:2666:21)
+    at async responseGenerator (node_modules/next/src/server/base-server.ts:3027:21)
+    at async DevServer.renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:3039:23)
+    at async DevServer.renderPageComponent (node_modules/next/src/server/base-server.ts:3597:15)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  66 |     : null
+  67 |
+> 68 |   const Comp = interopDefault(await getComponent())
+     |                              ^
+  69 |
+  70 |   return [Comp, styles, scripts]
+  71 | } {
+  page: '/'
+}
+ GET / 500 in 180ms
+ ✓ Compiled in 908ms (1366 modules)
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET /_next/static/webpack/28d91922938e9e13.webpack.hot-update.json 404 in 117ms
+ ⨯ TypeError: __webpack_modules__[moduleId] is not a function
+    at __webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./src/app/(app)/not-found.tsx:8:103)
+    at (rsc)/./src/app/(app)/not-found.tsx (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/(app)/page.js:518:1)
+    at Function.__webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at async createComponentStylesAndScripts (webpack://next/dist/src/server/app-render/create-component-styles-and-scripts.tsx:68:30)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:189:6)
+    at async (webpack://next/dist/src/server/app-render/create-component-tree.tsx:406:27)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:337:27)
+    at async getRSCPayload (webpack://next/dist/src/server/app-render/app-render.tsx:731:19)
+    at async renderToStream (webpack://next/dist/src/server/app-render/app-render.tsx:1656:25)
+    at async renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1353:19)
+    at async doRender (node_modules/next/src/server/base-server.ts:2666:21)
+    at async responseGenerator (node_modules/next/src/server/base-server.ts:3027:21)
+    at async DevServer.renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:3039:23)
+    at async DevServer.renderPageComponent (node_modules/next/src/server/base-server.ts:3597:15)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  66 |     : null
+  67 |
+> 68 |   const Comp = interopDefault(await getComponent())
+     |                              ^
+  69 |
+  70 |   return [Comp, styles, scripts]
+  71 | } {
+  page: '/'
+}
+ ⨯ TypeError: __webpack_modules__[moduleId] is not a function
+    at __webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./src/app/(app)/not-found.tsx:8:103)
+    at (rsc)/./src/app/(app)/not-found.tsx (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/(app)/page.js:518:1)
+    at Function.__webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at async createComponentStylesAndScripts (webpack://next/dist/src/server/app-render/create-component-styles-and-scripts.tsx:68:30)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:189:6)
+    at async (webpack://next/dist/src/server/app-render/create-component-tree.tsx:406:27)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:337:27)
+    at async getRSCPayload (webpack://next/dist/src/server/app-render/app-render.tsx:731:19)
+    at async renderToStream (webpack://next/dist/src/server/app-render/app-render.tsx:1656:25)
+    at async renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1353:19)
+    at async doRender (node_modules/next/src/server/base-server.ts:2666:21)
+    at async responseGenerator (node_modules/next/src/server/base-server.ts:3027:21)
+    at async DevServer.renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:3039:23)
+    at async DevServer.renderPageComponent (node_modules/next/src/server/base-server.ts:3597:15)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  66 |     : null
+  67 |
+> 68 |   const Comp = interopDefault(await getComponent())
+     |                              ^
+  69 |
+  70 |   return [Comp, styles, scripts]
+  71 | } {
+  page: '/'
+}
+ GET / 500 in 695ms
+ GET /dashboard 200 in 51ms
+ GET /api/auth/me 404 in 40ms
+ GET /api/auth/me 404 in 52ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET /_next/static/webpack/bbb2540555b03ef0.webpack.hot-update.json 404 in 35ms
+ GET /dashboard 200 in 48ms
+ ⨯ TypeError: __webpack_modules__[moduleId] is not a function
+    at __webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./src/app/(app)/not-found.tsx:8:103)
+    at (rsc)/./src/app/(app)/not-found.tsx (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/(app)/page.js:518:1)
+    at Function.__webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at async createComponentStylesAndScripts (webpack://next/dist/src/server/app-render/create-component-styles-and-scripts.tsx:68:30)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:189:6)
+    at async (webpack://next/dist/src/server/app-render/create-component-tree.tsx:406:27)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:337:27)
+    at async getRSCPayload (webpack://next/dist/src/server/app-render/app-render.tsx:731:19)
+    at async renderToStream (webpack://next/dist/src/server/app-render/app-render.tsx:1656:25)
+    at async renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1353:19)
+    at async doRender (node_modules/next/src/server/base-server.ts:2666:21)
+    at async responseGenerator (node_modules/next/src/server/base-server.ts:3027:21)
+    at async DevServer.renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:3039:23)
+    at async DevServer.renderPageComponent (node_modules/next/src/server/base-server.ts:3597:15)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  66 |     : null
+  67 |
+> 68 |   const Comp = interopDefault(await getComponent())
+     |                              ^
+  69 |
+  70 |   return [Comp, styles, scripts]
+  71 | } {
+  page: '/'
+}
+ GET / 500 in 283ms
+ ⨯ TypeError: __webpack_modules__[moduleId] is not a function
+    at __webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./src/app/(app)/not-found.tsx:8:103)
+    at (rsc)/./src/app/(app)/not-found.tsx (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/(app)/page.js:518:1)
+    at Function.__webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at async createComponentStylesAndScripts (webpack://next/dist/src/server/app-render/create-component-styles-and-scripts.tsx:68:30)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:189:6)
+    at async (webpack://next/dist/src/server/app-render/create-component-tree.tsx:406:27)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:337:27)
+    at async getRSCPayload (webpack://next/dist/src/server/app-render/app-render.tsx:731:19)
+    at async renderToStream (webpack://next/dist/src/server/app-render/app-render.tsx:1656:25)
+    at async renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1353:19)
+    at async doRender (node_modules/next/src/server/base-server.ts:2666:21)
+    at async responseGenerator (node_modules/next/src/server/base-server.ts:3027:21)
+    at async DevServer.renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:3039:23)
+    at async DevServer.renderPageComponent (node_modules/next/src/server/base-server.ts:3597:15)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  66 |     : null
+  67 |
+> 68 |   const Comp = interopDefault(await getComponent())
+     |                              ^
+  69 |
+  70 |   return [Comp, styles, scripts]
+  71 | } {
+  page: '/'
+}
+ GET / 500 in 222ms
+ ✓ Compiled in 4.4s (1364 modules)
+ ✓ Compiled in 1721ms (1364 modules)
+ ✓ Compiled in 609ms (1364 modules)
+ GET /dashboard 200 in 417ms
+ GET /favicon.ico 200 in 68ms
+ GET /dashboard 200 in 28ms
+ ⨯ TypeError: __webpack_modules__[moduleId] is not a function
+    at __webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./src/app/(app)/not-found.tsx:8:103)
+    at (rsc)/./src/app/(app)/not-found.tsx (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/(app)/page.js:518:1)
+    at Function.__webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at async createComponentStylesAndScripts (webpack://next/dist/src/server/app-render/create-component-styles-and-scripts.tsx:68:30)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:189:6)
+    at async (webpack://next/dist/src/server/app-render/create-component-tree.tsx:406:27)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:337:27)
+    at async getRSCPayload (webpack://next/dist/src/server/app-render/app-render.tsx:731:19)
+    at async renderToStream (webpack://next/dist/src/server/app-render/app-render.tsx:1656:25)
+    at async renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1353:19)
+    at async doRender (node_modules/next/src/server/base-server.ts:2666:21)
+    at async responseGenerator (node_modules/next/src/server/base-server.ts:3027:21)
+    at async DevServer.renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:3039:23)
+    at async DevServer.renderPageComponent (node_modules/next/src/server/base-server.ts:3597:15)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  66 |     : null
+  67 |
+> 68 |   const Comp = interopDefault(await getComponent())
+     |                              ^
+  69 |
+  70 |   return [Comp, styles, scripts]
+  71 | } {
+  page: '/'
+}
+ GET / 500 in 213ms
+ ⨯ TypeError: __webpack_modules__[moduleId] is not a function
+    at __webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./src/app/(app)/not-found.tsx:8:103)
+    at (rsc)/./src/app/(app)/not-found.tsx (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/(app)/page.js:518:1)
+    at Function.__webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at async createComponentStylesAndScripts (webpack://next/dist/src/server/app-render/create-component-styles-and-scripts.tsx:68:30)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:189:6)
+    at async (webpack://next/dist/src/server/app-render/create-component-tree.tsx:406:27)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:337:27)
+    at async getRSCPayload (webpack://next/dist/src/server/app-render/app-render.tsx:731:19)
+    at async renderToStream (webpack://next/dist/src/server/app-render/app-render.tsx:1656:25)
+    at async renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1353:19)
+    at async doRender (node_modules/next/src/server/base-server.ts:2666:21)
+    at async responseGenerator (node_modules/next/src/server/base-server.ts:3027:21)
+    at async DevServer.renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:3039:23)
+    at async DevServer.renderPageComponent (node_modules/next/src/server/base-server.ts:3597:15)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  66 |     : null
+  67 |
+> 68 |   const Comp = interopDefault(await getComponent())
+     |                              ^
+  69 |
+  70 |   return [Comp, styles, scripts]
+  71 | } {
+  page: '/'
+}
+ GET / 500 in 177ms
+ ⨯ TypeError: __webpack_modules__[moduleId] is not a function
+    at __webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./src/app/(app)/not-found.tsx:8:103)
+    at (rsc)/./src/app/(app)/not-found.tsx (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/(app)/page.js:518:1)
+    at Function.__webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at async createComponentStylesAndScripts (webpack://next/dist/src/server/app-render/create-component-styles-and-scripts.tsx:68:30)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:189:6)
+    at async (webpack://next/dist/src/server/app-render/create-component-tree.tsx:406:27)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:337:27)
+    at async getRSCPayload (webpack://next/dist/src/server/app-render/app-render.tsx:731:19)
+    at async renderToStream (webpack://next/dist/src/server/app-render/app-render.tsx:1656:25)
+    at async renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1353:19)
+    at async doRender (node_modules/next/src/server/base-server.ts:2666:21)
+    at async responseGenerator (node_modules/next/src/server/base-server.ts:3027:21)
+    at async DevServer.renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:3039:23)
+    at async DevServer.renderPageComponent (node_modules/next/src/server/base-server.ts:3597:15)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  66 |     : null
+  67 |
+> 68 |   const Comp = interopDefault(await getComponent())
+     |                              ^
+  69 |
+  70 |   return [Comp, styles, scripts]
+  71 | } {
+  page: '/'
+}
+ GET / 500 in 159ms
+ ⨯ TypeError: __webpack_modules__[moduleId] is not a function
+    at __webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./src/app/(app)/not-found.tsx:8:103)
+    at (rsc)/./src/app/(app)/not-found.tsx (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/(app)/page.js:518:1)
+    at Function.__webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at async createComponentStylesAndScripts (webpack://next/dist/src/server/app-render/create-component-styles-and-scripts.tsx:68:30)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:189:6)
+    at async (webpack://next/dist/src/server/app-render/create-component-tree.tsx:406:27)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:337:27)
+    at async getRSCPayload (webpack://next/dist/src/server/app-render/app-render.tsx:731:19)
+    at async renderToStream (webpack://next/dist/src/server/app-render/app-render.tsx:1656:25)
+    at async renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1353:19)
+    at async doRender (node_modules/next/src/server/base-server.ts:2666:21)
+    at async responseGenerator (node_modules/next/src/server/base-server.ts:3027:21)
+    at async DevServer.renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:3039:23)
+    at async DevServer.renderPageComponent (node_modules/next/src/server/base-server.ts:3597:15)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  66 |     : null
+  67 |
+> 68 |   const Comp = interopDefault(await getComponent())
+     |                              ^
+  69 |
+  70 |   return [Comp, styles, scripts]
+  71 | } {
+  page: '/'
+}
+ GET / 500 in 223ms
+ ⨯ TypeError: __webpack_modules__[moduleId] is not a function
+    at __webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./src/app/(app)/not-found.tsx:8:103)
+    at (rsc)/./src/app/(app)/not-found.tsx (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/(app)/page.js:518:1)
+    at Function.__webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at async createComponentStylesAndScripts (webpack://next/dist/src/server/app-render/create-component-styles-and-scripts.tsx:68:30)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:189:6)
+    at async (webpack://next/dist/src/server/app-render/create-component-tree.tsx:406:27)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:337:27)
+    at async getRSCPayload (webpack://next/dist/src/server/app-render/app-render.tsx:731:19)
+    at async renderToStream (webpack://next/dist/src/server/app-render/app-render.tsx:1656:25)
+    at async renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1353:19)
+    at async doRender (node_modules/next/src/server/base-server.ts:2666:21)
+    at async responseGenerator (node_modules/next/src/server/base-server.ts:3027:21)
+    at async DevServer.renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:3039:23)
+    at async DevServer.renderPageComponent (node_modules/next/src/server/base-server.ts:3597:15)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  66 |     : null
+  67 |
+> 68 |   const Comp = interopDefault(await getComponent())
+     |                              ^
+  69 |
+  70 |   return [Comp, styles, scripts]
+  71 | } {
+  page: '/'
+}
+ GET / 500 in 205ms
+ ⨯ TypeError: __webpack_modules__[moduleId] is not a function
+    at __webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./src/app/(app)/not-found.tsx:8:103)
+    at (rsc)/./src/app/(app)/not-found.tsx (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/(app)/page.js:518:1)
+    at Function.__webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at async createComponentStylesAndScripts (webpack://next/dist/src/server/app-render/create-component-styles-and-scripts.tsx:68:30)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:189:6)
+    at async (webpack://next/dist/src/server/app-render/create-component-tree.tsx:406:27)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:337:27)
+    at async getRSCPayload (webpack://next/dist/src/server/app-render/app-render.tsx:731:19)
+    at async renderToStream (webpack://next/dist/src/server/app-render/app-render.tsx:1656:25)
+    at async renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1353:19)
+    at async doRender (node_modules/next/src/server/base-server.ts:2666:21)
+    at async responseGenerator (node_modules/next/src/server/base-server.ts:3027:21)
+    at async DevServer.renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:3039:23)
+    at async DevServer.renderPageComponent (node_modules/next/src/server/base-server.ts:3597:15)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  66 |     : null
+  67 |
+> 68 |   const Comp = interopDefault(await getComponent())
+     |                              ^
+  69 |
+  70 |   return [Comp, styles, scripts]
+  71 | } {
+  page: '/'
+}
+ GET / 500 in 243ms
+ ✓ Compiled in 549ms (1364 modules)
+ ⨯ TypeError: __webpack_modules__[moduleId] is not a function
+    at __webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./src/app/(app)/not-found.tsx:8:103)
+    at (rsc)/./src/app/(app)/not-found.tsx (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/(app)/page.js:518:1)
+    at Function.__webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at async createComponentStylesAndScripts (webpack://next/dist/src/server/app-render/create-component-styles-and-scripts.tsx:68:30)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:189:6)
+    at async (webpack://next/dist/src/server/app-render/create-component-tree.tsx:406:27)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:337:27)
+    at async getRSCPayload (webpack://next/dist/src/server/app-render/app-render.tsx:731:19)
+    at async renderToStream (webpack://next/dist/src/server/app-render/app-render.tsx:1656:25)
+    at async renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1353:19)
+    at async doRender (node_modules/next/src/server/base-server.ts:2666:21)
+    at async responseGenerator (node_modules/next/src/server/base-server.ts:3027:21)
+    at async DevServer.renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:3039:23)
+    at async DevServer.renderPageComponent (node_modules/next/src/server/base-server.ts:3597:15)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  66 |     : null
+  67 |
+> 68 |   const Comp = interopDefault(await getComponent())
+     |                              ^
+  69 |
+  70 |   return [Comp, styles, scripts]
+  71 | } {
+  page: '/'
+}
+ GET / 500 in 222ms
+ ⨯ TypeError: __webpack_modules__[moduleId] is not a function
+    at __webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./src/app/(app)/not-found.tsx:8:103)
+    at (rsc)/./src/app/(app)/not-found.tsx (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/(app)/page.js:518:1)
+    at Function.__webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at async createComponentStylesAndScripts (webpack://next/dist/src/server/app-render/create-component-styles-and-scripts.tsx:68:30)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:189:6)
+    at async (webpack://next/dist/src/server/app-render/create-component-tree.tsx:406:27)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:337:27)
+    at async getRSCPayload (webpack://next/dist/src/server/app-render/app-render.tsx:731:19)
+    at async renderToStream (webpack://next/dist/src/server/app-render/app-render.tsx:1656:25)
+    at async renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1353:19)
+    at async doRender (node_modules/next/src/server/base-server.ts:2666:21)
+    at async responseGenerator (node_modules/next/src/server/base-server.ts:3027:21)
+    at async DevServer.renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:3039:23)
+    at async DevServer.renderPageComponent (node_modules/next/src/server/base-server.ts:3597:15)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  66 |     : null
+  67 |
+> 68 |   const Comp = interopDefault(await getComponent())
+     |                              ^
+  69 |
+  70 |   return [Comp, styles, scripts]
+  71 | } {
+  page: '/'
+}
+ GET / 500 in 165ms
+ ⨯ TypeError: __webpack_modules__[moduleId] is not a function
+    at __webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./src/app/(app)/not-found.tsx:8:103)
+    at (rsc)/./src/app/(app)/not-found.tsx (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/(app)/page.js:518:1)
+    at Function.__webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at async createComponentStylesAndScripts (webpack://next/dist/src/server/app-render/create-component-styles-and-scripts.tsx:68:30)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:189:6)
+    at async (webpack://next/dist/src/server/app-render/create-component-tree.tsx:406:27)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:337:27)
+    at async getRSCPayload (webpack://next/dist/src/server/app-render/app-render.tsx:731:19)
+    at async renderToStream (webpack://next/dist/src/server/app-render/app-render.tsx:1656:25)
+    at async renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1353:19)
+    at async doRender (node_modules/next/src/server/base-server.ts:2666:21)
+    at async responseGenerator (node_modules/next/src/server/base-server.ts:3027:21)
+    at async DevServer.renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:3039:23)
+    at async DevServer.renderPageComponent (node_modules/next/src/server/base-server.ts:3597:15)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  66 |     : null
+  67 |
+> 68 |   const Comp = interopDefault(await getComponent())
+     |                              ^
+  69 |
+  70 |   return [Comp, styles, scripts]
+  71 | } {
+  page: '/'
+}
+ GET / 500 in 186ms
+ ⨯ TypeError: __webpack_modules__[moduleId] is not a function
+    at __webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./src/app/(app)/not-found.tsx:8:103)
+    at (rsc)/./src/app/(app)/not-found.tsx (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/(app)/page.js:518:1)
+    at Function.__webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at async createComponentStylesAndScripts (webpack://next/dist/src/server/app-render/create-component-styles-and-scripts.tsx:68:30)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:189:6)
+    at async (webpack://next/dist/src/server/app-render/create-component-tree.tsx:406:27)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:337:27)
+    at async getRSCPayload (webpack://next/dist/src/server/app-render/app-render.tsx:731:19)
+    at async renderToStream (webpack://next/dist/src/server/app-render/app-render.tsx:1656:25)
+    at async renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1353:19)
+    at async doRender (node_modules/next/src/server/base-server.ts:2666:21)
+    at async responseGenerator (node_modules/next/src/server/base-server.ts:3027:21)
+    at async DevServer.renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:3039:23)
+    at async DevServer.renderPageComponent (node_modules/next/src/server/base-server.ts:3597:15)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  66 |     : null
+  67 |
+> 68 |   const Comp = interopDefault(await getComponent())
+     |                              ^
+  69 |
+  70 |   return [Comp, styles, scripts]
+  71 | } {
+  page: '/'
+}
+ GET / 500 in 166ms
+ ⨯ TypeError: __webpack_modules__[moduleId] is not a function
+    at __webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./src/app/(app)/not-found.tsx:8:103)
+    at (rsc)/./src/app/(app)/not-found.tsx (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/(app)/page.js:518:1)
+    at Function.__webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at async createComponentStylesAndScripts (webpack://next/dist/src/server/app-render/create-component-styles-and-scripts.tsx:68:30)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:189:6)
+    at async (webpack://next/dist/src/server/app-render/create-component-tree.tsx:406:27)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:337:27)
+    at async getRSCPayload (webpack://next/dist/src/server/app-render/app-render.tsx:731:19)
+    at async renderToStream (webpack://next/dist/src/server/app-render/app-render.tsx:1656:25)
+    at async renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1353:19)
+    at async doRender (node_modules/next/src/server/base-server.ts:2666:21)
+    at async responseGenerator (node_modules/next/src/server/base-server.ts:3027:21)
+    at async DevServer.renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:3039:23)
+    at async DevServer.renderPageComponent (node_modules/next/src/server/base-server.ts:3597:15)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  66 |     : null
+  67 |
+> 68 |   const Comp = interopDefault(await getComponent())
+     |                              ^
+  69 |
+  70 |   return [Comp, styles, scripts]
+  71 | } {
+  page: '/'
+}
+ GET / 500 in 194ms
+ ⨯ TypeError: __webpack_modules__[moduleId] is not a function
+    at __webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./src/app/(app)/not-found.tsx:8:103)
+    at (rsc)/./src/app/(app)/not-found.tsx (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/(app)/page.js:518:1)
+    at Function.__webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at async createComponentStylesAndScripts (webpack://next/dist/src/server/app-render/create-component-styles-and-scripts.tsx:68:30)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:189:6)
+    at async (webpack://next/dist/src/server/app-render/create-component-tree.tsx:406:27)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:337:27)
+    at async getRSCPayload (webpack://next/dist/src/server/app-render/app-render.tsx:731:19)
+    at async renderToStream (webpack://next/dist/src/server/app-render/app-render.tsx:1656:25)
+    at async renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1353:19)
+    at async doRender (node_modules/next/src/server/base-server.ts:2666:21)
+    at async responseGenerator (node_modules/next/src/server/base-server.ts:3027:21)
+    at async DevServer.renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:3039:23)
+    at async DevServer.renderPageComponent (node_modules/next/src/server/base-server.ts:3597:15)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  66 |     : null
+  67 |
+> 68 |   const Comp = interopDefault(await getComponent())
+     |                              ^
+  69 |
+  70 |   return [Comp, styles, scripts]
+  71 | } {
+  page: '/'
+}
+ GET / 500 in 206ms
+ ⨯ TypeError: __webpack_modules__[moduleId] is not a function
+    at __webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./src/app/(app)/not-found.tsx:8:103)
+    at (rsc)/./src/app/(app)/not-found.tsx (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/(app)/page.js:518:1)
+    at Function.__webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at async createComponentStylesAndScripts (webpack://next/dist/src/server/app-render/create-component-styles-and-scripts.tsx:68:30)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:189:6)
+    at async (webpack://next/dist/src/server/app-render/create-component-tree.tsx:406:27)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:337:27)
+    at async getRSCPayload (webpack://next/dist/src/server/app-render/app-render.tsx:731:19)
+    at async renderToStream (webpack://next/dist/src/server/app-render/app-render.tsx:1656:25)
+    at async renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1353:19)
+    at async doRender (node_modules/next/src/server/base-server.ts:2666:21)
+    at async responseGenerator (node_modules/next/src/server/base-server.ts:3027:21)
+    at async DevServer.renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:3039:23)
+    at async DevServer.renderPageComponent (node_modules/next/src/server/base-server.ts:3597:15)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  66 |     : null
+  67 |
+> 68 |   const Comp = interopDefault(await getComponent())
+     |                              ^
+  69 |
+  70 |   return [Comp, styles, scripts]
+  71 | } {
+  page: '/'
+}
+ GET / 500 in 178ms
+ ⨯ TypeError: __webpack_modules__[moduleId] is not a function
+    at __webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./src/app/(app)/not-found.tsx:8:103)
+    at (rsc)/./src/app/(app)/not-found.tsx (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/(app)/page.js:518:1)
+    at Function.__webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at async createComponentStylesAndScripts (webpack://next/dist/src/server/app-render/create-component-styles-and-scripts.tsx:68:30)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:189:6)
+    at async (webpack://next/dist/src/server/app-render/create-component-tree.tsx:406:27)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:337:27)
+    at async getRSCPayload (webpack://next/dist/src/server/app-render/app-render.tsx:731:19)
+    at async renderToStream (webpack://next/dist/src/server/app-render/app-render.tsx:1656:25)
+    at async renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1353:19)
+    at async doRender (node_modules/next/src/server/base-server.ts:2666:21)
+    at async responseGenerator (node_modules/next/src/server/base-server.ts:3027:21)
+    at async DevServer.renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:3039:23)
+    at async DevServer.renderPageComponent (node_modules/next/src/server/base-server.ts:3597:15)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  66 |     : null
+  67 |
+> 68 |   const Comp = interopDefault(await getComponent())
+     |                              ^
+  69 |
+  70 |   return [Comp, styles, scripts]
+  71 | } {
+  page: '/'
+}
+ GET / 500 in 183ms
+ ⨯ TypeError: __webpack_modules__[moduleId] is not a function
+    at __webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at eval (webpack-internal:///(rsc)/./src/app/(app)/not-found.tsx:8:103)
+    at (rsc)/./src/app/(app)/not-found.tsx (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/(app)/page.js:518:1)
+    at Function.__webpack_require__ (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:33:42)
+    at async createComponentStylesAndScripts (webpack://next/dist/src/server/app-render/create-component-styles-and-scripts.tsx:68:30)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:189:6)
+    at async (webpack://next/dist/src/server/app-render/create-component-tree.tsx:406:27)
+    at async createComponentTreeInternal (webpack://next/dist/src/server/app-render/create-component-tree.tsx:337:27)
+    at async getRSCPayload (webpack://next/dist/src/server/app-render/app-render.tsx:731:19)
+    at async renderToStream (webpack://next/dist/src/server/app-render/app-render.tsx:1656:25)
+    at async renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1353:19)
+    at async doRender (node_modules/next/src/server/base-server.ts:2666:21)
+    at async responseGenerator (node_modules/next/src/server/base-server.ts:3027:21)
+    at async DevServer.renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:3039:23)
+    at async DevServer.renderPageComponent (node_modules/next/src/server/base-server.ts:3597:15)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  66 |     : null
+  67 |
+> 68 |   const Comp = interopDefault(await getComponent())
+     |                              ^
+  69 |
+  70 |   return [Comp, styles, scripts]
+  71 | } {
+  page: '/'
+}
+ GET / 500 in 159ms
+ ✓ Compiled in 1565ms (2642 modules)
+ ✓ Compiled in 888ms (2642 modules)
+ ⨯ ./src/components/dashboard/api-key-manager.tsx
+Module parse failed: Identifier 'Table' has already been declared (16:9)
+| import { Label } from '@/components/ui/label';
+| import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+> import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+| import { Textarea } from '@/components/ui/textarea';
+| import { useToast } from '@/hooks/use-toast';
+
+Import trace for requested module:
+./src/components/dashboard/api-key-manager.tsx
+./src/app/dashboard/page.tsx
+ ⨯ ./src/components/dashboard/api-key-manager.tsx
+Module parse failed: Identifier 'Table' has already been declared (16:9)
+| import { Label } from '@/components/ui/label';
+| import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+> import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+| import { Textarea } from '@/components/ui/textarea';
+| import { useToast } from '@/hooks/use-toast';
+
+Import trace for requested module:
+./src/components/dashboard/api-key-manager.tsx
+./src/app/dashboard/page.tsx
+ ⨯ ./src/components/dashboard/api-key-manager.tsx
+Module parse failed: Identifier 'Table' has already been declared (16:9)
+| import { Label } from '@/components/ui/label';
+| import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+> import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+| import { Textarea } from '@/components/ui/textarea';
+| import { useToast } from '@/hooks/use-toast';
+
+Import trace for requested module:
+./src/components/dashboard/api-key-manager.tsx
+./src/app/dashboard/page.tsx
+ ⚠ ./src/components/dashboard/api-key-manager.tsx
+Attempted import error: 'Table' is not exported from '@tanstack/react-table' (imported as 'Table').
+
+Import trace for requested module:
+./src/components/dashboard/api-key-manager.tsx
+./src/app/dashboard/page.tsx
+
+./src/components/dashboard/api-key-manager.tsx
+Attempted import error: 'Table' is not exported from '@tanstack/react-table' (imported as 'Table').
+
+Import trace for requested module:
+./src/components/dashboard/api-key-manager.tsx
+./src/app/dashboard/page.tsx
+ ⨯ ./src/components/dashboard/api-key-manager.tsx
+Error:   [31mx[0m Unexpected token `Card`. Expected jsx identifier
+     ,-[[36;1;4m/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/src/components/dashboard/api-key-manager.tsx[0m:582:1]
+ [2m579[0m |   ).length;
+ [2m580[0m | 
+ [2m581[0m |   return (
+ [2m582[0m |     <Card className={className}>
+     : [35;1m     ^^^^[0m
+ [2m583[0m |       <CardHeader>
+ [2m584[0m |         <div className="flex items-start justify-between">
+ [2m585[0m |           <div className="space-y-1">
+     `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/components/dashboard/api-key-manager.tsx
+./src/app/dashboard/page.tsx
+ ✓ Compiled in 519ms (2642 modules)
+ ✓ Compiled in 1074ms (2642 modules)
+ ✓ Compiled in 1112ms (2642 modules)
+ GET / 200 in 454ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 1050ms (2631 modules)
+ GET /_next/static/css/app/layout.css?v=1756700702603 404 in 1178ms
+ GET /api/placeholder/600/400 404 in 1188ms
+ GET /_next/static/chunks/app/(app)/not-found.js 404 in 1075ms
+ GET /_next/static/chunks/app/(app)/layout.js 404 in 1163ms
+ GET /_next/static/chunks/main-app.js?v=1756700702603 404 in 1167ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 1168ms
+ GET /_next/static/chunks/app/(app)/page.js 404 in 37ms
+ ✓ Compiled in 674ms (2645 modules)

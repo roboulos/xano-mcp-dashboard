@@ -13,6 +13,8 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
+  Column,
+  Table,
 } from '@tanstack/react-table';
 import {
   PlusIcon,
@@ -77,7 +79,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import {
-  Table,
+  Table as UITable,
   TableBody,
   TableCell,
   TableHead,
@@ -166,7 +168,7 @@ function DataTableColumnHeader({
   title,
   className,
 }: {
-  column: any;
+  column: Column<ApiKey, unknown>;
   title: string;
   className?: string;
 }) {
@@ -209,7 +211,7 @@ function DataTableColumnHeader({
 }
 
 // Data Table Toolbar Component
-function DataTableToolbar({ table }: { table: any }) {
+function DataTableToolbar({ table }: { table: Table<ApiKey> }) {
   const isFiltered = table.getState().columnFilters.length > 0;
   const selectedRows = table.getFilteredSelectedRowModel().rows;
 
@@ -736,7 +738,7 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
         <div className="space-y-4">
           <DataTableToolbar table={table} />
           <div className="rounded-md border">
-            <Table>
+            <UITable>
               <TableHeader>
                 {table.getHeaderGroups().map(headerGroup => (
                   <TableRow key={headerGroup.id}>
@@ -787,7 +789,7 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
                   </TableRow>
                 )}
               </TableBody>
-            </Table>
+            </UITable>
           </div>
 
           {/* Pagination */}

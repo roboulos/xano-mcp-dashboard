@@ -161,8 +161,11 @@ Usage:
       <CardContent className="space-y-6">
         {/* Environment Selection */}
         <div className="space-y-3">
-          <label className="text-sm font-medium">Environment</label>
+          <label htmlFor="environment-toggle" className="text-sm font-medium">
+            Environment
+          </label>
           <ToggleGroup
+            id="environment-toggle"
             type="single"
             value={selectedEnvironment}
             onValueChange={v => v && setSelectedEnvironment(v as Environment)}
@@ -176,10 +179,18 @@ Usage:
 
         {/* Tool Selection */}
         <div className="space-y-3">
-          <label className="text-sm font-medium">Development Tool</label>
+          <label
+            htmlFor="development-tool-tabs"
+            className="text-sm font-medium"
+          >
+            Development Tool
+          </label>
           <Tabs
+            id="development-tool-tabs"
             value={selectedConnection}
-            onValueChange={(value) => setSelectedConnection(value as ConnectionType)}
+            onValueChange={value =>
+              setSelectedConnection(value as ConnectionType)
+            }
           >
             <TabsList className="grid w-full grid-cols-4">
               <TabsTrigger
