@@ -115,7 +115,12 @@ const Hero = ({
   return (
     <>
       {/* Hero Section - Premium Layout with Generous Spacing */}
-      <section className="flex min-h-[90vh] items-center bg-gradient-to-br from-purple-50/40 via-white to-indigo-50/30 pt-[180px] pb-[160px] lg:pt-[200px] dark:from-slate-950 dark:via-purple-950/10 dark:to-indigo-950/20">
+      <section className="relative flex min-h-[90vh] items-center overflow-hidden bg-background pt-[180px] pb-[160px] lg:pt-[200px]">
+        {/* Subtle background decoration */}
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute top-0 -left-4 h-72 w-72 rounded-full bg-primary/5 blur-3xl" />
+          <div className="absolute -bottom-4 right-0 h-72 w-72 rounded-full bg-primary/5 blur-3xl" />
+        </div>
         <div className="container max-w-screen-xl px-6 lg:px-8">
           <div className="grid items-center gap-20 lg:grid-cols-12 lg:gap-24">
             {/* Left Column - Content (spans 6 columns) */}
@@ -123,33 +128,29 @@ const Hero = ({
               {/* Content Block - All aligned to same left edge */}
               <div className="max-w-[680px]">
                 <div className="relative">
-                  {/* More dynamic background gradient behind headline */}
-                  <div className="aurora-bg"></div>
 
                   <h1
-                    className="hero-headline mb-8 text-4xl leading-[1.1] font-bold tracking-[-0.02em] text-slate-900 lg:text-[4rem] dark:text-slate-100"
+                    className="hero-headline mb-8 text-4xl leading-[1.1] font-bold tracking-[-0.02em] text-foreground lg:text-[4rem]"
                     style={{
                       fontSize: 'clamp(2.5rem, 5vw, 4rem)',
                       fontWeight: '700',
-                      textShadow: '0 2px 4px rgba(0,0,0,0.05)',
                     }}
                   >
                     Build{' '}
-                    <span className="gradient-text-ai bg-gradient-to-r from-orange-500 to-amber-500 bg-clip-text text-transparent dark:from-orange-400 dark:to-amber-400">
+                    <span className="text-primary font-bold">
                       10x Faster
                     </span>{' '}
                     in Xano with{' '}
-                    <span className="gradient-text-database bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent dark:from-violet-400 dark:to-purple-400">
+                    <span className="text-primary font-bold">
                       AI That Actually Works
                     </span>
                   </h1>
                 </div>
 
                 <p
-                  className="hero-subtitle mb-8 max-w-[600px] text-xl leading-[1.6] text-slate-700 dark:text-slate-300"
+                  className="hero-subtitle mb-8 max-w-[600px] text-xl leading-[1.6] text-muted-foreground"
                   style={{
                     fontSize: '1.25rem',
-                    opacity: '0.8',
                   }}
                 >
                   Stop debugging green expression soup. Build in 2 minutes what
@@ -159,15 +160,15 @@ const Hero = ({
 
                 {/* Trust Indicators */}
                 <div className="mb-8 flex flex-wrap gap-4 text-sm">
-                  <div className="flex items-center gap-2 rounded-full bg-green-50 px-3 py-1 text-green-700 dark:bg-green-900/20 dark:text-green-400">
+                  <div className="flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-primary">
                     <span className="text-lg">⚡</span>
                     <span>100+ MCP tools ready</span>
                   </div>
-                  <div className="flex items-center gap-2 rounded-full bg-blue-50 px-3 py-1 text-blue-700 dark:bg-blue-900/20 dark:text-blue-400">
+                  <div className="flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-primary">
                     <span className="text-lg">🎯</span>
                     <span>80-90% first-try success</span>
                   </div>
-                  <div className="flex items-center gap-2 rounded-full bg-purple-50 px-3 py-1 text-purple-700 dark:bg-purple-900/20 dark:text-purple-400">
+                  <div className="flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-primary">
                     <span className="text-lg">📅</span>
                     <span>Weekly MCP Wednesday calls</span>
                   </div>
@@ -176,7 +177,7 @@ const Hero = ({
                 {/* CTA Buttons */}
                 <div className="mb-8 flex flex-wrap gap-5">
                   <Link href="/dashboard">
-                    <Button className="h-[58px] rounded-xl bg-gradient-to-r from-violet-600 to-purple-600 px-9 text-base font-semibold text-white shadow-lg transition-all duration-200 hover:scale-105 hover:shadow-xl hover:brightness-110 dark:from-violet-500 dark:to-purple-500">
+                    <Button size="lg" className="h-[58px] rounded-xl px-9 text-base font-semibold">
                       Get Instant Access →
                     </Button>
                   </Link>
@@ -187,7 +188,8 @@ const Hero = ({
                   >
                     <Button
                       variant="outline"
-                      className="h-[58px] rounded-xl border-slate-900/10 px-9 text-base font-semibold text-slate-900 transition-all duration-200 hover:border-slate-900/20 hover:bg-slate-900/5 dark:border-slate-100/10 dark:text-slate-100 dark:hover:border-slate-100/20 dark:hover:bg-slate-100/5"
+                      size="lg"
+                      className="h-[58px] rounded-xl px-9 text-base font-semibold"
                     >
                       See It Work in 2 Minutes
                     </Button>
@@ -195,7 +197,7 @@ const Hero = ({
                 </div>
 
                 {/* Urgency */}
-                <p className="text-sm text-slate-600 dark:text-slate-400">
+                <p className="text-sm text-muted-foreground">
                   <span className="font-semibold">Join 40+ developers</span>{' '}
                   shipping faster with AI they can trust.
                 </p>
@@ -204,10 +206,10 @@ const Hero = ({
 
             {/* Right Column - Claude Chat Interface (spans 6 columns) */}
             <div className="mt-8 lg:col-span-6 lg:mt-0">
-              <div className="gradient-border mx-auto w-full max-w-[580px] rounded-2xl shadow-[0_12px_32px_rgba(2,6,23,0.12),0_4px_16px_rgba(2,6,23,0.08)] transition-all duration-300 ease-out will-change-transform hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(2,6,23,0.16),0_6px_20px_rgba(2,6,23,0.10)] lg:mx-0 dark:shadow-[0_12px_32px_rgba(0,0,0,0.5),0_4px_16px_rgba(0,0,0,0.3)] dark:hover:shadow-[0_16px_40px_rgba(0,0,0,0.6),0_6px_20px_rgba(0,0,0,0.4)]">
+              <div className="mx-auto w-full max-w-[580px] rounded-2xl border bg-card shadow-lg transition-all duration-300 ease-out will-change-transform hover:-translate-y-1 hover:shadow-xl lg:mx-0">
                 <div className="overflow-hidden">
                   {/* Header */}
-                  <div className="bg-muted/30 dark:bg-muted/20 flex items-center justify-between border-b px-4 py-3 dark:border-slate-800">
+                  <div className="bg-muted/30 flex items-center justify-between border-b px-4 py-3">
                     <div className="flex items-center gap-3">
                       <Avatar className="h-8 w-8">
                         <div className="flex h-full w-full items-center justify-center rounded-full bg-gradient-to-br from-orange-400 to-pink-400">
@@ -258,7 +260,7 @@ const Hero = ({
                     <div className="space-y-4">
                       {/* User Message */}
                       <div className="flex justify-end">
-                        <div className="msg-out max-w-md rounded-xl border border-slate-900/5 bg-white px-5 py-4 text-sm dark:border-slate-700 dark:bg-slate-800">
+                        <div className="msg-out max-w-md rounded-xl border bg-card px-5 py-4 text-sm">
                           Create an API endpoint that returns users who signed
                           up this week with their subscription status
                         </div>
@@ -266,7 +268,7 @@ const Hero = ({
 
                       {/* Assistant Message with Tool Call */}
                       <div className="flex justify-start">
-                        <div className="msg-in max-w-lg space-y-3 rounded-xl bg-slate-50 px-5 py-4 text-sm dark:bg-slate-800/50">
+                        <div className="msg-in max-w-lg space-y-3 rounded-xl bg-muted px-5 py-4 text-sm">
                           <p className="text-foreground">
                             I'll create a new API endpoint in your Xano backend
                             that returns users who signed up this week with
@@ -274,7 +276,7 @@ const Hero = ({
                           </p>
 
                           <div className="text-muted-foreground mb-2 flex items-center gap-2 text-[11px]">
-                            <div className="typing text-slate-500 dark:text-slate-400">
+                            <div className="typing text-muted-foreground">
                               <span></span>
                               <span></span>
                               <span></span>
@@ -390,7 +392,7 @@ const Hero = ({
                               <strong>/api:v1/users/recent-signups</strong>:
                             </p>
 
-                            <div className="bg-background mt-2 rounded border dark:border-slate-700 dark:bg-slate-900">
+                            <div className="bg-background mt-2 rounded border">
                               <table className="table-hover w-full text-xs">
                                 <thead className="border-b">
                                   <tr className="text-left">
@@ -449,18 +451,18 @@ const Hero = ({
       </section>
 
       {/* Trust Indicators Section - Moved below hero */}
-      <section className="bg-muted/20 border-t py-12 dark:border-slate-800 dark:bg-slate-900/50">
+      <section className="bg-muted/20 border-t py-12">
         <div className="container max-w-screen-xl">
           <div className="flex flex-col items-center justify-between gap-8 lg:flex-row">
             {/* Database Support */}
-            <div className="flex items-center gap-6 text-sm text-slate-600 dark:text-slate-400">
+            <div className="flex items-center gap-6 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
                 <Database className="h-4 w-4" />
                 <span>Xano • No-code Backend • API-first</span>
               </div>
-              <div className="hidden h-1 w-1 rounded-full bg-slate-400 lg:block dark:bg-slate-600"></div>
+              <div className="hidden h-1 w-1 rounded-full bg-muted-foreground/50 lg:block"></div>
               <span>MCP Compatible</span>
-              <div className="hidden h-1 w-1 rounded-full bg-slate-400 lg:block dark:bg-slate-600"></div>
+              <div className="hidden h-1 w-1 rounded-full bg-muted-foreground/50 lg:block"></div>
               <span>SOC 2 Ready</span>
             </div>
 
