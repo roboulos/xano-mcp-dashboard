@@ -50,11 +50,10 @@ const ChartContainer = React.forwardRef<
   return (
     <ChartContext.Provider value={{ config }}>
       <div
-        data-slot="chart"
         data-chart={chartId}
         ref={ref}
         className={cn(
-          "[&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-border/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-border [&_.recharts-radial-bar-background-sector]:fill-muted [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&_.recharts-reference-line_[stroke='#ccc']]:stroke-border flex aspect-video justify-center text-xs [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-layer]:outline-hidden [&_.recharts-sector]:outline-hidden [&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-surface]:outline-hidden",
+          "[&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-border/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-border [&_.recharts-radial-bar-background-sector]:fill-muted [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&_.recharts-reference-line_[stroke='#ccc']]:stroke-border flex aspect-video justify-center text-xs [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-layer]:outline-none [&_.recharts-sector]:outline-none [&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-surface]:outline-none",
           className
         )}
         {...props}
@@ -113,28 +112,6 @@ const ChartTooltipContent = React.forwardRef<
       indicator?: 'line' | 'dot' | 'dashed';
       nameKey?: string;
       labelKey?: string;
-      payload?: Array<{
-        value?: string | number;
-        name?: string;
-        dataKey?: string | number;
-        color?: string;
-        payload?: Record<string, unknown>;
-      }>;
-      active?: boolean;
-      label?: string;
-      labelFormatter?: (
-        value: string | number,
-        payload?: Array<unknown>
-      ) => React.ReactNode;
-      labelClassName?: string;
-      formatter?: (
-        value: unknown,
-        name: string | number,
-        item: unknown,
-        index: number,
-        payload?: unknown
-      ) => React.ReactNode;
-      color?: string;
     }
 >(
   (
@@ -163,7 +140,7 @@ const ChartTooltipContent = React.forwardRef<
       }
 
       const [item] = payload;
-      const key = `${labelKey || item.dataKey || item.name || 'value'}`;
+      const key = `${labelKey || item?.dataKey || item?.name || 'value'}`;
       const itemConfig = getPayloadConfigFromPayload(config, item, key);
       const value =
         !labelKey && typeof label === 'string'
@@ -212,7 +189,7 @@ const ChartTooltipContent = React.forwardRef<
           {payload.map((item, index) => {
             const key = `${nameKey || item.name || item.dataKey || 'value'}`;
             const itemConfig = getPayloadConfigFromPayload(config, item, key);
-            const indicatorColor = color || item.payload?.fill || item.color;
+            const indicatorColor = color || item.payload.fill || item.color;
 
             return (
               <div
@@ -232,7 +209,7 @@ const ChartTooltipContent = React.forwardRef<
                       !hideIndicator && (
                         <div
                           className={cn(
-                            'shrink-0 rounded-[2px] border-(--color-border) bg-(--color-bg)',
+                            'shrink-0 rounded-[2px] border-[--color-border] bg-[--color-bg]',
                             {
                               'h-2.5 w-2.5': indicator === 'dot',
                               'w-1': indicator === 'line',
@@ -284,18 +261,11 @@ const ChartLegend = RechartsPrimitive.Legend;
 
 const ChartLegendContent = React.forwardRef<
   HTMLDivElement,
-  React.ComponentProps<'div'> & {
-    payload?: Array<{
-      value?: string | number;
-      id?: string;
-      type?: string;
-      color?: string;
-      dataKey?: string | number;
-    }>;
-    verticalAlign?: 'top' | 'middle' | 'bottom';
-    hideIcon?: boolean;
-    nameKey?: string;
-  }
+  React.ComponentProps<'div'> &
+    Pick<RechartsPrimitive.LegendProps, 'payload' | 'verticalAlign'> & {
+      hideIcon?: boolean;
+      nameKey?: string;
+    }
 >(
   (
     { className, hideIcon = false, payload, verticalAlign = 'bottom', nameKey },

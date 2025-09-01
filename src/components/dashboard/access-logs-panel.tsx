@@ -3,15 +3,10 @@
 import { useState, useEffect } from 'react';
 
 import {
-  IconActivity,
   IconAlertCircle,
   IconCircleCheck,
   IconInfoCircle,
   IconRefresh,
-  IconKey,
-  IconLogin,
-  IconLogout,
-  IconShieldCheck,
 } from '@tabler/icons-react';
 
 import { Badge } from '@/components/ui/badge';
@@ -164,51 +159,6 @@ export default function AccessLogsPanel({ className }: AccessLogsPanelProps) {
     }, 1000);
   };
 
-  const getActionIcon = (action: LogAction) => {
-    switch (action) {
-      case 'login':
-        return <IconLogin size={14} />;
-      case 'logout':
-        return <IconLogout size={14} />;
-      case 'api_call':
-        return <IconActivity size={14} />;
-      case 'key_regenerated':
-        return <IconKey size={14} />;
-      case 'permission_denied':
-        return <IconShieldCheck size={14} />;
-      case 'service_restart':
-        return <IconRefresh size={14} />;
-      default:
-        return <IconInfoCircle size={14} />;
-    }
-  };
-
-  const getTypeIcon = (type: LogType) => {
-    switch (type) {
-      case 'success':
-        return <IconCircleCheck size={16} className="text-green-500" />;
-      case 'error':
-        return <IconAlertCircle size={16} className="text-red-500" />;
-      case 'warning':
-        return <IconAlertCircle size={16} className="text-yellow-500" />;
-      case 'info':
-        return <IconInfoCircle size={16} className="text-blue-500" />;
-    }
-  };
-
-  const getTypeBadgeVariant = (type: LogType) => {
-    switch (type) {
-      case 'success':
-        return 'default';
-      case 'error':
-        return 'destructive';
-      case 'warning':
-        return 'secondary';
-      case 'info':
-        return 'outline';
-    }
-  };
-
   const formatTimestamp = (date: Date) => {
     const now = new Date();
     const diffMs = now.getTime() - date.getTime();
@@ -223,22 +173,23 @@ export default function AccessLogsPanel({ className }: AccessLogsPanelProps) {
   };
 
   return (
-    <Card className={className}>
-      <CardHeader className="pb-3">
+    <Card className={cn('bg-muted', className)}>
+      <CardHeader>
         <div className="flex items-center justify-between">
-          <CardTitle className="flex items-center gap-2">
-            <IconActivity size={20} />
-            Access Logs
-          </CardTitle>
+          <div>
+            <CardTitle className="text-xl">Activity Feed</CardTitle>
+            <p className="text-muted-foreground mt-1 text-sm">
+              {logs.length} recent events
+            </p>
+          </div>
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-2">
               <span className="text-muted-foreground text-sm">
-                Auto-refresh
+                Live updates
               </span>
               <Switch
                 checked={autoRefresh}
                 onCheckedChange={setAutoRefresh}
-                className="data-[state=checked]:bg-green-500"
                 aria-label="Toggle auto-refresh"
               />
             </div>
@@ -247,11 +198,10 @@ export default function AccessLogsPanel({ className }: AccessLogsPanelProps) {
               variant="outline"
               onClick={handleRefresh}
               disabled={isRefreshing}
-              className="h-8"
             >
               <IconRefresh
-                size={16}
-                className={cn('mr-1', isRefreshing && 'animate-spin')}
+                size={14}
+                className={cn('mr-2', isRefreshing && 'animate-spin')}
               />
               Refresh
             </Button>
@@ -259,51 +209,59 @@ export default function AccessLogsPanel({ className }: AccessLogsPanelProps) {
         </div>
       </CardHeader>
 
-      <CardContent className="p-0">
+      <CardContent>
         <ScrollArea className="h-[400px]">
-          <div className="space-y-1 p-4 pt-0">
+          <div className="space-y-2">
             {logs.map(log => (
               <div
                 key={log.id}
-                className={cn(
-                  'flex items-start gap-3 rounded-lg border p-3 transition-colors',
-                  'hover:bg-muted/50',
-                  log.type === 'error' && 'border-red-200 dark:border-red-900',
-                  log.type === 'warning' &&
-                    'border-yellow-200 dark:border-yellow-900'
-                )}
+                className="bg-background flex items-start gap-3 rounded-lg border p-3"
               >
-                <div className="mt-0.5">{getTypeIcon(log.type)}</div>
-
-                <div className="min-w-0 flex-1 space-y-1">
-                  <div className="flex items-start justify-between gap-2">
-                    <div className="min-w-0 flex-1">
-                      <div className="flex flex-wrap items-center gap-2">
-                        <span className="text-sm font-medium">{log.user}</span>
-                        <Badge
-                          variant={getTypeBadgeVariant(log.type)}
-                          className="text-xs"
-                        >
-                          <span className="mr-1">
-                            {getActionIcon(log.action)}
-                          </span>
-                          {log.action.replace('_', ' ')}
-                        </Badge>
-                      </div>
-                      <p className="text-muted-foreground mt-1 text-sm">
-                        {log.message}
-                      </p>
-                      {log.details && (
-                        <p className="text-muted-foreground mt-1 text-xs">
-                          {log.details}
-                        </p>
-                      )}
-                    </div>
-                    <span className="text-muted-foreground text-xs whitespace-nowrap">
-                      {formatTimestamp(log.timestamp)}
-                    </span>
-                  </div>
+                {/* Icon */}
+                <div className="mt-0.5">
+                  {log.type === 'success' && (
+                    <IconCircleCheck size={16} className="text-emerald-500" />
+                  )}
+                  {log.type === 'error' && (
+                    <IconAlertCircle size={16} className="text-red-500" />
+                  )}
+                  {log.type === 'warning' && (
+                    <IconAlertCircle size={16} className="text-yellow-500" />
+                  )}
+                  {log.type === 'info' && (
+                    <IconInfoCircle size={16} className="text-blue-500" />
+                  )}
                 </div>
+
+                {/* Content */}
+                <div className="flex-1 space-y-1">
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm font-medium">{log.user}</span>
+                    <Badge
+                      variant={
+                        log.type === 'error'
+                          ? 'destructive'
+                          : log.type === 'warning'
+                            ? 'secondary'
+                            : 'outline'
+                      }
+                      className="text-xs"
+                    >
+                      {log.action.replace('_', ' ')}
+                    </Badge>
+                    {log.details && (
+                      <span className="text-muted-foreground text-xs">
+                        {log.details}
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-muted-foreground text-sm">{log.message}</p>
+                </div>
+
+                {/* Timestamp */}
+                <span className="text-muted-foreground text-xs">
+                  {formatTimestamp(log.timestamp)}
+                </span>
               </div>
             ))}
           </div>

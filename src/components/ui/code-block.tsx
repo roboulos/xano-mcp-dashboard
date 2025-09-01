@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import { Check, Copy } from 'lucide-react';
 
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -13,6 +14,7 @@ interface CodeBlockProps {
   className?: string;
   showCopy?: boolean;
   title?: string;
+  filename?: string;
 }
 
 export function CodeBlock({
@@ -21,6 +23,7 @@ export function CodeBlock({
   className,
   showCopy = true,
   title,
+  filename,
 }: CodeBlockProps) {
   const [copied, setCopied] = useState(false);
 
@@ -32,11 +35,18 @@ export function CodeBlock({
 
   return (
     <div className={cn('group relative', className)}>
-      {title && (
+      {(title || filename) && (
         <div className="bg-muted/50 flex items-center justify-between rounded-t-lg border-b px-4 py-2">
-          <span className="text-muted-foreground font-mono text-sm">
-            {title}
-          </span>
+          <div className="flex items-center gap-2">
+            <span className="text-muted-foreground font-mono text-sm">
+              {filename || title}
+            </span>
+            {filename && (
+              <Badge variant="outline" className="text-xs">
+                {language}
+              </Badge>
+            )}
+          </div>
           {showCopy && (
             <Button
               variant="ghost"

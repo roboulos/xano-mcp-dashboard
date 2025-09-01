@@ -3,11 +3,15 @@
 import { useState } from 'react';
 
 import {
-  IconPower,
   IconAlertTriangle,
+  IconBolt,
   IconClock,
   IconRefresh,
+  IconServer,
+  IconServerOff,
 } from '@tabler/icons-react';
+
+import StatsCard from './stats-card';
 
 import {
   AlertDialog,
@@ -23,6 +27,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
 import { Switch } from '@/components/ui/switch';
 import { cn } from '@/lib/utils';
 
@@ -39,11 +44,12 @@ export default function ServiceStatusCard({
   // Mock data
   const uptimeHours = 127;
   const uptimeDays = Math.floor(uptimeHours / 24);
-  const uptimeRemainingHours = uptimeHours % 24;
   const lastRestart = new Date(
     Date.now() - uptimeHours * 60 * 60 * 1000
   ).toLocaleString();
-  const status = isActive ? 'Active' : 'Inactive';
+  const status = isActive ? 'Operational' : 'Offline';
+  const apiCalls = 1247;
+  const avgResponseTime = 127;
 
   const handleToggle = (checked: boolean) => {
     setIsActive(checked);
@@ -63,78 +69,98 @@ export default function ServiceStatusCard({
   };
 
   return (
-    <Card className={cn('relative overflow-hidden', className)}>
-      <div
-        className={cn(
-          'absolute inset-x-0 top-0 h-1 transition-colors duration-300',
-          isActive ? 'bg-green-500' : 'bg-red-500'
-        )}
-      />
-
-      <CardHeader className="pb-4">
-        <div className="flex items-center justify-between">
-          <CardTitle className="flex items-center gap-2">
-            <IconPower
-              size={20}
-              className={isActive ? 'text-green-500' : 'text-red-500'}
-            />
-            MCP Service Control
-          </CardTitle>
-          <Badge
-            variant={isActive ? 'default' : 'destructive'}
-            className={cn(
-              'font-semibold',
-              isActive && 'bg-green-500 hover:bg-green-600'
-            )}
-          >
-            {status}
-          </Badge>
+    <Card className={cn('bg-muted', className)}>
+      <CardHeader>
+        <div className="flex items-start justify-between">
+          <div className="space-y-1">
+            <CardTitle className="flex items-center gap-2 text-xl font-bold">
+              {isActive ? (
+                <IconServer size={20} className="text-emerald-500" />
+              ) : (
+                <IconServerOff size={20} className="text-red-500" />
+              )}
+              Service Infrastructure
+            </CardTitle>
+            <p className="text-muted-foreground text-sm">
+              Primary MCP cluster status and controls
+            </p>
+          </div>
+          <Badge variant={isActive ? 'default' : 'destructive'}>{status}</Badge>
         </div>
       </CardHeader>
 
       <CardContent className="space-y-6">
-        {/* Main Power Toggle */}
-        <div className="flex items-center justify-between rounded-lg border p-4">
-          <div>
-            <p className="font-medium">Service Status</p>
-            <p className="text-muted-foreground text-sm">
-              Toggle to enable or disable the entire MCP service
-            </p>
-          </div>
-          <Switch
-            checked={isActive}
-            onCheckedChange={handleToggle}
-            className="data-[state=checked]:bg-green-500"
-            aria-label="Toggle MCP service"
+        {/* Service Toggle */}
+        <Card>
+          <CardContent className="pt-6">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div
+                  className={cn(
+                    'h-2 w-2 rounded-full',
+                    isActive ? 'bg-emerald-500' : 'bg-red-500'
+                  )}
+                />
+                <div>
+                  <p className="font-semibold">Service Controller</p>
+                  <p className="text-muted-foreground text-sm">
+                    Master switch for all MCP operations
+                  </p>
+                </div>
+              </div>
+              <Switch
+                checked={isActive}
+                onCheckedChange={handleToggle}
+                aria-label="Toggle MCP service"
+              />
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Stats Grid using StatsCard */}
+        <div className="grid grid-cols-2 gap-4">
+          <StatsCard
+            title="Uptime"
+            description="Service uptime in days"
+            stats={`${uptimeDays}d`}
+            type="asc"
+            showTrend={true}
+            profitPercentage={99.9}
+            profitNumber="SLA"
+          />
+          <StatsCard
+            title="API Calls"
+            description="Total API calls today"
+            stats={apiCalls}
+            type="asc"
+            showTrend={true}
+            profitPercentage={12.5}
+            profitNumber={147}
+          />
+          <StatsCard
+            title="Response Time"
+            description="Average response time"
+            stats={`${avgResponseTime}ms`}
+            type="des"
+            showTrend={true}
+            profitPercentage={-5.2}
+            profitNumber="-7ms"
+          />
+          <StatsCard
+            title="SLA"
+            description="Service level agreement"
+            stats="99.9"
+            sign="percent"
+            type="neutral"
           />
         </div>
 
-        {/* Service Metrics */}
-        <div className="grid grid-cols-2 gap-4">
-          <div className="space-y-1">
-            <div className="text-muted-foreground flex items-center gap-2 text-sm">
-              <IconClock size={16} />
-              Uptime
-            </div>
-            <p className="text-2xl font-bold">
-              {uptimeDays}d {uptimeRemainingHours}h
-            </p>
-          </div>
-
-          <div className="space-y-1">
-            <div className="text-muted-foreground flex items-center gap-2 text-sm">
-              <IconRefresh size={16} />
-              Last Restart
-            </div>
-            <p className="text-sm font-medium">{lastRestart}</p>
-          </div>
-        </div>
+        <Separator />
 
         {/* Action Buttons */}
-        <div className="flex gap-2">
+        <div className="grid grid-cols-2 gap-3">
           <Button
             variant="outline"
-            className="flex-1"
             onClick={handleRestart}
             disabled={!isActive || isRestarting}
           >
@@ -145,19 +171,15 @@ export default function ServiceStatusCard({
               </>
             ) : (
               <>
-                <IconRefresh className="mr-2 h-4 w-4" />
-                Restart Service
+                <IconBolt className="mr-2 h-4 w-4" />
+                Quick Restart
               </>
             )}
           </Button>
 
           <AlertDialog>
             <AlertDialogTrigger asChild>
-              <Button
-                variant="destructive"
-                className="flex-1"
-                disabled={!isActive}
-              >
+              <Button variant="destructive" disabled={!isActive}>
                 <IconAlertTriangle className="mr-2 h-4 w-4" />
                 Emergency Stop
               </Button>
@@ -166,24 +188,45 @@ export default function ServiceStatusCard({
               <AlertDialogHeader>
                 <AlertDialogTitle>Emergency Stop</AlertDialogTitle>
                 <AlertDialogDescription>
-                  This will immediately stop the MCP service and disconnect all
-                  active users. This action should only be used in emergency
+                  This will immediately terminate all MCP services and
+                  disconnect all active connections. Use only in critical
                   situations.
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
                 <AlertDialogCancel>Cancel</AlertDialogCancel>
                 <AlertDialogAction
-                  className="bg-red-500 hover:bg-red-600"
                   onClick={handleEmergencyStop}
+                  className="bg-red-600 hover:bg-red-700"
                 >
-                  Stop Service
+                  Confirm Stop
                 </AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>
         </div>
+
+        {/* Last Activity */}
+        <div className="text-muted-foreground flex items-center gap-1 text-xs">
+          <IconClock size={14} />
+          <span>Last restart: {formatLastRestart(lastRestart)}</span>
+        </div>
       </CardContent>
     </Card>
   );
+}
+
+function formatLastRestart(dateString: string): string {
+  const date = new Date(dateString);
+  const now = new Date();
+  const diffMs = now.getTime() - date.getTime();
+  const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+  if (diffDays === 0) {
+    return 'Today';
+  } else if (diffDays === 1) {
+    return 'Yesterday';
+  } else {
+    return `${diffDays} days ago`;
+  }
 }
