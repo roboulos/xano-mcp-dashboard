@@ -115,7 +115,7 @@ const Hero = ({
   return (
     <>
       {/* Hero Section - Premium Layout with Generous Spacing */}
-      <section className="relative flex min-h-[90vh] items-center overflow-hidden bg-background pt-[180px] pb-[160px] lg:pt-[200px]">
+      <section className="relative flex min-h-[100vh] items-center overflow-hidden bg-background pt-24 pb-20">
         {/* Subtle background decoration */}
         <div className="absolute inset-0 -z-10">
           <div className="absolute top-0 -left-4 h-72 w-72 rounded-full bg-primary/5 blur-3xl" />

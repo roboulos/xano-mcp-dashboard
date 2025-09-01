@@ -51,8 +51,8 @@ const Navbar = () => {
   const { theme } = useTheme();
 
   return (
-    <header className="bg-background/70 absolute top-5 left-1/2 z-50 w-[min(90%,700px)] -translate-x-1/2 rounded-full border backdrop-blur-md lg:top-12">
-      <div className="flex items-center justify-between px-6 py-3">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b">
+      <div className="container max-w-screen-xl mx-auto flex items-center justify-between px-6 py-4">
         <Link href="/" className="flex shrink-0 items-center gap-2">
           <Image
             src={
@@ -73,7 +73,7 @@ const Navbar = () => {
             {ITEMS.map(link =>
               link.dropdownItems ? (
                 <NavigationMenuItem key={link.label} className="">
-                  <NavigationMenuTrigger className="data-[state=open]:bg-accent/50 bg-transparent! px-1.5">
+                  <NavigationMenuTrigger className="bg-transparent px-3 py-2 text-sm font-medium hover:text-muted-foreground data-[state=open]:text-muted-foreground">
                     {link.label}
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -105,8 +105,8 @@ const Navbar = () => {
                   <Link
                     href={link.href}
                     className={cn(
-                      'relative bg-transparent px-1.5 text-sm font-medium',
-                      pathname === link.href && 'text-muted-foreground'
+                      'relative bg-transparent px-3 py-2 text-sm font-medium hover:text-muted-foreground transition-colors',
+                      pathname === link.href && 'text-primary'
                     )}
                   >
                     {link.label}
@@ -121,8 +121,8 @@ const Navbar = () => {
         <div className="flex items-center gap-2.5">
           <ThemeToggle />
           <Link href="/login" className="max-lg:hidden">
-            <Button variant="outline">
-              <span className="relative z-10">Login</span>
+            <Button size="sm">
+              Login
             </Button>
           </Link>
 
@@ -153,7 +153,7 @@ const Navbar = () => {
       {/*  Mobile Menu Navigation */}
       <div
         className={cn(
-          'bg-background fixed inset-x-0 top-[calc(100%+1rem)] flex flex-col rounded-2xl border p-6 transition-all duration-300 ease-in-out lg:hidden',
+          'bg-background fixed inset-x-0 top-[100%] flex flex-col border-b p-6 transition-all duration-300 ease-in-out lg:hidden',
           isMenuOpen
             ? 'visible translate-y-0 opacity-100'
             : 'invisible -translate-y-4 opacity-0'
