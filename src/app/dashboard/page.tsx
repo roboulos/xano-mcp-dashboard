@@ -11,8 +11,9 @@ import MCPConnectionHub from '@/components/dashboard/mcp-connection-hub';
 import UsageAnalytics from '@/components/dashboard/usage-analytics';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
-// Force dynamic rendering to avoid Next.js 15.5.0 build issue
+// Force dynamic rendering to avoid Next.js 15.0.4 prerendering issues
 export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
 
 export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState('overview');
