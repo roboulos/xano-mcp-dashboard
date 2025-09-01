@@ -111,7 +111,7 @@ const mockApiKeys: ApiKey[] = [
     id: '1',
     name: 'Production API',
     description: 'Main production API key for Claude Desktop integration',
-    key: 'sk_live_abc123def456789ghi012jkl345mno678pqr901stu234vwx567',
+    key: 'xano_prod_key_abc123def456789ghi012jkl345mno678pqr901',
     assignedTo: '1',
     assignedUserName: 'Sarah Johnson',
     createdAt: new Date('2024-01-15'),
@@ -125,7 +125,7 @@ const mockApiKeys: ApiKey[] = [
     id: '2',
     name: 'Development Key',
     description: 'Testing and development environment key',
-    key: 'sk_dev_xyz789abc123456def789ghi012jkl345mno678pqr901stu',
+    key: 'xano_dev_key_xyz789abc123456def789ghi012jkl345mno678',
     assignedTo: '2',
     assignedUserName: 'Michael Chen',
     createdAt: new Date('2024-02-20'),
@@ -139,7 +139,7 @@ const mockApiKeys: ApiKey[] = [
     id: '3',
     name: 'Analytics Bot',
     description: 'Automated analytics and reporting bot',
-    key: 'sk_live_bot456def789012ghi345jkl678mno901pqr234stu567vwx',
+    key: 'xano_bot_key_456def789012ghi345jkl678mno901pqr234stu',
     createdAt: new Date('2024-03-01'),
     lastUsed: new Date(Date.now() - 24 * 60 * 60 * 1000),
     usageCount: 2156,
@@ -150,7 +150,7 @@ const mockApiKeys: ApiKey[] = [
     id: '4',
     name: 'Staging Test',
     description: 'Staging environment testing key',
-    key: 'sk_test_staging123456def789ghi012jkl345mno678pqr901stu',
+    key: 'xano_staging_key_123456def789ghi012jkl345mno678pqr901',
     assignedTo: '4',
     assignedUserName: 'David Park',
     createdAt: new Date('2024-02-01'),
@@ -318,7 +318,7 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
   };
 
   const handleRegenerate = async (keyId: string) => {
-    const newKey = `sk_live_${Math.random().toString(36).substr(2, 16)}...`;
+    const newKey = `xano_prod_${Math.random().toString(36).substr(2, 16)}...`;
     setKeys(prev =>
       prev.map(key => (key.id === keyId ? { ...key, key: newKey } : key))
     );
@@ -346,7 +346,7 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
       id: Date.now().toString(),
       name: createForm.name,
       description: createForm.description,
-      key: `sk_live_${Math.random().toString(36).substr(2, 40)}`,
+      key: `xano_key_${Math.random().toString(36).substr(2, 40)}`,
       assignedTo: createForm.assignedTo || undefined,
       assignedUserName: createForm.assignedTo ? 'Assigned User' : undefined,
       createdAt: new Date(),

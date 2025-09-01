@@ -70,7 +70,7 @@ const mockTeamMembers: TeamMember[] = [
     avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah',
     status: 'active',
     isOnline: true,
-    apiKey: 'sk_live_abc123def456...',
+    apiKey: 'xano_key_abc123def456...',
     lastSeen: new Date(),
     role: 'admin',
   },
@@ -81,7 +81,7 @@ const mockTeamMembers: TeamMember[] = [
     avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Michael',
     status: 'active',
     isOnline: true,
-    apiKey: 'sk_live_ghi789jkl012...',
+    apiKey: 'xano_key_ghi789jkl012...',
     lastSeen: new Date(Date.now() - 30 * 60 * 1000),
     role: 'developer',
   },
@@ -92,7 +92,7 @@ const mockTeamMembers: TeamMember[] = [
     avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Emily',
     status: 'suspended',
     isOnline: false,
-    apiKey: 'sk_live_mno345pqr678...',
+    apiKey: 'xano_key_mno345pqr678...',
     lastSeen: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000),
     role: 'developer',
   },
@@ -103,7 +103,7 @@ const mockTeamMembers: TeamMember[] = [
     avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=David',
     status: 'active',
     isOnline: false,
-    apiKey: 'sk_live_stu901vwx234...',
+    apiKey: 'xano_key_stu901vwx234...',
     lastSeen: new Date(Date.now() - 4 * 60 * 60 * 1000),
     role: 'viewer',
   },
@@ -145,7 +145,7 @@ export default function UserManagementGrid({
         member.id === memberId
           ? {
               ...member,
-              apiKey: `sk_live_new${Math.random().toString(36).substr(2, 9)}...`,
+              apiKey: `xano_key_new${Math.random().toString(36).substr(2, 9)}...`,
             }
           : member
       )
