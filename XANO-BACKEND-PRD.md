@@ -55,7 +55,20 @@ TO ADD:
 - assigned_team_members (json, array of user_ids)
 ```
 
-### 1.2 New Tables to Create
+### 1.2 Tool-Specific Credential Tables
+
+#### **EXISTING Tool Credentials**
+- **xano_credentials** - For Xano MCP tool
+- **"🌐 universe_connections"** - For Universe MCP tool
+
+#### **NEW Tool Credentials (as needed)**
+- **airtable_credentials** - For Airtable MCP tool
+- **freshbooks_credentials** - For Freshbooks MCP tool
+- **stripe_credentials** - For Stripe MCP tool
+
+Each tool maintains its own credential structure based on its specific requirements.
+
+### 1.3 New Tables to Create
 
 #### **workspaces** (Multi-tenancy root - NEW)
 ```
@@ -77,10 +90,11 @@ TO ADD:
 ```
 - id (int, primary key, auto-increment)
 - workspace_id (int, reference to workspaces.id)
-- user_id (int, reference to users.id)
+- user_id (uuid, reference to "👤 users".id)
 - role (enum: owner, admin, member, viewer)
 - status (enum: active, invited, disabled)
-- invited_by (int, reference to users.id, nullable)
+- mcp_tools_access (json, array) // ["xano-turbo", "universe"] - which tools they can use
+- invited_by (uuid, reference to "👤 users".id, nullable)
 - invitation_token (text, nullable)
 - invitation_expires (timestamp, nullable)
 - last_active_at (timestamp, nullable)
@@ -90,7 +104,7 @@ TO ADD:
 **Indexes**: workspace_id + user_id (unique), invitation_token
 **Security**: Enable row-level auth filtering by workspace_id
 
-#### **api_keys**
+#### **workspace_api_keys** (NEW - workspace-level access)
 ```
 - id (int, primary key, auto-increment)
 - workspace_id (int, reference to workspaces.id)
@@ -98,18 +112,20 @@ TO ADD:
 - description (text, nullable)
 - key_prefix (text, required) // First 8 chars for display
 - key_hash (text, required) // SHA-256 hash of full key
-- assigned_to (int, reference to users.id, nullable)
+- assigned_to (uuid, reference to "👤 users".id, nullable)
+- mcp_tools_access (json, array of enabled tools) // ["xano-turbo", "universe", "airtable"]
 - scopes (json, default: ["read"])
 - status (enum: active, revoked, expired)
 - expires_at (timestamp, nullable)
 - last_used_at (timestamp, nullable)
 - usage_count (int, default: 0)
-- created_by (int, reference to users.id)
+- created_by (uuid, reference to "👤 users".id)
 - created_at (timestamp, default: now())
 - revoked_at (timestamp, nullable)
 ```
 **Indexes**: workspace_id, key_hash, assigned_to, status
 **Security**: Never store plain text keys
+**Note**: This is for workspace-level API access, NOT individual tool credentials
 
 #### **mcp_connections** (NEW - multi-tool support)
 ```
@@ -120,31 +136,32 @@ TO ADD:
 - mcp_tool (enum: xano-turbo, universe, airtable, freshbooks, stripe) // Which MCP tool
 - environment (enum: production, staging, development)
 - config (json, encrypted) // Store encrypted config
-- credential_id (int, nullable) // References tool-specific credential tables
+- credential_reference (json) // {"table": "xano_credentials", "id": 123}
 - status (enum: active, inactive)
 - created_by (uuid, reference to "👤 users".id)
 - created_at (timestamp, default: now())
 - updated_at (timestamp, default: now())
 ```
 **Indexes**: workspace_id, tool_type, mcp_tool, environment
-**Note**: credential_id references xano_credentials.id for xano-turbo, "🌐 universe_connections".id for universe, etc.
+**Note**: credential_reference stores which table and ID to look up for tool-specific credentials
 
 #### **activity_logs** (NEW - extends existing logging)
 ```
 - id (int, primary key, auto-increment)
 - workspace_id (int, reference to workspaces.id)
 - user_id (uuid, reference to "👤 users".id, nullable)
-- api_key_id (int, reference to api_keys.id, nullable)
+- workspace_api_key_id (int, reference to workspace_api_keys.id, nullable)
 - action (text, required) // e.g., "api_key.created", "member.invited"
 - resource_type (text, nullable) // e.g., "api_key", "user", "xano_tool", "universe_tool"
 - resource_id (int, nullable)
+- mcp_tool (text, nullable) // Which tool was involved
 - metadata (json, nullable) // Additional context
 - ip_address (text, nullable)
 - user_agent (text, nullable)
 - created_at (timestamp, default: now())
 ```
-**Indexes**: workspace_id, user_id, action, created_at
-**Note**: Complements existing xano_mcp_logs for tool-specific logging
+**Indexes**: workspace_id, user_id, action, mcp_tool, created_at
+**Note**: Complements existing tool-specific logs (xano_mcp_logs, etc.)
 
 #### **api_usage**
 ```
@@ -209,6 +226,8 @@ Authenticated endpoints for managing workspace members
 
 #### **🔑 Workspace API Keys** (/workspace-api-keys)
 Authenticated endpoints for workspace-level API key management
+- Keys can grant access to multiple MCP tools
+- Separate from individual tool credentials
 
 #### **⚙️ Workspace Settings** (/workspace-settings)
 Authenticated endpoints for workspace configuration
@@ -343,28 +362,30 @@ Response: {
 
 #### API Key Management Endpoints
 
-**GET /api-keys**
+**GET /workspace-api-keys**
 ```
 Auth: Required
 Query: {
   page?: number,
   per_page?: number,
-  assigned_to?: number,
-  status?: string
+  assigned_to?: string, // UUID
+  status?: string,
+  mcp_tool?: string // Filter by specific tool access
 }
 Response: {
-  keys: ApiKey[],
+  keys: WorkspaceApiKey[],
   total: number
 }
 ```
 
-**POST /api-keys**
+**POST /workspace-api-keys**
 ```
 Auth: Required
 Input: {
   name: string,
   description?: string,
-  assigned_to?: number,
+  assigned_to?: string, // UUID
+  mcp_tools_access: string[], // ["xano-turbo", "universe"]
   scopes: string[],
   expires_at?: timestamp
 }
@@ -377,26 +398,28 @@ Response: {
     id: number,
     name: string,
     key: string, // Only returned once!
-    prefix: string
+    prefix: string,
+    mcp_tools_access: string[]
   }
 }
 ```
 
-**PUT /api-keys/:id**
+**PUT /workspace-api-keys/:id**
 ```
 Auth: Required
 Input: {
   name?: string,
   description?: string,
-  assigned_to?: number,
+  assigned_to?: string, // UUID
+  mcp_tools_access?: string[],
   status?: 'active' | 'revoked'
 }
 Response: {
-  key: ApiKey
+  key: WorkspaceApiKey
 }
 ```
 
-**POST /api-keys/:id/regenerate**
+**POST /workspace-api-keys/:id/regenerate**
 ```
 Auth: Required (admin/owner only)
 Process:
@@ -404,7 +427,8 @@ Process:
   2. Invalidate old key
   3. Log activity
 Response: {
-  key: string // Only returned once!
+  key: string, // Only returned once!
+  mcp_tools_access: string[]
 }
 ```
 
@@ -433,14 +457,16 @@ Query: {
   start_date?: date,
   end_date?: date,
   group_by?: 'day' | 'hour',
-  api_key_id?: number
+  workspace_api_key_id?: number,
+  mcp_tool?: string // Filter by specific tool
 }
 Response: {
   usage: {
     timestamp: string,
     calls: number,
     errors: number,
-    avg_response_time: number
+    avg_response_time: number,
+    by_tool: { [tool: string]: number } // Breakdown by MCP tool
   }[]
 }
 ```
@@ -476,13 +502,20 @@ Auth: Required
 Input: {
   name: string,
   tool_type: string,
+  mcp_tool: string, // "xano-turbo", "universe", etc.
   environment: string,
-  xano_instance: string,
-  api_key_id: number
+  credential_reference: {
+    table: string, // "xano_credentials" or "🌐 universe_connections"
+    id: number
+  }
 }
+Process:
+  1. Validate user has access to the MCP tool
+  2. Verify credential exists and belongs to workspace
+  3. Create connection config
 Response: {
   connection: McpConnection,
-  config: object // Generated config
+  config: object // Generated config for the specific tool
 }
 ```
 
@@ -511,6 +544,8 @@ Response: {
 2. Store only SHA-256 hash in database
 3. Show full key only once after creation
 4. Implement key rotation mechanism
+5. Validate MCP tool access on each request
+6. Separate workspace keys from tool credentials
 
 ### 3.3 Row-Level Security
 1. All queries filtered by workspace_id
@@ -542,11 +577,12 @@ Response: {
 3. Member management endpoints
 4. Email notifications
 
-### Phase 3: API Key System (Week 3)
-1. Key generation and storage
-2. Assignment and permissions
-3. Usage tracking
-4. Security validations
+### Phase 3: Workspace API Key System (Week 3)
+1. Multi-tool key generation and storage
+2. Tool-specific access control
+3. Assignment to team members
+4. Usage tracking per tool
+5. Security validations
 
 ### Phase 4: Analytics & Activity (Week 4)
 1. Activity logging middleware
@@ -656,16 +692,53 @@ Response: {
 - Workspace-level isolation for all tool data
 - Shared analytics and metrics infrastructure
 
-### 9.2 Backward Compatibility
+### 9.2 Credential Architecture Overview
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                        WORKSPACE                            │
+│                                                             │
+│  ┌─────────────────────┐    ┌─────────────────────────┐   │
+│  │  workspace_api_keys │    │   workspace_members     │   │
+│  │  ─────────────────  │    │   ───────────────────   │   │
+│  │  • Access to tools  │    │   • User permissions    │   │
+│  │  • mcp_tools_access │    │   • mcp_tools_access    │   │
+│  └─────────────────────┘    └─────────────────────────┘   │
+│                                                             │
+│  ┌──────────────────────────────────────────────────────┐  │
+│  │              Tool-Specific Credentials               │  │
+│  │                                                      │  │
+│  │  ┌──────────────┐  ┌─────────────────┐  ┌────────┐ │  │
+│  │  │xano_credentials│  │🌐 universe_     │  │airtable│ │  │
+│  │  │              │  │  connections    │  │_creds  │ │  │
+│  │  └──────────────┘  └─────────────────┘  └────────┘ │  │
+│  └──────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**Key Points:**
+1. **Workspace API Keys**: Control which MCP tools can be accessed
+2. **User Permissions**: Define which tools a user can configure
+3. **Tool Credentials**: Each tool stores its own authentication data
+4. **Connection Layer**: Maps workspace context to tool credentials
+
+### 9.3 Backward Compatibility
 - Existing single-user setups continue to work
 - Gradual migration path to workspace model
 - Preserve existing tool integrations
 - Maintain existing API contracts
 
-### 9.3 Special Table Handling
+### 9.4 Special Table Handling
 - Tables with emojis require quotes in XanoScript: `db.query "👤 users"`
 - Use table IDs for reliable references in code
 - Consider creating views with standard names for easier querying
+
+### 9.5 Multi-Tool Access Model
+1. **User Level**: Users belong to workspaces
+2. **Workspace Level**: Workspace API keys control which MCP tools can be accessed
+3. **Tool Level**: Each tool has its own credential table (xano_credentials, universe_connections, etc.)
+4. **Access Control**: workspace_members.mcp_tools_access defines which tools a user can configure
+5. **API Keys**: workspace_api_keys.mcp_tools_access defines which tools an API key can invoke
 
 ---
 
