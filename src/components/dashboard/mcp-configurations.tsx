@@ -108,6 +108,7 @@ export function MCPConfigurations() {
           description: 'Please log in to view configurations.',
           variant: 'destructive',
         });
+        setIsLoading(false);
         return;
       }
 
@@ -125,6 +126,7 @@ export function MCPConfigurations() {
             variant: 'destructive',
           });
           // Handle logout/redirect
+          setIsLoading(false);
           return;
         }
         throw new Error('Failed to fetch credentials');

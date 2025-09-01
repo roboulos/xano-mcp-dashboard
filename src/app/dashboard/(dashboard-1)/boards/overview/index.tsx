@@ -1,29 +1,26 @@
-import Payments from './components/payments';
-import Sales from './components/sales';
-import Stats from './components/stats';
-import Subscription from './components/subscriptions';
-import TeamMembers from './components/team-members';
-import TotalRevenue from './components/total-revenue';
+import AccessLogsPanel from '@/components/dashboard/access-logs-panel';
+import QuickActionsBar from '@/components/dashboard/quick-actions-bar';
+import ServiceStatusCard from '@/components/dashboard/service-status-card';
+import UserManagementGrid from '@/components/dashboard/user-management-grid';
 
 export default function Overview() {
   return (
-    <div className="grid auto-rows-auto grid-cols-3 gap-5 md:grid-cols-6 lg:grid-cols-9">
-      <Stats />
-      <div className="col-span-3">
-        <TotalRevenue />
+    <div className="space-y-6">
+      {/* Top Section - Service Control and Quick Actions */}
+      <div className="grid gap-5 lg:grid-cols-3">
+        <ServiceStatusCard className="lg:col-span-2" />
+        <QuickActionsBar className="lg:col-span-1" />
       </div>
 
-      <div className="col-span-3 md:col-span-6">
-        <Sales />
+      {/* Middle Section - User Management */}
+      <div>
+        <h2 className="mb-4 text-lg font-semibold">Team Management</h2>
+        <UserManagementGrid />
       </div>
-      <div className="col-span-3 md:col-span-6 lg:col-span-3">
-        <Subscription />
-      </div>
-      <div className="col-span-3 md:col-span-6 lg:col-span-5 xl:col-span-6">
-        <Payments />
-      </div>
-      <div className="col-span-3 md:col-span-6 lg:col-span-4 xl:col-span-3">
-        <TeamMembers />
+
+      {/* Bottom Section - Access Logs */}
+      <div>
+        <AccessLogsPanel />
       </div>
     </div>
   );
