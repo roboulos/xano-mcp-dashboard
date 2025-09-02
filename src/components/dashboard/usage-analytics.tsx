@@ -15,7 +15,9 @@ import {
   AreaChart,
   Bar,
   BarChart,
+  CartesianGrid,
   ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
 } from 'recharts';
@@ -41,6 +43,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 
 // Mock usage data
@@ -129,10 +132,27 @@ export default function UsageAnalytics({ className }: UsageAnalyticsProps) {
   const [selectedMetric, setSelectedMetric] = useState<
     'calls' | 'users' | 'errors'
   >('calls');
+  const { toast } = useToast();
 
   const handleExportData = () => {
-    // Simulate data export
-    // Exporting analytics data...
+    const headers = ['Date', 'API Calls', 'Active Users', 'Errors'];
+    const rows = dailyUsageData.map(d => [d.date, d.calls, d.users, d.errors]);
+    const csv = [headers, ...rows].map(row => row.join(',')).join('\n');
+
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `usage-analytics-${timeRange}-${new Date().toISOString().split('T')[0]}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+
+    toast({
+      title: 'Data exported successfully',
+      description: `Usage analytics for ${timeRange} has been downloaded.`,
+    });
   };
 
   const totalCalls = dailyUsageData.reduce((sum, day) => sum + day.calls, 0);
@@ -189,73 +209,95 @@ export default function UsageAnalytics({ className }: UsageAnalyticsProps) {
       <CardContent className="space-y-6">
         {/* Key Metrics */}
         <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-          <Card>
-            <CardContent className="pt-6">
-              <div className="flex items-center gap-2">
+          <Card className="ring-border shadow-sm ring-1">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-muted-foreground flex items-center gap-2 text-sm font-medium">
                 <ActivityIcon className="h-4 w-4 text-blue-600" />
-                <div className="text-2xl font-bold">
-                  {totalCalls.toLocaleString()}
-                </div>
-              </div>
-              <p className="text-muted-foreground mt-1 text-xs">
                 Total API Calls
-              </p>
-              <div className="mt-2 flex items-center gap-1">
-                <TrendingUpIcon className="h-3 w-3 text-emerald-600" />
-                <span className="text-xs font-medium text-emerald-600">
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex items-baseline gap-2">
+                <p className="text-3xl font-bold tracking-tight">
+                  {totalCalls.toLocaleString()}
+                </p>
+                <span className="flex items-center gap-1 text-sm font-medium text-green-600">
+                  <TrendingUpIcon className="h-4 w-4" />
                   +12.5%
                 </span>
               </div>
+              <p className="text-muted-foreground mt-1 text-xs">
+                +234 from last period
+              </p>
             </CardContent>
           </Card>
 
-          <Card>
-            <CardContent className="pt-6">
-              <div className="flex items-center gap-2">
+          <Card className="ring-border shadow-sm ring-1">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-muted-foreground flex items-center gap-2 text-sm font-medium">
                 <UsersIcon className="h-4 w-4 text-emerald-600" />
-                <div className="text-2xl font-bold">{totalUsers}</div>
-              </div>
-              <p className="text-muted-foreground mt-1 text-xs">Active Users</p>
-              <div className="mt-2 flex items-center gap-1">
-                <TrendingUpIcon className="h-3 w-3 text-emerald-600" />
-                <span className="text-xs font-medium text-emerald-600">
+                Active Users
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex items-baseline gap-2">
+                <p className="text-3xl font-bold tracking-tight">
+                  {totalUsers}
+                </p>
+                <span className="flex items-center gap-1 text-sm font-medium text-green-600">
+                  <TrendingUpIcon className="h-4 w-4" />
                   +8.3%
                 </span>
               </div>
+              <p className="text-muted-foreground mt-1 text-xs">
+                +4 from last period
+              </p>
             </CardContent>
           </Card>
 
-          <Card>
-            <CardContent className="pt-6">
-              <div className="flex items-center gap-2">
+          <Card className="ring-border shadow-sm ring-1">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-muted-foreground flex items-center gap-2 text-sm font-medium">
                 <BarChartIcon className="h-4 w-4 text-orange-600" />
-                <div className="text-2xl font-bold">{errorRate}%</div>
-              </div>
-              <p className="text-muted-foreground mt-1 text-xs">Error Rate</p>
-              <div className="mt-2 flex items-center gap-1">
-                <TrendingUpIcon className="h-3 w-3 rotate-180 text-red-600" />
-                <span className="text-xs font-medium text-emerald-600">
+                Error Rate
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex items-baseline gap-2">
+                <p className="text-3xl font-bold tracking-tight">
+                  {errorRate}%
+                </p>
+                <span className="flex items-center gap-1 text-sm font-medium text-emerald-600">
+                  <TrendingUpIcon className="h-4 w-4 rotate-180" />
                   -2.1%
                 </span>
               </div>
+              <p className="text-muted-foreground mt-1 text-xs">
+                Improved from last period
+              </p>
             </CardContent>
           </Card>
 
-          <Card>
-            <CardContent className="pt-6">
-              <div className="flex items-center gap-2">
+          <Card className="ring-border shadow-sm ring-1">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-muted-foreground flex items-center gap-2 text-sm font-medium">
                 <ActivityIcon className="h-4 w-4 text-purple-600" />
-                <div className="text-2xl font-bold">
+                Avg Response
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex items-baseline gap-2">
+                <p className="text-3xl font-bold tracking-tight">
                   {avgResponseTime.toFixed(0)}ms
-                </div>
-              </div>
-              <p className="text-muted-foreground mt-1 text-xs">Avg Response</p>
-              <div className="mt-2 flex items-center gap-1">
-                <TrendingUpIcon className="h-3 w-3 rotate-180 text-red-600" />
-                <span className="text-xs font-medium text-emerald-600">
+                </p>
+                <span className="flex items-center gap-1 text-sm font-medium text-emerald-600">
+                  <TrendingUpIcon className="h-4 w-4 rotate-180" />
                   -5.2%
                 </span>
               </div>
+              <p className="text-muted-foreground mt-1 text-xs">
+                Faster than last period
+              </p>
             </CardContent>
           </Card>
         </div>
@@ -304,6 +346,31 @@ export default function UsageAnalytics({ className }: UsageAnalyticsProps) {
             >
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart data={dailyUsageData}>
+                  <defs>
+                    <linearGradient
+                      id="areaGradient"
+                      x1="0"
+                      y1="0"
+                      x2="0"
+                      y2="1"
+                    >
+                      <stop
+                        offset="5%"
+                        stopColor={`hsl(var(--chart-${selectedMetric === 'calls' ? '1' : selectedMetric === 'users' ? '2' : '3'}))`}
+                        stopOpacity={0.3}
+                      />
+                      <stop
+                        offset="95%"
+                        stopColor={`hsl(var(--chart-${selectedMetric === 'calls' ? '1' : selectedMetric === 'users' ? '2' : '3'}))`}
+                        stopOpacity={0}
+                      />
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid
+                    strokeDasharray="3 3"
+                    stroke="hsl(var(--border))"
+                    opacity={0.3}
+                  />
                   <XAxis
                     dataKey="date"
                     tickFormatter={value =>
@@ -312,15 +379,26 @@ export default function UsageAnalytics({ className }: UsageAnalyticsProps) {
                         day: 'numeric',
                       })
                     }
+                    tickLine={false}
+                    axisLine={{ stroke: 'hsl(var(--border))' }}
                   />
-                  <YAxis />
-                  <ChartTooltip content={<ChartTooltipContent />} />
+                  <YAxis
+                    tickLine={false}
+                    axisLine={{ stroke: 'hsl(var(--border))' }}
+                  />
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: 'hsl(var(--popover))',
+                      border: '1px solid hsl(var(--border))',
+                      borderRadius: 'var(--radius)',
+                    }}
+                  />
                   <Area
                     type="monotone"
                     dataKey={selectedMetric}
                     stroke={`hsl(var(--chart-${selectedMetric === 'calls' ? '1' : selectedMetric === 'users' ? '2' : '3'}))`}
-                    fill={`hsl(var(--chart-${selectedMetric === 'calls' ? '1' : selectedMetric === 'users' ? '2' : '3'}))`}
-                    fillOpacity={0.2}
+                    strokeWidth={2}
+                    fill="url(#areaGradient)"
                   />
                 </AreaChart>
               </ResponsiveContainer>

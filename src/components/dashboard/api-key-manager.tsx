@@ -20,8 +20,6 @@ import {
   PlusIcon,
   KeyIcon,
   CopyIcon,
-  EyeIcon,
-  EyeOffIcon,
   UserIcon,
   MoreHorizontalIcon,
   TrashIcon,
@@ -89,6 +87,8 @@ import {
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
+
+const formatDate = (d?: Date) => (d ? new Date(d).toLocaleDateString() : '—');
 
 interface ApiKey {
   id: string;
@@ -280,20 +280,7 @@ interface ApiKeyManagerProps {
 export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
   const [keys, setKeys] = useState(mockApiKeys);
   const [isCreateOpen, setIsCreateOpen] = useState(false);
-  const [visibleKeys, setVisibleKeys] = useState<Set<string>>(new Set());
   const { toast } = useToast();
-
-  const toggleKeyVisibility = (keyId: string) => {
-    setVisibleKeys(prev => {
-      const newSet = new Set(prev);
-      if (newSet.has(keyId)) {
-        newSet.delete(keyId);
-      } else {
-        newSet.add(keyId);
-      }
-      return newSet;
-    });
-  };
 
   const [createForm, setCreateForm] = useState({
     name: '',
@@ -413,30 +400,25 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
       accessorKey: 'key',
       header: 'Key',
       cell: ({ row }) => {
-        const fullKey = row.getValue('key') as string;
-        const maskedKey = `•••• •••• •••• ${fullKey.slice(-4)}`;
-        const isVisible = visibleKeys.has(row.original.id);
+        const keyValue = row.getValue('key') as string;
+        const displayValue = `${keyValue.slice(0, 4)}${'•'.repeat(8)}${keyValue.slice(-4)}`;
 
         return (
-          <div className="flex items-center gap-2">
-            <code className="bg-muted/50 rounded px-2 py-1 font-mono text-sm">
-              {isVisible ? fullKey : maskedKey}
+          <div className="group flex items-center gap-2">
+            <code className="bg-background rounded border px-2 py-1 font-mono text-sm shadow-sm">
+              {displayValue}
             </code>
             <Button
-              size="sm"
+              size="icon"
               variant="ghost"
-              onClick={() => toggleKeyVisibility(row.original.id)}
-            >
-              {isVisible ? (
-                <EyeOffIcon className="h-4 w-4" />
-              ) : (
-                <EyeIcon className="h-4 w-4" />
-              )}
-            </Button>
-            <Button
-              size="sm"
-              variant="ghost"
-              onClick={() => copyToClipboard(fullKey, row.original.name)}
+              className="h-8 w-8 opacity-0 transition-opacity group-hover:opacity-100"
+              onClick={async () => {
+                await navigator.clipboard.writeText(keyValue);
+                toast({
+                  title: 'Copied to clipboard',
+                  description: `${row.original.name} has been copied`,
+                });
+              }}
             >
               <CopyIcon className="h-4 w-4" />
             </Button>
@@ -492,6 +474,39 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
       },
     },
     {
+      accessorKey: 'createdAt',
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title="Created" />
+      ),
+      cell: ({ row }) => (
+        <span className="text-muted-foreground text-sm">
+          {formatDate(row.original.createdAt)}
+        </span>
+      ),
+    },
+    {
+      accessorKey: 'lastUsed',
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title="Last used" />
+      ),
+      cell: ({ row }) => {
+        const lastUsed = row.original.lastUsed;
+        if (!lastUsed)
+          return <span className="text-muted-foreground text-sm">Never</span>;
+
+        const days = Math.round(
+          (Date.now() - lastUsed.getTime()) / (1000 * 60 * 60 * 24)
+        );
+        const rtf = new Intl.RelativeTimeFormat('en', { numeric: 'auto' });
+
+        return (
+          <span className="text-sm" title={lastUsed.toLocaleString()}>
+            {rtf.format(-days, 'day')}
+          </span>
+        );
+      },
+    },
+    {
       accessorKey: 'status',
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title="Status" />
@@ -499,17 +514,31 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
       cell: ({ row }) => {
         const status = row.getValue('status') as string;
         return (
-          <Badge
-            variant={
-              status === 'active'
-                ? 'default'
-                : status === 'expired'
-                  ? 'secondary'
-                  : 'destructive'
-            }
-          >
-            {status}
-          </Badge>
+          <div className="flex items-center gap-2">
+            <Badge
+              variant={
+                status === 'active'
+                  ? 'default'
+                  : status === 'expired'
+                    ? 'secondary'
+                    : 'destructive'
+              }
+            >
+              <span className="mr-1 inline-block h-1.5 w-1.5 rounded-full bg-current" />
+              {status}
+            </Badge>
+            {row.original.expiresAt &&
+              row.original.status === 'active' &&
+              row.original.expiresAt.getTime() - Date.now() <
+                30 * 24 * 60 * 60 * 1000 && (
+                <Badge
+                  variant="outline"
+                  className="border-orange-200 bg-orange-50 text-orange-600 dark:border-orange-800 dark:bg-orange-950"
+                >
+                  Expiring soon
+                </Badge>
+              )}
+          </div>
         );
       },
     },
@@ -531,10 +560,32 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
               <CopyIcon className="mr-2 h-4 w-4" />
               Copy Key
             </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => handleRegenerate(row.original.id)}>
-              <RefreshCwIcon className="mr-2 h-4 w-4" />
-              Regenerate
-            </DropdownMenuItem>
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <DropdownMenuItem onSelect={e => e.preventDefault()}>
+                  <RefreshCwIcon className="mr-2 h-4 w-4" />
+                  Regenerate
+                </DropdownMenuItem>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Regenerate API Key</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    This will invalidate the current key "{row.original.name}"
+                    and create a new one. Any applications using this key will
+                    need to be updated.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogAction
+                    onClick={() => handleRegenerate(row.original.id)}
+                  >
+                    Regenerate Key
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
             <DropdownMenuSeparator />
             <DropdownMenuItem
               className="text-destructive"

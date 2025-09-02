@@ -4,7 +4,6 @@ import { useState } from 'react';
 
 import {
   PlusIcon,
-  UserIcon,
   KeyIcon,
   ClockIcon,
   CopyIcon,
@@ -50,6 +49,12 @@ import {
 } from '@/components/ui/select';
 import { Switch } from '@/components/ui/switch';
 import { Textarea } from '@/components/ui/textarea';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 
 interface TeamMember {
@@ -141,6 +146,14 @@ export default function EnhancedTeamManagement({
 }: EnhancedTeamManagementProps) {
   const [members, setMembers] = useState(mockTeamMembers);
   const [, setCopiedId] = useState<string | null>(null);
+  const [memberFilter, setMemberFilter] = useState<
+    'all' | 'active' | 'suspended' | 'pending'
+  >('all');
+
+  const filteredMembers = members.filter(member => {
+    if (memberFilter === 'all') return true;
+    return member.status === memberFilter;
+  });
   const [isInviteOpen, setIsInviteOpen] = useState(false);
   const [inviteForm, setInviteForm] = useState({
     email: '',
@@ -368,45 +381,83 @@ export default function EnhancedTeamManagement({
         </Card>
       </div>
 
+      {/* Filter Tabs */}
+      <div className="mb-6 flex gap-2">
+        {['all', 'active', 'suspended', 'pending'].map(filter => (
+          <Button
+            key={filter}
+            size="sm"
+            variant={memberFilter === filter ? 'default' : 'outline'}
+            onClick={() =>
+              setMemberFilter(
+                filter as 'all' | 'active' | 'suspended' | 'pending'
+              )
+            }
+            className="capitalize"
+          >
+            {filter}{' '}
+            {filter !== 'all' &&
+              `(${members.filter(m => m.status === filter).length})`}
+          </Button>
+        ))}
+      </div>
+
       {/* Team Members Grid */}
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-        {members.map(member => (
-          <Card key={member.id} className="transition-all hover:shadow-md">
-            <CardHeader className="pb-4">
+        {filteredMembers.map(member => (
+          <Card
+            key={member.id}
+            className="hover:shadow-medium relative overflow-hidden transition-all"
+          >
+            <CardHeader className="pb-3">
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-3">
                   <div className="relative">
                     <Avatar className="h-10 w-10">
                       <AvatarImage src={member.avatar} alt={member.name} />
                       <AvatarFallback>
-                        <UserIcon size={16} />
+                        {member.name
+                          .split(' ')
+                          .map(n => n[0])
+                          .join('')
+                          .toUpperCase()}
                       </AvatarFallback>
                     </Avatar>
-                    <div
-                      className={cn(
-                        'border-background absolute -right-1 -bottom-1 h-3 w-3 rounded-full border-2',
-                        member.isOnline
-                          ? 'bg-emerald-500'
-                          : member.status === 'pending'
-                            ? 'bg-orange-500'
-                            : 'bg-muted-foreground'
-                      )}
-                    />
+                    <TooltipProvider>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <div
+                            className={cn(
+                              'border-background absolute -right-1 -bottom-1 h-3 w-3 rounded-full border-2',
+                              member.isOnline && member.status === 'active'
+                                ? 'bg-green-500'
+                                : member.status === 'pending'
+                                  ? 'bg-yellow-500'
+                                  : 'bg-gray-400'
+                            )}
+                          />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          {member.isOnline && member.status === 'active'
+                            ? 'Online'
+                            : member.status === 'pending'
+                              ? 'Pending activation'
+                              : 'Offline'}
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
                   </div>
-                  <div className="min-w-0 flex-1">
-                    <h3 className="text-sm font-semibold">{member.name}</h3>
-                    <p className="text-muted-foreground truncate text-xs">
+                  <div>
+                    <h4 className="font-medium">{member.name}</h4>
+                    <p className="text-muted-foreground text-sm">
                       {member.email}
                     </p>
                   </div>
                 </div>
                 <Badge
-                  variant={
-                    member.role === 'admin'
-                      ? 'default'
-                      : member.role === 'developer'
-                        ? 'secondary'
-                        : 'outline'
+                  variant={member.role === 'admin' ? 'default' : 'outline'}
+                  className={
+                    member.role !== 'admin' ? 'text-muted-foreground' : ''
                   }
                 >
                   {member.role}
