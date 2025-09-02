@@ -27,6 +27,8 @@ import {
   ArrowUpIcon,
   ArrowDownIcon,
   ChevronsUpDownIcon,
+  CheckIcon,
+  EditIcon,
 } from 'lucide-react';
 
 import {
@@ -234,6 +236,12 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
     createCredential,
     deleteCredential,
   } = useXanoCredentials();
+  const [editingAssignment, setEditingAssignment] = useState<string | null>(
+    null
+  );
+  const [assignmentValues, setAssignmentValues] = useState<
+    Record<string, string>
+  >({});
 
   // Transform Xano credentials to match the existing ApiKey interface
   const keys = useMemo(
@@ -408,13 +416,132 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
       ),
       cell: ({ row }) => {
         const user = row.getValue('assignedUserName') as string;
-        return user ? (
-          <div className="flex items-center gap-2">
-            <UserIcon className="text-muted-foreground h-4 w-4" />
-            <span className="text-sm">{user}</span>
+        const keyId = row.original.id;
+        const isEditing = editingAssignment === keyId;
+        const selectedUser =
+          assignmentValues[keyId] || row.original.assignedTo || '';
+
+        const handleAssignmentUpdate = async () => {
+          if (selectedUser === row.original.assignedTo) {
+            setEditingAssignment(null);
+            return;
+          }
+
+          try {
+            const assignedMember = teamMembers.find(m => m.id === selectedUser);
+
+            // Get auth token from localStorage
+            const auth = localStorage.getItem('auth');
+            const authToken = auth ? JSON.parse(auth).authToken : '';
+
+            const response = await fetch(
+              `/api/mcp/credentials/${row.original.id}/assign`,
+              {
+                method: 'PUT',
+                headers: {
+                  'Content-Type': 'application/json',
+                  Authorization: `Bearer ${authToken}`,
+                },
+                body: JSON.stringify({
+                  assigned_to: selectedUser,
+                  assigned_to_name: assignedMember?.email,
+                  credential_name: row.original.name,
+                }),
+              }
+            );
+
+            if (!response.ok) {
+              throw new Error('Failed to update assignment');
+            }
+
+            toast({
+              title: 'Assignment Updated',
+              description: assignedMember
+                ? `Key assigned to ${assignedMember.name}`
+                : 'Key assignment removed',
+            });
+
+            // Update local state instead of reloading
+            setEditingAssignment(null);
+            // TODO: Refresh data properly
+            window.location.reload();
+          } catch {
+            toast({
+              title: 'Error',
+              description: 'Failed to update assignment',
+              variant: 'destructive',
+            });
+          }
+        };
+
+        if (isEditing) {
+          return (
+            <div className="flex items-center gap-2">
+              <Select
+                value={selectedUser}
+                onValueChange={value => {
+                  setAssignmentValues(prev => ({ ...prev, [keyId]: value }));
+                }}
+              >
+                <SelectTrigger className="h-8 w-[150px]">
+                  <SelectValue placeholder="Select user..." />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="">Unassigned</SelectItem>
+                  {teamMembers.map(member => (
+                    <SelectItem key={member.id} value={member.id}>
+                      {member.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <Button
+                size="icon"
+                variant="ghost"
+                className="h-8 w-8"
+                onClick={handleAssignmentUpdate}
+              >
+                <CheckIcon className="h-4 w-4" />
+              </Button>
+              <Button
+                size="icon"
+                variant="ghost"
+                className="h-8 w-8"
+                onClick={() => {
+                  setEditingAssignment(null);
+                  setAssignmentValues(prev => ({
+                    ...prev,
+                    [keyId]: row.original.assignedTo || '',
+                  }));
+                }}
+              >
+                <X className="h-4 w-4" />
+              </Button>
+            </div>
+          );
+        }
+
+        return (
+          <div
+            className="group flex cursor-pointer items-center gap-2"
+            onClick={() => {
+              setEditingAssignment(keyId);
+              setAssignmentValues(prev => ({
+                ...prev,
+                [keyId]: row.original.assignedTo || '',
+              }));
+            }}
+          >
+            {user ? (
+              <>
+                <UserIcon className="text-muted-foreground h-4 w-4" />
+                <span className="text-sm">{user}</span>
+              </>
+            ) : (
+              <span className="text-muted-foreground text-sm">Unassigned</span>
+            )}
+            <EditIcon className="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100" />
           </div>
-        ) : (
-          <span className="text-muted-foreground text-sm">Unassigned</span>
         );
       },
     },
