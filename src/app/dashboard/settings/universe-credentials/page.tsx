@@ -1,13 +1,5 @@
-import ContentSection from '../components/content-section';
-import XanoCredentialsForm from './components/xano-credentials-form';
+import { MCPConfigurations } from '@/components/dashboard/mcp-configurations';
 
-export default function XanoCredentialsPage() {
-  return (
-    <ContentSection
-      title="Xano Workspace Credentials"
-      desc="Configure your Xano workspace connection settings."
-    >
-      <XanoCredentialsForm />
-    </ContentSection>
-  );
+export default function UniverseCredentialsPage() {
+  return <MCPConfigurations />;
 }
