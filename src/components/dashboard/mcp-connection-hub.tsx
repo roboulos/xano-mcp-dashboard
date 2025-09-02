@@ -46,10 +46,6 @@ export default function McpConnectionHub({ className }: McpConnectionHubProps) {
 
   const activeCredential =
     credentials?.find(c => c.is_active) || credentials?.[0];
-  const serverUrl = 'https://xano-mcp.snappymcp.com';
-  const apiKey = activeCredential?.xano_instance_name
-    ? `xano_${activeCredential.credential_name.toLowerCase()}_****`
-    : 'No active credential';
 
   const connectionConfigs = {
     'claude-desktop': {
@@ -60,29 +56,26 @@ export default function McpConnectionHub({ className }: McpConnectionHubProps) {
       content: JSON.stringify(
         {
           mcpServers: {
-            'xano-mcp': {
+            snappy: {
               command: 'npx',
-              args: ['-y', '@your-org/xano-mcp-server'],
-              env: {
-                XANO_API_KEY: apiKey,
-                XANO_INSTANCE: 'your-instance.n7.xano.io',
-              },
+              args: [
+                'mcp-remote',
+                'https://xano-mcp-server.robertjboulos.workers.dev/sse',
+              ],
             },
           },
         },
         null,
         2
       ),
-      filename: '.claude_desktop_config.json',
+      filename: 'claude_desktop_config.json',
     },
     'claude-code': {
       name: 'Claude Code',
       description: 'Command for Claude Code CLI',
       icon: <Terminal className="h-4 w-4" />,
       format: 'command',
-      content: `mcp add @your-org/xano-mcp-server \\
-  --env XANO_API_KEY=${apiKey} \\
-  --env XANO_INSTANCE=your-instance.n7.xano.io`,
+      content: `claude mcp add snappy-xano https://xano-mcp-server.robertjboulos.workers.dev/sse --transport sse`,
       filename: 'claude-code-command.sh',
     },
     cursor: {
@@ -93,13 +86,12 @@ export default function McpConnectionHub({ className }: McpConnectionHubProps) {
       content: JSON.stringify(
         {
           'mcp.servers': {
-            'xano-mcp': {
+            snappy: {
               command: 'npx',
-              args: ['-y', '@your-org/xano-mcp-server'],
-              env: {
-                XANO_API_KEY: apiKey,
-                XANO_INSTANCE: 'your-instance.n7.xano.io',
-              },
+              args: [
+                'mcp-remote',
+                'https://xano-mcp-server.robertjboulos.workers.dev/sse',
+              ],
             },
           },
         },
@@ -113,14 +105,14 @@ export default function McpConnectionHub({ className }: McpConnectionHubProps) {
       description: 'Generic server URL and credentials',
       icon: <Link className="h-4 w-4" />,
       format: 'text',
-      content: `Server URL: ${serverUrl}
-API Key: ${apiKey}
-Instance: your-instance.n7.xano.io
+      content: `Server URL: https://xano-mcp-server.robertjboulos.workers.dev/sse
+Transport: SSE (Server-Sent Events)
+Server Name: snappy
 
 Usage:
 1. Install MCP client of choice
-2. Add server with above credentials
-3. Configure environment variables`,
+2. Add server using npx mcp-remote
+3. Use the SSE transport option`,
       filename: 'mcp-connection-info.txt',
     },
   };
