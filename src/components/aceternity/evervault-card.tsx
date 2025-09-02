@@ -1,8 +1,12 @@
-// @ts-nocheck
 'use client';
 import React, { useState, useEffect } from 'react';
 
-import { useMotionValue, useMotionTemplate, motion } from 'motion/react';
+import {
+  useMotionValue,
+  useMotionTemplate,
+  motion,
+  MotionValue,
+} from 'motion/react';
 
 import { cn } from '@/lib/utils';
 
@@ -59,10 +63,14 @@ export const EvervaultCard = ({
   );
 };
 
-export function CardPattern({ mouseX, mouseY, randomString }: { 
-  mouseX: any; 
-  mouseY: any; 
-  randomString: string; 
+export function CardPattern({
+  mouseX,
+  mouseY,
+  randomString,
+}: {
+  mouseX: MotionValue<number>;
+  mouseY: MotionValue<number>;
+  randomString: string;
 }) {
   const maskImage = useMotionTemplate`radial-gradient(250px at ${mouseX}px ${mouseY}px, white, transparent)`;
   const style = { maskImage, WebkitMaskImage: maskImage };
@@ -96,7 +104,13 @@ export const generateRandomString = (length: number) => {
   return result;
 };
 
-export const Icon = ({ className, ...rest }: { className?: string; [key: string]: any }) => {
+export const Icon = ({
+  className,
+  ...rest
+}: {
+  className?: string;
+  [key: string]: unknown;
+}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
