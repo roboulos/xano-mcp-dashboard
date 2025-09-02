@@ -88,8 +88,8 @@ const loginLocations = [
 ];
 
 // Check for suspicious logins (multiple locations for same user)
-const checkSuspiciousLogins = () => {
-  const userLocations = loginLocations.reduce(
+const checkSuspiciousLogins = (list: typeof loginLocations) => {
+  const userLocations = list.reduce(
     (acc, login) => {
       if (!acc[login.email]) acc[login.email] = [];
       acc[login.email].push(login.location);
@@ -112,7 +112,21 @@ interface UsageAnalyticsProps {
 export default function UsageAnalytics({ className }: UsageAnalyticsProps) {
   const [timeRange, setTimeRange] = useState('24h');
   const { toast } = useToast();
-  const suspiciousUsers = checkSuspiciousLogins();
+
+  // Time range filtering
+  const rangeMs: Record<string, number> = {
+    '24h': 24 * 60 * 60 * 1000,
+    '7d': 7 * 24 * 60 * 60 * 1000,
+    '30d': 30 * 24 * 60 * 60 * 1000,
+    '90d': 90 * 24 * 60 * 60 * 1000,
+  };
+
+  const now = Date.now();
+  const filteredLogins = loginLocations.filter(
+    l => now - l.lastLogin.getTime() <= rangeMs[timeRange]
+  );
+
+  const suspiciousUsers = checkSuspiciousLogins(filteredLogins);
 
   const handleExport = () => {
     toast({
@@ -176,10 +190,10 @@ export default function UsageAnalytics({ className }: UsageAnalyticsProps) {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
-              {loginLocations.reduce((sum, l) => sum + l.logins, 0)}
+              {filteredLogins.reduce((sum, l) => sum + l.logins, 0)}
             </div>
             <p className="text-muted-foreground text-xs">
-              Across {loginLocations.length} users
+              Across {filteredLogins.length} users
             </p>
           </CardContent>
         </Card>
@@ -190,7 +204,7 @@ export default function UsageAnalytics({ className }: UsageAnalyticsProps) {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
-              {new Set(loginLocations.map(l => l.country)).size}
+              {new Set(filteredLogins.map(l => l.country)).size}
             </div>
             <p className="text-muted-foreground text-xs">Unique locations</p>
           </CardContent>
@@ -203,7 +217,7 @@ export default function UsageAnalytics({ className }: UsageAnalyticsProps) {
           <CardContent>
             <div className="text-2xl font-bold">
               {
-                loginLocations.filter(
+                filteredLogins.filter(
                   l => Date.now() - l.lastLogin.getTime() < 30 * 60 * 1000
                 ).length
               }
@@ -241,93 +255,90 @@ export default function UsageAnalytics({ className }: UsageAnalyticsProps) {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="bg-muted/10 relative h-[400px] w-full overflow-hidden rounded-lg border">
-            {/* World map visualization */}
-            <div className="absolute inset-0">
-              {/* SVG World Map */}
-              <svg
-                viewBox="0 0 1000 500"
-                className="h-full w-full"
+          <div className="relative h-[400px] w-full overflow-hidden rounded-lg border bg-gradient-to-b from-blue-50/50 to-blue-100/30 dark:from-blue-950/20 dark:to-blue-900/10">
+            <svg
+              viewBox="0 0 1000 500"
+              className="h-full w-full"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              {/* Base world map image */}
+              <image
+                href="/maps/world-equirectangular.svg"
+                x="0"
+                y="0"
+                width="1000"
+                height="500"
                 preserveAspectRatio="xMidYMid meet"
-              >
-                {/* Simple world map paths */}
-                <g className="fill-muted/20 stroke-muted/30" strokeWidth="0.5">
-                  {/* North America */}
-                  <path d="M 200 150 Q 150 120 100 140 L 80 180 Q 100 200 120 220 L 180 200 Q 200 180 220 160 Z" />
-                  {/* South America */}
-                  <path d="M 180 250 Q 160 230 140 240 L 130 320 Q 140 340 160 350 L 180 320 Q 190 280 180 250 Z" />
-                  {/* Europe */}
-                  <path d="M 480 120 Q 460 110 450 115 L 445 140 Q 455 145 465 140 L 470 130 Q 475 125 480 120 Z" />
-                  {/* Africa */}
-                  <path d="M 480 200 Q 460 180 450 190 L 440 260 Q 450 280 470 290 L 490 260 Q 495 230 480 200 Z" />
-                  {/* Asia */}
-                  <path d="M 600 120 Q 580 100 620 110 L 680 130 Q 700 140 720 160 L 680 180 Q 640 160 600 140 Z" />
-                  {/* Australia */}
-                  <path d="M 720 320 Q 700 310 690 315 L 685 340 Q 695 345 705 340 L 710 330 Q 715 325 720 320 Z" />
-                </g>
+                className="opacity-40 dark:opacity-20"
+              />
 
-                {/* Grid lines for reference */}
-                <g className="stroke-muted/10" strokeWidth="0.5" fill="none">
-                  <line
-                    x1="0"
-                    y1="250"
-                    x2="1000"
-                    y2="250"
-                    strokeDasharray="2,4"
-                  />
-                  <line
-                    x1="500"
-                    y1="0"
-                    x2="500"
-                    y2="500"
-                    strokeDasharray="2,4"
-                  />
-                </g>
-              </svg>
+              {/* Optional grid lines */}
+              <g className="stroke-muted/10" strokeWidth="0.5" fill="none">
+                <line
+                  x1="0"
+                  y1="250"
+                  x2="1000"
+                  y2="250"
+                  strokeDasharray="2,4"
+                />
+                <line x1="500" y1="0" x2="500" y2="500" strokeDasharray="2,4" />
+              </g>
 
-              {/* Location markers */}
-              {loginLocations.map(location => {
-                // Convert lat/lng to SVG coordinates
+              {/* Markers */}
+              {filteredLogins.map(location => {
                 const x = ((location.lng + 180) / 360) * 1000;
                 const y = ((90 - location.lat) / 180) * 500;
-
                 return (
-                  <div
+                  <g
                     key={location.id}
-                    className="group absolute"
-                    style={{
-                      left: `${(x / 1000) * 100}%`,
-                      top: `${(y / 500) * 100}%`,
-                      transform: 'translate(-50%, -50%)',
-                    }}
+                    transform={`translate(${x}, ${y})`}
+                    className="group cursor-pointer"
                   >
-                    <div className="relative">
-                      {/* Pulse animation */}
-                      <div className="absolute -inset-3">
-                        <div className="bg-primary/30 h-6 w-6 animate-ping rounded-full" />
-                      </div>
-                      {/* Main dot */}
-                      <div className="bg-primary border-background relative z-10 h-4 w-4 rounded-full border-2 shadow-lg" />
-                      {/* Hover tooltip */}
-                      <div className="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 opacity-0 transition-opacity group-hover:opacity-100">
-                        <div className="bg-popover text-popover-foreground rounded-lg border p-3 text-sm whitespace-nowrap shadow-xl">
-                          <p className="font-semibold">{location.user}</p>
-                          <p className="text-muted-foreground text-xs">
-                            {location.location}
-                          </p>
-                          <p className="text-muted-foreground text-xs">
-                            {location.device}
-                          </p>
-                          <div className="text-muted-foreground mt-1 border-t pt-1 text-xs">
-                            {location.logins} logins
-                          </div>
+                    <circle r="12" className="fill-primary/20 animate-ping" />
+                    <circle
+                      r="6"
+                      className="fill-primary stroke-background stroke-2 shadow-lg"
+                    />
+                    <title>{`${location.user} — ${location.location} (${location.logins} logins)`}</title>
+                  </g>
+                );
+              })}
+            </svg>
+
+            {/* Hover tooltips as HTML overlays for richer styling */}
+            {filteredLogins.map(location => {
+              const x = ((location.lng + 180) / 360) * 100;
+              const y = ((90 - location.lat) / 180) * 100;
+              return (
+                <div
+                  key={`tooltip-${location.id}`}
+                  className="group absolute"
+                  style={{
+                    left: `${x}%`,
+                    top: `${y}%`,
+                    transform: 'translate(-50%, -50%)',
+                    pointerEvents: 'none',
+                  }}
+                >
+                  <div className="pointer-events-auto opacity-0 transition-opacity group-hover:opacity-100">
+                    <div className="absolute bottom-full left-1/2 mb-2 -translate-x-1/2">
+                      <div className="bg-popover text-popover-foreground rounded-lg border p-3 text-sm whitespace-nowrap shadow-xl">
+                        <p className="font-semibold">{location.user}</p>
+                        <p className="text-muted-foreground text-xs">
+                          {location.location}
+                        </p>
+                        <p className="text-muted-foreground text-xs">
+                          {location.device}
+                        </p>
+                        <div className="text-muted-foreground mt-1 border-t pt-1 text-xs">
+                          {location.logins} logins
                         </div>
                       </div>
                     </div>
                   </div>
-                );
-              })}
-            </div>
+                </div>
+              );
+            })}
           </div>
         </CardContent>
       </Card>
@@ -354,7 +365,7 @@ export default function UsageAnalytics({ className }: UsageAnalyticsProps) {
                 </tr>
               </thead>
               <tbody>
-                {loginLocations.map(login => (
+                {filteredLogins.map(login => (
                   <tr key={login.id} className="border-b">
                     <td className="px-4 py-3">
                       <div>

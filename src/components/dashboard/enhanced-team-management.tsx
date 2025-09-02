@@ -12,6 +12,7 @@ import {
   MailIcon,
   ActivityIcon,
   TrendingUpIcon,
+  CheckIcon,
 } from 'lucide-react';
 
 import {
@@ -115,7 +116,7 @@ export default function EnhancedTeamManagement({
       setMembers([updatedMember]);
     }
   }, [user, dashboardMetrics]);
-  const [, setCopiedId] = useState<string | null>(null);
+  const [copiedId, setCopiedId] = useState<string | null>(null);
   const [memberFilter, setMemberFilter] = useState<
     'all' | 'active' | 'suspended' | 'pending'
   >('all');
@@ -339,159 +340,183 @@ export default function EnhancedTeamManagement({
       </div>
 
       {/* Team Members Grid */}
-      <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {filteredMembers.map(member => (
-          <Card
-            key={member.id}
-            className="hover:shadow-medium relative overflow-hidden transition-all"
-          >
-            <CardHeader className="pb-2">
-              <div className="flex items-start justify-between">
-                <div className="min-w-0">
-                  <h4 className="truncate text-sm font-medium">
-                    {member.name}
-                  </h4>
-                  <p className="text-muted-foreground truncate text-xs">
-                    {member.email}
-                  </p>
-                </div>
-                <Badge
-                  variant={member.role === 'admin' ? 'default' : 'outline'}
-                  className={cn(
-                    'text-xs',
-                    member.role !== 'admin' ? 'text-muted-foreground' : ''
-                  )}
-                >
-                  {member.role}
-                </Badge>
-              </div>
-            </CardHeader>
-
-            <CardContent className="space-y-3">
-              {/* Activity Metrics */}
-              <div className="bg-muted/50 grid grid-cols-2 gap-3 rounded-lg p-2">
-                <div className="text-center">
-                  <div className="flex items-center justify-center gap-1">
-                    <ActivityIcon className="h-3 w-3 text-blue-600" />
-                    <span className="text-xs font-semibold">
-                      {member.callsToday}
-                    </span>
+      {filteredMembers.length > 0 ? (
+        <div
+          className={cn(
+            'grid gap-3',
+            filteredMembers.length === 1
+              ? 'mx-auto max-w-sm'
+              : 'md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
+          )}
+        >
+          {filteredMembers.map(member => (
+            <Card
+              key={member.id}
+              className="hover:shadow-medium relative overflow-hidden transition-all"
+            >
+              <CardHeader className="pb-2">
+                <div className="flex items-start justify-between">
+                  <div className="min-w-0">
+                    <h4 className="truncate text-sm font-medium">
+                      {member.name}
+                    </h4>
+                    <p className="text-muted-foreground truncate text-xs">
+                      {member.email}
+                    </p>
                   </div>
-                  <p className="text-muted-foreground text-[10px]">Today</p>
-                </div>
-                <div className="text-center">
-                  <div className="flex items-center justify-center gap-1">
-                    <TrendingUpIcon className="h-3 w-3 text-emerald-600" />
-                    <span className="text-xs font-semibold">
-                      {member.successRate}%
-                    </span>
-                  </div>
-                  <p className="text-muted-foreground text-[10px]">Success</p>
-                </div>
-              </div>
-
-              {/* Status Toggle */}
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <div
+                  <Badge
+                    variant={member.role === 'admin' ? 'default' : 'outline'}
                     className={cn(
-                      'h-1.5 w-1.5 rounded-full',
-                      member.status === 'active'
-                        ? 'bg-emerald-500'
-                        : member.status === 'pending'
-                          ? 'bg-orange-500'
-                          : 'bg-red-500'
+                      'text-xs',
+                      member.role !== 'admin' ? 'text-muted-foreground' : ''
                     )}
-                  />
-                  <span className="text-xs capitalize">{member.status}</span>
+                  >
+                    {member.role}
+                  </Badge>
                 </div>
+              </CardHeader>
+
+              <CardContent className="space-y-3">
+                {/* Activity Metrics */}
+                <div className="bg-muted/50 grid grid-cols-2 gap-3 rounded-lg p-2">
+                  <div className="text-center">
+                    <div className="flex items-center justify-center gap-1">
+                      <ActivityIcon className="h-3 w-3 text-blue-600" />
+                      <span className="text-xs font-semibold">
+                        {member.callsToday}
+                      </span>
+                    </div>
+                    <p className="text-muted-foreground text-[10px]">Today</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="flex items-center justify-center gap-1">
+                      <TrendingUpIcon className="h-3 w-3 text-emerald-600" />
+                      <span className="text-xs font-semibold">
+                        {member.successRate}%
+                      </span>
+                    </div>
+                    <p className="text-muted-foreground text-[10px]">Success</p>
+                  </div>
+                </div>
+
+                {/* Status Toggle */}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <div
+                      className={cn(
+                        'h-1.5 w-1.5 rounded-full',
+                        member.status === 'active'
+                          ? 'bg-emerald-500'
+                          : member.status === 'pending'
+                            ? 'bg-orange-500'
+                            : 'bg-red-500'
+                      )}
+                    />
+                    <span className="text-xs capitalize">{member.status}</span>
+                  </div>
+                  {member.status !== 'pending' && (
+                    <Switch
+                      checked={member.status === 'active'}
+                      onCheckedChange={checked =>
+                        handleStatusToggle(member.id, checked)
+                      }
+                      aria-label={`Toggle ${member.name} status`}
+                    />
+                  )}
+                </div>
+
+                {/* API Key Section */}
                 {member.status !== 'pending' && (
-                  <Switch
-                    checked={member.status === 'active'}
-                    onCheckedChange={checked =>
-                      handleStatusToggle(member.id, checked)
-                    }
-                    aria-label={`Toggle ${member.name} status`}
-                  />
-                )}
-              </div>
-
-              {/* API Key Section */}
-              {member.status !== 'pending' && (
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="flex items-center gap-1 text-xs">
-                      <KeyIcon size={12} />
-                      API Key
-                    </span>
-                    <Button
-                      size="sm"
-                      variant="ghost"
-                      className="h-7 w-7 p-0"
-                      onClick={() => handleCopyApiKey(member.apiKey, member.id)}
-                    >
-                      <CopyIcon size={14} />
-                    </Button>
-                  </div>
-                  <code className="bg-muted/50 block truncate rounded border px-2 py-1 font-mono text-xs">
-                    {member.apiKey}
-                  </code>
-                  <div className="flex gap-2">
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="h-7 flex-1 text-xs"
-                      onClick={() => handleRegenerateKey(member.id)}
-                    >
-                      <RefreshCwIcon size={12} className="mr-1" />
-                      Regenerate
-                    </Button>
-                    <AlertDialog>
-                      <AlertDialogTrigger asChild>
-                        <Button
-                          size="sm"
-                          variant="destructive"
-                          className="h-7 flex-1 text-xs"
-                        >
-                          <TrashIcon size={12} className="mr-1" />
-                          Revoke
-                        </Button>
-                      </AlertDialogTrigger>
-                      <AlertDialogContent>
-                        <AlertDialogHeader>
-                          <AlertDialogTitle>Revoke Access</AlertDialogTitle>
-                          <AlertDialogDescription>
-                            This will permanently revoke access for{' '}
-                            {member.name}. They will immediately lose access to
-                            all MCP services.
-                          </AlertDialogDescription>
-                        </AlertDialogHeader>
-                        <AlertDialogFooter>
-                          <AlertDialogCancel>Cancel</AlertDialogCancel>
-                          <AlertDialogAction
-                            onClick={() => handleStatusToggle(member.id, false)}
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="flex items-center gap-1 text-xs">
+                        <KeyIcon size={12} />
+                        API Key
+                      </span>
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        className="h-7 w-7 p-0"
+                        onClick={() =>
+                          handleCopyApiKey(member.apiKey, member.id)
+                        }
+                        aria-label={
+                          copiedId === member.id ? 'Copied' : 'Copy API key'
+                        }
+                      >
+                        {copiedId === member.id ? (
+                          <CheckIcon size={14} className="text-green-600" />
+                        ) : (
+                          <CopyIcon size={14} />
+                        )}
+                      </Button>
+                    </div>
+                    <code className="bg-muted/50 block truncate rounded border px-2 py-1 font-mono text-xs">
+                      {member.apiKey}
+                    </code>
+                    <div className="flex gap-2">
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="h-7 flex-1 text-xs"
+                        onClick={() => handleRegenerateKey(member.id)}
+                      >
+                        <RefreshCwIcon size={12} className="mr-1" />
+                        Regenerate
+                      </Button>
+                      <AlertDialog>
+                        <AlertDialogTrigger asChild>
+                          <Button
+                            size="sm"
+                            variant="destructive"
+                            className="h-7 flex-1 text-xs"
                           >
-                            Confirm Revoke
-                          </AlertDialogAction>
-                        </AlertDialogFooter>
-                      </AlertDialogContent>
-                    </AlertDialog>
+                            <TrashIcon size={12} className="mr-1" />
+                            Revoke
+                          </Button>
+                        </AlertDialogTrigger>
+                        <AlertDialogContent>
+                          <AlertDialogHeader>
+                            <AlertDialogTitle>Revoke Access</AlertDialogTitle>
+                            <AlertDialogDescription>
+                              This will permanently revoke access for{' '}
+                              {member.name}. They will immediately lose access
+                              to all MCP services.
+                            </AlertDialogDescription>
+                          </AlertDialogHeader>
+                          <AlertDialogFooter>
+                            <AlertDialogCancel>Cancel</AlertDialogCancel>
+                            <AlertDialogAction
+                              onClick={() =>
+                                handleStatusToggle(member.id, false)
+                              }
+                            >
+                              Confirm Revoke
+                            </AlertDialogAction>
+                          </AlertDialogFooter>
+                        </AlertDialogContent>
+                      </AlertDialog>
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
 
-              {/* Last Seen */}
-              <div className="text-muted-foreground flex items-center justify-between border-t pt-2 text-xs">
-                <span className="flex items-center gap-1">
-                  <ClockIcon size={12} />
-                  Last seen
-                </span>
-                <span>{formatLastSeen(member.lastSeen)}</span>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+                {/* Last Seen */}
+                <div className="text-muted-foreground flex items-center justify-between border-t pt-2 text-xs">
+                  <span className="flex items-center gap-1">
+                    <ClockIcon size={12} />
+                    Last seen
+                  </span>
+                  <span>{formatLastSeen(member.lastSeen)}</span>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      ) : (
+        <div className="text-muted-foreground bg-muted/30 mt-6 rounded-lg border p-8 text-center text-sm">
+          <p>No members match the selected filter.</p>
+        </div>
+      )}
     </div>
   );
 }
