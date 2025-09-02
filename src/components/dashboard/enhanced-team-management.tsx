@@ -210,10 +210,10 @@ export default function EnhancedTeamManagement({
   return (
     <div className={className}>
       {/* Header with Metrics */}
-      <div className="mb-6 flex items-center justify-between">
+      <div className="mb-4 flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold">Team Management</h2>
-          <p className="text-muted-foreground">
+          <h2 className="text-xl font-bold">Team Management</h2>
+          <p className="text-muted-foreground text-sm">
             Invite, manage, and monitor your team members
           </p>
         </div>
@@ -318,7 +318,7 @@ export default function EnhancedTeamManagement({
       </div>
 
       {/* Filter Tabs */}
-      <div className="mb-6 flex gap-2">
+      <div className="mb-4 flex gap-2">
         {['all', 'active', 'suspended', 'pending'].map(filter => (
           <Button
             key={filter}
@@ -339,51 +339,54 @@ export default function EnhancedTeamManagement({
       </div>
 
       {/* Team Members Grid */}
-      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+      <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {filteredMembers.map(member => (
           <Card
             key={member.id}
             className="hover:shadow-medium relative overflow-hidden transition-all"
           >
-            <CardHeader className="pb-3">
+            <CardHeader className="pb-2">
               <div className="flex items-start justify-between">
-                <div>
-                  <h4 className="font-medium">{member.name}</h4>
-                  <p className="text-muted-foreground text-sm">
+                <div className="min-w-0">
+                  <h4 className="truncate text-sm font-medium">
+                    {member.name}
+                  </h4>
+                  <p className="text-muted-foreground truncate text-xs">
                     {member.email}
                   </p>
                 </div>
                 <Badge
                   variant={member.role === 'admin' ? 'default' : 'outline'}
-                  className={
+                  className={cn(
+                    'text-xs',
                     member.role !== 'admin' ? 'text-muted-foreground' : ''
-                  }
+                  )}
                 >
                   {member.role}
                 </Badge>
               </div>
             </CardHeader>
 
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-3">
               {/* Activity Metrics */}
-              <div className="bg-muted/50 grid grid-cols-2 gap-4 rounded-lg p-3">
+              <div className="bg-muted/50 grid grid-cols-2 gap-3 rounded-lg p-2">
                 <div className="text-center">
                   <div className="flex items-center justify-center gap-1">
                     <ActivityIcon className="h-3 w-3 text-blue-600" />
-                    <span className="text-sm font-semibold">
+                    <span className="text-xs font-semibold">
                       {member.callsToday}
                     </span>
                   </div>
-                  <p className="text-muted-foreground text-xs">Today</p>
+                  <p className="text-muted-foreground text-[10px]">Today</p>
                 </div>
                 <div className="text-center">
                   <div className="flex items-center justify-center gap-1">
                     <TrendingUpIcon className="h-3 w-3 text-emerald-600" />
-                    <span className="text-sm font-semibold">
+                    <span className="text-xs font-semibold">
                       {member.successRate}%
                     </span>
                   </div>
-                  <p className="text-muted-foreground text-xs">Success</p>
+                  <p className="text-muted-foreground text-[10px]">Success</p>
                 </div>
               </div>
 
@@ -392,7 +395,7 @@ export default function EnhancedTeamManagement({
                 <div className="flex items-center gap-2">
                   <div
                     className={cn(
-                      'h-2 w-2 rounded-full',
+                      'h-1.5 w-1.5 rounded-full',
                       member.status === 'active'
                         ? 'bg-emerald-500'
                         : member.status === 'pending'
@@ -400,7 +403,7 @@ export default function EnhancedTeamManagement({
                           : 'bg-red-500'
                     )}
                   />
-                  <span className="text-sm capitalize">{member.status}</span>
+                  <span className="text-xs capitalize">{member.status}</span>
                 </div>
                 {member.status !== 'pending' && (
                   <Switch
@@ -417,8 +420,8 @@ export default function EnhancedTeamManagement({
               {member.status !== 'pending' && (
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="flex items-center gap-1 text-sm">
-                      <KeyIcon size={14} />
+                    <span className="flex items-center gap-1 text-xs">
+                      <KeyIcon size={12} />
                       API Key
                     </span>
                     <Button
@@ -430,17 +433,17 @@ export default function EnhancedTeamManagement({
                       <CopyIcon size={14} />
                     </Button>
                   </div>
-                  <code className="bg-background block truncate rounded border p-2 font-mono text-xs">
+                  <code className="bg-muted/50 block truncate rounded border px-2 py-1 font-mono text-xs">
                     {member.apiKey}
                   </code>
                   <div className="flex gap-2">
                     <Button
                       size="sm"
                       variant="outline"
-                      className="flex-1"
+                      className="h-7 flex-1 text-xs"
                       onClick={() => handleRegenerateKey(member.id)}
                     >
-                      <RefreshCwIcon size={14} className="mr-1" />
+                      <RefreshCwIcon size={12} className="mr-1" />
                       Regenerate
                     </Button>
                     <AlertDialog>
@@ -448,9 +451,9 @@ export default function EnhancedTeamManagement({
                         <Button
                           size="sm"
                           variant="destructive"
-                          className="flex-1"
+                          className="h-7 flex-1 text-xs"
                         >
-                          <TrashIcon size={14} className="mr-1" />
+                          <TrashIcon size={12} className="mr-1" />
                           Revoke
                         </Button>
                       </AlertDialogTrigger>
