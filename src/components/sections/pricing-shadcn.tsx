@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 
+import { useRouter } from 'next/navigation';
+
 import { CheckCircle2, HelpCircle, X } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -20,9 +22,79 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import { useAuth } from '@/contexts/auth-context';
+import { useToast } from '@/hooks/use-toast';
 
 const PricingShadcn = () => {
   const [isYearly, setIsYearly] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const { user } = useAuth();
+  const router = useRouter();
+  const { toast } = useToast();
+
+  const handleSubscribe = async (tier: { name: string; price: string }) => {
+    if (!user) {
+      router.push('/auth/login');
+      return;
+    }
+
+    if (tier.name === 'Team') {
+      window.location.href =
+        'mailto:sales@example.com?subject=Team Plan Inquiry';
+      return;
+    }
+
+    if (tier.name === 'Free') {
+      router.push('/dashboard');
+      return;
+    }
+
+    // For Pro plan, initiate subscription
+    setIsLoading(true);
+    try {
+      const response = await fetch('/api/billing/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${user.authToken}`,
+        },
+        body: JSON.stringify({
+          plan_id: tier.name.toLowerCase(),
+          price_id: isYearly
+            ? `${tier.name.toLowerCase()}_yearly`
+            : `${tier.name.toLowerCase()}_monthly`,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to create subscription');
+      }
+
+      // Redirect to Stripe checkout or payment page
+      if (data.checkout_url) {
+        window.location.href = data.checkout_url;
+      } else {
+        toast({
+          title: 'Subscription created',
+          description: 'Your subscription has been activated.',
+        });
+        router.push('/dashboard');
+      }
+    } catch (error) {
+      toast({
+        title: 'Subscription failed',
+        description:
+          error instanceof Error
+            ? error.message
+            : 'Failed to create subscription',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const tiers = [
     {
@@ -221,8 +293,14 @@ const PricingShadcn = () => {
                 </CardContent>
 
                 <CardFooter>
-                  <Button className="w-full" variant={tier.variant} size="lg">
-                    {tier.cta}
+                  <Button
+                    className="w-full"
+                    variant={tier.variant}
+                    size="lg"
+                    onClick={() => handleSubscribe(tier)}
+                    disabled={isLoading}
+                  >
+                    {isLoading ? 'Processing...' : tier.cta}
                   </Button>
                 </CardFooter>
               </Card>

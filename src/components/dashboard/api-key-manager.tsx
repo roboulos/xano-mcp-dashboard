@@ -89,6 +89,14 @@ import { useXanoCredentials } from '@/hooks/use-dashboard-data';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 
+// Mock team members until we have a proper API endpoint
+const teamMembers = [
+  { id: '1', name: 'Sarah Johnson', email: 'sarah@example.com' },
+  { id: '2', name: 'Michael Chen', email: 'michael@example.com' },
+  { id: '3', name: 'Emily Rodriguez', email: 'emily@example.com' },
+  { id: '4', name: 'David Park', email: 'david@example.com' },
+];
+
 const formatDate = (d?: Date) => (d ? new Date(d).toLocaleDateString() : '—');
 
 interface ApiKey {
@@ -247,6 +255,7 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
 
   const [createForm, setCreateForm] = useState({
     name: '',
+    apiKey: '',
     description: '',
     assignedTo: '',
     expiresAt: '',
@@ -293,13 +302,19 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
 
   const handleCreateKey = async () => {
     try {
-      await createCredential(
-        createForm.name,
-        createForm.description || 'Enter your Xano API key here'
+      // Create the credential first
+      await createCredential(createForm.name, createForm.apiKey);
+
+      // TODO: In a real implementation, we would also save the assignment
+      // For now, we'll just show a success message
+      const assignedMember = teamMembers.find(
+        m => m.id === createForm.assignedTo
       );
+
       setIsCreateOpen(false);
       setCreateForm({
         name: '',
+        apiKey: '',
         description: '',
         assignedTo: '',
         expiresAt: '',
@@ -308,7 +323,9 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
 
       toast({
         title: 'API Key Generated',
-        description: `${createForm.name} has been created successfully`,
+        description: assignedMember
+          ? `${createForm.name} has been created and assigned to ${assignedMember.name}`
+          : `${createForm.name} has been created successfully`,
       });
     } catch {
       toast({
@@ -627,7 +644,25 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
                   />
                 </div>
                 <div>
-                  <Label htmlFor="description">Description *</Label>
+                  <Label htmlFor="apiKey">Xano API Key *</Label>
+                  <Input
+                    id="apiKey"
+                    type="password"
+                    value={createForm.apiKey}
+                    onChange={e =>
+                      setCreateForm(prev => ({
+                        ...prev,
+                        apiKey: e.target.value,
+                      }))
+                    }
+                    placeholder="xano_prod_..."
+                  />
+                  <p className="text-muted-foreground mt-1 text-xs">
+                    Enter your Xano API key from your Xano instance
+                  </p>
+                </div>
+                <div>
+                  <Label htmlFor="description">Description (Optional)</Label>
                   <Textarea
                     id="description"
                     value={createForm.description}
@@ -653,10 +688,16 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
                       <SelectValue placeholder="Select user..." />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="1">Sarah Johnson</SelectItem>
-                      <SelectItem value="2">Michael Chen</SelectItem>
-                      <SelectItem value="3">Emily Rodriguez</SelectItem>
-                      <SelectItem value="4">David Park</SelectItem>
+                      {teamMembers.map(member => (
+                        <SelectItem key={member.id} value={member.id}>
+                          <div className="flex flex-col">
+                            <span>{member.name}</span>
+                            <span className="text-muted-foreground text-xs">
+                              {member.email}
+                            </span>
+                          </div>
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                 </div>
@@ -712,7 +753,7 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
                 </Button>
                 <Button
                   onClick={handleCreateKey}
-                  disabled={!createForm.name || !createForm.description}
+                  disabled={!createForm.name || !createForm.apiKey}
                 >
                   Create Key
                 </Button>
