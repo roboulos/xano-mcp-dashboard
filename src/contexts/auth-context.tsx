@@ -9,6 +9,7 @@ interface User {
   avatar?: string;
   api_key?: string;
   created_at?: number;
+  authToken?: string;
 }
 
 interface AuthContextType {
@@ -50,7 +51,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       if (response.ok) {
         const data = await response.json();
-        setUser(data.user);
+        setUser({
+          ...data.user,
+          authToken, // Include the auth token in the user object
+        });
       } else {
         // Invalid token, clear it
         localStorage.removeItem('authToken');

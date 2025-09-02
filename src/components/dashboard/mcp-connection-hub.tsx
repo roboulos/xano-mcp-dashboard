@@ -26,6 +26,7 @@ import {
 import { CodeBlock } from '@/components/ui/code-block';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
+import { useXanoCredentials } from '@/hooks/use-dashboard-data';
 import { cn } from '@/lib/utils';
 
 interface McpConnectionHubProps {
@@ -41,9 +42,14 @@ export default function McpConnectionHub({ className }: McpConnectionHubProps) {
   const [selectedEnvironment, setSelectedEnvironment] =
     useState<Environment>('production');
   const [copied, setCopied] = useState(false);
+  const { data: credentials } = useXanoCredentials();
 
-  const serverUrl = 'https://xano-mcp.your-domain.com';
-  const apiKey = 'xano_prod_...key-preview';
+  const activeCredential =
+    credentials?.find(c => c.is_active) || credentials?.[0];
+  const serverUrl = 'https://xano-mcp.snappymcp.com';
+  const apiKey = activeCredential?.xano_instance_name
+    ? `xano_${activeCredential.credential_name.toLowerCase()}_****`
+    : 'No active credential';
 
   const connectionConfigs = {
     'claude-desktop': {

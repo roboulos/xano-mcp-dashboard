@@ -853,3 +853,1576 @@ Import trace for requested module:
  ✓ Compiled in 702ms (2734 modules)
  ✓ Compiled in 1261ms (2734 modules)
  ✓ Compiled in 612ms (2734 modules)
+ ○ Compiling / ...
+ ✓ Compiled / in 1650ms (1345 modules)
+ ⨯ next/dist/src/server/app-render/required-scripts.tsx (33:11) @ getRequiredScripts
+ ⨯ Error: Invariant: missing bootstrap script. This is a bug in Next.js
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/required-scripts.tsx:33:10)
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/app-render.tsx:1542:44)
+    at apply (node_modules/next/src/server/lib/trace/tracer.ts:425:55)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:351:27)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at NoopTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18093)
+    at ProxyTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18854)
+    at startActiveSpan (node_modules/next/src/server/lib/trace/tracer.ts:304:31)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at spanContext (node_modules/next/src/server/lib/trace/tracer.ts:303:24)
+    at trace (node_modules/next/src/server/lib/trace/tracer.ts:425:22)
+    at renderToStreamWithTracing (webpack://next/dist/src/server/app-render/app-render.tsx:1353:25)
+    at renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1484:13)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1483:32)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1482:26)
+    at renderToHTMLOrFlight (webpack://next/dist/src/server/route-modules/app-page/module.ts:62:11)
+    at render (node_modules/next/src/server/base-server.ts:2666:34)
+    at doRender (node_modules/next/src/server/base-server.ts:3027:27)
+    at responseGenerator (node_modules/next/src/server/response-cache/index.ts:67:13)
+    at get (node_modules/next/src/server/base-server.ts:3039:48)
+    at renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:1877:13)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:279:13)
+    at trace (node_modules/next/src/server/base-server.ts:1874:23)
+    at renderToResponseWithComponents (node_modules/next/src/server/base-server.ts:3597:26)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |          ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   } {
+  page: '/'
+}
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |           ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   }
+ ✓ Compiled /_error in 445ms (2753 modules)
+ GET / 500 in 2732ms
+ GET / 200 in 229ms
+ ✓ Compiled /_not-found in 283ms (2756 modules)
+ GET /_next/static/chunks/main-app.js?v=1756786006149 404 in 359ms
+ GET /_next/static/css/app/layout.css?v=1756786006149 404 in 360ms
+ GET /api/placeholder/600/400 404 in 368ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 357ms
+ GET /_next/static/chunks/app/layout.js 404 in 357ms
+ GET /_next/static/chunks/app/(app)/layout.js 404 in 353ms
+ GET /_next/static/chunks/app/(app)/not-found.js 404 in 32ms
+ GET /_next/static/chunks/app/(app)/page.js 404 in 32ms
+ ✓ Compiled in 1393ms (1420 modules)
+ ✓ Compiled in 1668ms (2811 modules)
+ ✓ Compiled in 883ms (2734 modules)
+ ✓ Compiled in 585ms (2736 modules)
+ ✓ Compiled in 952ms (2736 modules)
+ ✓ Compiled in 968ms (2736 modules)
+ ✓ Compiled in 1115ms (2736 modules)
+ ✓ Compiled in 708ms (2736 modules)
+ ✓ Compiled in 598ms (2736 modules)
+ ✓ Compiled in 800ms (2736 modules)
+ ⨯ ./src/components/dashboard/api-key-manager.tsx
+Error:   [31mx[0m Expected a semicolon
+     ,-[[36;1;4m/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/src/components/dashboard/api-key-manager.tsx[0m:368:1]
+ [2m365[0m |       title: 'API Key Generated',
+ [2m366[0m |       description: `${createForm.name} has been created successfully`,
+ [2m367[0m |     });
+ [2m368[0m |   };
+     : [35;1m   ^[0m
+ [2m369[0m | 
+ [2m370[0m |   // Column definitions
+ [2m371[0m |   const columns: ColumnDef<ApiKey>[] = [
+     `----
+  [31mx[0m Expected '}', got '<eof>'
+     ,-[[36;1;4m/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/src/components/dashboard/api-key-manager.tsx[0m:925:1]
+ [2m922[0m |       </CardContent>
+ [2m923[0m |     </Card>
+ [2m924[0m |   );
+ [2m925[0m | }
+     : [35;1m^[0m
+     `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/components/dashboard/api-key-manager.tsx
+./src/app/dashboard/page.tsx
+ ⨯ ./src/components/dashboard/api-key-manager.tsx
+Error:   [31mx[0m Expected a semicolon
+     ,-[[36;1;4m/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/src/components/dashboard/api-key-manager.tsx[0m:368:1]
+ [2m365[0m |       title: 'API Key Generated',
+ [2m366[0m |       description: `${createForm.name} has been created successfully`,
+ [2m367[0m |     });
+ [2m368[0m |   };
+     : [35;1m   ^[0m
+ [2m369[0m | 
+ [2m370[0m |   // Column definitions
+ [2m371[0m |   const columns: ColumnDef<ApiKey>[] = [
+     `----
+  [31mx[0m Expected '}', got '<eof>'
+     ,-[[36;1;4m/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/src/components/dashboard/api-key-manager.tsx[0m:925:1]
+ [2m922[0m |       </CardContent>
+ [2m923[0m |     </Card>
+ [2m924[0m |   );
+ [2m925[0m | }
+     : [35;1m^[0m
+     `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/components/dashboard/api-key-manager.tsx
+./src/app/dashboard/page.tsx
+   automatically enabled Fast Refresh for 1 custom loader
+ ○ Compiling / ...
+ ⨯ ./src/components/dashboard/api-key-manager.tsx
+Error:   [31mx[0m Expected a semicolon
+     ,-[[36;1;4m/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/src/components/dashboard/api-key-manager.tsx[0m:368:1]
+ [2m365[0m |       title: 'API Key Generated',
+ [2m366[0m |       description: `${createForm.name} has been created successfully`,
+ [2m367[0m |     });
+ [2m368[0m |   };
+     : [35;1m   ^[0m
+ [2m369[0m | 
+ [2m370[0m |   // Column definitions
+ [2m371[0m |   const columns: ColumnDef<ApiKey>[] = [
+     `----
+  [31mx[0m Expected '}', got '<eof>'
+     ,-[[36;1;4m/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/src/components/dashboard/api-key-manager.tsx[0m:925:1]
+ [2m922[0m |       </CardContent>
+ [2m923[0m |     </Card>
+ [2m924[0m |   );
+ [2m925[0m | }
+     : [35;1m^[0m
+     `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/components/dashboard/api-key-manager.tsx
+./src/app/dashboard/page.tsx
+ GET / 500 in 1945ms
+ ⨯ ./src/components/dashboard/api-key-manager.tsx
+Error:   [31mx[0m Expected a semicolon
+     ,-[[36;1;4m/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/src/components/dashboard/api-key-manager.tsx[0m:368:1]
+ [2m365[0m |       title: 'API Key Generated',
+ [2m366[0m |       description: `${createForm.name} has been created successfully`,
+ [2m367[0m |     });
+ [2m368[0m |   };
+     : [35;1m   ^[0m
+ [2m369[0m | 
+ [2m370[0m |   // Column definitions
+ [2m371[0m |   const columns: ColumnDef<ApiKey>[] = [
+     `----
+  [31mx[0m Expected '}', got '<eof>'
+     ,-[[36;1;4m/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/src/components/dashboard/api-key-manager.tsx[0m:925:1]
+ [2m922[0m |       </CardContent>
+ [2m923[0m |     </Card>
+ [2m924[0m |   );
+ [2m925[0m | }
+     : [35;1m^[0m
+     `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/components/dashboard/api-key-manager.tsx
+./src/app/dashboard/page.tsx
+ GET /favicon.ico 500 in 591ms
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, lstat '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/api/mcp/credentials/[id]/validate/route.js'
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving '../../../../.next/server/app/api/mcp/credentials/route' in /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server for build dependencies doesn't lead to expected result '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/api/mcp/credentials/route.js', but to 'Error: Can't resolve '../../../../.next/server/app/api/mcp/credentials/route' in '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ../../../../.next/server/app/api/mcp/credentials/route (expected /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/api/mcp/credentials/route.js)
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/require.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/require.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/load-components.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/load-components.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/utils.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/utils.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/options.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/options.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+<w>  at resolve commonjs /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving '../../../../.next/server/app/api/mcp/credentials/[id]/validate/route' in /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server for build dependencies doesn't lead to expected result '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/api/mcp/credentials/[id]/validate/route.js', but to 'Error: Can't resolve '../../../../.next/server/app/api/mcp/credentials/[id]/validate/route' in '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ../../../../.next/server/app/api/mcp/credentials/[id]/validate/route (expected /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/api/mcp/credentials/[id]/validate/route.js)
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/require.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/require.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/load-components.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/load-components.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/utils.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/utils.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/options.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/options.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+<w>  at resolve commonjs /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving '../../../../.next/server/app/dashboard/settings/billing/page' in /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server for build dependencies doesn't lead to expected result '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/settings/billing/page.js', but to 'Error: Can't resolve '../../../../.next/server/app/dashboard/settings/billing/page' in '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ../../../../.next/server/app/dashboard/settings/billing/page (expected /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/settings/billing/page.js)
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/require.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/require.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/load-components.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/load-components.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/utils.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/utils.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/options.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/options.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+<w>  at resolve commonjs /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+ ✓ Compiled /_not-found in 1843ms (2773 modules)
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET /_next/static/webpack/37349866b4d1073d.webpack.hot-update.json 404 in 1470ms
+ GET /_next/static/media/11facc098c39592c-s.p.ttf 404 in 66ms
+ GET /_next/static/media/0e96d314a90a6138-s.p.woff2 404 in 68ms
+ GET /_next/static/media/6af6b543dd3be231-s.p.woff2 404 in 63ms
+ GET /_next/static/media/6530b16af2a58df3-s.p.ttf 404 in 65ms
+ GET /_next/static/media/162045548773a281-s.p.ttf 404 in 68ms
+ GET /_next/static/media/87b1032560124b58-s.p.ttf 404 in 313ms
+ GET /_next/static/media/b7ea2ab4a8ad1f81-s.p.woff2 404 in 317ms
+ GET /_next/static/media/90e0c773af0ae3e3-s.p.ttf 404 in 318ms
+ GET /_next/static/media/98ecbd7d3f4c7918-s.p.ttf 404 in 321ms
+ GET /_next/static/media/9d3a40b20b1b126b-s.p.ttf 404 in 323ms
+ GET /_next/static/media/6530b16af2a58df3-s.p.ttf 404 in 44ms
+ GET /_next/static/media/162045548773a281-s.p.ttf 404 in 45ms
+ GET /_next/static/media/0e96d314a90a6138-s.p.woff2 404 in 48ms
+ GET /_next/static/media/11facc098c39592c-s.p.ttf 404 in 46ms
+ GET /_next/static/media/6af6b543dd3be231-s.p.woff2 404 in 45ms
+ GET / 200 in 411ms
+ GET /_next/static/media/98ecbd7d3f4c7918-s.p.ttf 404 in 51ms
+ GET /_next/static/media/87b1032560124b58-s.p.ttf 404 in 53ms
+ GET /_next/static/media/90e0c773af0ae3e3-s.p.ttf 404 in 50ms
+ GET /_next/static/media/9d3a40b20b1b126b-s.p.ttf 404 in 52ms
+ GET /_next/static/media/b7ea2ab4a8ad1f81-s.p.woff2 404 in 42ms
+ GET /api/placeholder/600/400 404 in 38ms
+ GET /_next/static/media/e4af272ccee01ff0-s.p.woff2 404 in 62ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 84ms
+ GET /_next/static/chunks/main-app.js?v=1756786357170 404 in 91ms
+ GET /_next/static/chunks/app/(app)/layout.js 404 in 70ms
+ GET /_next/static/media/6af6b543dd3be231-s.p.woff2 404 in 87ms
+ GET /_next/static/media/0e96d314a90a6138-s.p.woff2 404 in 86ms
+ GET /_next/static/media/11facc098c39592c-s.p.ttf 404 in 88ms
+ GET /_next/static/media/162045548773a281-s.p.ttf 404 in 88ms
+ GET /_next/static/media/6530b16af2a58df3-s.p.ttf 404 in 60ms
+ GET /_next/static/media/87b1032560124b58-s.p.ttf 404 in 67ms
+ GET /_next/static/media/98ecbd7d3f4c7918-s.p.ttf 404 in 72ms
+ GET /_next/static/media/90e0c773af0ae3e3-s.p.ttf 404 in 62ms
+ GET /_next/static/media/9d3a40b20b1b126b-s.p.ttf 404 in 65ms
+ GET /_next/static/media/b7ea2ab4a8ad1f81-s.p.woff2 404 in 55ms
+ GET /_next/static/media/e4af272ccee01ff0-s.p.woff2 404 in 47ms
+ GET /_next/static/media/6af6b543dd3be231-s.p.woff2 404 in 43ms
+ GET /_next/static/chunks/app/(app)/not-found.js 404 in 39ms
+ GET /_next/static/chunks/app/(app)/page.js 404 in 15ms
+ GET /favicon.ico 200 in 22ms
+ ✓ Compiled in 923ms (2787 modules)
+ ✓ Compiled in 1505ms (2787 modules)
+ ✓ Compiled in 896ms (2787 modules)
+ ✓ Compiled in 1099ms (2787 modules)
+ ✓ Compiled in 1584ms (2787 modules)
+ GET / 200 in 368ms
+ GET /api/placeholder/600/400 404 in 31ms
+ GET /_next/static/chunks/main-app.js?v=1756786442996 404 in 140ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 139ms
+ GET /_next/static/chunks/app/(app)/layout.js 404 in 137ms
+ GET /_next/static/chunks/app/(app)/page.js 404 in 110ms
+ GET /_next/static/chunks/app/(app)/not-found.js 404 in 114ms
+ GET / 200 in 61ms
+ GET /api/placeholder/600/400 404 in 34ms
+ GET /_next/static/chunks/main-app.js?v=1756786448773 404 in 126ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 144ms
+ GET /_next/static/chunks/app/(app)/page.js 404 in 32ms
+ GET /_next/static/chunks/app/(app)/layout.js 404 in 43ms
+ GET /_next/static/chunks/app/(app)/not-found.js 404 in 34ms
+ GET /dashboard 404 in 70ms
+ GET /_next/static/chunks/main-app.js?v=1756786472180 404 in 79ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 74ms
+ GET /dashboard 404 in 46ms
+ GET /_next/static/chunks/main-app.js?v=1756786474177 404 in 42ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 54ms
+ GET / 200 in 58ms
+ GET /api/placeholder/600/400 404 in 34ms
+ GET /_next/static/chunks/main-app.js?v=1756786476085 404 in 93ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 88ms
+ GET /_next/static/chunks/app/(app)/not-found.js 404 in 79ms
+ GET /_next/static/chunks/app/(app)/layout.js 404 in 89ms
+ GET /_next/static/chunks/app/(app)/page.js 404 in 59ms
+ GET /dashboard 404 in 50ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 31ms
+ GET /_next/static/chunks/main-app.js?v=1756786489307 404 in 33ms
+ ✓ Compiled in 1261ms (2772 modules)
+ ✓ Compiled in 625ms (2772 modules)
+ ✓ Compiled in 689ms (2772 modules)
+ ✓ Compiled in 910ms (2772 modules)
+ ✓ Compiled in 1561ms (2772 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/cache/webpack/server-development/3.pack.gz_' -> '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/cache/webpack/server-development/3.pack.gz'
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/cache/webpack/client-development/0.pack.gz_' -> '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/cache/webpack/client-development/0.pack.gz'
+ ✓ Compiled in 405ms (1422 modules)
+ ✓ Compiled in 348ms (1422 modules)
+ ✓ Compiled in 368ms (1422 modules)
+ ✓ Compiled in 752ms (2738 modules)
+ ✓ Compiled in 910ms (2738 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/cache/webpack/server-development/0.pack.gz_' -> '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/cache/webpack/server-development/0.pack.gz'
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/cache/webpack/client-development/0.pack.gz_' -> '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/cache/webpack/client-development/0.pack.gz'
+ ✓ Compiled / in 351ms (1347 modules)
+ GET / 200 in 684ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 626ms (2758 modules)
+ GET /api/placeholder/600/400 404 in 751ms
+ GET /_next/static/chunks/main-app.js?v=1756787131803 404 in 752ms
+ GET /_next/static/chunks/app/(app)/layout.js 404 in 710ms
+ GET /_next/static/chunks/app/(app)/not-found.js 404 in 579ms
+ GET /_next/static/chunks/app/(app)/page.js 404 in 483ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 754ms
+ GET /dashboard 404 in 77ms
+ GET /_next/static/chunks/main-app.js?v=1756787134236 404 in 58ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 57ms
+ ⨯ Error: Cannot find module './1989.js'
+Require stack:
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/_not-found/page.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/require.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/load-components.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/utils.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/options.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/index.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/next-config-ts/transpile-config.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/config.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/next.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/lib/start-server.js
+    at call (node_modules/next/src/server/require-hook.ts:51:33)
+    at call (node_modules/next/src/server/require-hook.ts:70:25)
+    at __webpack_require__.f.require (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:203:28)
+    at <unknown> (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:162:22)
+    at <unknown> (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/(app)/page.js:15:42126)
+    at Object.<anonymous> (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/(app)/page.js:15:42213)
+    at call (node_modules/next/src/server/require-hook.ts:70:25)
+    at require (node_modules/next/src/server/require.ts:121:8)
+    at page (node_modules/next/src/server/load-components.ts:189:41)
+    at async DevServer.findPageComponentsImpl (node_modules/next/src/server/next-server.ts:779:27)
+    at async DevServer.findPageComponents (node_modules/next/src/server/dev/next-dev-server.ts:881:13)
+    at async DevServer.renderPageComponent (node_modules/next/src/server/base-server.ts:3584:19)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/'
+}
+ ⨯ Error: Cannot find module './7627.js'
+Require stack:
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/_not-found/page.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/require.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/load-components.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/utils.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/options.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/index.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/next-config-ts/transpile-config.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/config.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/next.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/lib/start-server.js
+    at call (node_modules/next/src/server/require-hook.ts:51:33)
+    at call (node_modules/next/src/server/require-hook.ts:70:25)
+    at __webpack_require__.f.require (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:203:28)
+    at <unknown> (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:162:22)
+    at <unknown> (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/pages/_document.js:1:341)
+    at Object.<anonymous> (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/pages/_document.js:1:384)
+    at call (node_modules/next/src/server/require-hook.ts:70:25)
+    at require (node_modules/next/src/server/require.ts:121:8)
+    at loadComponentsImpl (node_modules/next/src/server/load-components.ts:138:18)
+    at DevServer.findPageComponentsImpl (node_modules/next/src/server/next-server.ts:779:48)
+    at findPageComponentsImpl (node_modules/next/src/server/next-server.ts:738:13)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:351:27)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at NoopTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18093)
+    at ProxyTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18854)
+    at startActiveSpan (node_modules/next/src/server/lib/trace/tracer.ts:304:31)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at spanContext (node_modules/next/src/server/lib/trace/tracer.ts:303:24)
+    at trace (node_modules/next/src/server/next-server.ts:729:23)
+    at findPageComponents (node_modules/next/src/server/dev/next-dev-server.ts:881:25)
+    at async DevServer.renderErrorToResponseImpl (node_modules/next/src/server/base-server.ts:3914:17)
+    at async pipe.req.req (node_modules/next/src/server/base-server.ts:3818:25)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1052:8)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET / 500 in 193ms
+ GET /_next/static/chunks/fallback/main.js 404 in 91ms
+ GET /_next/static/chunks/fallback/webpack.js 404 in 91ms
+ GET /_next/static/chunks/fallback/react-refresh.js 404 in 93ms
+ GET /_next/static/chunks/fallback/pages/_app.js 404 in 44ms
+ GET /_next/static/chunks/fallback/pages/_error.js 404 in 42ms
+ ⨯ Error: Cannot find module './1989.js'
+Require stack:
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/_not-found/page.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/require.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/load-components.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/utils.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/options.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/index.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/next-config-ts/transpile-config.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/config.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/next.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/lib/start-server.js
+    at call (node_modules/next/src/server/require-hook.ts:51:33)
+    at call (node_modules/next/src/server/require-hook.ts:70:25)
+    at __webpack_require__.f.require (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:203:28)
+    at <unknown> (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:162:22)
+    at <unknown> (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/(app)/page.js:15:42126)
+    at Object.<anonymous> (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/(app)/page.js:15:42213)
+    at call (node_modules/next/src/server/require-hook.ts:70:25)
+    at require (node_modules/next/src/server/require.ts:121:8)
+    at page (node_modules/next/src/server/load-components.ts:189:41)
+    at async DevServer.findPageComponentsImpl (node_modules/next/src/server/next-server.ts:779:27)
+    at async DevServer.findPageComponents (node_modules/next/src/server/dev/next-dev-server.ts:881:13)
+    at async DevServer.renderPageComponent (node_modules/next/src/server/base-server.ts:3584:19)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/'
+}
+ ⨯ Error: Cannot find module './7627.js'
+Require stack:
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/_not-found/page.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/require.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/load-components.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/utils.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/options.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/index.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/next-config-ts/transpile-config.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/config.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/next.js
+- /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/lib/start-server.js
+    at call (node_modules/next/src/server/require-hook.ts:51:33)
+    at call (node_modules/next/src/server/require-hook.ts:70:25)
+    at __webpack_require__.f.require (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:203:28)
+    at <unknown> (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/webpack-runtime.js:162:22)
+    at <unknown> (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/pages/_document.js:1:341)
+    at Object.<anonymous> (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/pages/_document.js:1:384)
+    at call (node_modules/next/src/server/require-hook.ts:70:25)
+    at require (node_modules/next/src/server/require.ts:121:8)
+    at loadComponentsImpl (node_modules/next/src/server/load-components.ts:138:18)
+    at DevServer.findPageComponentsImpl (node_modules/next/src/server/next-server.ts:779:48)
+    at findPageComponentsImpl (node_modules/next/src/server/next-server.ts:738:13)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:351:27)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at NoopTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18093)
+    at ProxyTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18854)
+    at startActiveSpan (node_modules/next/src/server/lib/trace/tracer.ts:304:31)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at spanContext (node_modules/next/src/server/lib/trace/tracer.ts:303:24)
+    at trace (node_modules/next/src/server/next-server.ts:729:23)
+    at findPageComponents (node_modules/next/src/server/dev/next-dev-server.ts:881:25)
+    at async DevServer.renderErrorToResponseImpl (node_modules/next/src/server/base-server.ts:3914:17)
+    at async pipe.req.req (node_modules/next/src/server/base-server.ts:3818:25)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1052:8)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET / 500 in 58ms
+ GET /_next/static/chunks/fallback/main.js 404 in 45ms
+ GET /_next/static/chunks/fallback/webpack.js 404 in 43ms
+ GET /_next/static/chunks/fallback/react-refresh.js 404 in 43ms
+ GET /_next/static/chunks/fallback/pages/_app.js 404 in 27ms
+ GET /_next/static/chunks/fallback/pages/_error.js 404 in 29ms
+ ✓ Compiled in 692ms (1424 modules)
+ ✓ Compiled in 869ms (2772 modules)
+ ✓ Compiled in 1162ms (2772 modules)
+ ✓ Compiled in 554ms (2772 modules)
+ ✓ Compiled in 539ms (2772 modules)
+ ✓ Compiled in 669ms (2772 modules)
+ ✓ Compiled in 689ms (2772 modules)
+ ✓ Compiled in 626ms (2772 modules)
+ ✓ Compiled in 916ms (2738 modules)
+ ✓ Compiled in 1283ms (1422 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/cache/webpack/server-development/0.pack.gz_' -> '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/cache/webpack/server-development/0.pack.gz'
+ ✓ Compiled in 1173ms (2738 modules)
+ ✓ Compiled in 1560ms (2738 modules)
+ ✓ Compiled in 694ms (2738 modules)
+ ✓ Compiled in 712ms (2738 modules)
+ ○ Compiling / ...
+ ✓ Compiled / in 1268ms (1347 modules)
+ ⨯ next/dist/src/server/app-render/required-scripts.tsx (33:11) @ getRequiredScripts
+ ⨯ Error: Invariant: missing bootstrap script. This is a bug in Next.js
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/required-scripts.tsx:33:10)
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/app-render.tsx:1542:44)
+    at apply (node_modules/next/src/server/lib/trace/tracer.ts:425:55)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:351:27)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at NoopTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18093)
+    at ProxyTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18854)
+    at startActiveSpan (node_modules/next/src/server/lib/trace/tracer.ts:304:31)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at spanContext (node_modules/next/src/server/lib/trace/tracer.ts:303:24)
+    at trace (node_modules/next/src/server/lib/trace/tracer.ts:425:22)
+    at renderToStreamWithTracing (webpack://next/dist/src/server/app-render/app-render.tsx:1353:25)
+    at renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1484:13)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1483:32)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1482:26)
+    at renderToHTMLOrFlight (webpack://next/dist/src/server/route-modules/app-page/module.ts:62:11)
+    at render (node_modules/next/src/server/base-server.ts:2666:34)
+    at doRender (node_modules/next/src/server/base-server.ts:3027:27)
+    at responseGenerator (node_modules/next/src/server/response-cache/index.ts:67:13)
+    at get (node_modules/next/src/server/base-server.ts:3039:48)
+    at renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:1877:13)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:279:13)
+    at trace (node_modules/next/src/server/base-server.ts:1874:23)
+    at renderToResponseWithComponents (node_modules/next/src/server/base-server.ts:3597:26)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |          ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   } {
+  page: '/'
+}
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |           ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   }
+ GET / 500 in 1818ms
+ ⨯ next/dist/src/server/app-render/required-scripts.tsx (33:11) @ getRequiredScripts
+ ⨯ Error: Invariant: missing bootstrap script. This is a bug in Next.js
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/required-scripts.tsx:33:10)
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/app-render.tsx:1542:44)
+    at apply (node_modules/next/src/server/lib/trace/tracer.ts:425:55)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:351:27)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at NoopTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18093)
+    at ProxyTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18854)
+    at startActiveSpan (node_modules/next/src/server/lib/trace/tracer.ts:304:31)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at spanContext (node_modules/next/src/server/lib/trace/tracer.ts:303:24)
+    at trace (node_modules/next/src/server/lib/trace/tracer.ts:425:22)
+    at renderToStreamWithTracing (webpack://next/dist/src/server/app-render/app-render.tsx:1353:25)
+    at renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1484:13)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1483:32)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1482:26)
+    at renderToHTMLOrFlight (webpack://next/dist/src/server/route-modules/app-page/module.ts:62:11)
+    at render (node_modules/next/src/server/base-server.ts:2666:34)
+    at doRender (node_modules/next/src/server/base-server.ts:3027:27)
+    at responseGenerator (node_modules/next/src/server/response-cache/index.ts:67:13)
+    at get (node_modules/next/src/server/base-server.ts:3039:48)
+    at renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:1877:13)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:279:13)
+    at trace (node_modules/next/src/server/base-server.ts:1874:23)
+    at renderToResponseWithComponents (node_modules/next/src/server/base-server.ts:3597:26)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |          ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   } {
+  page: '/'
+}
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |           ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   }
+ GET / 500 in 417ms
+ ⨯ next/dist/src/server/app-render/required-scripts.tsx (33:11) @ getRequiredScripts
+ ⨯ Error: Invariant: missing bootstrap script. This is a bug in Next.js
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/required-scripts.tsx:33:10)
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/app-render.tsx:1542:44)
+    at apply (node_modules/next/src/server/lib/trace/tracer.ts:425:55)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:351:27)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at NoopTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18093)
+    at ProxyTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18854)
+    at startActiveSpan (node_modules/next/src/server/lib/trace/tracer.ts:304:31)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at spanContext (node_modules/next/src/server/lib/trace/tracer.ts:303:24)
+    at trace (node_modules/next/src/server/lib/trace/tracer.ts:425:22)
+    at renderToStreamWithTracing (webpack://next/dist/src/server/app-render/app-render.tsx:1353:25)
+    at renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1484:13)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1483:32)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1482:26)
+    at renderToHTMLOrFlight (webpack://next/dist/src/server/route-modules/app-page/module.ts:62:11)
+    at render (node_modules/next/src/server/base-server.ts:2666:34)
+    at doRender (node_modules/next/src/server/base-server.ts:3027:27)
+    at responseGenerator (node_modules/next/src/server/response-cache/index.ts:67:13)
+    at get (node_modules/next/src/server/base-server.ts:3039:48)
+    at renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:1877:13)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:279:13)
+    at trace (node_modules/next/src/server/base-server.ts:1874:23)
+    at renderToResponseWithComponents (node_modules/next/src/server/base-server.ts:3597:26)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |          ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   } {
+  page: '/'
+}
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |           ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   }
+ GET / 500 in 424ms
+ ⨯ next/dist/src/server/app-render/required-scripts.tsx (33:11) @ getRequiredScripts
+ ⨯ Error: Invariant: missing bootstrap script. This is a bug in Next.js
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/required-scripts.tsx:33:10)
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/app-render.tsx:1542:44)
+    at apply (node_modules/next/src/server/lib/trace/tracer.ts:425:55)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:351:27)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at NoopTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18093)
+    at ProxyTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18854)
+    at startActiveSpan (node_modules/next/src/server/lib/trace/tracer.ts:304:31)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at spanContext (node_modules/next/src/server/lib/trace/tracer.ts:303:24)
+    at trace (node_modules/next/src/server/lib/trace/tracer.ts:425:22)
+    at renderToStreamWithTracing (webpack://next/dist/src/server/app-render/app-render.tsx:1353:25)
+    at renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1484:13)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1483:32)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1482:26)
+    at renderToHTMLOrFlight (webpack://next/dist/src/server/route-modules/app-page/module.ts:62:11)
+    at render (node_modules/next/src/server/base-server.ts:2666:34)
+    at doRender (node_modules/next/src/server/base-server.ts:3027:27)
+    at responseGenerator (node_modules/next/src/server/response-cache/index.ts:67:13)
+    at get (node_modules/next/src/server/base-server.ts:3039:48)
+    at renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:1877:13)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:279:13)
+    at trace (node_modules/next/src/server/base-server.ts:1874:23)
+    at renderToResponseWithComponents (node_modules/next/src/server/base-server.ts:3597:26)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |          ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   } {
+  page: '/'
+}
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |           ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   }
+ GET / 500 in 455ms
+ ⨯ next/dist/src/server/app-render/required-scripts.tsx (33:11) @ getRequiredScripts
+ ⨯ Error: Invariant: missing bootstrap script. This is a bug in Next.js
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/required-scripts.tsx:33:10)
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/app-render.tsx:1542:44)
+    at apply (node_modules/next/src/server/lib/trace/tracer.ts:425:55)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:351:27)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at NoopTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18093)
+    at ProxyTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18854)
+    at startActiveSpan (node_modules/next/src/server/lib/trace/tracer.ts:304:31)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at spanContext (node_modules/next/src/server/lib/trace/tracer.ts:303:24)
+    at trace (node_modules/next/src/server/lib/trace/tracer.ts:425:22)
+    at renderToStreamWithTracing (webpack://next/dist/src/server/app-render/app-render.tsx:1353:25)
+    at renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1484:13)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1483:32)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1482:26)
+    at renderToHTMLOrFlight (webpack://next/dist/src/server/route-modules/app-page/module.ts:62:11)
+    at render (node_modules/next/src/server/base-server.ts:2666:34)
+    at doRender (node_modules/next/src/server/base-server.ts:3027:27)
+    at responseGenerator (node_modules/next/src/server/response-cache/index.ts:67:13)
+    at get (node_modules/next/src/server/base-server.ts:3039:48)
+    at renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:1877:13)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:279:13)
+    at trace (node_modules/next/src/server/base-server.ts:1874:23)
+    at renderToResponseWithComponents (node_modules/next/src/server/base-server.ts:3597:26)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |          ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   } {
+  page: '/'
+}
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |           ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   }
+ GET / 500 in 433ms
+ ⨯ next/dist/src/server/app-render/required-scripts.tsx (33:11) @ getRequiredScripts
+ ⨯ Error: Invariant: missing bootstrap script. This is a bug in Next.js
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/required-scripts.tsx:33:10)
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/app-render.tsx:1542:44)
+    at apply (node_modules/next/src/server/lib/trace/tracer.ts:425:55)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:351:27)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at NoopTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18093)
+    at ProxyTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18854)
+    at startActiveSpan (node_modules/next/src/server/lib/trace/tracer.ts:304:31)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at spanContext (node_modules/next/src/server/lib/trace/tracer.ts:303:24)
+    at trace (node_modules/next/src/server/lib/trace/tracer.ts:425:22)
+    at renderToStreamWithTracing (webpack://next/dist/src/server/app-render/app-render.tsx:1353:25)
+    at renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1484:13)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1483:32)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1482:26)
+    at renderToHTMLOrFlight (webpack://next/dist/src/server/route-modules/app-page/module.ts:62:11)
+    at render (node_modules/next/src/server/base-server.ts:2666:34)
+    at doRender (node_modules/next/src/server/base-server.ts:3027:27)
+    at responseGenerator (node_modules/next/src/server/response-cache/index.ts:67:13)
+    at get (node_modules/next/src/server/base-server.ts:3039:48)
+    at renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:1877:13)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:279:13)
+    at trace (node_modules/next/src/server/base-server.ts:1874:23)
+    at renderToResponseWithComponents (node_modules/next/src/server/base-server.ts:3597:26)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |          ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   } {
+  page: '/'
+}
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |           ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   }
+ GET / 500 in 434ms
+ ⨯ next/dist/src/server/app-render/required-scripts.tsx (33:11) @ getRequiredScripts
+ ⨯ Error: Invariant: missing bootstrap script. This is a bug in Next.js
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/required-scripts.tsx:33:10)
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/app-render.tsx:1542:44)
+    at apply (node_modules/next/src/server/lib/trace/tracer.ts:425:55)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:351:27)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at NoopTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18093)
+    at ProxyTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18854)
+    at startActiveSpan (node_modules/next/src/server/lib/trace/tracer.ts:304:31)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at spanContext (node_modules/next/src/server/lib/trace/tracer.ts:303:24)
+    at trace (node_modules/next/src/server/lib/trace/tracer.ts:425:22)
+    at renderToStreamWithTracing (webpack://next/dist/src/server/app-render/app-render.tsx:1353:25)
+    at renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1484:13)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1483:32)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1482:26)
+    at renderToHTMLOrFlight (webpack://next/dist/src/server/route-modules/app-page/module.ts:62:11)
+    at render (node_modules/next/src/server/base-server.ts:2666:34)
+    at doRender (node_modules/next/src/server/base-server.ts:3027:27)
+    at responseGenerator (node_modules/next/src/server/response-cache/index.ts:67:13)
+    at get (node_modules/next/src/server/base-server.ts:3039:48)
+    at renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:1877:13)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:279:13)
+    at trace (node_modules/next/src/server/base-server.ts:1874:23)
+    at renderToResponseWithComponents (node_modules/next/src/server/base-server.ts:3597:26)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |          ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   } {
+  page: '/'
+}
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |           ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   }
+ GET / 500 in 611ms
+ ⨯ next/dist/src/server/app-render/required-scripts.tsx (33:11) @ getRequiredScripts
+ ⨯ Error: Invariant: missing bootstrap script. This is a bug in Next.js
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/required-scripts.tsx:33:10)
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/app-render.tsx:1542:44)
+    at apply (node_modules/next/src/server/lib/trace/tracer.ts:425:55)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:351:27)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at NoopTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18093)
+    at ProxyTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18854)
+    at startActiveSpan (node_modules/next/src/server/lib/trace/tracer.ts:304:31)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at spanContext (node_modules/next/src/server/lib/trace/tracer.ts:303:24)
+    at trace (node_modules/next/src/server/lib/trace/tracer.ts:425:22)
+    at renderToStreamWithTracing (webpack://next/dist/src/server/app-render/app-render.tsx:1353:25)
+    at renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1484:13)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1483:32)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1482:26)
+    at renderToHTMLOrFlight (webpack://next/dist/src/server/route-modules/app-page/module.ts:62:11)
+    at render (node_modules/next/src/server/base-server.ts:2666:34)
+    at doRender (node_modules/next/src/server/base-server.ts:3027:27)
+    at responseGenerator (node_modules/next/src/server/response-cache/index.ts:67:13)
+    at get (node_modules/next/src/server/base-server.ts:3039:48)
+    at renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:1877:13)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:279:13)
+    at trace (node_modules/next/src/server/base-server.ts:1874:23)
+    at renderToResponseWithComponents (node_modules/next/src/server/base-server.ts:3597:26)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |          ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   } {
+  page: '/'
+}
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |           ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   }
+ GET / 500 in 452ms
+ ⨯ next/dist/src/server/app-render/required-scripts.tsx (33:11) @ getRequiredScripts
+ ⨯ Error: Invariant: missing bootstrap script. This is a bug in Next.js
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/required-scripts.tsx:33:10)
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/app-render.tsx:1542:44)
+    at apply (node_modules/next/src/server/lib/trace/tracer.ts:425:55)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:351:27)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at NoopTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18093)
+    at ProxyTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18854)
+    at startActiveSpan (node_modules/next/src/server/lib/trace/tracer.ts:304:31)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at spanContext (node_modules/next/src/server/lib/trace/tracer.ts:303:24)
+    at trace (node_modules/next/src/server/lib/trace/tracer.ts:425:22)
+    at renderToStreamWithTracing (webpack://next/dist/src/server/app-render/app-render.tsx:1353:25)
+    at renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1484:13)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1483:32)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1482:26)
+    at renderToHTMLOrFlight (webpack://next/dist/src/server/route-modules/app-page/module.ts:62:11)
+    at render (node_modules/next/src/server/base-server.ts:2666:34)
+    at doRender (node_modules/next/src/server/base-server.ts:3027:27)
+    at responseGenerator (node_modules/next/src/server/response-cache/index.ts:67:13)
+    at get (node_modules/next/src/server/base-server.ts:3039:48)
+    at renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:1877:13)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:279:13)
+    at trace (node_modules/next/src/server/base-server.ts:1874:23)
+    at renderToResponseWithComponents (node_modules/next/src/server/base-server.ts:3597:26)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |          ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   } {
+  page: '/'
+}
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |           ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   }
+ GET / 500 in 506ms
+ ⨯ next/dist/src/server/app-render/required-scripts.tsx (33:11) @ getRequiredScripts
+ ⨯ Error: Invariant: missing bootstrap script. This is a bug in Next.js
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/required-scripts.tsx:33:10)
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/app-render.tsx:1542:44)
+    at apply (node_modules/next/src/server/lib/trace/tracer.ts:425:55)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:351:27)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at NoopTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18093)
+    at ProxyTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18854)
+    at startActiveSpan (node_modules/next/src/server/lib/trace/tracer.ts:304:31)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at spanContext (node_modules/next/src/server/lib/trace/tracer.ts:303:24)
+    at trace (node_modules/next/src/server/lib/trace/tracer.ts:425:22)
+    at renderToStreamWithTracing (webpack://next/dist/src/server/app-render/app-render.tsx:1353:25)
+    at renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1484:13)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1483:32)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1482:26)
+    at renderToHTMLOrFlight (webpack://next/dist/src/server/route-modules/app-page/module.ts:62:11)
+    at render (node_modules/next/src/server/base-server.ts:2666:34)
+    at doRender (node_modules/next/src/server/base-server.ts:3027:27)
+    at responseGenerator (node_modules/next/src/server/response-cache/index.ts:67:13)
+    at get (node_modules/next/src/server/base-server.ts:3039:48)
+    at renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:1877:13)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:279:13)
+    at trace (node_modules/next/src/server/base-server.ts:1874:23)
+    at renderToResponseWithComponents (node_modules/next/src/server/base-server.ts:3597:26)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |          ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   } {
+  page: '/'
+}
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |           ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   }
+ GET / 500 in 468ms
+ ⨯ next/dist/src/server/app-render/required-scripts.tsx (33:11) @ getRequiredScripts
+ ⨯ Error: Invariant: missing bootstrap script. This is a bug in Next.js
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/required-scripts.tsx:33:10)
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/app-render.tsx:1542:44)
+    at apply (node_modules/next/src/server/lib/trace/tracer.ts:425:55)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:351:27)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at NoopTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18093)
+    at ProxyTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18854)
+    at startActiveSpan (node_modules/next/src/server/lib/trace/tracer.ts:304:31)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at spanContext (node_modules/next/src/server/lib/trace/tracer.ts:303:24)
+    at trace (node_modules/next/src/server/lib/trace/tracer.ts:425:22)
+    at renderToStreamWithTracing (webpack://next/dist/src/server/app-render/app-render.tsx:1353:25)
+    at renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1484:13)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1483:32)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1482:26)
+    at renderToHTMLOrFlight (webpack://next/dist/src/server/route-modules/app-page/module.ts:62:11)
+    at render (node_modules/next/src/server/base-server.ts:2666:34)
+    at doRender (node_modules/next/src/server/base-server.ts:3027:27)
+    at responseGenerator (node_modules/next/src/server/response-cache/index.ts:67:13)
+    at get (node_modules/next/src/server/base-server.ts:3039:48)
+    at renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:1877:13)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:279:13)
+    at trace (node_modules/next/src/server/base-server.ts:1874:23)
+    at renderToResponseWithComponents (node_modules/next/src/server/base-server.ts:3597:26)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |          ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   } {
+  page: '/'
+}
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |           ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   }
+ GET / 500 in 419ms
+ ⨯ next/dist/src/server/app-render/required-scripts.tsx (33:11) @ getRequiredScripts
+ ⨯ Error: Invariant: missing bootstrap script. This is a bug in Next.js
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/required-scripts.tsx:33:10)
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/app-render.tsx:1542:44)
+    at apply (node_modules/next/src/server/lib/trace/tracer.ts:425:55)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:351:27)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at NoopTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18093)
+    at ProxyTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18854)
+    at startActiveSpan (node_modules/next/src/server/lib/trace/tracer.ts:304:31)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at spanContext (node_modules/next/src/server/lib/trace/tracer.ts:303:24)
+    at trace (node_modules/next/src/server/lib/trace/tracer.ts:425:22)
+    at renderToStreamWithTracing (webpack://next/dist/src/server/app-render/app-render.tsx:1353:25)
+    at renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1484:13)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1483:32)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1482:26)
+    at renderToHTMLOrFlight (webpack://next/dist/src/server/route-modules/app-page/module.ts:62:11)
+    at render (node_modules/next/src/server/base-server.ts:2666:34)
+    at doRender (node_modules/next/src/server/base-server.ts:3027:27)
+    at responseGenerator (node_modules/next/src/server/response-cache/index.ts:67:13)
+    at get (node_modules/next/src/server/base-server.ts:3039:48)
+    at renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:1877:13)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:279:13)
+    at trace (node_modules/next/src/server/base-server.ts:1874:23)
+    at renderToResponseWithComponents (node_modules/next/src/server/base-server.ts:3597:26)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |          ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   } {
+  page: '/'
+}
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |           ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   }
+ GET / 500 in 910ms
+ ⨯ next/dist/src/server/app-render/required-scripts.tsx (33:11) @ getRequiredScripts
+ ⨯ Error: Invariant: missing bootstrap script. This is a bug in Next.js
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/required-scripts.tsx:33:10)
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/app-render.tsx:1542:44)
+    at apply (node_modules/next/src/server/lib/trace/tracer.ts:425:55)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:351:27)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at NoopTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18093)
+    at ProxyTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18854)
+    at startActiveSpan (node_modules/next/src/server/lib/trace/tracer.ts:304:31)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at spanContext (node_modules/next/src/server/lib/trace/tracer.ts:303:24)
+    at trace (node_modules/next/src/server/lib/trace/tracer.ts:425:22)
+    at renderToStreamWithTracing (webpack://next/dist/src/server/app-render/app-render.tsx:1353:25)
+    at renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1484:13)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1483:32)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1482:26)
+    at renderToHTMLOrFlight (webpack://next/dist/src/server/route-modules/app-page/module.ts:62:11)
+    at render (node_modules/next/src/server/base-server.ts:2666:34)
+    at doRender (node_modules/next/src/server/base-server.ts:3027:27)
+    at responseGenerator (node_modules/next/src/server/response-cache/index.ts:67:13)
+    at get (node_modules/next/src/server/base-server.ts:3039:48)
+    at renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:1877:13)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:279:13)
+    at trace (node_modules/next/src/server/base-server.ts:1874:23)
+    at renderToResponseWithComponents (node_modules/next/src/server/base-server.ts:3597:26)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |          ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   } {
+  page: '/'
+}
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |           ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   }
+ GET / 500 in 477ms
+ ⨯ next/dist/src/server/app-render/required-scripts.tsx (33:11) @ getRequiredScripts
+ ⨯ Error: Invariant: missing bootstrap script. This is a bug in Next.js
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/required-scripts.tsx:33:10)
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/app-render.tsx:1542:44)
+    at apply (node_modules/next/src/server/lib/trace/tracer.ts:425:55)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:351:27)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at NoopTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18093)
+    at ProxyTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18854)
+    at startActiveSpan (node_modules/next/src/server/lib/trace/tracer.ts:304:31)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at spanContext (node_modules/next/src/server/lib/trace/tracer.ts:303:24)
+    at trace (node_modules/next/src/server/lib/trace/tracer.ts:425:22)
+    at renderToStreamWithTracing (webpack://next/dist/src/server/app-render/app-render.tsx:1353:25)
+    at renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1484:13)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1483:32)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1482:26)
+    at renderToHTMLOrFlight (webpack://next/dist/src/server/route-modules/app-page/module.ts:62:11)
+    at render (node_modules/next/src/server/base-server.ts:2666:34)
+    at doRender (node_modules/next/src/server/base-server.ts:3027:27)
+    at responseGenerator (node_modules/next/src/server/response-cache/index.ts:67:13)
+    at get (node_modules/next/src/server/base-server.ts:3039:48)
+    at renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:1877:13)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:279:13)
+    at trace (node_modules/next/src/server/base-server.ts:1874:23)
+    at renderToResponseWithComponents (node_modules/next/src/server/base-server.ts:3597:26)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |          ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   } {
+  page: '/'
+}
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |           ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   }
+ GET / 500 in 590ms
+ ⨯ next/dist/src/server/app-render/required-scripts.tsx (33:11) @ getRequiredScripts
+ ⨯ Error: Invariant: missing bootstrap script. This is a bug in Next.js
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/required-scripts.tsx:33:10)
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/app-render.tsx:1542:44)
+    at apply (node_modules/next/src/server/lib/trace/tracer.ts:425:55)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:351:27)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at NoopTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18093)
+    at ProxyTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18854)
+    at startActiveSpan (node_modules/next/src/server/lib/trace/tracer.ts:304:31)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at spanContext (node_modules/next/src/server/lib/trace/tracer.ts:303:24)
+    at trace (node_modules/next/src/server/lib/trace/tracer.ts:425:22)
+    at renderToStreamWithTracing (webpack://next/dist/src/server/app-render/app-render.tsx:1353:25)
+    at renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1484:13)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1483:32)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1482:26)
+    at renderToHTMLOrFlight (webpack://next/dist/src/server/route-modules/app-page/module.ts:62:11)
+    at render (node_modules/next/src/server/base-server.ts:2666:34)
+    at doRender (node_modules/next/src/server/base-server.ts:3027:27)
+    at responseGenerator (node_modules/next/src/server/response-cache/index.ts:67:13)
+    at get (node_modules/next/src/server/base-server.ts:3039:48)
+    at renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:1877:13)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:279:13)
+    at trace (node_modules/next/src/server/base-server.ts:1874:23)
+    at renderToResponseWithComponents (node_modules/next/src/server/base-server.ts:3597:26)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |          ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   } {
+  page: '/'
+}
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |           ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   }
+ GET / 500 in 440ms
+ ⨯ next/dist/src/server/app-render/required-scripts.tsx (33:11) @ getRequiredScripts
+ ⨯ Error: Invariant: missing bootstrap script. This is a bug in Next.js
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/required-scripts.tsx:33:10)
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/app-render.tsx:1542:44)
+    at apply (node_modules/next/src/server/lib/trace/tracer.ts:425:55)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:351:27)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at NoopTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18093)
+    at ProxyTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18854)
+    at startActiveSpan (node_modules/next/src/server/lib/trace/tracer.ts:304:31)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at spanContext (node_modules/next/src/server/lib/trace/tracer.ts:303:24)
+    at trace (node_modules/next/src/server/lib/trace/tracer.ts:425:22)
+    at renderToStreamWithTracing (webpack://next/dist/src/server/app-render/app-render.tsx:1353:25)
+    at renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1484:13)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1483:32)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1482:26)
+    at renderToHTMLOrFlight (webpack://next/dist/src/server/route-modules/app-page/module.ts:62:11)
+    at render (node_modules/next/src/server/base-server.ts:2666:34)
+    at doRender (node_modules/next/src/server/base-server.ts:3027:27)
+    at responseGenerator (node_modules/next/src/server/response-cache/index.ts:67:13)
+    at get (node_modules/next/src/server/base-server.ts:3039:48)
+    at renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:1877:13)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:279:13)
+    at trace (node_modules/next/src/server/base-server.ts:1874:23)
+    at renderToResponseWithComponents (node_modules/next/src/server/base-server.ts:3597:26)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |          ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   } {
+  page: '/'
+}
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |           ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   }
+ GET / 500 in 527ms
+ ⨯ next/dist/src/server/app-render/required-scripts.tsx (33:11) @ getRequiredScripts
+ ⨯ Error: Invariant: missing bootstrap script. This is a bug in Next.js
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/required-scripts.tsx:33:10)
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/app-render.tsx:1542:44)
+    at apply (node_modules/next/src/server/lib/trace/tracer.ts:425:55)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:351:27)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at NoopTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18093)
+    at ProxyTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18854)
+    at startActiveSpan (node_modules/next/src/server/lib/trace/tracer.ts:304:31)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at spanContext (node_modules/next/src/server/lib/trace/tracer.ts:303:24)
+    at trace (node_modules/next/src/server/lib/trace/tracer.ts:425:22)
+    at renderToStreamWithTracing (webpack://next/dist/src/server/app-render/app-render.tsx:1353:25)
+    at renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1484:13)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1483:32)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1482:26)
+    at renderToHTMLOrFlight (webpack://next/dist/src/server/route-modules/app-page/module.ts:62:11)
+    at render (node_modules/next/src/server/base-server.ts:2666:34)
+    at doRender (node_modules/next/src/server/base-server.ts:3027:27)
+    at responseGenerator (node_modules/next/src/server/response-cache/index.ts:67:13)
+    at get (node_modules/next/src/server/base-server.ts:3039:48)
+    at renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:1877:13)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:279:13)
+    at trace (node_modules/next/src/server/base-server.ts:1874:23)
+    at renderToResponseWithComponents (node_modules/next/src/server/base-server.ts:3597:26)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |          ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   } {
+  page: '/'
+}
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |           ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   }
+ GET / 500 in 514ms
+ ⨯ next/dist/src/server/app-render/required-scripts.tsx (33:11) @ getRequiredScripts
+ ⨯ Error: Invariant: missing bootstrap script. This is a bug in Next.js
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/required-scripts.tsx:33:10)
+    at getRequiredScripts (webpack://next/dist/src/server/app-render/app-render.tsx:1542:44)
+    at apply (node_modules/next/src/server/lib/trace/tracer.ts:425:55)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:351:27)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at NoopTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18093)
+    at ProxyTracer.startActiveSpan (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:18854)
+    at startActiveSpan (node_modules/next/src/server/lib/trace/tracer.ts:304:31)
+    at NoopContextManager.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:7062)
+    at ContextAPI.with (/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/compiled/@opentelemetry/api/index.js:1:518)
+    at spanContext (node_modules/next/src/server/lib/trace/tracer.ts:303:24)
+    at trace (node_modules/next/src/server/lib/trace/tracer.ts:425:22)
+    at renderToStreamWithTracing (webpack://next/dist/src/server/app-render/app-render.tsx:1353:25)
+    at renderToHTMLOrFlightImpl (webpack://next/dist/src/server/app-render/app-render.tsx:1484:13)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1483:32)
+    at run (webpack://next/dist/src/server/app-render/app-render.tsx:1482:26)
+    at renderToHTMLOrFlight (webpack://next/dist/src/server/route-modules/app-page/module.ts:62:11)
+    at render (node_modules/next/src/server/base-server.ts:2666:34)
+    at doRender (node_modules/next/src/server/base-server.ts:3027:27)
+    at responseGenerator (node_modules/next/src/server/response-cache/index.ts:67:13)
+    at get (node_modules/next/src/server/base-server.ts:3039:48)
+    at renderToResponseWithComponentsImpl (node_modules/next/src/server/base-server.ts:1877:13)
+    at fn (node_modules/next/src/server/lib/trace/tracer.ts:279:13)
+    at trace (node_modules/next/src/server/base-server.ts:1874:23)
+    at renderToResponseWithComponents (node_modules/next/src/server/base-server.ts:3597:26)
+    at async DevServer.renderToResponseImpl (node_modules/next/src/server/base-server.ts:3659:23)
+    at async DevServer.pipeImpl (node_modules/next/src/server/base-server.ts:1698:20)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules/next/src/server/next-server.ts:1034:6)
+    at async DevServer.handleRequestImpl (node_modules/next/src/server/base-server.ts:1462:8)
+    at async (node_modules/next/src/server/dev/next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules/next/src/trace/trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules/next/src/server/dev/next-dev-server.ts:512:19)
+    at async invokeRender (node_modules/next/src/server/lib/router-server.ts:284:10)
+    at async handleRequest (node_modules/next/src/server/lib/router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules/next/src/server/lib/router-server.ts:576:6)
+    at async Server.requestListener (node_modules/next/src/server/lib/start-server.ts:146:6)
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |          ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   } {
+  page: '/'
+}
+  31 |   ).map(encodeURIPath)
+  32 |   if (files.length === 0) {
+> 33 |     throw new Error(
+     |           ^
+  34 |       'Invariant: missing bootstrap script. This is a bug in Next.js'
+  35 |     )
+  36 |   }
+ GET / 500 in 464ms
+ ○ Compiling /_not-found ...
+ GET / 404 in 1329ms
+ ✓ Compiled /_not-found in 1256ms (2758 modules)

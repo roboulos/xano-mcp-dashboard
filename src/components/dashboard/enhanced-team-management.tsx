@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import {
   PlusIcon,
@@ -55,6 +55,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import { useAuth } from '@/contexts/auth-context';
+import { useDashboardMetrics } from '@/hooks/use-dashboard-data';
 import { cn } from '@/lib/utils';
 
 interface TeamMember {
@@ -73,70 +75,6 @@ interface TeamMember {
   joinedAt: Date;
 }
 
-// Mock data with enhanced metrics
-const mockTeamMembers: TeamMember[] = [
-  {
-    id: '1',
-    name: 'Sarah Johnson',
-    email: 'sarah.johnson@company.com',
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah',
-    status: 'active',
-    isOnline: true,
-    apiKey: 'xano_key_abc123def456...',
-    lastSeen: new Date(),
-    role: 'admin',
-    totalCalls: 1247,
-    callsToday: 87,
-    successRate: 99.2,
-    joinedAt: new Date('2024-01-15'),
-  },
-  {
-    id: '2',
-    name: 'Michael Chen',
-    email: 'michael.chen@company.com',
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Michael',
-    status: 'active',
-    isOnline: true,
-    apiKey: 'xano_key_ghi789jkl012...',
-    lastSeen: new Date(Date.now() - 30 * 60 * 1000),
-    role: 'developer',
-    totalCalls: 934,
-    callsToday: 45,
-    successRate: 97.8,
-    joinedAt: new Date('2024-02-20'),
-  },
-  {
-    id: '3',
-    name: 'Emily Rodriguez',
-    email: 'emily.rodriguez@company.com',
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Emily',
-    status: 'suspended',
-    isOnline: false,
-    apiKey: 'xano_key_mno345pqr678...',
-    lastSeen: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000),
-    role: 'developer',
-    totalCalls: 456,
-    callsToday: 0,
-    successRate: 94.1,
-    joinedAt: new Date('2024-03-10'),
-  },
-  {
-    id: '4',
-    name: 'David Park',
-    email: 'david.park@company.com',
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=David',
-    status: 'active',
-    isOnline: false,
-    apiKey: 'xano_key_stu901vwx234...',
-    lastSeen: new Date(Date.now() - 4 * 60 * 60 * 1000),
-    role: 'viewer',
-    totalCalls: 123,
-    callsToday: 8,
-    successRate: 100,
-    joinedAt: new Date('2024-03-25'),
-  },
-];
-
 interface EnhancedTeamManagementProps {
   className?: string;
 }
@@ -144,7 +82,49 @@ interface EnhancedTeamManagementProps {
 export default function EnhancedTeamManagement({
   className,
 }: EnhancedTeamManagementProps) {
-  const [members, setMembers] = useState(mockTeamMembers);
+  const { user } = useAuth();
+  const { data: dashboardMetrics } = useDashboardMetrics('week');
+
+  // Create a real team member from the current user
+  const currentUserMember: TeamMember = {
+    id: user?.id?.toString() || '1',
+    name: user?.name || 'Current User',
+    email: user?.email || 'user@example.com',
+    avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${user?.name || 'User'}`,
+    status: 'active',
+    isOnline: true,
+    apiKey: 'xano_key_current_****',
+    lastSeen: new Date(),
+    role: 'admin',
+    totalCalls: dashboardMetrics?.total_calls || 0,
+    callsToday: Math.floor((dashboardMetrics?.total_calls || 0) / 7), // Approximate daily calls
+    successRate: dashboardMetrics?.success_rate || 100,
+    joinedAt: new Date(user?.created_at || Date.now()),
+  };
+
+  const [members, setMembers] = useState([currentUserMember]);
+
+  // Update members when metrics change
+  React.useEffect(() => {
+    if (user && dashboardMetrics) {
+      const updatedMember: TeamMember = {
+        id: user.id?.toString() || '1',
+        name: user.name || 'Current User',
+        email: user.email || 'user@example.com',
+        avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${user.name || 'User'}`,
+        status: 'active',
+        isOnline: true,
+        apiKey: 'xano_key_current_****',
+        lastSeen: new Date(),
+        role: 'admin',
+        totalCalls: dashboardMetrics.total_calls || 0,
+        callsToday: Math.floor((dashboardMetrics.total_calls || 0) / 7),
+        successRate: dashboardMetrics.success_rate || 100,
+        joinedAt: new Date(user.created_at || Date.now()),
+      };
+      setMembers([updatedMember]);
+    }
+  }, [user, dashboardMetrics]);
   const [, setCopiedId] = useState<string | null>(null);
   const [memberFilter, setMemberFilter] = useState<
     'all' | 'active' | 'suspended' | 'pending'

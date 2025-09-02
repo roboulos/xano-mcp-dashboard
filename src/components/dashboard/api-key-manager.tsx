@@ -85,6 +85,7 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Textarea } from '@/components/ui/textarea';
+import { useXanoCredentials } from '@/hooks/use-dashboard-data';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 
@@ -104,63 +105,6 @@ interface ApiKey {
   status: 'active' | 'expired' | 'revoked';
   scopes: string[];
 }
-
-// Mock data
-const mockApiKeys: ApiKey[] = [
-  {
-    id: '1',
-    name: 'Production API',
-    description: 'Main production API key for Claude Desktop integration',
-    key: 'xano_prod_key_abc123def456789ghi012jkl345mno678pqr901',
-    assignedTo: '1',
-    assignedUserName: 'Sarah Johnson',
-    createdAt: new Date('2024-01-15'),
-    expiresAt: new Date('2025-01-15'),
-    lastUsed: new Date(),
-    usageCount: 1247,
-    status: 'active',
-    scopes: ['read', 'write', 'admin'],
-  },
-  {
-    id: '2',
-    name: 'Development Key',
-    description: 'Testing and development environment key',
-    key: 'xano_dev_key_xyz789abc123456def789ghi012jkl345mno678',
-    assignedTo: '2',
-    assignedUserName: 'Michael Chen',
-    createdAt: new Date('2024-02-20'),
-    expiresAt: new Date('2024-12-31'),
-    lastUsed: new Date(Date.now() - 2 * 60 * 60 * 1000),
-    usageCount: 934,
-    status: 'active',
-    scopes: ['read', 'write'],
-  },
-  {
-    id: '3',
-    name: 'Analytics Bot',
-    description: 'Automated analytics and reporting bot',
-    key: 'xano_bot_key_456def789012ghi345jkl678mno901pqr234stu',
-    createdAt: new Date('2024-03-01'),
-    lastUsed: new Date(Date.now() - 24 * 60 * 60 * 1000),
-    usageCount: 2156,
-    status: 'active',
-    scopes: ['read'],
-  },
-  {
-    id: '4',
-    name: 'Staging Test',
-    description: 'Staging environment testing key',
-    key: 'xano_staging_key_123456def789ghi012jkl345mno678pqr901',
-    assignedTo: '4',
-    assignedUserName: 'David Park',
-    createdAt: new Date('2024-02-01'),
-    expiresAt: new Date('2024-06-01'),
-    lastUsed: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
-    usageCount: 45,
-    status: 'expired',
-    scopes: ['read'],
-  },
-];
 
 // Data Table Column Header Component
 function DataTableColumnHeader({
@@ -278,7 +222,26 @@ interface ApiKeyManagerProps {
 }
 
 export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
-  const [keys, setKeys] = useState(mockApiKeys);
+  const { data: credentials, createCredential } = useXanoCredentials();
+
+  // Transform Xano credentials to match the existing ApiKey interface
+  const keys =
+    credentials?.map(cred => ({
+      id: cred.id.toString(),
+      name: cred.credential_name,
+      description: `Xano credential for ${cred.xano_instance_name || 'instance'}`,
+      key: `xano_${cred.credential_name.toLowerCase()}_****`,
+      assignedTo: undefined,
+      assignedUserName: cred.xano_instance_email || undefined,
+      createdAt: new Date(cred.created_at),
+      lastUsed: cred.last_validated ? new Date(cred.last_validated) : undefined,
+      usageCount: 0, // Default usage count
+      status: cred.is_active ? ('active' as const) : ('revoked' as const),
+      scopes: cred.is_active ? ['read', 'write'] : ['read'],
+      expiresAt: undefined, // Xano keys don't expire
+    })) || [];
+
+  const [, setKeys] = useState(keys);
   const [isCreateOpen, setIsCreateOpen] = useState(false);
   const { toast } = useToast();
 
@@ -328,37 +291,32 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
     });
   };
 
-  const handleCreateKey = () => {
-    const newKey: ApiKey = {
-      id: Date.now().toString(),
-      name: createForm.name,
-      description: createForm.description,
-      key: `xano_key_${Math.random().toString(36).substr(2, 40)}`,
-      assignedTo: createForm.assignedTo || undefined,
-      assignedUserName: createForm.assignedTo ? 'Assigned User' : undefined,
-      createdAt: new Date(),
-      expiresAt: createForm.expiresAt
-        ? new Date(createForm.expiresAt)
-        : undefined,
-      usageCount: 0,
-      status: 'active',
-      scopes: createForm.scopes,
-    };
+  const handleCreateKey = async () => {
+    try {
+      await createCredential(
+        createForm.name,
+        createForm.description || 'Enter your Xano API key here'
+      );
+      setIsCreateOpen(false);
+      setCreateForm({
+        name: '',
+        description: '',
+        assignedTo: '',
+        expiresAt: '',
+        scopes: ['read'],
+      });
 
-    setKeys(prev => [newKey, ...prev]);
-    setIsCreateOpen(false);
-    setCreateForm({
-      name: '',
-      description: '',
-      assignedTo: '',
-      expiresAt: '',
-      scopes: ['read'],
-    });
-
-    toast({
-      title: 'API Key Generated',
-      description: `${createForm.name} has been created successfully`,
-    });
+      toast({
+        title: 'API Key Generated',
+        description: `${createForm.name} has been created successfully`,
+      });
+    } catch {
+      toast({
+        title: 'Error',
+        description: 'Failed to create API key',
+        variant: 'destructive',
+      });
+    }
   };
 
   // Column definitions
@@ -626,7 +584,7 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
   const expiringSoon = keys.filter(
     k =>
       k.expiresAt &&
-      k.expiresAt.getTime() - Date.now() < 30 * 24 * 60 * 60 * 1000
+      (k.expiresAt as Date).getTime() - Date.now() < 30 * 24 * 60 * 60 * 1000
   ).length;
 
   return (
