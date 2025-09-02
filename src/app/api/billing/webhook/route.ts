@@ -6,7 +6,7 @@ const XANO_API_BASE = 'https://xnwv-v1z6-dvnr.n7c.xano.io/api:e6emygx3';
 
 export async function POST(request: NextRequest) {
   const logger = createRequestLogger(request, '/api/billing/webhook');
-  let body: Record<string, unknown> = {};
+  const body: Record<string, unknown> = {};
 
   try {
     // Get the raw body for Stripe signature verification

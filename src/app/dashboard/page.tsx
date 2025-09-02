@@ -9,22 +9,13 @@ import ContextualActivityFeed from '@/components/dashboard/contextual-activity-f
 import EnhancedTeamManagement from '@/components/dashboard/enhanced-team-management';
 import MCPConnectionHub from '@/components/dashboard/mcp-connection-hub';
 import UsageAnalytics from '@/components/dashboard/usage-analytics';
-import { Skeleton } from '@/components/ui/skeleton';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import {
-  useDashboardMetrics,
-  useXanoCredentials,
-} from '@/hooks/use-dashboard-data';
 
 // Force dynamic rendering to avoid Next.js 15.0.4 prerendering issues
 export const dynamic = 'force-dynamic';
 
 export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState('overview');
-  const { data: dashboardMetrics, loading: metricsLoading } =
-    useDashboardMetrics('week');
-  const { data: credentials, loading: credentialsLoading } =
-    useXanoCredentials();
 
   return (
     <div className="bg-background min-h-screen">
@@ -96,104 +87,6 @@ export default function DashboardPage() {
             className="animate-in fade-in-50 space-y-6 duration-500"
           >
             <MCPConnectionHub />
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-              <div className="space-y-4">
-                <h3 className="text-lg font-semibold">Quick Stats</h3>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-card ring-border rounded-lg p-4 shadow-sm ring-1">
-                    <p className="text-muted-foreground text-sm">
-                      Active Connections
-                    </p>
-                    {credentialsLoading ? (
-                      <Skeleton className="mt-2 h-8 w-16" />
-                    ) : (
-                      <p className="text-2xl font-bold">
-                        {credentials?.filter(c => c.is_active)?.length || 0}
-                      </p>
-                    )}
-                  </div>
-                  <div className="bg-card ring-border rounded-lg p-4 shadow-sm ring-1">
-                    <p className="text-muted-foreground text-sm">
-                      API Calls This Week
-                    </p>
-                    {metricsLoading ? (
-                      <Skeleton className="mt-2 h-8 w-20" />
-                    ) : (
-                      <p className="text-2xl font-bold">
-                        {dashboardMetrics?.total_calls?.toLocaleString() || 0}
-                      </p>
-                    )}
-                  </div>
-                  <div className="bg-card ring-border rounded-lg p-4 shadow-sm ring-1">
-                    <p className="text-muted-foreground text-sm">
-                      Active Tools
-                    </p>
-                    {metricsLoading ? (
-                      <Skeleton className="mt-2 h-8 w-12" />
-                    ) : (
-                      <p className="text-2xl font-bold">
-                        {Object.keys(dashboardMetrics?.tool_stats || {}).length}
-                      </p>
-                    )}
-                  </div>
-                  <div className="bg-card ring-border rounded-lg p-4 shadow-sm ring-1">
-                    <p className="text-muted-foreground text-sm">
-                      Success Rate
-                    </p>
-                    {metricsLoading ? (
-                      <Skeleton className="mt-2 h-8 w-16" />
-                    ) : (
-                      <p className="text-2xl font-bold">
-                        {dashboardMetrics?.success_rate?.toFixed(1) || 0}%
-                      </p>
-                    )}
-                  </div>
-                </div>
-              </div>
-              <div className="bg-card ring-border rounded-lg p-6 shadow-sm ring-1">
-                <h3 className="mb-4 text-lg font-semibold">Recent Activity</h3>
-                {metricsLoading ? (
-                  <div className="space-y-3">
-                    <Skeleton className="h-4 w-full" />
-                    <Skeleton className="h-4 w-3/4" />
-                    <Skeleton className="h-4 w-5/6" />
-                  </div>
-                ) : (
-                  <div className="space-y-2 text-sm">
-                    {dashboardMetrics?.tool_stats &&
-                    Object.keys(dashboardMetrics.tool_stats).length > 0 ? (
-                      Object.entries(dashboardMetrics.tool_stats)
-                        .sort((a, b) => b[1].calls - a[1].calls)
-                        .slice(0, 3)
-                        .map(([toolName, stats], index) => (
-                          <div
-                            key={toolName}
-                            className="flex items-center gap-2"
-                          >
-                            <div
-                              className={`h-2 w-2 rounded-full ${
-                                index === 0
-                                  ? 'bg-green-500'
-                                  : index === 1
-                                    ? 'bg-blue-500'
-                                    : 'bg-yellow-500'
-                              }`}
-                            />
-                            <span className="text-muted-foreground">
-                              {toolName}: {stats.calls} calls ({stats.success}{' '}
-                              successful)
-                            </span>
-                          </div>
-                        ))
-                    ) : (
-                      <div className="text-muted-foreground py-4 text-center">
-                        No recent activity data available
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
-            </div>
           </TabsContent>
 
           <TabsContent

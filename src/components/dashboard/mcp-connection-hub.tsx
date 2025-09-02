@@ -25,8 +25,6 @@ import {
 } from '@/components/ui/card';
 import { CodeBlock } from '@/components/ui/code-block';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
-import { useXanoCredentials } from '@/hooks/use-dashboard-data';
 import { cn } from '@/lib/utils';
 
 interface McpConnectionHubProps {
@@ -34,18 +32,11 @@ interface McpConnectionHubProps {
 }
 
 type ConnectionType = 'claude-desktop' | 'claude-code' | 'cursor' | 'generic';
-type Environment = 'production' | 'staging' | 'development';
 
 export default function McpConnectionHub({ className }: McpConnectionHubProps) {
   const [selectedConnection, setSelectedConnection] =
     useState<ConnectionType>('claude-desktop');
-  const [selectedEnvironment, setSelectedEnvironment] =
-    useState<Environment>('production');
   const [copied, setCopied] = useState(false);
-  const { data: credentials } = useXanoCredentials();
-
-  const activeCredential =
-    credentials?.find(c => c.is_active) || credentials?.[0];
 
   const connectionConfigs = {
     'claude-desktop': {
@@ -157,24 +148,6 @@ Usage:
       </CardHeader>
 
       <CardContent className="space-y-6">
-        {/* Environment Selection */}
-        <div className="space-y-3">
-          <label htmlFor="environment-toggle" className="text-sm font-medium">
-            Environment
-          </label>
-          <ToggleGroup
-            id="environment-toggle"
-            type="single"
-            value={selectedEnvironment}
-            onValueChange={v => v && setSelectedEnvironment(v as Environment)}
-            className="justify-start"
-          >
-            <ToggleGroupItem value="production">Production</ToggleGroupItem>
-            <ToggleGroupItem value="staging">Staging</ToggleGroupItem>
-            <ToggleGroupItem value="development">Development</ToggleGroupItem>
-          </ToggleGroup>
-        </div>
-
         {/* Tool Selection */}
         <div className="space-y-3">
           <label
@@ -268,22 +241,6 @@ Usage:
             filename={currentConfig.filename}
             className="min-h-[200px]"
           />
-        </div>
-
-        {/* Quick Stats */}
-        <div className="grid grid-cols-3 gap-4 border-t pt-4">
-          <div className="text-center">
-            <p className="text-2xl font-bold text-emerald-600">4</p>
-            <p className="text-muted-foreground text-xs">Active Connections</p>
-          </div>
-          <div className="text-center">
-            <p className="text-2xl font-bold">2.3s</p>
-            <p className="text-muted-foreground text-xs">Avg Setup Time</p>
-          </div>
-          <div className="text-center">
-            <p className="text-2xl font-bold">99.9%</p>
-            <p className="text-muted-foreground text-xs">Success Rate</p>
-          </div>
         </div>
 
         {/* Quick Help */}
