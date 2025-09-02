@@ -35,14 +35,21 @@ import {
 } from '@/components/ui/table';
 
 interface Subscription {
-  id: string;
-  planName: string;
-  status: 'active' | 'canceled' | 'past_due';
-  currentPeriodEnd: string;
-  cancelAtPeriodEnd: boolean;
-  amount: number;
-  currency: string;
-  interval: 'month' | 'year';
+  id?: string;
+  subscription_tier?: string;
+  plan_name?: string;
+  planName?: string;
+  status: 'active' | 'canceled' | 'past_due' | 'free';
+  current_period_end?: string;
+  currentPeriodEnd?: string;
+  cancel_at_period_end?: boolean;
+  cancelAtPeriodEnd?: boolean;
+  amount?: number;
+  price?: number;
+  currency?: string;
+  interval?: 'month' | 'year';
+  stripe_customer_id?: string;
+  stripe_subscription_id?: string;
 }
 
 interface BillingHistory {
@@ -68,15 +75,36 @@ export function SubscriptionManager() {
 
   const fetchSubscriptionData = async () => {
     try {
-      // Fetch subscription status
-      const subResponse = await fetch('/api/stripe/subscription-status');
-      const subData = await subResponse.json();
-      setSubscription(subData);
+      // Get auth token
+      const auth = localStorage.getItem('auth');
+      const authToken = auth ? JSON.parse(auth).authToken : '';
 
-      // Fetch billing history
-      const historyResponse = await fetch('/api/stripe/billing-history');
+      // Fetch subscription status
+      const subResponse = await fetch('/api/billing/subscription', {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      });
+      const subData = await subResponse.json();
+
+      if (subData.data) {
+        setSubscription(subData.data);
+      }
+
+      // Fetch billing history - invoices endpoint
+      const historyResponse = await fetch(
+        'https://xnwv-v1z6-dvnr.n7c.xano.io/api:Ogyn777x/billing/invoices?page=1&per_page=20',
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        }
+      );
       const historyData = await historyResponse.json();
-      setBillingHistory(historyData);
+
+      if (historyData.invoices) {
+        setBillingHistory(historyData.invoices);
+      }
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error('Error fetching subscription data:', error);
@@ -88,8 +116,16 @@ export function SubscriptionManager() {
   const handleCancelSubscription = async () => {
     setCancelLoading(true);
     try {
-      const response = await fetch('/api/stripe/cancel-subscription', {
+      const auth = localStorage.getItem('auth');
+      const authToken = auth ? JSON.parse(auth).authToken : '';
+
+      const response = await fetch('/api/billing/cancel', {
         method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${authToken}`,
+        },
+        body: JSON.stringify({ reason: 'User requested cancellation' }),
       });
 
       if (response.ok) {
@@ -142,7 +178,18 @@ export function SubscriptionManager() {
   }
 
   const isActive = subscription.status === 'active';
-  const willCancel = subscription.cancelAtPeriodEnd;
+  const willCancel =
+    subscription.cancelAtPeriodEnd || subscription.cancel_at_period_end;
+  const planName =
+    subscription.planName ||
+    subscription.plan_name ||
+    subscription.subscription_tier ||
+    'Free';
+  const amount = subscription.amount || subscription.price || 0;
+  const currentPeriodEnd =
+    subscription.currentPeriodEnd ||
+    subscription.current_period_end ||
+    new Date().toISOString();
 
   return (
     <div className="space-y-6">
@@ -169,17 +216,23 @@ export function SubscriptionManager() {
           {/* Plan Details */}
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="text-2xl font-bold">{subscription.planName}</h3>
+              <h3 className="text-2xl font-bold">{planName}</h3>
               <p className="text-muted-foreground">
-                ${subscription.amount / 100}/{subscription.interval}
+                {amount > 0
+                  ? `$${amount / 100}/${subscription.interval || 'month'}`
+                  : 'Free'}
               </p>
             </div>
-            <div className="text-right">
-              <p className="text-muted-foreground text-sm">Next billing date</p>
-              <p className="font-semibold">
-                {new Date(subscription.currentPeriodEnd).toLocaleDateString()}
-              </p>
-            </div>
+            {amount > 0 && (
+              <div className="text-right">
+                <p className="text-muted-foreground text-sm">
+                  Next billing date
+                </p>
+                <p className="font-semibold">
+                  {new Date(currentPeriodEnd).toLocaleDateString()}
+                </p>
+              </div>
+            )}
           </div>
 
           {willCancel && (
@@ -188,7 +241,7 @@ export function SubscriptionManager() {
               <AlertDescription>
                 Your subscription will be canceled at the end of the current
                 billing period. You'll retain access until{' '}
-                {new Date(subscription.currentPeriodEnd).toLocaleDateString()}.
+                {new Date(currentPeriodEnd).toLocaleDateString()}.
               </AlertDescription>
             </Alert>
           )}
@@ -197,7 +250,8 @@ export function SubscriptionManager() {
 
           {/* Actions */}
           <div className="flex gap-4">
-            {subscription.planName.includes('Starter') && (
+            {(planName === 'Free' ||
+              planName.toLowerCase().includes('starter')) && (
               <Button onClick={handleUpgrade}>Upgrade to Pro</Button>
             )}
 

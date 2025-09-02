@@ -2,11 +2,12 @@ import { NextRequest, NextResponse } from 'next/server';
 
 import { createRequestLogger } from '@/lib/api-logger';
 
-const XANO_API_BASE = 'https://xnwv-v1z6-dvnr.n7c.xano.io/api:e6emygx3';
+const XANO_API_BASE = 'https://xnwv-v1z6-dvnr.n7c.xano.io/api:Ogyn777x';
 
 export async function POST(request: NextRequest) {
   const logger = createRequestLogger(request, '/api/billing/subscribe');
-  let body: { plan_id?: string; price_id?: string } = {};
+  let body: { price_id?: string; success_url?: string; cancel_url?: string } =
+    {};
 
   try {
     const authToken = request.headers
@@ -17,11 +18,11 @@ export async function POST(request: NextRequest) {
     }
 
     body = await request.json();
-    const { plan_id, price_id } = body;
+    const { price_id, success_url, cancel_url } = body;
 
-    if (!plan_id || !price_id) {
+    if (!price_id) {
       return NextResponse.json(
-        { error: 'Plan ID and Price ID are required' },
+        { error: 'Price ID is required' },
         { status: 400 }
       );
     }
@@ -34,8 +35,10 @@ export async function POST(request: NextRequest) {
         Authorization: `Bearer ${authToken}`,
       },
       body: JSON.stringify({
-        plan_id,
         price_id,
+        success_url:
+          success_url || `${request.headers.get('origin')}/dashboard`,
+        cancel_url: cancel_url || `${request.headers.get('origin')}/pricing`,
       }),
     });
 

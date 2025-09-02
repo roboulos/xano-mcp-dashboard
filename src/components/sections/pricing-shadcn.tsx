@@ -15,18 +15,20 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Switch } from '@/components/ui/switch';
+// import { Switch } from '@/components/ui/switch';
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import { BILLING_CONFIG } from '@/config/billing';
 import { useAuth } from '@/contexts/auth-context';
 import { useToast } from '@/hooks/use-toast';
 
 const PricingShadcn = () => {
-  const [isYearly, setIsYearly] = useState(false);
+  // const [isYearly, setIsYearly] = useState(false);
+  // const isYearly = false; // Keep monthly only
   const [isLoading, setIsLoading] = useState(false);
   const { user } = useAuth();
   const router = useRouter();
@@ -52,35 +54,38 @@ const PricingShadcn = () => {
     // For Pro plan, initiate subscription
     setIsLoading(true);
     try {
-      const response = await fetch('/api/billing/subscribe', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${user.authToken}`,
-        },
-        body: JSON.stringify({
-          plan_id: tier.name.toLowerCase(),
-          price_id: isYearly
-            ? `${tier.name.toLowerCase()}_yearly`
-            : `${tier.name.toLowerCase()}_monthly`,
-        }),
-      });
+      // First check if we need to get the Stripe price ID from the backend
+      const response = await fetch(
+        'https://xnwv-v1z6-dvnr.n7c.xano.io/api:e6emygx3/billing/subscribe',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${user.authToken}`,
+          },
+          body: JSON.stringify({
+            price_id: BILLING_CONFIG.stripe.prices.pro_monthly,
+            success_url: `${window.location.origin}/dashboard?subscription=success`,
+            cancel_url: `${window.location.origin}/pricing?subscription=cancelled`,
+          }),
+        }
+      );
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to create subscription');
+        throw new Error(data.message || 'Failed to create subscription');
       }
 
-      // Redirect to Stripe checkout or payment page
+      // Redirect to Stripe checkout
       if (data.checkout_url) {
         window.location.href = data.checkout_url;
       } else {
         toast({
-          title: 'Subscription created',
-          description: 'Your subscription has been activated.',
+          title: 'Error',
+          description: 'No checkout URL received',
+          variant: 'destructive',
         });
-        router.push('/dashboard');
       }
     } catch (error) {
       toast({
@@ -120,8 +125,8 @@ const PricingShadcn = () => {
     },
     {
       name: 'Pro',
-      price: isYearly ? '$1,990' : '$199',
-      period: isYearly ? '/year' : '/month',
+      price: '$199',
+      period: '/month',
       description: 'For professionals ready to scale',
       features: [
         {
@@ -196,7 +201,8 @@ const PricingShadcn = () => {
             you grow.
           </p>
 
-          <div className="mb-12 flex items-center gap-3">
+          {/* Yearly toggle removed - keeping monthly only */}
+          {/* <div className="mb-12 flex items-center gap-3">
             <span
               className={!isYearly ? 'font-semibold' : 'text-muted-foreground'}
             >
@@ -217,7 +223,7 @@ const PricingShadcn = () => {
                 </span>
               )}
             </span>
-          </div>
+          </div> */}
         </div>
 
         <div className="grid gap-8 lg:grid-cols-3 lg:gap-6">

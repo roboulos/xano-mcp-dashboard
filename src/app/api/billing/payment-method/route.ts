@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 import { createRequestLogger } from '@/lib/api-logger';
 
-const XANO_API_BASE = 'https://xnwv-v1z6-dvnr.n7c.xano.io/api:e6emygx3';
+const XANO_API_BASE = 'https://xnwv-v1z6-dvnr.n7c.xano.io/api:Ogyn777x';
 
 export async function GET(request: NextRequest) {
   const logger = createRequestLogger(request, '/api/billing/payment-method');

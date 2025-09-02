@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 import { createRequestLogger } from '@/lib/api-logger';
 
-const XANO_API_BASE = 'https://xnwv-v1z6-dvnr.n7c.xano.io/api:e6emygx3';
+const XANO_API_BASE = 'https://xnwv-v1z6-dvnr.n7c.xano.io/api:Ogyn777x';
 
 export async function GET(request: NextRequest) {
   const logger = createRequestLogger(request, '/api/billing/subscription');
@@ -67,21 +67,18 @@ export async function PUT(request: NextRequest) {
       );
     }
 
-    // Update subscription via Xano
-    const response = await fetch(
-      `${XANO_API_BASE}/billing/update-subscription`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${authToken}`,
-        },
-        body: JSON.stringify({
-          plan_id,
-          price_id,
-        }),
-      }
-    );
+    // Update subscription via Xano upgrade endpoint
+    const response = await fetch(`${XANO_API_BASE}/billing/upgrade`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${authToken}`,
+      },
+      body: JSON.stringify({
+        new_plan_tier: plan_id,
+        price_id,
+      }),
+    });
 
     const data = await response.json();
 
