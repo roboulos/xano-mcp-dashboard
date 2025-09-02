@@ -2,7 +2,6 @@ import {
   IconApps,
   IconChecklist,
   IconCoin,
-  IconKey,
   IconUser,
 } from '@tabler/icons-react';
 
@@ -36,11 +35,6 @@ const sidebarNavItems = [
     title: 'Connected Apps',
     icon: <IconApps />,
     href: '/dashboard/settings/connected-apps',
-  },
-  {
-    title: 'Universe Credentials',
-    icon: <IconKey />,
-    href: '/dashboard/settings/universe-credentials',
   },
 ].filter(Boolean); // Filter out any undefined items
 
