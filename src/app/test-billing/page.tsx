@@ -1,15 +1,24 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { BILLING_CONFIG } from '@/config/billing';
 import { useAuth } from '@/contexts/auth-context';
 
+interface SubscriptionResponse {
+  checkout_url?: string;
+  message?: string;
+  error?: string;
+  data?: Record<string, unknown>;
+  success?: boolean;
+}
+
 export default function TestBillingPage() {
   const { user } = useAuth();
-  const [subscriptionData, setSubscriptionData] = useState<any>(null);
+  const [subscriptionData, setSubscriptionData] =
+    useState<SubscriptionResponse | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
