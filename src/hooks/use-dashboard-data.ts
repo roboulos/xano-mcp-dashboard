@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 import { useAuth } from '@/contexts/auth-context';
 
@@ -128,38 +128,40 @@ export function useXanoCredentials() {
   const [error, setError] = useState<string | null>(null);
   const { user } = useAuth();
 
+  const fetchCredentials = useCallback(async () => {
+    if (!user) return;
+
+    try {
+      setLoading(true);
+      const response = await fetch('/api/mcp/credentials', {
+        headers: {
+          Authorization: `Bearer ${user.authToken}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch credentials');
+      }
+
+      const result = await response.json();
+      setData(result.items || []);
+      setError(null);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Unknown error');
+      setData([]);
+    } finally {
+      setLoading(false);
+    }
+  }, [user]);
+
   useEffect(() => {
     if (!user) {
       setLoading(false);
       return;
     }
 
-    const fetchCredentials = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch('/api/mcp/credentials', {
-          headers: {
-            Authorization: `Bearer ${user.authToken}`,
-          },
-        });
-
-        if (!response.ok) {
-          throw new Error('Failed to fetch credentials');
-        }
-
-        const result = await response.json();
-        setData(result.items || []);
-        setError(null);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Unknown error');
-        setData([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchCredentials();
-  }, [user]);
+  }, [user, fetchCredentials]);
 
   const createCredential = async (
     credentialName: string,
@@ -185,7 +187,7 @@ export function useXanoCredentials() {
 
     const result = await response.json();
     // Refetch the list
-    window.location.reload();
+    await fetchCredentials();
     return result;
   };
 
@@ -204,7 +206,7 @@ export function useXanoCredentials() {
     }
 
     // Refetch the list
-    window.location.reload();
+    await fetchCredentials();
   };
 
   const validateCredential = async (id: number) => {
@@ -233,7 +235,7 @@ export function useXanoCredentials() {
     createCredential,
     deleteCredential,
     validateCredential,
-    refetch: () => window.location.reload(),
+    refetch: fetchCredentials,
   };
 }
 

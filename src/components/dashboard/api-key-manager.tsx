@@ -23,7 +23,6 @@ import {
   UserIcon,
   MoreHorizontalIcon,
   TrashIcon,
-  RefreshCwIcon,
   X,
   ArrowUpIcon,
   ArrowDownIcon,
@@ -230,7 +229,11 @@ interface ApiKeyManagerProps {
 }
 
 export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
-  const { data: credentials, createCredential } = useXanoCredentials();
+  const {
+    data: credentials,
+    createCredential,
+    deleteCredential,
+  } = useXanoCredentials();
 
   // Transform Xano credentials to match the existing ApiKey interface
   const keys = useMemo(
@@ -255,7 +258,6 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
   );
 
   const [isCreateOpen, setIsCreateOpen] = useState(false);
-  const [regenerateKeyId, setRegenerateKeyId] = useState<string | null>(null);
   const { toast } = useToast();
 
   const [createForm, setCreateForm] = useState({
@@ -281,21 +283,20 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
     });
   };
 
-  const handleRegenerate = async () => {
-    // TODO: Implement actual regenerate functionality with backend
-    toast({
-      title: 'API Key Regenerated',
-      description: 'New key has been generated successfully',
-    });
-  };
-
-  const handleRevoke = async () => {
-    // TODO: Implement actual revoke functionality with backend
-    toast({
-      title: 'API Key Revoked',
-      description: 'The key has been permanently disabled',
-      variant: 'destructive',
-    });
+  const handleRevoke = async (keyId: string) => {
+    try {
+      await deleteCredential(parseInt(keyId));
+      toast({
+        title: 'API Key Deleted',
+        description: 'The key has been permanently removed',
+      });
+    } catch {
+      toast({
+        title: 'Error',
+        description: 'Failed to delete API key',
+        variant: 'destructive',
+      });
+    }
   };
 
   const handleCreateKey = async () => {
@@ -533,19 +534,13 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
               <CopyIcon className="mr-2 h-4 w-4" />
               Copy Key
             </DropdownMenuItem>
-            <DropdownMenuItem
-              onClick={() => setRegenerateKeyId(row.original.id)}
-            >
-              <RefreshCwIcon className="mr-2 h-4 w-4" />
-              Regenerate
-            </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem
               className="text-destructive"
-              onClick={() => handleRevoke()}
+              onClick={() => handleRevoke(row.original.id)}
             >
               <TrashIcon className="mr-2 h-4 w-4" />
-              Revoke
+              Delete Key
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
@@ -891,37 +886,6 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
           </div>
         </div>
       </CardContent>
-
-      {/* Regenerate Key Alert Dialog */}
-      <AlertDialog
-        open={!!regenerateKeyId}
-        onOpenChange={open => !open && setRegenerateKeyId(null)}
-      >
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Regenerate API Key</AlertDialogTitle>
-            <AlertDialogDescription>
-              This will invalidate the current key and create a new one. Any
-              applications using this key will need to be updated.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel onClick={() => setRegenerateKeyId(null)}>
-              Cancel
-            </AlertDialogCancel>
-            <AlertDialogAction
-              onClick={() => {
-                if (regenerateKeyId) {
-                  handleRegenerate();
-                  setRegenerateKeyId(null);
-                }
-              }}
-            >
-              Regenerate Key
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
     </Card>
   );
 }
