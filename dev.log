@@ -2426,3 +2426,164 @@ Require stack:
  ○ Compiling /_not-found ...
  GET / 404 in 1329ms
  ✓ Compiled /_not-found in 1256ms (2758 modules)
+ GET / 200 in 283ms
+ ✓ Compiled in 5.4s (2747 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, lstat '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/api/mcp/credentials/[id]/validate/route.js'
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving '../../../../.next/server/app/api/mcp/credentials/[id]/validate/route' in /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server for build dependencies doesn't lead to expected result '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/api/mcp/credentials/[id]/validate/route.js', but to 'Error: Can't resolve '../../../../.next/server/app/api/mcp/credentials/[id]/validate/route' in '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ../../../../.next/server/app/api/mcp/credentials/[id]/validate/route (expected /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/api/mcp/credentials/[id]/validate/route.js)
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/require.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/require.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/load-components.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/load-components.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/utils.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/utils.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/options.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/options.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+<w>  at resolve commonjs /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving '../../../../.next/server/app/dashboard/settings/billing/page' in /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server for build dependencies doesn't lead to expected result '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/settings/billing/page.js', but to 'Error: Can't resolve '../../../../.next/server/app/dashboard/settings/billing/page' in '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ../../../../.next/server/app/dashboard/settings/billing/page (expected /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/settings/billing/page.js)
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/require.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/require.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/load-components.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/load-components.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/utils.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/utils.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/options.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/options.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+<w>  at resolve commonjs /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+ ✓ Compiled in 1543ms (1422 modules)
+ ✓ Compiled in 727ms (1422 modules)
+ ✓ Compiled in 2.7s (1815 modules)
+ ○ Compiling / ...
+ ✓ Compiled / in 2s (1739 modules)
+ GET / 200 in 2645ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 1482ms (3543 modules)
+ GET /api/placeholder/600/400 404 in 1636ms
+ GET /api/placeholder/40/40 404 in 113ms
+ ○ Compiling /api/auth/me ...
+ ✓ Compiled /api/auth/me in 668ms (1758 modules)
+ GET / 200 in 132ms
+[API Log] /api/auth/me: {
+  requestId: '85ew7',
+  timestamp: '2025-09-02T04:39:21.437Z',
+  endpoint: '/api/auth/me',
+  method: 'GET',
+  url: 'http://localhost:3000/api/auth/me',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    user: {
+      id: '17b6fc02-966c-4642-babe-e8004afffc46',
+      created_at: 1729648277250,
+      name: 'Robert',
+      api_key: 'eyJhbGciOiJSUzI1NiJ9.eyJ4YW5vIjp7ImRibyI6Im1hc3Rlcjp1c2VyIiwiaWQiOjQyODQ0LCJhY2Nlc3NfdG9rZW4iOnsia2V5aWQiOiI0NmVmM2ZiOC05ZWJiLTQwY2UtODNkMy1hYjcyYWQxZGRhZDEiLCJzY29wZSI6eyJ3b3Jrc3BhY2U6YWRkb24iOjE1LCJ3b3Jrc3BhY2U6YXBpIjoxNSwid29ya3NwYWNlOmNvbnRlbnQiOjE1LCJ3b3Jrc3BhY2U6ZGF0YWJhc2UiOjE1LCJ3b3Jrc3BhY2U6ZGF0YXNvdXJjZTpsaXZlIjoxNSwid29ya3NwYWNlOmZpbGUiOjE1LCJ3b3Jrc3BhY2U6ZnVuY3Rpb24iOjE1LCJ3b3Jrc3BhY2U6cmVxdWVzdGhpc3RvcnkiOjE1LCJ3b3Jrc3BhY2U6dGFzayI6MTV9fX0sImlhdCI6MTczODg2ODc3NywibmJmIjoxNzM4ODY4Nzc3LCJhdWQiOiJ4YW5vOm1ldGEifQ.DCfBvtXzoCpTXZ5dYYoGwZtD6nxxUYZaCOXf9NkJv7NEz8SRSwgY33LWsQcXUzyQQOpqi9BJXgKgLBD6VFVPJfHTezkossi6WD5_gEh28l5T7QfbD26I8jqoDIbqeR0L74Y2rLFpBHkGhIw4sUTKk5gb9feBzHVd8HrDjt2q4Qy5C1ROox6Yu57YmSNhzeboO4vooSBrJLhaXsrEEvhKwcs7fW1RG8FRS90CS_-_bGAej_tdXi8TQft2BPmCvwjLoT9BUwGtT9QXAmtrQQaP9WXXFMf2PACP1pBGYpsSrcqcsnYBHRibXzDDoBVt4w3xXUzx7kguNrsIzTmW5aT8pfixV_9hnq_d5LiWe5kRVXyChc91JkSuJ6VE4BslXC1hJ4aw6bDiMAu76hTaxczfLnzUv9h69OWE3G3_eyVPDhaIlCY6HLj7juIqnnt10Nrp5puCcjo5FWvMJnunomMbufvO1xGmqwKwd2LrFYzHeft6Sf-e9WBWIl3Qo7-ZsG9LrDq9zLB9-m8bhkZtqVUxIOJHYGO7FpQnNQsQjwW2fYx1e7w89-0k1nu5VjJ4yHr3FGf7pGgiqyQ6eTB1APA-GfU6etVAMeIdjWUzJ4Tqyemr0_27gUmcZ9Grb3Tu3ssHLH2r-Dv59Ke7_g-WPuQCc6m3gNHcJ5_FQN7um8K5ADw',
+      email: 'robertjboulos@gmail.com'
+    }
+  },
+  duration: 306,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/auth/me 200 in 1143ms
+ GET /api/placeholder/600/400 404 in 218ms
+ GET /api/placeholder/600/400 404 in 31ms
+ ✓ Compiled in 2.5s (1815 modules)
+ GET / 200 in 279ms
+ ✓ Compiled in 4.8s (3563 modules)
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET / 200 in 1738ms
+ GET / 200 in 1829ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 1805ms (3543 modules)
+ GET /api/placeholder/600/400 404 in 1992ms
+ ○ Compiling /api/auth/me ...
+ ✓ Compiled /api/auth/me in 1477ms (3561 modules)
+ GET /api/placeholder/40/40 404 in 1659ms
+[API Log] /api/auth/me: {
+  requestId: 'emwntf',
+  timestamp: '2025-09-02T04:51:17.810Z',
+  endpoint: '/api/auth/me',
+  method: 'GET',
+  url: 'http://localhost:3000/api/auth/me',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    user: {
+      id: '17b6fc02-966c-4642-babe-e8004afffc46',
+      created_at: 1729648277250,
+      name: 'Robert',
+      api_key: 'eyJhbGciOiJSUzI1NiJ9.eyJ4YW5vIjp7ImRibyI6Im1hc3Rlcjp1c2VyIiwiaWQiOjQyODQ0LCJhY2Nlc3NfdG9rZW4iOnsia2V5aWQiOiI0NmVmM2ZiOC05ZWJiLTQwY2UtODNkMy1hYjcyYWQxZGRhZDEiLCJzY29wZSI6eyJ3b3Jrc3BhY2U6YWRkb24iOjE1LCJ3b3Jrc3BhY2U6YXBpIjoxNSwid29ya3NwYWNlOmNvbnRlbnQiOjE1LCJ3b3Jrc3BhY2U6ZGF0YWJhc2UiOjE1LCJ3b3Jrc3BhY2U6ZGF0YXNvdXJjZTpsaXZlIjoxNSwid29ya3NwYWNlOmZpbGUiOjE1LCJ3b3Jrc3BhY2U6ZnVuY3Rpb24iOjE1LCJ3b3Jrc3BhY2U6cmVxdWVzdGhpc3RvcnkiOjE1LCJ3b3Jrc3BhY2U6dGFzayI6MTV9fX0sImlhdCI6MTczODg2ODc3NywibmJmIjoxNzM4ODY4Nzc3LCJhdWQiOiJ4YW5vOm1ldGEifQ.DCfBvtXzoCpTXZ5dYYoGwZtD6nxxUYZaCOXf9NkJv7NEz8SRSwgY33LWsQcXUzyQQOpqi9BJXgKgLBD6VFVPJfHTezkossi6WD5_gEh28l5T7QfbD26I8jqoDIbqeR0L74Y2rLFpBHkGhIw4sUTKk5gb9feBzHVd8HrDjt2q4Qy5C1ROox6Yu57YmSNhzeboO4vooSBrJLhaXsrEEvhKwcs7fW1RG8FRS90CS_-_bGAej_tdXi8TQft2BPmCvwjLoT9BUwGtT9QXAmtrQQaP9WXXFMf2PACP1pBGYpsSrcqcsnYBHRibXzDDoBVt4w3xXUzx7kguNrsIzTmW5aT8pfixV_9hnq_d5LiWe5kRVXyChc91JkSuJ6VE4BslXC1hJ4aw6bDiMAu76hTaxczfLnzUv9h69OWE3G3_eyVPDhaIlCY6HLj7juIqnnt10Nrp5puCcjo5FWvMJnunomMbufvO1xGmqwKwd2LrFYzHeft6Sf-e9WBWIl3Qo7-ZsG9LrDq9zLB9-m8bhkZtqVUxIOJHYGO7FpQnNQsQjwW2fYx1e7w89-0k1nu5VjJ4yHr3FGf7pGgiqyQ6eTB1APA-GfU6etVAMeIdjWUzJ4Tqyemr0_27gUmcZ9Grb3Tu3ssHLH2r-Dv59Ke7_g-WPuQCc6m3gNHcJ5_FQN7um8K5ADw',
+      email: 'robertjboulos@gmail.com'
+    }
+  },
+  duration: 248,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/auth/me 200 in 1962ms
+ ✓ Compiled in 1113ms (1817 modules)
+ GET / 200 in 134ms
+ GET /api/placeholder/600/400 404 in 95ms
+ GET /api/placeholder/600/400 404 in 26ms
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving '../../../../.next/server/app/api/mcp/credentials/[id]/validate/route' in /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server for build dependencies doesn't lead to expected result '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/api/mcp/credentials/[id]/validate/route.js', but to 'Error: Can't resolve '../../../../.next/server/app/api/mcp/credentials/[id]/validate/route' in '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ../../../../.next/server/app/api/mcp/credentials/[id]/validate/route (expected /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/api/mcp/credentials/[id]/validate/route.js)
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/require.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/require.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/load-components.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/load-components.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/utils.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/utils.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/options.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/options.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+<w>  at resolve commonjs /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, lstat '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/api/mcp/credentials/[id]/validate/route.js'
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving '../../../../.next/server/app/dashboard/settings/billing/page' in /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server for build dependencies doesn't lead to expected result '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/settings/billing/page.js', but to 'Error: Can't resolve '../../../../.next/server/app/dashboard/settings/billing/page' in '/Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ../../../../.next/server/app/dashboard/settings/billing/page (expected /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/.next/server/app/dashboard/settings/billing/page.js)
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/require.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/require.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/load-components.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/server/load-components.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/utils.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/utils.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/options.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/swc/options.js
+<w>  at file dependencies /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+<w>  at file /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+<w>  at resolve commonjs /Users/sboulos/Desktop/ai_projects/xano-mcp-dashboard/node_modules/next/dist/build/webpack/loaders/next-swc-loader.js
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ✓ Compiled in 9.9s (3556 modules)
+ GET / 200 in 3816ms
+ GET /api/placeholder/40/40 404 in 89ms
+[API Log] /api/auth/me: {
+  requestId: 'pzlq',
+  timestamp: '2025-09-02T04:52:22.072Z',
+  endpoint: '/api/auth/me',
+  method: 'GET',
+  url: 'http://localhost:3000/api/auth/me',
+  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+  ip: '::1',
+  body: {},
+  response: {
+    user: {
+      id: '17b6fc02-966c-4642-babe-e8004afffc46',
+      created_at: 1729648277250,
+      name: 'Robert',
+      api_key: 'eyJhbGciOiJSUzI1NiJ9.eyJ4YW5vIjp7ImRibyI6Im1hc3Rlcjp1c2VyIiwiaWQiOjQyODQ0LCJhY2Nlc3NfdG9rZW4iOnsia2V5aWQiOiI0NmVmM2ZiOC05ZWJiLTQwY2UtODNkMy1hYjcyYWQxZGRhZDEiLCJzY29wZSI6eyJ3b3Jrc3BhY2U6YWRkb24iOjE1LCJ3b3Jrc3BhY2U6YXBpIjoxNSwid29ya3NwYWNlOmNvbnRlbnQiOjE1LCJ3b3Jrc3BhY2U6ZGF0YWJhc2UiOjE1LCJ3b3Jrc3BhY2U6ZGF0YXNvdXJjZTpsaXZlIjoxNSwid29ya3NwYWNlOmZpbGUiOjE1LCJ3b3Jrc3BhY2U6ZnVuY3Rpb24iOjE1LCJ3b3Jrc3BhY2U6cmVxdWVzdGhpc3RvcnkiOjE1LCJ3b3Jrc3BhY2U6dGFzayI6MTV9fX0sImlhdCI6MTczODg2ODc3NywibmJmIjoxNzM4ODY4Nzc3LCJhdWQiOiJ4YW5vOm1ldGEifQ.DCfBvtXzoCpTXZ5dYYoGwZtD6nxxUYZaCOXf9NkJv7NEz8SRSwgY33LWsQcXUzyQQOpqi9BJXgKgLBD6VFVPJfHTezkossi6WD5_gEh28l5T7QfbD26I8jqoDIbqeR0L74Y2rLFpBHkGhIw4sUTKk5gb9feBzHVd8HrDjt2q4Qy5C1ROox6Yu57YmSNhzeboO4vooSBrJLhaXsrEEvhKwcs7fW1RG8FRS90CS_-_bGAej_tdXi8TQft2BPmCvwjLoT9BUwGtT9QXAmtrQQaP9WXXFMf2PACP1pBGYpsSrcqcsnYBHRibXzDDoBVt4w3xXUzx7kguNrsIzTmW5aT8pfixV_9hnq_d5LiWe5kRVXyChc91JkSuJ6VE4BslXC1hJ4aw6bDiMAu76hTaxczfLnzUv9h69OWE3G3_eyVPDhaIlCY6HLj7juIqnnt10Nrp5puCcjo5FWvMJnunomMbufvO1xGmqwKwd2LrFYzHeft6Sf-e9WBWIl3Qo7-ZsG9LrDq9zLB9-m8bhkZtqVUxIOJHYGO7FpQnNQsQjwW2fYx1e7w89-0k1nu5VjJ4yHr3FGf7pGgiqyQ6eTB1APA-GfU6etVAMeIdjWUzJ4Tqyemr0_27gUmcZ9Grb3Tu3ssHLH2r-Dv59Ke7_g-WPuQCc6m3gNHcJ5_FQN7um8K5ADw',
+      email: 'robertjboulos@gmail.com'
+    }
+  },
+  duration: 222,
+  error: undefined,
+  status: 'success'
+}
+ GET /api/auth/me 200 in 312ms
+[?25h
