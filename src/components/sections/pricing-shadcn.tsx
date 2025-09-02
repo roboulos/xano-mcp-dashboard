@@ -56,7 +56,7 @@ const PricingShadcn = () => {
     try {
       // First check if we need to get the Stripe price ID from the backend
       const response = await fetch(
-        'https://xnwv-v1z6-dvnr.n7c.xano.io/api:e6emygx3/billing/subscribe',
+        'https://xnwv-v1z6-dvnr.n7c.xano.io/api:Ogyn777x/billing/subscribe',
         {
           method: 'POST',
           headers: {
