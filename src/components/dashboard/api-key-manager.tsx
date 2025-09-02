@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 
 import {
   ColumnDef,
@@ -233,24 +233,29 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
   const { data: credentials, createCredential } = useXanoCredentials();
 
   // Transform Xano credentials to match the existing ApiKey interface
-  const keys =
-    credentials?.map(cred => ({
-      id: cred.id.toString(),
-      name: cred.credential_name,
-      description: `Xano credential for ${cred.xano_instance_name || 'instance'}`,
-      key: `xano_${cred.credential_name.toLowerCase()}_****`,
-      assignedTo: undefined,
-      assignedUserName: cred.xano_instance_email || undefined,
-      createdAt: new Date(cred.created_at),
-      lastUsed: cred.last_validated ? new Date(cred.last_validated) : undefined,
-      usageCount: 0, // Default usage count
-      status: cred.is_active ? ('active' as const) : ('revoked' as const),
-      scopes: cred.is_active ? ['read', 'write'] : ['read'],
-      expiresAt: undefined, // Xano keys don't expire
-    })) || [];
+  const keys = useMemo(
+    () =>
+      credentials?.map(cred => ({
+        id: cred.id.toString(),
+        name: cred.credential_name,
+        description: `Xano credential for ${cred.xano_instance_name || 'instance'}`,
+        key: `xano_${cred.credential_name.toLowerCase()}_****`,
+        assignedTo: undefined,
+        assignedUserName: cred.xano_instance_email || undefined,
+        createdAt: new Date(cred.created_at),
+        lastUsed: cred.last_validated
+          ? new Date(cred.last_validated)
+          : undefined,
+        usageCount: 0, // Default usage count
+        status: cred.is_active ? ('active' as const) : ('revoked' as const),
+        scopes: cred.is_active ? ['read', 'write'] : ['read'],
+        expiresAt: undefined, // Xano keys don't expire
+      })) || [],
+    [credentials]
+  );
 
-  const [, setKeys] = useState(keys);
   const [isCreateOpen, setIsCreateOpen] = useState(false);
+  const [regenerateKeyId, setRegenerateKeyId] = useState<string | null>(null);
   const { toast } = useToast();
 
   const [createForm, setCreateForm] = useState({
@@ -276,23 +281,16 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
     });
   };
 
-  const handleRegenerate = async (keyId: string) => {
-    const newKey = `xano_prod_${Math.random().toString(36).substr(2, 16)}...`;
-    setKeys(prev =>
-      prev.map(key => (key.id === keyId ? { ...key, key: newKey } : key))
-    );
+  const handleRegenerate = async () => {
+    // TODO: Implement actual regenerate functionality with backend
     toast({
       title: 'API Key Regenerated',
       description: 'New key has been generated successfully',
     });
   };
 
-  const handleRevoke = async (keyId: string) => {
-    setKeys(prev =>
-      prev.map(key =>
-        key.id === keyId ? { ...key, status: 'revoked' as const } : key
-      )
-    );
+  const handleRevoke = async () => {
+    // TODO: Implement actual revoke functionality with backend
     toast({
       title: 'API Key Revoked',
       description: 'The key has been permanently disabled',
@@ -535,36 +533,16 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
               <CopyIcon className="mr-2 h-4 w-4" />
               Copy Key
             </DropdownMenuItem>
-            <AlertDialog>
-              <AlertDialogTrigger asChild>
-                <DropdownMenuItem onSelect={e => e.preventDefault()}>
-                  <RefreshCwIcon className="mr-2 h-4 w-4" />
-                  Regenerate
-                </DropdownMenuItem>
-              </AlertDialogTrigger>
-              <AlertDialogContent>
-                <AlertDialogHeader>
-                  <AlertDialogTitle>Regenerate API Key</AlertDialogTitle>
-                  <AlertDialogDescription>
-                    This will invalidate the current key "{row.original.name}"
-                    and create a new one. Any applications using this key will
-                    need to be updated.
-                  </AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                  <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction
-                    onClick={() => handleRegenerate(row.original.id)}
-                  >
-                    Regenerate Key
-                  </AlertDialogAction>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
+            <DropdownMenuItem
+              onClick={() => setRegenerateKeyId(row.original.id)}
+            >
+              <RefreshCwIcon className="mr-2 h-4 w-4" />
+              Regenerate
+            </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem
               className="text-destructive"
-              onClick={() => handleRevoke(row.original.id)}
+              onClick={() => handleRevoke()}
             >
               <TrashIcon className="mr-2 h-4 w-4" />
               Revoke
@@ -913,6 +891,37 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
           </div>
         </div>
       </CardContent>
+
+      {/* Regenerate Key Alert Dialog */}
+      <AlertDialog
+        open={!!regenerateKeyId}
+        onOpenChange={open => !open && setRegenerateKeyId(null)}
+      >
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Regenerate API Key</AlertDialogTitle>
+            <AlertDialogDescription>
+              This will invalidate the current key and create a new one. Any
+              applications using this key will need to be updated.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel onClick={() => setRegenerateKeyId(null)}>
+              Cancel
+            </AlertDialogCancel>
+            <AlertDialogAction
+              onClick={() => {
+                if (regenerateKeyId) {
+                  handleRegenerate();
+                  setRegenerateKeyId(null);
+                }
+              }}
+            >
+              Regenerate Key
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </Card>
   );
 }
