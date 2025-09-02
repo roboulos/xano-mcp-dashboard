@@ -2,7 +2,13 @@
 
 import { useState } from 'react';
 
-import { LayoutDashboard, Users, Key, BarChart3, Activity } from 'lucide-react';
+import {
+  LayoutDashboard,
+  Users,
+  Key,
+  ShieldIcon,
+  Activity,
+} from 'lucide-react';
 
 import APIKeyManager from '@/components/dashboard/api-key-manager';
 import ContextualActivityFeed from '@/components/dashboard/contextual-activity-feed';
@@ -70,8 +76,8 @@ export default function DashboardPage() {
               value="analytics"
               className="data-[state=active]:bg-background gap-2 transition-colors data-[state=active]:shadow-sm"
             >
-              <BarChart3 className="h-4 w-4" />
-              <span className="hidden sm:inline">Analytics</span>
+              <ShieldIcon className="h-4 w-4" />
+              <span className="hidden sm:inline">Security</span>
             </TabsTrigger>
             <TabsTrigger
               value="activity"

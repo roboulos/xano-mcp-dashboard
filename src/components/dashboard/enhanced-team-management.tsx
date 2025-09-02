@@ -25,7 +25,6 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
@@ -49,12 +48,6 @@ import {
 } from '@/components/ui/select';
 import { Switch } from '@/components/ui/switch';
 import { Textarea } from '@/components/ui/textarea';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
 import { useAuth } from '@/contexts/auth-context';
 import { useDashboardMetrics } from '@/hooks/use-dashboard-data';
 import { cn } from '@/lib/utils';
@@ -63,7 +56,6 @@ interface TeamMember {
   id: string;
   name: string;
   email: string;
-  avatar?: string;
   status: 'active' | 'suspended' | 'pending';
   isOnline: boolean;
   apiKey: string;
@@ -90,7 +82,6 @@ export default function EnhancedTeamManagement({
     id: user?.id?.toString() || '1',
     name: user?.name || 'Current User',
     email: user?.email || 'user@example.com',
-    avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${user?.name || 'User'}`,
     status: 'active',
     isOnline: true,
     apiKey: 'xano_key_current_****',
@@ -111,7 +102,6 @@ export default function EnhancedTeamManagement({
         id: user.id?.toString() || '1',
         name: user.name || 'Current User',
         email: user.email || 'user@example.com',
-        avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${user.name || 'User'}`,
         status: 'active',
         isOnline: true,
         apiKey: 'xano_key_current_****',
@@ -216,8 +206,6 @@ export default function EnhancedTeamManagement({
 
   const activeMembers = members.filter(m => m.status === 'active').length;
   const totalCalls = members.reduce((sum, m) => sum + m.callsToday, 0);
-  const avgSuccessRate =
-    members.reduce((sum, m) => sum + m.successRate, 0) / members.length;
 
   return (
     <div className={className}>
@@ -329,38 +317,6 @@ export default function EnhancedTeamManagement({
         </div>
       </div>
 
-      {/* Quick Stats */}
-      <div className="mb-6 grid grid-cols-4 gap-4">
-        <Card>
-          <CardContent className="pt-6">
-            <div className="text-2xl font-bold">{members.length}</div>
-            <p className="text-muted-foreground text-xs">Total Members</p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardContent className="pt-6">
-            <div className="text-2xl font-bold text-emerald-600">
-              {activeMembers}
-            </div>
-            <p className="text-muted-foreground text-xs">Active</p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardContent className="pt-6">
-            <div className="text-2xl font-bold">{totalCalls}</div>
-            <p className="text-muted-foreground text-xs">API Calls Today</p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardContent className="pt-6">
-            <div className="text-2xl font-bold">
-              {avgSuccessRate.toFixed(1)}%
-            </div>
-            <p className="text-muted-foreground text-xs">Avg Success Rate</p>
-          </CardContent>
-        </Card>
-      </div>
-
       {/* Filter Tabs */}
       <div className="mb-6 flex gap-2">
         {['all', 'active', 'suspended', 'pending'].map(filter => (
@@ -391,48 +347,11 @@ export default function EnhancedTeamManagement({
           >
             <CardHeader className="pb-3">
               <div className="flex items-start justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="relative">
-                    <Avatar className="h-10 w-10">
-                      <AvatarImage src={member.avatar} alt={member.name} />
-                      <AvatarFallback>
-                        {member.name
-                          .split(' ')
-                          .map(n => n[0])
-                          .join('')
-                          .toUpperCase()}
-                      </AvatarFallback>
-                    </Avatar>
-                    <TooltipProvider>
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <div
-                            className={cn(
-                              'border-background absolute -right-1 -bottom-1 h-3 w-3 rounded-full border-2',
-                              member.isOnline && member.status === 'active'
-                                ? 'bg-green-500'
-                                : member.status === 'pending'
-                                  ? 'bg-yellow-500'
-                                  : 'bg-gray-400'
-                            )}
-                          />
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          {member.isOnline && member.status === 'active'
-                            ? 'Online'
-                            : member.status === 'pending'
-                              ? 'Pending activation'
-                              : 'Offline'}
-                        </TooltipContent>
-                      </Tooltip>
-                    </TooltipProvider>
-                  </div>
-                  <div>
-                    <h4 className="font-medium">{member.name}</h4>
-                    <p className="text-muted-foreground text-sm">
-                      {member.email}
-                    </p>
-                  </div>
+                <div>
+                  <h4 className="font-medium">{member.name}</h4>
+                  <p className="text-muted-foreground text-sm">
+                    {member.email}
+                  </p>
                 </div>
                 <Badge
                   variant={member.role === 'admin' ? 'default' : 'outline'}

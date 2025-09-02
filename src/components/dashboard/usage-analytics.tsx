@@ -3,25 +3,15 @@
 import { useState } from 'react';
 
 import {
-  TrendingUpIcon,
+  MapPinIcon,
   UsersIcon,
-  ActivityIcon,
-  BarChartIcon,
-  CalendarIcon,
+  ShieldAlertIcon,
+  GlobeIcon,
   DownloadIcon,
+  AlertTriangleIcon,
 } from 'lucide-react';
-import {
-  Area,
-  AreaChart,
-  Bar,
-  BarChart,
-  CartesianGrid,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from 'recharts';
 
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import {
@@ -32,11 +22,6 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from '@/components/ui/chart';
-import {
   Select,
   SelectContent,
   SelectItem,
@@ -46,523 +31,339 @@ import {
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 
-// Mock usage data
-const dailyUsageData = [
-  { date: '2024-01-01', calls: 145, users: 12, errors: 3 },
-  { date: '2024-01-02', calls: 234, users: 18, errors: 1 },
-  { date: '2024-01-03', calls: 189, users: 15, errors: 5 },
-  { date: '2024-01-04', calls: 312, users: 22, errors: 2 },
-  { date: '2024-01-05', calls: 278, users: 19, errors: 4 },
-  { date: '2024-01-06', calls: 401, users: 28, errors: 1 },
-  { date: '2024-01-07', calls: 356, users: 25, errors: 3 },
-];
-
-const userUsageData = [
+// Mock login location data
+const loginLocations = [
   {
+    id: '1',
     user: 'Sarah Johnson',
-    calls: 1247,
-    percentage: 35,
-    color: 'hsl(var(--chart-1))',
+    email: 'sarah@example.com',
+    location: 'New York, USA',
+    country: 'US',
+    lat: 40.7128,
+    lng: -74.006,
+    lastLogin: new Date('2024-01-07T14:23:00'),
+    ipAddress: '192.168.1.101',
+    device: 'Chrome on MacOS',
+    logins: 23,
   },
   {
+    id: '2',
     user: 'Michael Chen',
-    calls: 934,
-    percentage: 26,
-    color: 'hsl(var(--chart-2))',
+    email: 'michael@example.com',
+    location: 'San Francisco, USA',
+    country: 'US',
+    lat: 37.7749,
+    lng: -122.4194,
+    lastLogin: new Date('2024-01-07T12:45:00'),
+    ipAddress: '192.168.1.102',
+    device: 'Safari on MacOS',
+    logins: 45,
   },
   {
+    id: '3',
     user: 'Emily Rodriguez',
-    calls: 456,
-    percentage: 13,
-    color: 'hsl(var(--chart-3))',
+    email: 'emily@example.com',
+    location: 'London, UK',
+    country: 'GB',
+    lat: 51.5074,
+    lng: -0.1278,
+    lastLogin: new Date('2024-01-07T09:15:00'),
+    ipAddress: '192.168.1.103',
+    device: 'Firefox on Windows',
+    logins: 12,
   },
   {
+    id: '4',
     user: 'David Park',
-    calls: 123,
-    percentage: 3,
-    color: 'hsl(var(--chart-4))',
+    email: 'david@example.com',
+    location: 'Seoul, South Korea',
+    country: 'KR',
+    lat: 37.5665,
+    lng: 126.978,
+    lastLogin: new Date('2024-01-07T18:30:00'),
+    ipAddress: '192.168.1.104',
+    device: 'Edge on Windows',
+    logins: 8,
   },
-  { user: 'Others', calls: 823, percentage: 23, color: 'hsl(var(--chart-5))' },
 ];
 
-const endpointUsageData = [
-  { endpoint: '/api/users', calls: 456, avgTime: 127 },
-  { endpoint: '/api/projects', calls: 234, avgTime: 89 },
-  { endpoint: '/api/analytics', calls: 189, avgTime: 245 },
-  { endpoint: '/api/auth', calls: 167, avgTime: 45 },
-  { endpoint: '/api/files', calls: 134, avgTime: 156 },
-  { endpoint: '/api/notifications', calls: 89, avgTime: 67 },
-];
+// Check for suspicious logins (multiple locations for same user)
+const checkSuspiciousLogins = () => {
+  const userLocations = loginLocations.reduce(
+    (acc, login) => {
+      if (!acc[login.email]) acc[login.email] = [];
+      acc[login.email].push(login.location);
+      return acc;
+    },
+    {} as Record<string, string[]>
+  );
 
-const peakHoursData = [
-  { hour: '00', calls: 12 },
-  { hour: '01', calls: 8 },
-  { hour: '02', calls: 5 },
-  { hour: '03', calls: 3 },
-  { hour: '04', calls: 7 },
-  { hour: '05', calls: 15 },
-  { hour: '06', calls: 32 },
-  { hour: '07', calls: 45 },
-  { hour: '08', calls: 78 },
-  { hour: '09', calls: 123 },
-  { hour: '10', calls: 167 },
-  { hour: '11', calls: 145 },
-  { hour: '12', calls: 134 },
-  { hour: '13', calls: 156 },
-  { hour: '14', calls: 189 },
-  { hour: '15', calls: 198 },
-  { hour: '16', calls: 167 },
-  { hour: '17', calls: 145 },
-  { hour: '18', calls: 89 },
-  { hour: '19', calls: 67 },
-  { hour: '20', calls: 45 },
-  { hour: '21', calls: 34 },
-  { hour: '22', calls: 23 },
-  { hour: '23', calls: 16 },
-];
+  const suspicious = Object.entries(userLocations)
+    .filter(([, locations]) => new Set(locations).size > 1)
+    .map(([email]) => email);
+
+  return suspicious;
+};
 
 interface UsageAnalyticsProps {
   className?: string;
 }
 
 export default function UsageAnalytics({ className }: UsageAnalyticsProps) {
-  const [timeRange, setTimeRange] = useState<'24h' | '7d' | '30d' | '90d'>(
-    '7d'
-  );
-  const [selectedMetric, setSelectedMetric] = useState<
-    'calls' | 'users' | 'errors'
-  >('calls');
+  const [timeRange, setTimeRange] = useState('24h');
   const { toast } = useToast();
+  const suspiciousUsers = checkSuspiciousLogins();
 
-  const handleExportData = () => {
-    const headers = ['Date', 'API Calls', 'Active Users', 'Errors'];
-    const rows = dailyUsageData.map(d => [d.date, d.calls, d.users, d.errors]);
-    const csv = [headers, ...rows].map(row => row.join(',')).join('\n');
-
-    const blob = new Blob([csv], { type: 'text/csv' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `usage-analytics-${timeRange}-${new Date().toISOString().split('T')[0]}.csv`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-
+  const handleExport = () => {
     toast({
-      title: 'Data exported successfully',
-      description: `Usage analytics for ${timeRange} has been downloaded.`,
+      title: 'Exporting login data',
+      description: 'Your login location report is being generated...',
     });
   };
 
-  const totalCalls = dailyUsageData.reduce((sum, day) => sum + day.calls, 0);
-  const totalUsers = Math.max(...dailyUsageData.map(day => day.users));
-  const totalErrors = dailyUsageData.reduce((sum, day) => sum + day.errors, 0);
-  const errorRate = ((totalErrors / totalCalls) * 100).toFixed(2);
-
-  const avgResponseTime =
-    endpointUsageData.reduce((sum, endpoint) => sum + endpoint.avgTime, 0) /
-    endpointUsageData.length;
-  const mostActiveHour = peakHoursData.reduce((max, hour) =>
-    hour.calls > max.calls ? hour : max
-  );
-
   return (
-    <Card className={className}>
-      <CardHeader>
-        <div className="flex items-start justify-between">
-          <div className="space-y-1">
-            <CardTitle className="flex items-center gap-2 text-xl font-bold">
-              <BarChartIcon className="h-5 w-5" />
-              Usage Analytics
-            </CardTitle>
-            <CardDescription>
-              User-focused metrics and performance insights
-            </CardDescription>
-          </div>
-          <div className="flex items-center gap-2">
-            <Select
-              value={timeRange}
-              onValueChange={(value: string) =>
-                setTimeRange(value as '24h' | '7d' | '30d' | '90d')
-              }
-            >
-              <SelectTrigger className="w-24">
-                <CalendarIcon className="mr-1 h-4 w-4" />
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="24h">24h</SelectItem>
-                <SelectItem value="7d">7d</SelectItem>
-                <SelectItem value="30d">30d</SelectItem>
-                <SelectItem value="90d">90d</SelectItem>
-              </SelectContent>
-            </Select>
-            <Button size="sm" variant="outline" onClick={handleExportData}>
-              <DownloadIcon className="mr-1 h-4 w-4" />
-              Export
-            </Button>
-          </div>
+    <div className={cn('space-y-6', className)}>
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <div>
+          <h2 className="text-2xl font-bold tracking-tight">Login Security</h2>
+          <p className="text-muted-foreground">
+            Monitor team login locations and detect suspicious activity
+          </p>
         </div>
-      </CardHeader>
-
-      <CardContent className="space-y-6">
-        {/* Key Metrics */}
-        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-          <Card className="ring-border shadow-sm ring-1">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-muted-foreground flex items-center gap-2 text-sm font-medium">
-                <ActivityIcon className="h-4 w-4 text-blue-600" />
-                Total API Calls
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex items-baseline gap-2">
-                <p className="text-3xl font-bold tracking-tight">
-                  {totalCalls.toLocaleString()}
-                </p>
-                <span className="flex items-center gap-1 text-sm font-medium text-green-600">
-                  <TrendingUpIcon className="h-4 w-4" />
-                  +12.5%
-                </span>
-              </div>
-              <p className="text-muted-foreground mt-1 text-xs">
-                +234 from last period
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="ring-border shadow-sm ring-1">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-muted-foreground flex items-center gap-2 text-sm font-medium">
-                <UsersIcon className="h-4 w-4 text-emerald-600" />
-                Active Users
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex items-baseline gap-2">
-                <p className="text-3xl font-bold tracking-tight">
-                  {totalUsers}
-                </p>
-                <span className="flex items-center gap-1 text-sm font-medium text-green-600">
-                  <TrendingUpIcon className="h-4 w-4" />
-                  +8.3%
-                </span>
-              </div>
-              <p className="text-muted-foreground mt-1 text-xs">
-                +4 from last period
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="ring-border shadow-sm ring-1">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-muted-foreground flex items-center gap-2 text-sm font-medium">
-                <BarChartIcon className="h-4 w-4 text-orange-600" />
-                Error Rate
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex items-baseline gap-2">
-                <p className="text-3xl font-bold tracking-tight">
-                  {errorRate}%
-                </p>
-                <span className="flex items-center gap-1 text-sm font-medium text-emerald-600">
-                  <TrendingUpIcon className="h-4 w-4 rotate-180" />
-                  -2.1%
-                </span>
-              </div>
-              <p className="text-muted-foreground mt-1 text-xs">
-                Improved from last period
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="ring-border shadow-sm ring-1">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-muted-foreground flex items-center gap-2 text-sm font-medium">
-                <ActivityIcon className="h-4 w-4 text-purple-600" />
-                Avg Response
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex items-baseline gap-2">
-                <p className="text-3xl font-bold tracking-tight">
-                  {avgResponseTime.toFixed(0)}ms
-                </p>
-                <span className="flex items-center gap-1 text-sm font-medium text-emerald-600">
-                  <TrendingUpIcon className="h-4 w-4 rotate-180" />
-                  -5.2%
-                </span>
-              </div>
-              <p className="text-muted-foreground mt-1 text-xs">
-                Faster than last period
-              </p>
-            </CardContent>
-          </Card>
+        <div className="flex items-center gap-2">
+          <Select value={timeRange} onValueChange={setTimeRange}>
+            <SelectTrigger className="w-32">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="24h">Last 24h</SelectItem>
+              <SelectItem value="7d">Last 7 days</SelectItem>
+              <SelectItem value="30d">Last 30 days</SelectItem>
+              <SelectItem value="90d">Last 90 days</SelectItem>
+            </SelectContent>
+          </Select>
+          <Button
+            variant="outline"
+            className="flex items-center gap-2"
+            onClick={handleExport}
+          >
+            <DownloadIcon className="h-4 w-4" />
+            Export
+          </Button>
         </div>
+      </div>
 
-        {/* Usage Trend Chart */}
+      {/* Security Alert */}
+      {suspiciousUsers.length > 0 && (
+        <Alert variant="destructive">
+          <AlertTriangleIcon className="h-4 w-4" />
+          <AlertTitle>Security Alert</AlertTitle>
+          <AlertDescription>
+            {suspiciousUsers.length} user(s) have logged in from multiple
+            locations. This could indicate account sharing or compromised
+            credentials.
+          </AlertDescription>
+        </Alert>
+      )}
+
+      {/* Summary Cards */}
+      <div className="grid gap-4 md:grid-cols-4">
         <Card>
-          <CardHeader>
-            <div className="flex items-center justify-between">
-              <CardTitle className="text-lg">Usage Trends</CardTitle>
-              <Select
-                value={selectedMetric}
-                onValueChange={(value: string) =>
-                  setSelectedMetric(value as 'users' | 'calls' | 'errors')
-                }
-              >
-                <SelectTrigger className="w-32">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="calls">API Calls</SelectItem>
-                  <SelectItem value="users">Active Users</SelectItem>
-                  <SelectItem value="errors">Error Count</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Total Logins</CardTitle>
+            <UsersIcon className="text-muted-foreground h-4 w-4" />
           </CardHeader>
           <CardContent>
-            <ChartContainer
-              config={{
-                [selectedMetric]: {
-                  label:
-                    selectedMetric === 'calls'
-                      ? 'API Calls'
-                      : selectedMetric === 'users'
-                        ? 'Users'
-                        : 'Errors',
-                  color:
-                    selectedMetric === 'calls'
-                      ? 'hsl(var(--chart-1))'
-                      : selectedMetric === 'users'
-                        ? 'hsl(var(--chart-2))'
-                        : 'hsl(var(--chart-3))',
-                },
-              }}
-              className="h-[200px]"
-            >
-              <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={dailyUsageData}>
-                  <defs>
-                    <linearGradient
-                      id="areaGradient"
-                      x1="0"
-                      y1="0"
-                      x2="0"
-                      y2="1"
-                    >
-                      <stop
-                        offset="5%"
-                        stopColor={`hsl(var(--chart-${selectedMetric === 'calls' ? '1' : selectedMetric === 'users' ? '2' : '3'}))`}
-                        stopOpacity={0.3}
-                      />
-                      <stop
-                        offset="95%"
-                        stopColor={`hsl(var(--chart-${selectedMetric === 'calls' ? '1' : selectedMetric === 'users' ? '2' : '3'}))`}
-                        stopOpacity={0}
-                      />
-                    </linearGradient>
-                  </defs>
-                  <CartesianGrid
-                    strokeDasharray="3 3"
-                    stroke="hsl(var(--border))"
-                    opacity={0.3}
-                  />
-                  <XAxis
-                    dataKey="date"
-                    tickFormatter={value =>
-                      new Date(value).toLocaleDateString('en-US', {
-                        month: 'short',
-                        day: 'numeric',
-                      })
-                    }
-                    tickLine={false}
-                    axisLine={{ stroke: 'hsl(var(--border))' }}
-                  />
-                  <YAxis
-                    tickLine={false}
-                    axisLine={{ stroke: 'hsl(var(--border))' }}
-                  />
-                  <Tooltip
-                    contentStyle={{
-                      backgroundColor: 'hsl(var(--popover))',
-                      border: '1px solid hsl(var(--border))',
-                      borderRadius: 'var(--radius)',
-                    }}
-                  />
-                  <Area
-                    type="monotone"
-                    dataKey={selectedMetric}
-                    stroke={`hsl(var(--chart-${selectedMetric === 'calls' ? '1' : selectedMetric === 'users' ? '2' : '3'}))`}
-                    strokeWidth={2}
-                    fill="url(#areaGradient)"
-                  />
-                </AreaChart>
-              </ResponsiveContainer>
-            </ChartContainer>
+            <div className="text-2xl font-bold">
+              {loginLocations.reduce((sum, l) => sum + l.logins, 0)}
+            </div>
+            <p className="text-muted-foreground text-xs">
+              Across {loginLocations.length} users
+            </p>
           </CardContent>
         </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Countries</CardTitle>
+            <GlobeIcon className="text-muted-foreground h-4 w-4" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">
+              {new Set(loginLocations.map(l => l.country)).size}
+            </div>
+            <p className="text-muted-foreground text-xs">Unique locations</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Active Now</CardTitle>
+            <MapPinIcon className="text-muted-foreground h-4 w-4" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">
+              {
+                loginLocations.filter(
+                  l => Date.now() - l.lastLogin.getTime() < 30 * 60 * 1000
+                ).length
+              }
+            </div>
+            <p className="text-muted-foreground text-xs">In the last 30 min</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">
+              Security Issues
+            </CardTitle>
+            <ShieldAlertIcon className="text-muted-foreground h-4 w-4" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold text-orange-600">
+              {suspiciousUsers.length}
+            </div>
+            <p className="text-muted-foreground text-xs">
+              Multi-location logins
+            </p>
+          </CardContent>
+        </Card>
+      </div>
 
-        <div className="grid gap-6 lg:grid-cols-2">
-          {/* User Usage Distribution */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-lg">Usage by Team Member</CardTitle>
-              <CardDescription>
-                API calls distribution across team
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {userUsageData.map(user => (
-                  <div
-                    key={user.user}
-                    className="flex items-center justify-between"
-                  >
-                    <div className="flex flex-1 items-center gap-3">
+      {/* Map Card */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <MapPinIcon className="h-5 w-5" />
+            Login Locations Map
+          </CardTitle>
+          <CardDescription>
+            Current team member locations based on their last login
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="bg-muted/20 relative h-[400px] w-full overflow-hidden rounded-lg">
+            {/* Simple world map visualization */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="relative h-full w-full max-w-4xl">
+                {/* Map placeholder - in production you'd use a real map library */}
+                <div className="absolute inset-0 rounded-lg bg-gradient-to-b from-blue-50 to-blue-100 dark:from-blue-950 dark:to-blue-900">
+                  {/* Map dots for each location */}
+                  {loginLocations.map(location => {
+                    // Simple positioning based on lat/lng
+                    const x = ((location.lng + 180) / 360) * 100;
+                    const y = ((90 - location.lat) / 180) * 100;
+
+                    return (
                       <div
-                        className="h-3 w-3 rounded-full"
-                        style={{ backgroundColor: user.color }}
-                      />
-                      <span className="text-sm font-medium">{user.user}</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <div className="text-right">
-                        <p className="font-semibold">
-                          {user.calls.toLocaleString()}
-                        </p>
+                        key={location.id}
+                        className="group absolute"
+                        style={{
+                          left: `${x}%`,
+                          top: `${y}%`,
+                          transform: 'translate(-50%, -50%)',
+                        }}
+                      >
+                        <div className="relative">
+                          <div className="bg-primary/20 absolute -inset-2 animate-ping rounded-full" />
+                          <div className="bg-primary border-background relative h-3 w-3 rounded-full border-2 shadow-lg" />
+                          <div className="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 opacity-0 transition-opacity group-hover:opacity-100">
+                            <div className="bg-popover text-popover-foreground rounded-lg p-3 text-sm whitespace-nowrap shadow-lg">
+                              <p className="font-semibold">{location.user}</p>
+                              <p className="text-muted-foreground text-xs">
+                                {location.location}
+                              </p>
+                              <p className="text-muted-foreground text-xs">
+                                {location.device}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Login Details Table */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Recent Login Activity</CardTitle>
+          <CardDescription>
+            Detailed information about team member logins
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="relative overflow-x-auto">
+            <table className="w-full text-left text-sm">
+              <thead className="bg-muted/50 text-xs uppercase">
+                <tr>
+                  <th className="px-4 py-3">User</th>
+                  <th className="px-4 py-3">Location</th>
+                  <th className="px-4 py-3">Last Login</th>
+                  <th className="px-4 py-3">Device</th>
+                  <th className="px-4 py-3">Total Logins</th>
+                  <th className="px-4 py-3">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {loginLocations.map(login => (
+                  <tr key={login.id} className="border-b">
+                    <td className="px-4 py-3">
+                      <div>
+                        <p className="font-medium">{login.user}</p>
                         <p className="text-muted-foreground text-xs">
-                          {user.percentage}%
+                          {login.email}
                         </p>
                       </div>
-                    </div>
-                  </div>
+                    </td>
+                    <td className="px-4 py-3">
+                      <div className="flex items-center gap-2">
+                        <MapPinIcon className="text-muted-foreground h-4 w-4" />
+                        <div>
+                          <p>{login.location}</p>
+                          <p className="text-muted-foreground text-xs">
+                            {login.ipAddress}
+                          </p>
+                        </div>
+                      </div>
+                    </td>
+                    <td className="px-4 py-3">
+                      <p className="text-xs">
+                        {login.lastLogin.toLocaleDateString()}
+                      </p>
+                      <p className="text-muted-foreground text-xs">
+                        {login.lastLogin.toLocaleTimeString()}
+                      </p>
+                    </td>
+                    <td className="px-4 py-3">
+                      <p className="text-xs">{login.device}</p>
+                    </td>
+                    <td className="px-4 py-3">
+                      <Badge variant="secondary">{login.logins}</Badge>
+                    </td>
+                    <td className="px-4 py-3">
+                      {suspiciousUsers.includes(login.email) ? (
+                        <Badge variant="destructive" className="gap-1">
+                          <ShieldAlertIcon className="h-3 w-3" />
+                          Multiple Locations
+                        </Badge>
+                      ) : (
+                        <Badge variant="outline" className="text-green-600">
+                          Secure
+                        </Badge>
+                      )}
+                    </td>
+                  </tr>
                 ))}
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Peak Hours */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-lg">Peak Usage Hours</CardTitle>
-              <CardDescription>
-                API call patterns throughout the day
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ChartContainer
-                config={{
-                  calls: {
-                    label: 'API Calls',
-                    color: 'hsl(var(--chart-1))',
-                  },
-                }}
-                className="h-[200px]"
-              >
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={peakHoursData}>
-                    <XAxis
-                      dataKey="hour"
-                      tickFormatter={value => `${value}:00`}
-                    />
-                    <YAxis />
-                    <ChartTooltip
-                      content={<ChartTooltipContent />}
-                      labelFormatter={value =>
-                        `${value}:00 - ${parseInt(value) + 1}:00`
-                      }
-                    />
-                    <Bar
-                      dataKey="calls"
-                      fill="hsl(var(--chart-1))"
-                      radius={[2, 2, 0, 0]}
-                    />
-                  </BarChart>
-                </ResponsiveContainer>
-              </ChartContainer>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Top Endpoints */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-lg">Most Popular Endpoints</CardTitle>
-            <CardDescription>
-              API endpoints ranked by usage and performance
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-3">
-              {endpointUsageData.map((endpoint, index) => (
-                <div
-                  key={endpoint.endpoint}
-                  className="bg-muted/50 flex items-center justify-between rounded-lg p-3"
-                >
-                  <div className="flex items-center gap-3">
-                    <Badge variant="outline">#{index + 1}</Badge>
-                    <code className="font-mono text-sm">
-                      {endpoint.endpoint}
-                    </code>
-                  </div>
-                  <div className="flex items-center gap-4 text-sm">
-                    <div className="text-right">
-                      <p className="font-semibold">
-                        {endpoint.calls.toLocaleString()}
-                      </p>
-                      <p className="text-muted-foreground text-xs">calls</p>
-                    </div>
-                    <div className="text-right">
-                      <p
-                        className={cn(
-                          'font-semibold',
-                          endpoint.avgTime < 100
-                            ? 'text-emerald-600'
-                            : endpoint.avgTime < 200
-                              ? 'text-orange-600'
-                              : 'text-red-600'
-                        )}
-                      >
-                        {endpoint.avgTime}ms
-                      </p>
-                      <p className="text-muted-foreground text-xs">avg time</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Insights */}
-        <Card className="border-blue-200 bg-blue-50">
-          <CardContent className="pt-6">
-            <div className="flex items-start gap-3">
-              <div className="text-blue-600">💡</div>
-              <div>
-                <h3 className="font-semibold text-blue-900">Key Insights</h3>
-                <ul className="mt-2 space-y-1 text-sm text-blue-800">
-                  <li>
-                    • Peak usage is at {mostActiveHour.hour}:00 with{' '}
-                    {mostActiveHour.calls} calls
-                  </li>
-                  <li>• Sarah Johnson accounts for 35% of all API usage</li>
-                  <li>
-                    • Error rate decreased by 2.1% compared to last period
-                  </li>
-                  <li>
-                    • /api/analytics endpoint has the highest response time
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </CardContent>
-    </Card>
+              </tbody>
+            </table>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
   );
 }
