@@ -345,7 +345,7 @@ export default function EnhancedTeamManagement({
           className={cn(
             'grid gap-3',
             filteredMembers.length === 1
-              ? 'mx-auto max-w-sm'
+              ? 'max-w-sm'
               : 'md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
           )}
         >
@@ -378,24 +378,28 @@ export default function EnhancedTeamManagement({
 
               <CardContent className="space-y-3">
                 {/* Activity Metrics */}
-                <div className="bg-muted/50 grid grid-cols-2 gap-3 rounded-lg p-2">
+                <div className="bg-muted/50 grid grid-cols-2 gap-2 rounded-lg p-3">
                   <div className="text-center">
-                    <div className="flex items-center justify-center gap-1">
-                      <ActivityIcon className="h-3 w-3 text-blue-600" />
-                      <span className="text-xs font-semibold">
+                    <div className="flex items-center justify-center gap-1.5">
+                      <ActivityIcon className="h-4 w-4 text-blue-600" />
+                      <span className="text-sm font-bold">
                         {member.callsToday}
                       </span>
                     </div>
-                    <p className="text-muted-foreground text-[10px]">Today</p>
+                    <p className="text-muted-foreground mt-0.5 text-xs">
+                      Today
+                    </p>
                   </div>
                   <div className="text-center">
-                    <div className="flex items-center justify-center gap-1">
-                      <TrendingUpIcon className="h-3 w-3 text-emerald-600" />
-                      <span className="text-xs font-semibold">
+                    <div className="flex items-center justify-center gap-1.5">
+                      <TrendingUpIcon className="h-4 w-4 text-emerald-600" />
+                      <span className="text-sm font-bold">
                         {member.successRate}%
                       </span>
                     </div>
-                    <p className="text-muted-foreground text-[10px]">Success</p>
+                    <p className="text-muted-foreground mt-0.5 text-xs">
+                      Success
+                    </p>
                   </div>
                 </div>
 
