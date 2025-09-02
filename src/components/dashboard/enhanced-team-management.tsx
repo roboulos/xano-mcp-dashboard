@@ -378,28 +378,24 @@ export default function EnhancedTeamManagement({
 
               <CardContent className="space-y-3">
                 {/* Activity Metrics */}
-                <div className="bg-muted/50 grid grid-cols-2 gap-2 rounded-lg p-3">
-                  <div className="text-center">
-                    <div className="flex items-center justify-center gap-1.5">
+                <div className="bg-muted/50 grid grid-cols-2 gap-2 rounded-lg px-4 py-2.5">
+                  <div className="flex flex-col items-center justify-center">
+                    <div className="flex items-center gap-1.5">
                       <ActivityIcon className="h-4 w-4 text-blue-600" />
                       <span className="text-sm font-bold">
                         {member.callsToday}
                       </span>
                     </div>
-                    <p className="text-muted-foreground mt-0.5 text-xs">
-                      Today
-                    </p>
+                    <p className="text-muted-foreground text-xs">Today</p>
                   </div>
-                  <div className="text-center">
-                    <div className="flex items-center justify-center gap-1.5">
+                  <div className="flex flex-col items-center justify-center">
+                    <div className="flex items-center gap-1.5">
                       <TrendingUpIcon className="h-4 w-4 text-emerald-600" />
                       <span className="text-sm font-bold">
                         {member.successRate}%
                       </span>
                     </div>
-                    <p className="text-muted-foreground mt-0.5 text-xs">
-                      Success
-                    </p>
+                    <p className="text-muted-foreground text-xs">Success</p>
                   </div>
                 </div>
 
