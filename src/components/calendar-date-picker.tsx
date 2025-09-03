@@ -305,7 +305,7 @@ const CalendarDatePicker = React.forwardRef<
       setHighlightedPart(null);
     };
 
-    const handleWheel = (event: React.WheelEvent) => {
+    const handleWheel = (event: WheelEvent) => {
       event.preventDefault();
       setSelectedRange(null);
       if (highlightedPart === 'firstDay') {
@@ -367,13 +367,9 @@ const CalendarDatePicker = React.forwardRef<
 
       const addPassiveEventListener = (element: HTMLElement | null) => {
         if (element) {
-          element.addEventListener(
-            'wheel',
-            handleWheel as unknown as EventListener,
-            {
-              passive: false,
-            }
-          );
+          element.addEventListener('wheel', handleWheel, {
+            passive: false,
+          });
         }
       };
 
@@ -382,10 +378,7 @@ const CalendarDatePicker = React.forwardRef<
       return () => {
         elements.forEach(element => {
           if (element) {
-            element.removeEventListener(
-              'wheel',
-              handleWheel as unknown as EventListener
-            );
+            element.removeEventListener('wheel', handleWheel);
           }
         });
       };

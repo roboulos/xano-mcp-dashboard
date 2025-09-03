@@ -50,7 +50,10 @@ import {
 import { Switch } from '@/components/ui/switch';
 import { Textarea } from '@/components/ui/textarea';
 import { useAuth } from '@/contexts/auth-context';
-import { useDashboardMetrics, useDailyMetrics } from '@/hooks/use-dashboard-data';
+import {
+  useDashboardMetrics,
+  useDailyMetrics,
+} from '@/hooks/use-dashboard-data';
 import { cn } from '@/lib/utils';
 
 interface TeamMember {

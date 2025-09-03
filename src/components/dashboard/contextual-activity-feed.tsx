@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 
 import {
   SearchIcon,
@@ -12,10 +12,12 @@ import {
   AlertCircleIcon,
   ExternalLinkIcon,
   ClockIcon,
+  RefreshCwIcon,
 } from 'lucide-react';
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
@@ -38,137 +40,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { Skeleton } from '@/components/ui/skeleton';
+import { useActivityFeed, ActivityEvent } from '@/hooks/use-activity-feed';
 import { cn } from '@/lib/utils';
-
-interface ActivityEvent {
-  id: string;
-  type: 'database' | 'api' | 'function' | 'task' | 'auth' | 'system';
-  action: string;
-  description: string;
-  userFriendlyDescription: string;
-  userId?: string;
-  userName?: string;
-  userAvatar?: string;
-  timestamp: Date;
-  status: 'success' | 'error' | 'warning' | 'info';
-  metadata: {
-    endpoint?: string;
-    table?: string;
-    recordsAffected?: number;
-    responseTime?: number;
-    errorCode?: string;
-    errorMessage?: string;
-    relatedResources?: string[];
-  };
-  impact: 'low' | 'medium' | 'high';
-}
-
-// Mock activity data with enhanced context
-const mockActivity: ActivityEvent[] = [
-  {
-    id: '1',
-    type: 'database',
-    action: 'CREATE_RECORDS',
-    description: 'POST /api/users - Created 15 user records',
-    userFriendlyDescription: 'Sarah created 15 new user accounts',
-    userId: '1',
-    userName: 'Sarah Johnson',
-    userAvatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah',
-    timestamp: new Date(Date.now() - 5 * 60 * 1000),
-    status: 'success',
-    metadata: {
-      endpoint: '/api/users',
-      table: 'users',
-      recordsAffected: 15,
-      responseTime: 127,
-      relatedResources: ['user_profiles', 'auth_tokens'],
-    },
-    impact: 'medium',
-  },
-  {
-    id: '2',
-    type: 'api',
-    action: 'API_CALL',
-    description: 'GET /api/analytics/dashboard - Retrieved dashboard metrics',
-    userFriendlyDescription: 'Michael viewed dashboard analytics',
-    userId: '2',
-    userName: 'Michael Chen',
-    userAvatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Michael',
-    timestamp: new Date(Date.now() - 15 * 60 * 1000),
-    status: 'success',
-    metadata: {
-      endpoint: '/api/analytics/dashboard',
-      responseTime: 89,
-      relatedResources: ['metrics', 'charts'],
-    },
-    impact: 'low',
-  },
-  {
-    id: '3',
-    type: 'function',
-    action: 'FUNCTION_ERROR',
-    description: 'Function sendEmailNotification failed',
-    userFriendlyDescription: 'Email notification system encountered an error',
-    timestamp: new Date(Date.now() - 25 * 60 * 1000),
-    status: 'error',
-    metadata: {
-      errorCode: 'SMTP_CONNECTION_FAILED',
-      errorMessage: 'Unable to connect to SMTP server',
-      relatedResources: ['email_queue', 'notifications'],
-    },
-    impact: 'high',
-  },
-  {
-    id: '4',
-    type: 'database',
-    action: 'UPDATE_RECORDS',
-    description: 'PATCH /api/projects/bulk - Updated 43 project statuses',
-    userFriendlyDescription: 'Emily updated 43 project statuses to "completed"',
-    userId: '3',
-    userName: 'Emily Rodriguez',
-    userAvatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Emily',
-    timestamp: new Date(Date.now() - 45 * 60 * 1000),
-    status: 'success',
-    metadata: {
-      endpoint: '/api/projects/bulk',
-      table: 'projects',
-      recordsAffected: 43,
-      responseTime: 234,
-      relatedResources: ['project_history', 'notifications'],
-    },
-    impact: 'medium',
-  },
-  {
-    id: '5',
-    type: 'auth',
-    action: 'TOKEN_EXPIRED',
-    description: 'API token expired for user david.park@company.com',
-    userFriendlyDescription:
-      "David's API access expired - automatic renewal attempted",
-    userId: '4',
-    userName: 'David Park',
-    userAvatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=David',
-    timestamp: new Date(Date.now() - 60 * 60 * 1000),
-    status: 'warning',
-    metadata: {
-      relatedResources: ['auth_tokens', 'user_sessions'],
-    },
-    impact: 'medium',
-  },
-  {
-    id: '6',
-    type: 'system',
-    action: 'BACKUP_COMPLETED',
-    description: 'Daily database backup completed successfully',
-    userFriendlyDescription: 'Daily backup completed - 2.3GB archived',
-    timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000),
-    status: 'success',
-    metadata: {
-      relatedResources: ['database_backups', 'storage'],
-    },
-    impact: 'low',
-  },
-];
 
 interface ContextualActivityFeedProps {
   className?: string;
@@ -177,13 +51,20 @@ interface ContextualActivityFeedProps {
 export default function ContextualActivityFeed({
   className,
 }: ContextualActivityFeedProps) {
-  const [activities] = useState(mockActivity);
+  const { data: activities, loading, error, refetch } = useActivityFeed(100);
   const [searchQuery, setSearchQuery] = useState('');
   const [typeFilter, setTypeFilter] = useState<string>('all');
   const [statusFilter, setStatusFilter] = useState<string>('all');
-  const [timeFilter, setTimeFilter] = useState<string>('24h');
+  const [timeFilter, setTimeFilter] = useState<string>('7d');
   const [selectedActivity, setSelectedActivity] =
     useState<ActivityEvent | null>(null);
+  const [isRefreshing, setIsRefreshing] = useState(false);
+
+  const handleRefresh = async () => {
+    setIsRefreshing(true);
+    await refetch();
+    setIsRefreshing(false);
+  };
 
   const getActivityIcon = (
     type: ActivityEvent['type'],
@@ -234,48 +115,95 @@ export default function ContextualActivityFeed({
     return date.toLocaleDateString();
   };
 
-  const filteredActivities = activities.filter(activity => {
-    const matchesSearch =
-      activity.userFriendlyDescription
-        .toLowerCase()
-        .includes(searchQuery.toLowerCase()) ||
-      activity.userName?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      activity.action.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesType = typeFilter === 'all' || activity.type === typeFilter;
-    const matchesStatus =
-      statusFilter === 'all' || activity.status === statusFilter;
+  const filteredActivities = useMemo(() => {
+    if (!activities) return [];
 
-    // Time filter logic
-    const now = new Date();
-    const diffHours = Math.floor(
-      (now.getTime() - activity.timestamp.getTime()) / (1000 * 60 * 60)
+    return activities.filter(activity => {
+      const matchesSearch =
+        activity.userFriendlyDescription
+          .toLowerCase()
+          .includes(searchQuery.toLowerCase()) ||
+        activity.userName?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        activity.action.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchesType = typeFilter === 'all' || activity.type === typeFilter;
+      const matchesStatus =
+        statusFilter === 'all' || activity.status === statusFilter;
+
+      // Time filter logic
+      const now = new Date();
+      const diffHours = Math.floor(
+        (now.getTime() - activity.timestamp.getTime()) / (1000 * 60 * 60)
+      );
+      let matchesTime = true;
+
+      switch (timeFilter) {
+        case '1h':
+          matchesTime = diffHours < 1;
+          break;
+        case '24h':
+          matchesTime = diffHours < 24;
+          break;
+        case '7d':
+          matchesTime = diffHours < 168;
+          break;
+        case '30d':
+          matchesTime = diffHours < 720;
+          break;
+      }
+
+      return matchesSearch && matchesType && matchesStatus && matchesTime;
+    });
+  }, [activities, searchQuery, typeFilter, statusFilter, timeFilter]);
+
+  const errorCount = activities?.filter(a => a.status === 'error').length || 0;
+  const warningCount =
+    activities?.filter(a => a.status === 'warning').length || 0;
+  const highImpactCount =
+    activities?.filter(a => a.impact === 'high').length || 0;
+  const recentCount =
+    activities?.filter(a => Date.now() - a.timestamp.getTime() < 60 * 60 * 1000)
+      .length || 0;
+
+  if (loading) {
+    return (
+      <Card className={className}>
+        <CardHeader>
+          <CardTitle className="text-xl font-bold">Activity Feed</CardTitle>
+          <CardDescription>Loading activity data...</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-3">
+            {[...Array(3)].map((_, i) => (
+              <Skeleton key={i} className="h-20 w-full" />
+            ))}
+          </div>
+        </CardContent>
+      </Card>
     );
-    let matchesTime = true;
+  }
 
-    switch (timeFilter) {
-      case '1h':
-        matchesTime = diffHours < 1;
-        break;
-      case '24h':
-        matchesTime = diffHours < 24;
-        break;
-      case '7d':
-        matchesTime = diffHours < 168;
-        break;
-      case '30d':
-        matchesTime = diffHours < 720;
-        break;
-    }
-
-    return matchesSearch && matchesType && matchesStatus && matchesTime;
-  });
-
-  const errorCount = activities.filter(a => a.status === 'error').length;
-  const warningCount = activities.filter(a => a.status === 'warning').length;
-  const highImpactCount = activities.filter(a => a.impact === 'high').length;
-  const recentCount = activities.filter(
-    a => Date.now() - a.timestamp.getTime() < 60 * 60 * 1000
-  ).length;
+  if (error) {
+    return (
+      <Card className={className}>
+        <CardHeader>
+          <CardTitle className="text-xl font-bold">Activity Feed</CardTitle>
+          <CardDescription>Error loading activity data</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p className="text-muted-foreground">{error}</p>
+          <Button
+            onClick={handleRefresh}
+            className="mt-4"
+            variant="outline"
+            size="sm"
+          >
+            <RefreshCwIcon className="mr-2 h-4 w-4" />
+            Try Again
+          </Button>
+        </CardContent>
+      </Card>
+    );
+  }
 
   return (
     <Card className={className}>
@@ -284,22 +212,34 @@ export default function ContextualActivityFeed({
           <div className="space-y-1">
             <CardTitle className="text-xl font-bold">Activity Feed</CardTitle>
             <CardDescription>
-              Real-time system events with enhanced context and impact analysis
+              Real-time MCP tool usage and system events
             </CardDescription>
           </div>
-          <div className="flex items-center gap-4 text-sm">
-            {errorCount > 0 && (
-              <div className="flex items-center gap-1 text-red-600">
-                <XCircleIcon className="h-3 w-3" />
-                {errorCount} errors
-              </div>
-            )}
-            {warningCount > 0 && (
-              <div className="flex items-center gap-1 text-orange-600">
-                <AlertCircleIcon className="h-3 w-3" />
-                {warningCount} warnings
-              </div>
-            )}
+          <div className="flex items-center gap-4">
+            <Button
+              onClick={handleRefresh}
+              disabled={isRefreshing}
+              variant="ghost"
+              size="sm"
+            >
+              <RefreshCwIcon
+                className={cn('h-4 w-4', isRefreshing && 'animate-spin')}
+              />
+            </Button>
+            <div className="flex items-center gap-4 text-sm">
+              {errorCount > 0 && (
+                <div className="flex items-center gap-1 text-red-600">
+                  <XCircleIcon className="h-3 w-3" />
+                  {errorCount} errors
+                </div>
+              )}
+              {warningCount > 0 && (
+                <div className="flex items-center gap-1 text-orange-600">
+                  <AlertCircleIcon className="h-3 w-3" />
+                  {warningCount} warnings
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </CardHeader>
@@ -308,7 +248,7 @@ export default function ContextualActivityFeed({
         {/* Quick Stats */}
         <div className="grid grid-cols-4 gap-4">
           <div className="bg-muted/50 rounded-lg p-3 text-center">
-            <p className="text-2xl font-bold">{activities.length}</p>
+            <p className="text-2xl font-bold">{activities?.length || 0}</p>
             <p className="text-muted-foreground text-xs">Total Events</p>
           </div>
           <div className="bg-muted/50 rounded-lg p-3 text-center">
@@ -431,21 +371,27 @@ export default function ContextualActivityFeed({
 
                     {/* Technical Details (collapsed) */}
                     <div className="text-muted-foreground mt-2 text-xs">
-                      {activity.metadata.endpoint && (
+                      {activity.metadata.tool && (
                         <code className="bg-muted rounded px-1">
-                          {activity.metadata.endpoint}
+                          {activity.metadata.tool}
                         </code>
                       )}
-                      {activity.metadata.recordsAffected && (
+                      {activity.metadata.callCount !== undefined && (
                         <span className="ml-2">
-                          {activity.metadata.recordsAffected} records
+                          {activity.metadata.callCount} calls
                         </span>
                       )}
-                      {activity.metadata.responseTime && (
+                      {activity.metadata.avgResponseTime !== undefined && (
                         <span className="ml-2">
-                          {activity.metadata.responseTime}ms
+                          {Math.round(activity.metadata.avgResponseTime)}ms avg
                         </span>
                       )}
+                      {activity.metadata.errorCount !== undefined &&
+                        activity.metadata.errorCount > 0 && (
+                          <span className="ml-2 text-red-600">
+                            {activity.metadata.errorCount} errors
+                          </span>
+                        )}
                     </div>
                   </div>
                 </div>
@@ -458,7 +404,11 @@ export default function ContextualActivityFeed({
           <div className="text-muted-foreground py-8 text-center">
             <ClockIcon className="mx-auto mb-2 h-8 w-8" />
             <p>No activities found</p>
-            <p className="text-sm">Try adjusting your filters</p>
+            <p className="text-sm">
+              {activities && activities.length === 0
+                ? 'No activity data available yet'
+                : 'Try adjusting your filters'}
+            </p>
           </div>
         )}
 
