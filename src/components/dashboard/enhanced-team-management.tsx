@@ -10,6 +10,9 @@ import {
   MailIcon,
   ActivityIcon,
   CheckIcon,
+  SettingsIcon,
+  ChevronDownIcon,
+  ChevronUpIcon,
 } from 'lucide-react';
 
 import { Badge } from '@/components/ui/badge';
@@ -159,6 +162,9 @@ export default function EnhancedTeamManagement({
   const [assigningCredential, setAssigningCredential] = useState<string | null>(
     null
   );
+  const [expandedControls, setExpandedControls] = useState<
+    Record<string, boolean>
+  >({});
 
   // Update members when workspace members change
   React.useEffect(() => {
@@ -263,6 +269,13 @@ export default function EnhancedTeamManagement({
       // Failed to assign credential
       setAssigningCredential(null);
     }
+  };
+
+  const toggleControlsExpansion = (memberId: string) => {
+    setExpandedControls(prev => ({
+      ...prev,
+      [memberId]: !prev[memberId],
+    }));
   };
 
   const formatLastSeen = (date: Date) => {
@@ -592,48 +605,88 @@ export default function EnhancedTeamManagement({
                   </div>
                 )}
 
-                {/* Branch & Workspace Selection */}
+                {/* Access Controls Toggle */}
                 {member.status !== 'pending' && member.assignedCredentialId && (
-                  <div className="space-y-3">
-                    {/* Branch Selection */}
-                    <div className="space-y-2">
-                      <div className="flex items-center gap-1 text-xs">
-                        <span>Branch Access</span>
+                  <div className="space-y-2">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="text-muted-foreground hover:text-foreground h-auto w-full justify-between p-2 text-xs"
+                      onClick={() => toggleControlsExpansion(member.id)}
+                    >
+                      <div className="flex items-center gap-1.5">
+                        <SettingsIcon className="h-3 w-3" />
+                        <span>Access Controls</span>
                       </div>
-                      <Select defaultValue="v1">
-                        <SelectTrigger className="h-8 w-full">
-                          <SelectValue placeholder="Select branch..." />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="v1">v1 (Production)</SelectItem>
-                          <SelectItem value="v2">v2 (Staging)</SelectItem>
-                          <SelectItem value="dev">dev (Development)</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
+                      {expandedControls[member.id] ? (
+                        <ChevronUpIcon className="h-3 w-3" />
+                      ) : (
+                        <ChevronDownIcon className="h-3 w-3" />
+                      )}
+                    </Button>
 
-                    {/* Workspace Selection */}
-                    <div className="space-y-2">
-                      <div className="flex items-center gap-1 text-xs">
-                        <span>Workspace Access</span>
+                    {expandedControls[member.id] && (
+                      <div className="space-y-3 px-2">
+                        {/* Branch Selection */}
+                        <div className="space-y-2">
+                          <div className="flex items-center gap-1 text-xs">
+                            <span className="text-muted-foreground">
+                              Branch Access
+                            </span>
+                          </div>
+                          <Select defaultValue="v1">
+                            <SelectTrigger className="h-8 w-full text-sm">
+                              <SelectValue placeholder="Select branch..." />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem
+                                value="v1"
+                                className="font-mono text-sm"
+                              >
+                                v1 (Production)
+                              </SelectItem>
+                              <SelectItem
+                                value="v2"
+                                className="font-mono text-sm"
+                              >
+                                v2 (Staging)
+                              </SelectItem>
+                              <SelectItem
+                                value="dev"
+                                className="font-mono text-sm"
+                              >
+                                dev (Development)
+                              </SelectItem>
+                            </SelectContent>
+                          </Select>
+                        </div>
+
+                        {/* Workspace Selection */}
+                        <div className="space-y-2">
+                          <div className="flex items-center gap-1 text-xs">
+                            <span className="text-muted-foreground">
+                              Workspace Access
+                            </span>
+                          </div>
+                          <Select defaultValue="5">
+                            <SelectTrigger className="h-8 w-full text-sm">
+                              <SelectValue placeholder="Select workspace..." />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="5" className="text-sm">
+                                Workspace 5 (Acme Corp)
+                              </SelectItem>
+                              <SelectItem value="6" className="text-sm">
+                                Workspace 6 (TechFlow)
+                              </SelectItem>
+                              <SelectItem value="7" className="text-sm">
+                                Workspace 7 (Beta Env)
+                              </SelectItem>
+                            </SelectContent>
+                          </Select>
+                        </div>
                       </div>
-                      <Select defaultValue="5">
-                        <SelectTrigger className="h-8 w-full">
-                          <SelectValue placeholder="Select workspace..." />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="5">
-                            Workspace 5 (Acme Corp)
-                          </SelectItem>
-                          <SelectItem value="6">
-                            Workspace 6 (TechFlow)
-                          </SelectItem>
-                          <SelectItem value="7">
-                            Workspace 7 (Beta Env)
-                          </SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
+                    )}
                   </div>
                 )}
 
