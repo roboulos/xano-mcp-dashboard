@@ -39,6 +39,7 @@ import {
 import { Switch } from '@/components/ui/switch';
 import { Textarea } from '@/components/ui/textarea';
 import { useAuth } from '@/contexts/auth-context';
+import { useWorkspace } from '@/contexts/workspace-context';
 import {
   useDashboardMetrics,
   useDailyMetrics,
@@ -70,6 +71,7 @@ export default function EnhancedTeamManagement({
   className,
 }: EnhancedTeamManagementProps) {
   const { user } = useAuth();
+  const { currentWorkspace } = useWorkspace();
   const { data: dashboardMetrics } = useDashboardMetrics('week');
   const { data: dailyMetrics } = useDailyMetrics();
   const { data: credentials } = useXanoCredentials();
@@ -77,7 +79,7 @@ export default function EnhancedTeamManagement({
     data: workspaceMembers,
     assignMemberToCredential,
     unassignMemberFromCredential,
-  } = useWorkspaceMembers();
+  } = useWorkspaceMembers(currentWorkspace?.id);
 
   // Transform workspace members into team members format
   const transformedMembers = useMemo(() => {

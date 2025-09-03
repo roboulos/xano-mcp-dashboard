@@ -8,6 +8,7 @@ import {
   Key,
   ShieldIcon,
   Activity,
+  Building2,
 } from 'lucide-react';
 
 import APIKeyManager from '@/components/dashboard/api-key-manager';
@@ -15,14 +16,23 @@ import ContextualActivityFeed from '@/components/dashboard/contextual-activity-f
 import EnhancedTeamManagement from '@/components/dashboard/enhanced-team-management';
 import MCPConnectionHub from '@/components/dashboard/mcp-connection-hub';
 import UsageAnalytics from '@/components/dashboard/usage-analytics';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { WorkspaceProvider, useWorkspace } from '@/contexts/workspace-context';
 
 // Force dynamic rendering to avoid Next.js 15.0.4 prerendering issues
 export const dynamic = 'force-dynamic';
 
-export default function DashboardPage() {
+function DashboardContent() {
   const [activeTab, setActiveTab] = useState('overview');
   const [isLoading, setIsLoading] = useState(false);
+  const { workspaces, currentWorkspace, setCurrentWorkspace } = useWorkspace();
 
   // Handle tab changes with loading state
   const handleTabChange = (value: string) => {
@@ -55,19 +65,55 @@ export default function DashboardPage() {
     <div className="bg-background min-h-screen">
       <header className="bg-card/80 supports-[backdrop-filter]:bg-card/60 border-b backdrop-blur">
         <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <div>
-            <h1 className="text-2xl font-bold tracking-tight">
-              MCP Control Center
-            </h1>
-            <p className="text-muted-foreground text-sm">
-              Manage your Model Context Protocol infrastructure
-            </p>
+          <div className="flex items-center gap-4">
+            <Building2 className="text-primary h-8 w-8" />
+            <div>
+              <h1 className="text-2xl font-bold tracking-tight">
+                MCP Control Center
+              </h1>
+              <p className="text-muted-foreground text-sm">
+                Manage your Model Context Protocol infrastructure
+              </p>
+            </div>
           </div>
           <div className="flex items-center gap-4">
-            <span className="text-muted-foreground text-sm">
-              Last sync: 2 minutes ago
-            </span>
-            <div className="h-2 w-2 animate-pulse rounded-full bg-green-500" />
+            <Select
+              value={currentWorkspace?.id.toString() || ''}
+              onValueChange={value => {
+                const workspace = workspaces.find(
+                  w => w.id.toString() === value
+                );
+                if (workspace) setCurrentWorkspace(workspace);
+              }}
+            >
+              <SelectTrigger className="w-[250px]">
+                <SelectValue placeholder="Select workspace...">
+                  {currentWorkspace?.name}
+                </SelectValue>
+              </SelectTrigger>
+              <SelectContent>
+                {workspaces.map(workspace => (
+                  <SelectItem
+                    key={workspace.id}
+                    value={workspace.id.toString()}
+                  >
+                    <div className="flex items-center gap-2">
+                      <Building2 className="h-4 w-4" />
+                      <span>{workspace.name}</span>
+                      <span className="text-muted-foreground text-xs">
+                        ({workspace.subscription_plan})
+                      </span>
+                    </div>
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <div className="flex items-center gap-2">
+              <span className="text-muted-foreground text-sm">
+                Last sync: 2 minutes ago
+              </span>
+              <div className="h-2 w-2 animate-pulse rounded-full bg-green-500" />
+            </div>
           </div>
         </div>
       </header>
@@ -176,5 +222,13 @@ export default function DashboardPage() {
         </Tabs>
       </main>
     </div>
+  );
+}
+
+export default function DashboardPage() {
+  return (
+    <WorkspaceProvider>
+      <DashboardContent />
+    </WorkspaceProvider>
   );
 }
