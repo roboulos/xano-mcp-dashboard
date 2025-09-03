@@ -9,7 +9,6 @@ import {
   CopyIcon,
   MailIcon,
   ActivityIcon,
-  TrendingUpIcon,
   CheckIcon,
 } from 'lucide-react';
 
@@ -452,7 +451,7 @@ export default function EnhancedTeamManagement({
 
               <CardContent className="space-y-3">
                 {/* Activity Metrics */}
-                <div className="bg-muted/50 grid grid-cols-2 gap-2 rounded-lg px-4 py-2.5">
+                <div className="bg-muted/50 rounded-lg px-4 py-2.5">
                   <div className="flex flex-col items-center justify-center">
                     <div className="flex items-center gap-1.5">
                       <ActivityIcon className="h-4 w-4 text-blue-600" />
@@ -460,16 +459,7 @@ export default function EnhancedTeamManagement({
                         {member.callsToday}
                       </span>
                     </div>
-                    <p className="text-muted-foreground text-xs">Today</p>
-                  </div>
-                  <div className="flex flex-col items-center justify-center">
-                    <div className="flex items-center gap-1.5">
-                      <TrendingUpIcon className="h-4 w-4 text-emerald-600" />
-                      <span className="text-sm font-bold">
-                        {member.successRate}%
-                      </span>
-                    </div>
-                    <p className="text-muted-foreground text-xs">Success</p>
+                    <p className="text-muted-foreground text-xs">Calls Today</p>
                   </div>
                 </div>
 
@@ -599,6 +589,51 @@ export default function EnhancedTeamManagement({
                         </Button>
                       </div>
                     )}
+                  </div>
+                )}
+
+                {/* Branch & Workspace Selection */}
+                {member.status !== 'pending' && member.assignedCredentialId && (
+                  <div className="space-y-3">
+                    {/* Branch Selection */}
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-1 text-xs">
+                        <span>Branch Access</span>
+                      </div>
+                      <Select defaultValue="v1">
+                        <SelectTrigger className="h-8 w-full">
+                          <SelectValue placeholder="Select branch..." />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="v1">v1 (Production)</SelectItem>
+                          <SelectItem value="v2">v2 (Staging)</SelectItem>
+                          <SelectItem value="dev">dev (Development)</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    {/* Workspace Selection */}
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-1 text-xs">
+                        <span>Workspace Access</span>
+                      </div>
+                      <Select defaultValue="5">
+                        <SelectTrigger className="h-8 w-full">
+                          <SelectValue placeholder="Select workspace..." />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="5">
+                            Workspace 5 (Acme Corp)
+                          </SelectItem>
+                          <SelectItem value="6">
+                            Workspace 6 (TechFlow)
+                          </SelectItem>
+                          <SelectItem value="7">
+                            Workspace 7 (Beta Env)
+                          </SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
                   </div>
                 )}
 
