@@ -37,6 +37,10 @@ export interface XanoCredential {
   last_validated?: string;
 }
 
+export interface DailyMetrics {
+  calls_today: number;
+}
+
 export interface PerformanceMetrics {
   period: string;
   performance: {
@@ -118,6 +122,48 @@ export function useDashboardMetrics(period: string = 'week') {
 
     fetchMetrics();
   }, [period, user]);
+
+  return { data, loading, error, refetch: () => window.location.reload() };
+}
+
+export function useDailyMetrics() {
+  const [data, setData] = useState<DailyMetrics | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const { user } = useAuth();
+
+  useEffect(() => {
+    if (!user) {
+      setLoading(false);
+      return;
+    }
+
+    const fetchDailyMetrics = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch('/api/dashboard/mcp-metrics/daily', {
+          headers: {
+            Authorization: `Bearer ${user.authToken}`,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch daily metrics');
+        }
+
+        const result = await response.json();
+        setData(result);
+        setError(null);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Unknown error');
+        setData(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDailyMetrics();
+  }, [user]);
 
   return { data, loading, error, refetch: () => window.location.reload() };
 }

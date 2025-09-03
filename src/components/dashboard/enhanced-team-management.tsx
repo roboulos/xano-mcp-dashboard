@@ -50,7 +50,7 @@ import {
 import { Switch } from '@/components/ui/switch';
 import { Textarea } from '@/components/ui/textarea';
 import { useAuth } from '@/contexts/auth-context';
-import { useDashboardMetrics } from '@/hooks/use-dashboard-data';
+import { useDashboardMetrics, useDailyMetrics } from '@/hooks/use-dashboard-data';
 import { cn } from '@/lib/utils';
 
 interface TeamMember {
@@ -77,6 +77,7 @@ export default function EnhancedTeamManagement({
 }: EnhancedTeamManagementProps) {
   const { user } = useAuth();
   const { data: dashboardMetrics } = useDashboardMetrics('week');
+  const { data: dailyMetrics } = useDailyMetrics();
 
   // Create a real team member from the current user
   const currentUserMember: TeamMember = {
@@ -89,7 +90,7 @@ export default function EnhancedTeamManagement({
     lastSeen: new Date(),
     role: 'admin',
     totalCalls: dashboardMetrics?.total_calls || 0,
-    callsToday: Math.floor((dashboardMetrics?.total_calls || 0) / 7), // Approximate daily calls
+    callsToday: dailyMetrics?.calls_today || 0, // Actual daily calls
     successRate: dashboardMetrics?.success_rate || 100,
     joinedAt: new Date(user?.created_at || Date.now()),
   };
@@ -98,7 +99,7 @@ export default function EnhancedTeamManagement({
 
   // Update members when metrics change
   React.useEffect(() => {
-    if (user && dashboardMetrics) {
+    if (user && (dashboardMetrics || dailyMetrics)) {
       const updatedMember: TeamMember = {
         id: user.id?.toString() || '1',
         name: user.name || 'Current User',
@@ -108,14 +109,14 @@ export default function EnhancedTeamManagement({
         apiKey: 'xano_key_current_****',
         lastSeen: new Date(),
         role: 'admin',
-        totalCalls: dashboardMetrics.total_calls || 0,
-        callsToday: Math.floor((dashboardMetrics.total_calls || 0) / 7),
-        successRate: dashboardMetrics.success_rate || 100,
+        totalCalls: dashboardMetrics?.total_calls || 0,
+        callsToday: dailyMetrics?.calls_today || 0,
+        successRate: dashboardMetrics?.success_rate || 100,
         joinedAt: new Date(user.created_at || Date.now()),
       };
       setMembers([updatedMember]);
     }
-  }, [user, dashboardMetrics]);
+  }, [user, dashboardMetrics, dailyMetrics]);
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [memberFilter, setMemberFilter] = useState<
     'all' | 'active' | 'suspended' | 'pending'

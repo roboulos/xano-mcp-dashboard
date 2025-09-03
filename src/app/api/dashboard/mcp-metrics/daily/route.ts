@@ -7,14 +7,10 @@ const XANO_API_BASE = 'https://xnwv-v1z6-dvnr.n7c.xano.io/api:ZVMx4ul_';
 export async function GET(request: NextRequest) {
   const logger = createRequestLogger(
     request,
-    '/api/dashboard/mcp-metrics/summary'
+    '/api/dashboard/mcp-metrics/daily'
   );
 
   try {
-    const { searchParams } = new URL(request.url);
-    const period = searchParams.get('period') || 'week';
-    const timezone = searchParams.get('timezone') || 'UTC';
-
     // Get auth token from header
     const authToken = request.headers
       .get('authorization')
@@ -29,17 +25,14 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    // Call real data endpoint that queries xano_mcp_metrics table
-    const response = await fetch(
-      `${XANO_API_BASE}/mcp-metrics/real-summary?period=${encodeURIComponent(period)}&timezone=${encodeURIComponent(timezone)}`,
-      {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${authToken}`,
-          'Content-Type': 'application/json',
-        },
-      }
-    );
+    // Call daily metrics endpoint
+    const response = await fetch(`${XANO_API_BASE}/daily-metrics`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+        'Content-Type': 'application/json',
+      },
+    });
 
     const data = await response.json();
 
@@ -47,10 +40,10 @@ export async function GET(request: NextRequest) {
       await logger.logRequest(
         null,
         { error: data },
-        `Failed to fetch summary metrics: ${response.status}`
+        `Failed to fetch daily metrics: ${response.status}`
       );
       return NextResponse.json(
-        { error: 'Failed to fetch summary metrics' },
+        { error: 'Failed to fetch daily metrics' },
         { status: response.status }
       );
     }
