@@ -399,7 +399,11 @@ export function useWorkspaceMembers(workspaceId: number = 5) {
   const { user } = useAuth();
 
   const fetchMembers = useCallback(async () => {
-    if (!user || !workspaceId) return;
+    if (!user || !workspaceId || workspaceId === 0) {
+      setData([]);
+      setLoading(false);
+      return;
+    }
 
     try {
       setLoading(true);

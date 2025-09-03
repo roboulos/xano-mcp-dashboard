@@ -79,7 +79,13 @@ export default function EnhancedTeamManagement({
     data: workspaceMembers,
     assignMemberToCredential,
     unassignMemberFromCredential,
-  } = useWorkspaceMembers(currentWorkspace?.id);
+  } = useWorkspaceMembers(currentWorkspace?.id || 0); // Use 0 if no workspace selected to avoid defaulting to 5
+
+  // Debug logging
+  React.useEffect(() => {
+    console.log('Current workspace:', currentWorkspace);
+    console.log('Workspace members:', workspaceMembers);
+  }, [currentWorkspace, workspaceMembers]);
 
   // Transform workspace members into team members format
   const transformedMembers = useMemo(() => {
