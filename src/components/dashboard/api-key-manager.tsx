@@ -20,15 +20,12 @@ import {
   PlusIcon,
   KeyIcon,
   CopyIcon,
-  UserIcon,
   MoreHorizontalIcon,
   TrashIcon,
   X,
   ArrowUpIcon,
   ArrowDownIcon,
   ChevronsUpDownIcon,
-  CheckIcon,
-  EditIcon,
 } from 'lucide-react';
 
 import {
@@ -86,10 +83,7 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Textarea } from '@/components/ui/textarea';
-import {
-  useXanoCredentials,
-  useWorkspaceMembers,
-} from '@/hooks/use-dashboard-data';
+import { useXanoCredentials } from '@/hooks/use-dashboard-data';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 
@@ -101,7 +95,6 @@ interface ApiKey {
   description: string;
   key: string;
   assignedTo?: string;
-  assignedUserName?: string;
   createdAt: Date;
   expiresAt?: Date;
   lastUsed?: Date;
@@ -231,30 +224,6 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
     createCredential,
     deleteCredential,
   } = useXanoCredentials();
-  const {
-    data: workspaceMembers,
-    assignMemberToCredential,
-    unassignMemberFromCredential,
-  } = useWorkspaceMembers();
-  const [editingAssignment, setEditingAssignment] = useState<string | null>(
-    null
-  );
-  const [assignmentValues, setAssignmentValues] = useState<
-    Record<string, string>
-  >({});
-
-  // Transform workspace members to be compatible with existing code
-  const teamMembers = useMemo(
-    () =>
-      workspaceMembers?.map(member => ({
-        id: member.id.toString(),
-        name: `Member ${member.id}`, // We don't have names in the data, use member ID for now
-        email: member.user_id, // Use user_id as email placeholder
-        memberId: member.id,
-        currentCredential: member.credential_ref,
-      })) || [],
-    [workspaceMembers]
-  );
 
   // Transform Xano credentials to match the existing ApiKey interface
   const keys = useMemo(
@@ -264,14 +233,7 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
         name: cred.credential_name,
         description: `Xano credential for ${cred.xano_instance_name || 'instance'}`,
         key: `xano_${cred.credential_name.toLowerCase()}_****`,
-        assignedTo: workspaceMembers
-          ?.find(m => m.credential_ref === cred.id)
-          ?.id.toString(),
-        assignedUserName: workspaceMembers?.find(
-          m => m.credential_ref === cred.id
-        )
-          ? `Member ${workspaceMembers.find(m => m.credential_ref === cred.id)?.id}`
-          : undefined,
+        assignedTo: undefined, // Assignment is now managed from Team page
         createdAt: new Date(cred.created_at),
         lastUsed: cred.last_validated
           ? new Date(cred.last_validated)
@@ -281,7 +243,7 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
         scopes: cred.is_active ? ['read', 'write'] : ['read'],
         expiresAt: undefined, // Xano keys don't expire
       })) || [],
-    [credentials, workspaceMembers]
+    [credentials]
   );
 
   const [isCreateOpen, setIsCreateOpen] = useState(false);
@@ -329,28 +291,9 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
   const handleCreateKey = async () => {
     try {
       // Create the credential first
-      const newCredential = await createCredential(
-        createForm.name,
-        createForm.apiKey
-      );
+      await createCredential(createForm.name, createForm.apiKey);
 
-      // If a member is assigned, assign them to the new credential
-      if (createForm.assignedTo) {
-        const assignedMember = teamMembers.find(
-          m => m.id === createForm.assignedTo
-        );
-
-        if (assignedMember && newCredential) {
-          await assignMemberToCredential(
-            newCredential.id,
-            assignedMember.memberId
-          );
-        }
-      }
-
-      const assignedMember = teamMembers.find(
-        m => m.id === createForm.assignedTo
-      );
+      // Team member assignment is now handled from the Team page
 
       setIsCreateOpen(false);
       setCreateForm({
@@ -364,9 +307,7 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
 
       toast({
         title: 'API Key Generated',
-        description: assignedMember
-          ? `${createForm.name} has been created and assigned to Member ${assignedMember.memberId}`
-          : `${createForm.name} has been created successfully`,
+        description: `${createForm.name} has been created successfully`,
       });
     } catch {
       toast({
@@ -442,143 +383,6 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
         );
       },
       enableSorting: false,
-    },
-    {
-      accessorKey: 'assignedUserName',
-      header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="Assigned To" />
-      ),
-      cell: ({ row }) => {
-        const user = row.getValue('assignedUserName') as string;
-        const keyId = row.original.id;
-        const isEditing = editingAssignment === keyId;
-        const selectedUser =
-          assignmentValues[keyId] || row.original.assignedTo || '';
-
-        const handleAssignmentUpdate = async () => {
-          if (selectedUser === row.original.assignedTo) {
-            setEditingAssignment(null);
-            return;
-          }
-
-          try {
-            const assignedMember = teamMembers.find(m => m.id === selectedUser);
-            const credentialId = parseInt(row.original.id);
-
-            if (selectedUser && assignedMember) {
-              // Assign member to credential
-              await assignMemberToCredential(
-                credentialId,
-                assignedMember.memberId
-              );
-
-              toast({
-                title: 'Assignment Updated',
-                description: `Key assigned to Member ${assignedMember.memberId}`,
-              });
-            } else {
-              // Find current assignment and unassign
-              const currentMember = teamMembers.find(
-                m => m.currentCredential === credentialId
-              );
-
-              if (currentMember) {
-                await unassignMemberFromCredential(
-                  credentialId,
-                  currentMember.memberId
-                );
-
-                toast({
-                  title: 'Assignment Removed',
-                  description: 'Key assignment removed',
-                });
-              }
-            }
-
-            setEditingAssignment(null);
-          } catch {
-            toast({
-              title: 'Error',
-              description: 'Failed to update assignment',
-              variant: 'destructive',
-            });
-          }
-        };
-
-        if (isEditing) {
-          return (
-            <div className="flex items-center gap-2">
-              <Select
-                value={selectedUser}
-                onValueChange={value => {
-                  setAssignmentValues(prev => ({ ...prev, [keyId]: value }));
-                }}
-              >
-                <SelectTrigger className="h-8 w-[150px]">
-                  <SelectValue placeholder="Select user..." />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="">Unassigned</SelectItem>
-                  {teamMembers.map(member => (
-                    <SelectItem key={member.id} value={member.id}>
-                      Member {member.memberId}
-                      {member.currentCredential &&
-                        member.currentCredential !==
-                          parseInt(row.original.id) &&
-                        ' (assigned elsewhere)'}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              <Button
-                size="icon"
-                variant="ghost"
-                className="h-8 w-8"
-                onClick={handleAssignmentUpdate}
-              >
-                <CheckIcon className="h-4 w-4" />
-              </Button>
-              <Button
-                size="icon"
-                variant="ghost"
-                className="h-8 w-8"
-                onClick={() => {
-                  setEditingAssignment(null);
-                  setAssignmentValues(prev => ({
-                    ...prev,
-                    [keyId]: row.original.assignedTo || '',
-                  }));
-                }}
-              >
-                <X className="h-4 w-4" />
-              </Button>
-            </div>
-          );
-        }
-
-        return (
-          <div
-            className="group flex cursor-pointer items-center gap-2"
-            onClick={() => {
-              setEditingAssignment(keyId);
-              setAssignmentValues(prev => ({
-                ...prev,
-                [keyId]: row.original.assignedTo || '',
-              }));
-            }}
-          >
-            {user ? (
-              <>
-                <UserIcon className="text-muted-foreground h-4 w-4" />
-                <span className="text-sm">{user}</span>
-              </>
-            ) : (
-              <span className="text-muted-foreground text-sm">Unassigned</span>
-            )}
-            <EditIcon className="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100" />
-          </div>
-        );
-      },
     },
     {
       accessorKey: 'scopes',
@@ -810,33 +614,6 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
                     placeholder="What this key will be used for..."
                     rows={2}
                   />
-                </div>
-                <div>
-                  <Label htmlFor="assignedTo">Assign to User (Optional)</Label>
-                  <Select
-                    value={createForm.assignedTo}
-                    onValueChange={value =>
-                      setCreateForm(prev => ({ ...prev, assignedTo: value }))
-                    }
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select user..." />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {teamMembers.map(member => (
-                        <SelectItem key={member.id} value={member.id}>
-                          <div className="flex flex-col">
-                            <span>Member {member.memberId}</span>
-                            <span className="text-muted-foreground text-xs">
-                              ID: {member.memberId}
-                              {member.currentCredential &&
-                                ` (assigned to credential ${member.currentCredential})`}
-                            </span>
-                          </div>
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
                 </div>
                 <div>
                   <Label htmlFor="expiresAt">Expiration Date (Optional)</Label>

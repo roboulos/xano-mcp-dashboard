@@ -99,30 +99,61 @@ export default function EnhancedTeamManagement({
       ];
     }
 
-    return workspaceMembers.map(member => ({
-      id: member.id.toString(),
-      name: `Member ${member.id}`, // We'll fix this later when we have proper names
-      email: member.user_id, // user_id is email placeholder for now
-      status:
-        member.status === 'active'
-          ? ('active' as const)
-          : member.status === 'invited'
-            ? ('pending' as const)
-            : ('suspended' as const),
-      isOnline: member.status === 'active',
-      assignedCredentialId: member.credential_ref,
-      lastSeen: new Date(),
-      role:
-        member.role === 'owner' || member.role === 'admin'
-          ? ('admin' as const)
-          : member.role === 'viewer'
-            ? ('viewer' as const)
-            : ('developer' as const),
-      totalCalls: 0, // We'll get this from metrics later
-      callsToday: 0,
-      successRate: 100,
-      joinedAt: new Date(member.created_at * 1000), // Convert timestamp to Date
-    }));
+    return workspaceMembers.map(member => {
+      // Try to get a meaningful name for the member
+      let memberName = `Member ${member.id}`;
+      let memberEmail = member.user_id;
+
+      // If this member's user_id matches our current user, use their info
+      if (user && member.user_id === user.id) {
+        memberName = user.name || 'Current User';
+        memberEmail = user.email || member.user_id;
+      } else {
+        // Try to extract name from email if it looks like an email
+        const emailMatch = member.user_id.match(/^([^@]+)@/);
+        if (emailMatch) {
+          // It's an email, use it as email and derive name
+          memberEmail = member.user_id;
+          const emailPart = emailMatch[1];
+          // Convert email username to readable name (e.g., "john.doe" -> "John Doe")
+          memberName = emailPart
+            .split(/[._-]/)
+            .map(
+              part => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase()
+            )
+            .join(' ');
+        } else {
+          // If it's not an email (like a UUID), use it as is but show Member X format
+          memberEmail = member.user_id;
+          memberName = `Member ${member.id}`;
+        }
+      }
+
+      return {
+        id: member.id.toString(),
+        name: memberName,
+        email: memberEmail,
+        status:
+          member.status === 'active'
+            ? ('active' as const)
+            : member.status === 'invited'
+              ? ('pending' as const)
+              : ('suspended' as const),
+        isOnline: member.status === 'active',
+        assignedCredentialId: member.credential_ref,
+        lastSeen: new Date(),
+        role:
+          member.role === 'owner' || member.role === 'admin'
+            ? ('admin' as const)
+            : member.role === 'viewer'
+              ? ('viewer' as const)
+              : ('developer' as const),
+        totalCalls: 0, // We'll get this from metrics later
+        callsToday: 0,
+        successRate: 100,
+        joinedAt: new Date(member.created_at * 1000), // Convert timestamp to Date
+      };
+    });
   }, [workspaceMembers, user, dashboardMetrics, dailyMetrics]);
 
   const [members, setMembers] = useState<TeamMember[]>([]);
