@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import {
   LayoutDashboard,
@@ -22,6 +22,34 @@ export const dynamic = 'force-dynamic';
 
 export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState('overview');
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Handle tab changes with loading state
+  const handleTabChange = (value: string) => {
+    if (value === activeTab) return;
+
+    setIsLoading(true);
+    setActiveTab(value);
+
+    // Small delay to simulate loading and ensure consistent layout
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 150);
+  };
+
+  // Force scrollbar to always be visible to prevent layout shift
+  useEffect(() => {
+    // Save original style
+    const originalStyle = document.documentElement.style.overflowY;
+
+    // Force scrollbar to always show
+    document.documentElement.style.overflowY = 'scroll';
+
+    // Cleanup on unmount
+    return () => {
+      document.documentElement.style.overflowY = originalStyle;
+    };
+  }, []);
 
   return (
     <div className="bg-background min-h-screen">
@@ -47,7 +75,7 @@ export default function DashboardPage() {
       <main className="container mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <Tabs
           value={activeTab}
-          onValueChange={setActiveTab}
+          onValueChange={handleTabChange}
           className="space-y-6"
         >
           <TabsList className="bg-muted/40 supports-[backdrop-filter]:bg-background/50 h-10 w-full justify-start rounded-lg border p-1 backdrop-blur">
@@ -101,14 +129,33 @@ export default function DashboardPage() {
             value="team"
             className="animate-in fade-in-50 space-y-6 duration-500"
           >
-            <EnhancedTeamManagement />
+            {isLoading ? (
+              <div className="min-h-[600px] animate-pulse space-y-4">
+                <div className="bg-muted/40 h-20 rounded-lg" />
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+                  <div className="bg-muted/40 h-64 rounded-lg" />
+                  <div className="bg-muted/40 h-64 rounded-lg" />
+                  <div className="bg-muted/40 h-64 rounded-lg" />
+                </div>
+              </div>
+            ) : (
+              <EnhancedTeamManagement />
+            )}
           </TabsContent>
 
           <TabsContent
             value="api-keys"
             className="animate-in fade-in-50 space-y-6 duration-500"
           >
-            <APIKeyManager />
+            {isLoading ? (
+              <div className="min-h-[600px] animate-pulse space-y-4">
+                <div className="bg-muted/40 h-32 rounded-lg" />
+                <div className="bg-muted/40 h-16 rounded-lg" />
+                <div className="bg-muted/40 h-96 rounded-lg" />
+              </div>
+            ) : (
+              <APIKeyManager />
+            )}
           </TabsContent>
 
           <TabsContent

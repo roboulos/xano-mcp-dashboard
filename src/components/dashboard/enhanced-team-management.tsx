@@ -661,26 +661,26 @@ export default function EnhancedTeamManagement({
                           </Select>
                         </div>
 
-                        {/* Workspace Selection */}
+                        {/* Xano Workspace Selection */}
                         <div className="space-y-2">
                           <div className="flex items-center gap-1 text-xs">
                             <span className="text-muted-foreground">
-                              Workspace Access
+                              Xano Workspace
                             </span>
                           </div>
-                          <Select defaultValue="5">
+                          <Select defaultValue="prod">
                             <SelectTrigger className="h-8 w-full text-sm">
-                              <SelectValue placeholder="Select workspace..." />
+                              <SelectValue placeholder="Select Xano workspace..." />
                             </SelectTrigger>
                             <SelectContent>
-                              <SelectItem value="5" className="text-sm">
-                                Workspace 5 (Acme Corp)
+                              <SelectItem value="prod" className="text-sm">
+                                Production (xivz-202s-g8gq)
                               </SelectItem>
-                              <SelectItem value="6" className="text-sm">
-                                Workspace 6 (TechFlow)
+                              <SelectItem value="staging" className="text-sm">
+                                Staging (xnwv-v1z6-dvnr)
                               </SelectItem>
-                              <SelectItem value="7" className="text-sm">
-                                Workspace 7 (Beta Env)
+                              <SelectItem value="dev" className="text-sm">
+                                Development (beta-test-123)
                               </SelectItem>
                             </SelectContent>
                           </Select>
