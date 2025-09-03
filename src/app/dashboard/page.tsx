@@ -161,44 +161,46 @@ function DashboardContent() {
             </TabsTrigger>
           </TabsList>
 
-          <TabsContent
-            value="overview"
-            className="space-y-6"
-            forceMount
-          >
-            <div className={`transition-opacity duration-300 ${activeTab !== 'overview' ? 'hidden' : ''}`}>
+          <TabsContent value="overview" className="space-y-6" forceMount>
+            <div
+              className={`transition-opacity duration-300 ${activeTab !== 'overview' ? 'hidden' : ''}`}
+            >
               <MCPConnectionHub />
             </div>
           </TabsContent>
 
-          <TabsContent
-            value="team"
-            className="space-y-6"
-            forceMount
-          >
-            <div className={`transition-opacity duration-300 ${activeTab !== 'team' ? 'hidden' : ''}`}>
-              <div className={`relative ${isLoading ? 'pointer-events-none' : ''}`}>
+          <TabsContent value="team" className="space-y-6" forceMount>
+            <div
+              className={`transition-opacity duration-300 ${activeTab !== 'team' ? 'hidden' : ''}`}
+            >
+              <div
+                className={`relative ${isLoading ? 'pointer-events-none' : ''}`}
+              >
                 <EnhancedTeamManagement />
                 {isLoading && (
-                  <div className="absolute inset-0 flex items-center justify-center bg-background/80 backdrop-blur-sm">
-                    <div className="animate-pulse text-muted-foreground">Loading team...</div>
+                  <div className="bg-background/80 absolute inset-0 flex items-center justify-center backdrop-blur-sm">
+                    <div className="text-muted-foreground animate-pulse">
+                      Loading team...
+                    </div>
                   </div>
                 )}
               </div>
             </div>
           </TabsContent>
 
-          <TabsContent
-            value="api-keys"
-            className="space-y-6"
-            forceMount
-          >
-            <div className={`transition-opacity duration-300 ${activeTab !== 'api-keys' ? 'hidden' : ''}`}>
-              <div className={`relative ${isLoading ? 'pointer-events-none' : ''}`}>
+          <TabsContent value="api-keys" className="space-y-6" forceMount>
+            <div
+              className={`transition-opacity duration-300 ${activeTab !== 'api-keys' ? 'hidden' : ''}`}
+            >
+              <div
+                className={`relative ${isLoading ? 'pointer-events-none' : ''}`}
+              >
                 <APIKeyManager />
                 {isLoading && (
-                  <div className="absolute inset-0 flex items-center justify-center bg-background/80 backdrop-blur-sm">
-                    <div className="animate-pulse text-muted-foreground">Loading API keys...</div>
+                  <div className="bg-background/80 absolute inset-0 flex items-center justify-center backdrop-blur-sm">
+                    <div className="text-muted-foreground animate-pulse">
+                      Loading API keys...
+                    </div>
                   </div>
                 )}
               </div>
