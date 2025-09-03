@@ -75,6 +75,7 @@ export default function DashboardPage() {
             <TabsTrigger
               value="analytics"
               className="data-[state=active]:bg-background gap-2 transition-colors data-[state=active]:shadow-sm"
+              style={{ display: 'none' }}
             >
               <ShieldIcon className="h-4 w-4" />
               <span className="hidden sm:inline">Security</span>
@@ -82,6 +83,7 @@ export default function DashboardPage() {
             <TabsTrigger
               value="activity"
               className="data-[state=active]:bg-background gap-2 transition-colors data-[state=active]:shadow-sm"
+              style={{ display: 'none' }}
             >
               <Activity className="h-4 w-4" />
               <span className="hidden sm:inline">Activity</span>
@@ -112,6 +114,7 @@ export default function DashboardPage() {
           <TabsContent
             value="analytics"
             className="animate-in fade-in-50 space-y-6 duration-500"
+            style={{ display: 'none' }}
           >
             <UsageAnalytics />
           </TabsContent>
@@ -119,6 +122,7 @@ export default function DashboardPage() {
           <TabsContent
             value="activity"
             className="animate-in fade-in-50 space-y-6 duration-500"
+            style={{ display: 'none' }}
           >
             <ContextualActivityFeed />
           </TabsContent>
