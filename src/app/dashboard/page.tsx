@@ -8,7 +8,6 @@ import {
   Key,
   ShieldIcon,
   Activity,
-  Building2,
 } from 'lucide-react';
 
 import APIKeyManager from '@/components/dashboard/api-key-manager';
@@ -41,10 +40,10 @@ function DashboardContent() {
     setIsLoading(true);
     setActiveTab(value);
 
-    // Small delay to simulate loading and ensure consistent layout
+    // Minimal delay to prevent flashing
     setTimeout(() => {
       setIsLoading(false);
-    }, 150);
+    }, 50);
   };
 
   // Force scrollbar to always be visible to prevent layout shift
@@ -66,7 +65,6 @@ function DashboardContent() {
       <header className="bg-card/80 supports-[backdrop-filter]:bg-card/60 border-b backdrop-blur">
         <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4">
-            <Building2 className="text-primary h-8 w-8" />
             <div>
               <h1 className="text-2xl font-bold tracking-tight">
                 MCP Control Center
@@ -98,7 +96,6 @@ function DashboardContent() {
                     value={workspace.id.toString()}
                   >
                     <div className="flex items-center gap-2">
-                      <Building2 className="h-4 w-4" />
                       <span>{workspace.name}</span>
                       <span className="text-muted-foreground text-xs">
                         ({workspace.subscription_plan})
@@ -166,47 +163,52 @@ function DashboardContent() {
 
           <TabsContent
             value="overview"
-            className="animate-in fade-in-50 space-y-6 duration-500"
+            className="space-y-6"
+            forceMount
           >
-            <MCPConnectionHub />
+            <div className={`transition-opacity duration-300 ${activeTab !== 'overview' ? 'hidden' : ''}`}>
+              <MCPConnectionHub />
+            </div>
           </TabsContent>
 
           <TabsContent
             value="team"
-            className="animate-in fade-in-50 space-y-6 duration-500"
+            className="space-y-6"
+            forceMount
           >
-            {isLoading ? (
-              <div className="min-h-[600px] animate-pulse space-y-4">
-                <div className="bg-muted/40 h-20 rounded-lg" />
-                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-                  <div className="bg-muted/40 h-64 rounded-lg" />
-                  <div className="bg-muted/40 h-64 rounded-lg" />
-                  <div className="bg-muted/40 h-64 rounded-lg" />
-                </div>
+            <div className={`transition-opacity duration-300 ${activeTab !== 'team' ? 'hidden' : ''}`}>
+              <div className={`relative ${isLoading ? 'pointer-events-none' : ''}`}>
+                <EnhancedTeamManagement />
+                {isLoading && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-background/80 backdrop-blur-sm">
+                    <div className="animate-pulse text-muted-foreground">Loading team...</div>
+                  </div>
+                )}
               </div>
-            ) : (
-              <EnhancedTeamManagement />
-            )}
+            </div>
           </TabsContent>
 
           <TabsContent
             value="api-keys"
-            className="animate-in fade-in-50 space-y-6 duration-500"
+            className="space-y-6"
+            forceMount
           >
-            {isLoading ? (
-              <div className="min-h-[600px] animate-pulse space-y-4">
-                <div className="bg-muted/40 h-32 rounded-lg" />
-                <div className="bg-muted/40 h-16 rounded-lg" />
-                <div className="bg-muted/40 h-96 rounded-lg" />
+            <div className={`transition-opacity duration-300 ${activeTab !== 'api-keys' ? 'hidden' : ''}`}>
+              <div className={`relative ${isLoading ? 'pointer-events-none' : ''}`}>
+                <APIKeyManager />
+                {isLoading && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-background/80 backdrop-blur-sm">
+                    <div className="animate-pulse text-muted-foreground">Loading API keys...</div>
+                  </div>
+                )}
               </div>
-            ) : (
-              <APIKeyManager />
-            )}
+            </div>
           </TabsContent>
 
           <TabsContent
             value="analytics"
-            className="animate-in fade-in-50 space-y-6 duration-500"
+            className="space-y-6"
+            forceMount
             style={{ display: 'none' }}
           >
             <UsageAnalytics />
@@ -214,7 +216,8 @@ function DashboardContent() {
 
           <TabsContent
             value="activity"
-            className="animate-in fade-in-50 space-y-6 duration-500"
+            className="space-y-6"
+            forceMount
             style={{ display: 'none' }}
           >
             <ContextualActivityFeed />
