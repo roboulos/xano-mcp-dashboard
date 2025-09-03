@@ -61,6 +61,7 @@ interface TeamMember {
   callsToday: number;
   successRate: number;
   joinedAt: Date;
+  isCurrentUser: boolean;
 }
 
 interface EnhancedTeamManagementProps {
@@ -81,12 +82,6 @@ export default function EnhancedTeamManagement({
     unassignMemberFromCredential,
   } = useWorkspaceMembers(currentWorkspace?.id || 0); // Use 0 if no workspace selected to avoid defaulting to 5
 
-  // Debug logging
-  React.useEffect(() => {
-    console.log('Current workspace:', currentWorkspace);
-    console.log('Workspace members:', workspaceMembers);
-  }, [currentWorkspace, workspaceMembers]);
-
   // Transform workspace members into team members format
   const transformedMembers = useMemo(() => {
     if (!workspaceMembers || workspaceMembers.length === 0) {
@@ -105,6 +100,7 @@ export default function EnhancedTeamManagement({
           callsToday: dailyMetrics?.calls_today || 0,
           successRate: dashboardMetrics?.success_rate || 100,
           joinedAt: new Date(user?.created_at || Date.now()),
+          isCurrentUser: true,
         },
       ];
     }
@@ -162,6 +158,7 @@ export default function EnhancedTeamManagement({
         callsToday: 0,
         successRate: 100,
         joinedAt: new Date(member.created_at * 1000), // Convert timestamp to Date
+        isCurrentUser: !!(user && member.user_id === user.id),
       };
     });
   }, [workspaceMembers, user, dashboardMetrics, dailyMetrics]);
@@ -213,6 +210,7 @@ export default function EnhancedTeamManagement({
       callsToday: 0,
       successRate: 0,
       joinedAt: new Date(),
+      isCurrentUser: false,
     };
 
     setMembers(prev => [...prev, newMember]);
@@ -453,6 +451,12 @@ export default function EnhancedTeamManagement({
                   <div className="min-w-0">
                     <h4 className="truncate text-sm font-medium">
                       {member.name}
+                      {member.isCurrentUser && (
+                        <span className="text-muted-foreground font-normal">
+                          {' '}
+                          (you)
+                        </span>
+                      )}
                     </h4>
                     <p className="text-muted-foreground truncate text-xs">
                       {member.email}
