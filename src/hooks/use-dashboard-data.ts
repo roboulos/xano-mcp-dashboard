@@ -37,6 +37,22 @@ export interface XanoCredential {
   last_validated?: string;
 }
 
+export interface WorkspaceMember {
+  id: number;
+  workspace_id: number;
+  user_id: string;
+  role: 'owner' | 'admin' | 'member' | 'viewer';
+  status: 'active' | 'invited' | 'disabled';
+  mcp_tools_access?: string[];
+  invited_by?: string;
+  invitation_token?: string;
+  invitation_expires?: number;
+  created_at: number;
+  updated_at?: number;
+  assigned_credential_id?: number;
+  credential_ref?: number;
+}
+
 export interface DailyMetrics {
   calls_today: number;
 }
@@ -373,4 +389,135 @@ export function useTrendsData(period: string = 'week') {
   }, [period, user]);
 
   return { data, loading, error, refetch: () => window.location.reload() };
+}
+
+// New hook for workspace members management
+export function useWorkspaceMembers(workspaceId: number = 5) {
+  const [data, setData] = useState<WorkspaceMember[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const { user } = useAuth();
+
+  const fetchMembers = useCallback(async () => {
+    if (!user || !workspaceId) return;
+
+    try {
+      setLoading(true);
+      const response = await fetch(`/api/workspace/${workspaceId}/members`, {
+        headers: {
+          Authorization: `Bearer ${user.authToken}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch workspace members');
+      }
+
+      const result = await response.json();
+      setData(result.items || []);
+      setError(null);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Unknown error');
+      setData([]);
+    } finally {
+      setLoading(false);
+    }
+  }, [user, workspaceId]);
+
+  useEffect(() => {
+    if (!user) {
+      setLoading(false);
+      return;
+    }
+
+    fetchMembers();
+  }, [user, fetchMembers]);
+
+  const assignMemberToCredential = async (
+    credentialId: number,
+    memberId: number
+  ) => {
+    if (!user) throw new Error('Not authenticated');
+
+    const response = await fetch(
+      `/api/workspace/credentials/${credentialId}/assign-member`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${user.authToken}`,
+        },
+        body: JSON.stringify({
+          member_id: memberId,
+        }),
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error('Failed to assign member to credential');
+    }
+
+    const result = await response.json();
+    await fetchMembers(); // Refresh members list
+    return result;
+  };
+
+  const unassignMemberFromCredential = async (
+    credentialId: number,
+    memberId: number
+  ) => {
+    if (!user) throw new Error('Not authenticated');
+
+    const response = await fetch(
+      `/api/workspace/credentials/${credentialId}/unassign-member`,
+      {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${user.authToken}`,
+        },
+        body: JSON.stringify({
+          member_id: memberId,
+        }),
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error('Failed to unassign member from credential');
+    }
+
+    const result = await response.json();
+    await fetchMembers(); // Refresh members list
+    return result;
+  };
+
+  const getAssignedMembers = async (credentialId: number) => {
+    if (!user) throw new Error('Not authenticated');
+
+    const response = await fetch(
+      `/api/workspace/credentials/${credentialId}/assigned-members`,
+      {
+        headers: {
+          Authorization: `Bearer ${user.authToken}`,
+        },
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch assigned members');
+    }
+
+    const result = await response.json();
+    return result.items || [];
+  };
+
+  return {
+    data,
+    loading,
+    error,
+    assignMemberToCredential,
+    unassignMemberFromCredential,
+    getAssignedMembers,
+    refetch: fetchMembers,
+  };
 }

@@ -86,17 +86,12 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Textarea } from '@/components/ui/textarea';
-import { useXanoCredentials } from '@/hooks/use-dashboard-data';
+import {
+  useXanoCredentials,
+  useWorkspaceMembers,
+} from '@/hooks/use-dashboard-data';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
-
-// Mock team members until we have a proper API endpoint
-const teamMembers = [
-  { id: '1', name: 'Sarah Johnson', email: 'sarah@example.com' },
-  { id: '2', name: 'Michael Chen', email: 'michael@example.com' },
-  { id: '3', name: 'Emily Rodriguez', email: 'emily@example.com' },
-  { id: '4', name: 'David Park', email: 'david@example.com' },
-];
 
 const formatDate = (d?: Date) => (d ? new Date(d).toLocaleDateString() : '—');
 
@@ -236,12 +231,30 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
     createCredential,
     deleteCredential,
   } = useXanoCredentials();
+  const {
+    data: workspaceMembers,
+    assignMemberToCredential,
+    unassignMemberFromCredential,
+  } = useWorkspaceMembers();
   const [editingAssignment, setEditingAssignment] = useState<string | null>(
     null
   );
   const [assignmentValues, setAssignmentValues] = useState<
     Record<string, string>
   >({});
+
+  // Transform workspace members to be compatible with existing code
+  const teamMembers = useMemo(
+    () =>
+      workspaceMembers?.map(member => ({
+        id: member.id.toString(),
+        name: `Member ${member.id}`, // We don't have names in the data, use member ID for now
+        email: member.user_id, // Use user_id as email placeholder
+        memberId: member.id,
+        currentCredential: member.credential_ref,
+      })) || [],
+    [workspaceMembers]
+  );
 
   // Transform Xano credentials to match the existing ApiKey interface
   const keys = useMemo(
@@ -251,8 +264,14 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
         name: cred.credential_name,
         description: `Xano credential for ${cred.xano_instance_name || 'instance'}`,
         key: `xano_${cred.credential_name.toLowerCase()}_****`,
-        assignedTo: undefined,
-        assignedUserName: cred.xano_instance_email || undefined,
+        assignedTo: workspaceMembers
+          ?.find(m => m.credential_ref === cred.id)
+          ?.id.toString(),
+        assignedUserName: workspaceMembers?.find(
+          m => m.credential_ref === cred.id
+        )
+          ? `Member ${workspaceMembers.find(m => m.credential_ref === cred.id)?.id}`
+          : undefined,
         createdAt: new Date(cred.created_at),
         lastUsed: cred.last_validated
           ? new Date(cred.last_validated)
@@ -262,7 +281,7 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
         scopes: cred.is_active ? ['read', 'write'] : ['read'],
         expiresAt: undefined, // Xano keys don't expire
       })) || [],
-    [credentials]
+    [credentials, workspaceMembers]
   );
 
   const [isCreateOpen, setIsCreateOpen] = useState(false);
@@ -310,10 +329,25 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
   const handleCreateKey = async () => {
     try {
       // Create the credential first
-      await createCredential(createForm.name, createForm.apiKey);
+      const newCredential = await createCredential(
+        createForm.name,
+        createForm.apiKey
+      );
 
-      // TODO: In a real implementation, we would also save the assignment
-      // For now, we'll just show a success message
+      // If a member is assigned, assign them to the new credential
+      if (createForm.assignedTo) {
+        const assignedMember = teamMembers.find(
+          m => m.id === createForm.assignedTo
+        );
+
+        if (assignedMember && newCredential) {
+          await assignMemberToCredential(
+            newCredential.id,
+            assignedMember.memberId
+          );
+        }
+      }
+
       const assignedMember = teamMembers.find(
         m => m.id === createForm.assignedTo
       );
@@ -331,7 +365,7 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
       toast({
         title: 'API Key Generated',
         description: assignedMember
-          ? `${createForm.name} has been created and assigned to ${assignedMember.name}`
+          ? `${createForm.name} has been created and assigned to Member ${assignedMember.memberId}`
           : `${createForm.name} has been created successfully`,
       });
     } catch {
@@ -429,42 +463,39 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
 
           try {
             const assignedMember = teamMembers.find(m => m.id === selectedUser);
+            const credentialId = parseInt(row.original.id);
 
-            // Get auth token from localStorage
-            const auth = localStorage.getItem('auth');
-            const authToken = auth ? JSON.parse(auth).authToken : '';
+            if (selectedUser && assignedMember) {
+              // Assign member to credential
+              await assignMemberToCredential(
+                credentialId,
+                assignedMember.memberId
+              );
 
-            const response = await fetch(
-              `/api/mcp/credentials/${row.original.id}/assign`,
-              {
-                method: 'PUT',
-                headers: {
-                  'Content-Type': 'application/json',
-                  Authorization: `Bearer ${authToken}`,
-                },
-                body: JSON.stringify({
-                  assigned_to: selectedUser,
-                  assigned_to_name: assignedMember?.email,
-                  credential_name: row.original.name,
-                }),
+              toast({
+                title: 'Assignment Updated',
+                description: `Key assigned to Member ${assignedMember.memberId}`,
+              });
+            } else {
+              // Find current assignment and unassign
+              const currentMember = teamMembers.find(
+                m => m.currentCredential === credentialId
+              );
+
+              if (currentMember) {
+                await unassignMemberFromCredential(
+                  credentialId,
+                  currentMember.memberId
+                );
+
+                toast({
+                  title: 'Assignment Removed',
+                  description: 'Key assignment removed',
+                });
               }
-            );
-
-            if (!response.ok) {
-              throw new Error('Failed to update assignment');
             }
 
-            toast({
-              title: 'Assignment Updated',
-              description: assignedMember
-                ? `Key assigned to ${assignedMember.name}`
-                : 'Key assignment removed',
-            });
-
-            // Update local state instead of reloading
             setEditingAssignment(null);
-            // TODO: Refresh data properly
-            window.location.reload();
           } catch {
             toast({
               title: 'Error',
@@ -490,7 +521,11 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
                   <SelectItem value="">Unassigned</SelectItem>
                   {teamMembers.map(member => (
                     <SelectItem key={member.id} value={member.id}>
-                      {member.name}
+                      Member {member.memberId}
+                      {member.currentCredential &&
+                        member.currentCredential !==
+                          parseInt(row.original.id) &&
+                        ' (assigned elsewhere)'}
                     </SelectItem>
                   ))}
                 </SelectContent>
@@ -791,9 +826,11 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
                       {teamMembers.map(member => (
                         <SelectItem key={member.id} value={member.id}>
                           <div className="flex flex-col">
-                            <span>{member.name}</span>
+                            <span>Member {member.memberId}</span>
                             <span className="text-muted-foreground text-xs">
-                              {member.email}
+                              ID: {member.memberId}
+                              {member.currentCredential &&
+                                ` (assigned to credential ${member.currentCredential})`}
                             </span>
                           </div>
                         </SelectItem>
