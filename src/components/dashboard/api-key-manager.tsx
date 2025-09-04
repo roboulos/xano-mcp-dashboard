@@ -19,7 +19,6 @@ import {
 import {
   PlusIcon,
   KeyIcon,
-  CopyIcon,
   MoreHorizontalIcon,
   TrashIcon,
   X,
@@ -62,7 +61,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
@@ -232,7 +230,7 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
         id: cred.id.toString(),
         name: cred.credential_name,
         description: `Xano credential for ${cred.xano_instance_name || 'instance'}`,
-        key: `xano_${cred.credential_name.toLowerCase()}_****`,
+        key: `xano_prod_a8b2${Math.random().toString(36).slice(2, 6)}${'•'.repeat(24)}${Math.random().toString(36).slice(2, 6)}`,
         assignedTo: undefined, // Assignment is now managed from Team page
         createdAt: new Date(cred.created_at),
         lastUsed: cred.last_validated
@@ -263,14 +261,6 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = useState({});
-
-  const copyToClipboard = async (text: string, label: string) => {
-    await navigator.clipboard.writeText(text);
-    toast({
-      title: 'Copied to clipboard',
-      description: `${label} has been copied`,
-    });
-  };
 
   const handleRevoke = async (keyId: string) => {
     try {
@@ -361,25 +351,9 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
         const displayValue = `${keyValue.slice(0, 4)}${'•'.repeat(8)}${keyValue.slice(-4)}`;
 
         return (
-          <div className="group flex items-center gap-2">
-            <code className="bg-background rounded border px-2 py-1 font-mono text-sm shadow-sm">
-              {displayValue}
-            </code>
-            <Button
-              size="icon"
-              variant="ghost"
-              className="h-8 w-8 opacity-0 transition-opacity group-hover:opacity-100"
-              onClick={async () => {
-                await navigator.clipboard.writeText(keyValue);
-                toast({
-                  title: 'Copied to clipboard',
-                  description: `${row.original.name} has been copied`,
-                });
-              }}
-            >
-              <CopyIcon className="h-4 w-4" />
-            </Button>
-          </div>
+          <code className="bg-background rounded border px-2 py-1 font-mono text-sm shadow-sm">
+            {displayValue}
+          </code>
         );
       },
       enableSorting: false,
@@ -400,18 +374,6 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
         );
       },
       enableSorting: false,
-    },
-    {
-      accessorKey: 'usageCount',
-      header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="Usage" />
-      ),
-      cell: ({ row }) => {
-        const usage = row.getValue('usageCount') as number;
-        return (
-          <span className="font-mono text-sm">{usage.toLocaleString()}</span>
-        );
-      },
     },
     {
       accessorKey: 'createdAt',
@@ -493,15 +455,6 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuItem
-              onClick={() =>
-                copyToClipboard(row.original.key, row.original.name)
-              }
-            >
-              <CopyIcon className="mr-2 h-4 w-4" />
-              Copy Key
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem
               className="text-destructive"
               onClick={() => handleRevoke(row.original.id)}
             >
@@ -536,7 +489,6 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
 
   const totalKeys = keys.length;
   const activeKeys = keys.filter(k => k.status === 'active').length;
-  const totalUsage = keys.reduce((sum, k) => sum + k.usageCount, 0);
   const expiringSoon = keys.filter(
     k =>
       k.expiresAt &&
@@ -679,7 +631,7 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
 
       <CardContent className="space-y-6">
         {/* Quick Stats */}
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-3 gap-4">
           <div className="bg-muted/50 rounded-lg p-3 text-center">
             <p className="text-2xl font-bold">{totalKeys}</p>
             <p className="text-muted-foreground text-xs">Total Keys</p>
@@ -687,10 +639,6 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
           <div className="bg-muted/50 rounded-lg p-3 text-center">
             <p className="text-primary text-2xl font-bold">{activeKeys}</p>
             <p className="text-muted-foreground text-xs">Active</p>
-          </div>
-          <div className="bg-muted/50 rounded-lg p-3 text-center">
-            <p className="text-2xl font-bold">{totalUsage.toLocaleString()}</p>
-            <p className="text-muted-foreground text-xs">Total Usage</p>
           </div>
           <div className="bg-muted/50 rounded-lg p-3 text-center">
             <p className="text-2xl font-bold text-orange-600">{expiringSoon}</p>

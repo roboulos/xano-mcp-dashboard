@@ -6,10 +6,8 @@ import {
   PlusIcon,
   KeyIcon,
   ClockIcon,
-  CopyIcon,
   MailIcon,
   ActivityIcon,
-  CheckIcon,
   SettingsIcon,
   ChevronDownIcon,
   ChevronUpIcon,
@@ -175,7 +173,6 @@ export default function EnhancedTeamManagement({
   React.useEffect(() => {
     setMembers(transformedMembers);
   }, [transformedMembers]);
-  const [copiedId, setCopiedId] = useState<string | null>(null);
   const [memberFilter, setMemberFilter] = useState<
     'all' | 'active' | 'suspended' | 'pending'
   >('all');
@@ -231,12 +228,6 @@ export default function EnhancedTeamManagement({
           : member
       )
     );
-  };
-
-  const handleCopyApiKey = (keyReference: string, memberId: string) => {
-    navigator.clipboard.writeText(keyReference);
-    setCopiedId(memberId);
-    setTimeout(() => setCopiedId(null), 2000);
   };
 
   const handleCredentialAssignment = async (
@@ -576,43 +567,9 @@ export default function EnhancedTeamManagement({
                       </SelectContent>
                     </Select>
                     {member.assignedCredentialId && (
-                      <div className="flex items-center justify-between">
-                        <code className="bg-muted/50 block truncate rounded border px-2 py-1 font-mono text-xs">
-                          {
-                            credentials?.find(
-                              c => c.id === member.assignedCredentialId
-                            )?.credential_name
-                          }
-                          _****
-                        </code>
-                        <Button
-                          size="sm"
-                          variant="ghost"
-                          className="h-7 w-7 p-0"
-                          onClick={() => {
-                            const cred = credentials?.find(
-                              c => c.id === member.assignedCredentialId
-                            );
-                            if (cred) {
-                              handleCopyApiKey(
-                                `${cred.credential_name}_${cred.id}`,
-                                member.id
-                              );
-                            }
-                          }}
-                          aria-label={
-                            copiedId === member.id
-                              ? 'Copied'
-                              : 'Copy API key reference'
-                          }
-                        >
-                          {copiedId === member.id ? (
-                            <CheckIcon size={14} className="text-green-600" />
-                          ) : (
-                            <CopyIcon size={14} />
-                          )}
-                        </Button>
-                      </div>
+                      <code className="bg-muted/50 block truncate rounded border px-2 py-1 font-mono text-xs">
+                        xano_prod_a8b2{'•'.repeat(8)}
+                      </code>
                     )}
                   </div>
                 )}
