@@ -308,8 +308,7 @@ export default function EnhancedTeamManagement({
         title: 'Success',
         description: 'API key set as default successfully.',
       });
-    } catch (error) {
-      console.error('Failed to set default credential:', error);
+    } catch {
       toast({
         title: 'Error',
         description: 'Failed to set default credential.',
@@ -352,8 +351,7 @@ export default function EnhancedTeamManagement({
         title: 'Workspace Updated',
         description: `Switched to workspace: ${workspace.name}`,
       });
-    } catch (error) {
-      console.error('Failed to update workspace:', error);
+    } catch {
       toast({
         title: 'Error',
         description: 'Failed to update workspace',
@@ -381,8 +379,7 @@ export default function EnhancedTeamManagement({
         title: 'Branch Updated',
         description: `Switched to branch: ${branchLabel}`,
       });
-    } catch (error) {
-      console.error('Failed to update branch:', error);
+    } catch {
       toast({
         title: 'Error',
         description: 'Failed to update branch',

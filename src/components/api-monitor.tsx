@@ -16,8 +16,8 @@ interface ApiCall {
   apiGroup?: string;
   endpoint?: string;
   requestHeaders?: Record<string, string>;
-  requestBody?: any;
-  responseData?: any;
+  requestBody?: unknown;
+  responseData?: unknown;
   errorMessage?: string;
   stackTrace?: string[];
   component?: string;
@@ -153,7 +153,6 @@ export function ApiMonitor() {
 
   return (
     <>
-      {/* Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="fixed right-4 bottom-4 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-blue-500 text-white shadow-lg hover:bg-blue-600"
@@ -161,7 +160,6 @@ export function ApiMonitor() {
         <span className="text-xs font-bold">API</span>
       </button>
 
-      {/* Monitor Panel */}
       {isOpen && (
         <div className="fixed right-4 bottom-20 z-50 max-h-[600px] w-[480px] overflow-hidden rounded-lg border bg-white shadow-xl dark:border-gray-700 dark:bg-gray-900">
           <div className="flex items-center justify-between border-b bg-gray-50 px-4 py-2 dark:bg-gray-800">
@@ -174,7 +172,9 @@ export function ApiMonitor() {
             <div className="flex items-center gap-2">
               <select
                 value={filter}
-                onChange={e => setFilter(e.target.value as any)}
+                onChange={e =>
+                  setFilter(e.target.value as 'all' | 'errors' | 'slow')
+                }
                 className="rounded border bg-white px-2 py-1 text-xs dark:bg-gray-700"
               >
                 <option value="all">All</option>
@@ -295,7 +295,6 @@ export function ApiMonitor() {
         </div>
       )}
 
-      {/* Detail Modal */}
       {selectedCall && (
         <div
           className="bg-opacity-50 fixed inset-0 z-[60] flex items-center justify-center bg-black p-4"
@@ -316,7 +315,6 @@ export function ApiMonitor() {
             </div>
 
             <div className="max-h-[calc(80vh-80px)] overflow-auto p-4">
-              {/* Summary */}
               <div className="mb-4 rounded bg-gray-50 p-3 dark:bg-gray-800">
                 <div className="grid grid-cols-2 gap-2 text-sm">
                   <div>
@@ -390,15 +388,12 @@ export function ApiMonitor() {
                 </div>
               </div>
 
-              {/* URL */}
               <div className="mb-4">
                 <h4 className="mb-2 font-semibold">Endpoint</h4>
                 <div className="rounded bg-gray-100 p-3 font-mono text-sm break-all dark:bg-gray-800">
                   {selectedCall.url}
                 </div>
               </div>
-
-              {/* Request Headers */}
               {selectedCall.requestHeaders && (
                 <div className="mb-4">
                   <h4 className="mb-2 font-semibold">Request Headers</h4>
@@ -417,34 +412,36 @@ export function ApiMonitor() {
                   </div>
                 </div>
               )}
-
-              {/* Request Body */}
-              {selectedCall.requestBody && (
+              {selectedCall.requestBody !== undefined && (
                 <div className="mb-4">
                   <h4 className="mb-2 font-semibold">Request Body</h4>
                   <div className="rounded bg-gray-100 p-3 dark:bg-gray-800">
                     <pre className="overflow-x-auto text-xs">
-                      {JSON.stringify(selectedCall.requestBody, null, 2)}
+                      {JSON.stringify(
+                        selectedCall.requestBody as object,
+                        null,
+                        2
+                      )}
                     </pre>
                   </div>
                 </div>
               )}
-
-              {/* Response */}
               {selectedCall.responseData !== undefined && (
                 <div className="mb-4">
                   <h4 className="mb-2 font-semibold">Response Data</h4>
                   <div className="rounded bg-gray-100 p-3 dark:bg-gray-800">
                     <pre className="overflow-x-auto text-xs">
                       {typeof selectedCall.responseData === 'object'
-                        ? JSON.stringify(selectedCall.responseData, null, 2)
+                        ? JSON.stringify(
+                            selectedCall.responseData as object,
+                            null,
+                            2
+                          )
                         : String(selectedCall.responseData)}
                     </pre>
                   </div>
                 </div>
               )}
-
-              {/* Error Details */}
               {selectedCall.error && (
                 <div className="mb-4">
                   <h4 className="mb-2 font-semibold text-red-600">
@@ -467,8 +464,6 @@ export function ApiMonitor() {
                     )}
                 </div>
               )}
-
-              {/* Timestamp */}
               <div className="mt-4 text-xs text-gray-500">
                 Called at: {new Date(selectedCall.timestamp).toLocaleString()}
               </div>

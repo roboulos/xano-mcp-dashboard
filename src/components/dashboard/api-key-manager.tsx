@@ -288,12 +288,21 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
       );
 
       // Validate the newly created credential
-      if (newCredential && (newCredential as any).id) {
+      if (
+        newCredential &&
+        typeof newCredential === 'object' &&
+        'id' in newCredential
+      ) {
         try {
           const validationResult = await validateCredential(
-            (newCredential as any).id
+            (newCredential as { id: number }).id
           );
-          if (validationResult && !(validationResult as any).isValid) {
+          if (
+            validationResult &&
+            typeof validationResult === 'object' &&
+            'isValid' in validationResult &&
+            !validationResult.isValid
+          ) {
             toast({
               title: 'Warning',
               description:
@@ -301,8 +310,8 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
               variant: 'destructive',
             });
           }
-        } catch (validationError) {
-          console.error('Failed to validate credential:', validationError);
+        } catch {
+          // Validation error is handled by toast notification
         }
       }
 

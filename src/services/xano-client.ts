@@ -71,12 +71,17 @@ class XanoClient {
 
     // Log request in development
     if (process.env.NODE_ENV === 'development') {
+      // eslint-disable-next-line no-console
       console.group(`🔵 Xano API: ${apiGroup} ${endpoint}`);
+      // eslint-disable-next-line no-console
       console.log('URL:', url);
+      // eslint-disable-next-line no-console
       console.log('Method:', options.method || 'GET');
       if (options.body) {
+        // eslint-disable-next-line no-console
         console.log('Payload:', JSON.parse(options.body as string));
       }
+      // eslint-disable-next-line no-console
       console.log('Auth:', authToken ? '✅ Token present' : '❌ No token');
     }
 
@@ -92,11 +97,14 @@ class XanoClient {
 
     // Log response in development
     if (process.env.NODE_ENV === 'development') {
+      // eslint-disable-next-line no-console
       console.log(
         response.ok ? '✅ Success' : '❌ Error',
         `(${response.status}) - ${duration}ms`
       );
+      // eslint-disable-next-line no-console
       console.log('Response:', responseData);
+      // eslint-disable-next-line no-console
       console.groupEnd();
     }
 
