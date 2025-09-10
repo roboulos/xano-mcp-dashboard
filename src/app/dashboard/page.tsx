@@ -8,6 +8,7 @@ import {
   Key,
   ShieldIcon,
   Activity,
+  Sparkles,
 } from 'lucide-react';
 
 import APIKeyManager from '@/components/dashboard/api-key-manager';
@@ -15,6 +16,7 @@ import ContextualActivityFeed from '@/components/dashboard/contextual-activity-f
 import EnhancedTeamManagement from '@/components/dashboard/enhanced-team-management';
 import MCPConnectionHub from '@/components/dashboard/mcp-connection-hub';
 import UsageAnalytics from '@/components/dashboard/usage-analytics';
+import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { WorkspaceProvider, useWorkspace } from '@/contexts/workspace-context';
 
@@ -68,38 +70,17 @@ function DashboardContent() {
             </div>
           </div>
           <div className="flex items-center gap-4">
-            {/* Workspace selector hidden - now displayed in Team Management 
-            <Select
-              value={currentWorkspace?.id.toString() || ''}
-              onValueChange={value => {
-                const workspace = workspaces.find(
-                  w => w.id.toString() === value
-                );
-                if (workspace) setCurrentWorkspace(workspace);
-              }}
+            {/* Workshop Button */}
+            <Button
+              variant="secondary"
+              size="sm"
+              className="bg-gradient-to-r from-blue-50 to-purple-50 text-blue-700 border border-blue-200 hover:from-blue-100 hover:to-purple-100 hover:border-blue-300 hover:shadow-sm transition-all duration-200 dark:from-blue-950/50 dark:to-purple-950/50 dark:text-blue-300 dark:border-blue-800 dark:hover:from-blue-950/70 dark:hover:to-purple-950/70"
+              onClick={() => window.open('https://www.snappy.ai/events', '_blank')}
             >
-              <SelectTrigger className="w-[250px]">
-                <SelectValue placeholder="Select workspace...">
-                  {currentWorkspace?.name}
-                </SelectValue>
-              </SelectTrigger>
-              <SelectContent>
-                {workspaces.map(workspace => (
-                  <SelectItem
-                    key={workspace.id}
-                    value={workspace.id.toString()}
-                  >
-                    <div className="flex items-center gap-2">
-                      <span>{workspace.name}</span>
-                      <span className="text-muted-foreground text-xs">
-                        ({workspace.subscription_plan})
-                      </span>
-                    </div>
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            */}
+              <Sparkles className="h-3.5 w-3.5" />
+              Join MCP Workshop
+            </Button>
+            
             <div className="flex items-center gap-2">
               <span className="text-muted-foreground text-sm">
                 Last sync: 2 minutes ago
