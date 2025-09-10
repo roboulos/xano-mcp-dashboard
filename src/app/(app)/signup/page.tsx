@@ -11,6 +11,8 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
+import { xanoClient } from '@/services/xano-client';
+import { authStorage } from '@/utils/auth-storage';
 
 const Signup = () => {
   const router = useRouter();
@@ -27,40 +29,44 @@ const Signup = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('/api/auth/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          password: formData.password,
-        }),
+      // Split name into first and last name
+      const nameParts = formData.name.trim().split(' ');
+      const firstName = nameParts[0] || '';
+      const lastName = nameParts.slice(1).join(' ') || '';
+
+      const data = await xanoClient.auth.signup({
+        first_name: firstName,
+        last_name: lastName,
+        company: '', // Optional field
+        email: formData.email,
+        password: formData.password,
       });
 
-      const data = await response.json();
-
-      if (response.ok) {
+      const signupResponse = data as { authToken?: string };
+      if (signupResponse.authToken) {
         // Store the auth token
-        localStorage.setItem('authToken', data.authToken);
+        authStorage.setToken(signupResponse.authToken);
         toast({
           title: 'Success',
           description: 'Account created successfully! Redirecting...',
         });
         router.push('/dashboard');
+        router.refresh(); // Trigger auth context refresh
       } else {
         toast({
           title: 'Error',
-          description: data.error || 'Failed to create account',
+          description: 'Failed to create account',
           variant: 'destructive',
         });
         setIsLoading(false);
       }
-    } catch {
+    } catch (error) {
       toast({
         title: 'Error',
-        description: 'An error occurred. Please try again.',
+        description:
+          error instanceof Error
+            ? error.message
+            : 'An error occurred. Please try again.',
         variant: 'destructive',
       });
       setIsLoading(false);

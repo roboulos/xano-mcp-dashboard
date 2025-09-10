@@ -15,7 +15,7 @@ const authPaths = ['/login', '/signup', '/forgot-password'];
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const authToken = request.cookies.get('authToken')?.value;
+  const authToken = request.cookies.get('xano-token')?.value;
 
   // Check if the path is protected
   const isProtectedPath = protectedPaths.some(path =>

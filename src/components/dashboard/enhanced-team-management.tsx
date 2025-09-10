@@ -3,10 +3,8 @@
 import React, { useState, useMemo } from 'react';
 
 import {
-  PlusIcon,
   KeyIcon,
   ClockIcon,
-  MailIcon,
   ActivityIcon,
   SettingsIcon,
   ChevronDownIcon,
@@ -17,17 +15,6 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import {
   Select,
   SelectContent,
   SelectItem,
@@ -35,7 +22,6 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Switch } from '@/components/ui/switch';
-import { Textarea } from '@/components/ui/textarea';
 import { useAuth } from '@/contexts/auth-context';
 import { useWorkspace } from '@/contexts/workspace-context';
 import {
@@ -44,6 +30,7 @@ import {
   useXanoCredentials,
   useWorkspaceMembers,
 } from '@/hooks/use-dashboard-data';
+import { xanoClient } from '@/services/xano-client';
 import { cn } from '@/lib/utils';
 
 interface TeamMember {
@@ -73,7 +60,7 @@ export default function EnhancedTeamManagement({
   const { currentWorkspace } = useWorkspace();
   const { data: dashboardMetrics } = useDashboardMetrics('week');
   const { data: dailyMetrics } = useDailyMetrics();
-  const { data: credentials } = useXanoCredentials();
+  const { data: credentials, refetch: refetchCredentials } = useXanoCredentials();
   const {
     data: workspaceMembers,
     assignMemberToCredential,
@@ -181,44 +168,6 @@ export default function EnhancedTeamManagement({
     if (memberFilter === 'all') return true;
     return member.status === memberFilter;
   });
-  const [isInviteOpen, setIsInviteOpen] = useState(false);
-  const [inviteForm, setInviteForm] = useState({
-    email: '',
-    role: 'developer' as 'admin' | 'developer' | 'viewer',
-    message:
-      "You've been invited to join our MCP server team. Click the link below to get started.",
-  });
-
-  const handleInvite = () => {
-    // Simulate sending invitation
-    // Sending invitation to: inviteForm
-
-    // Add pending member
-    const newMember: TeamMember = {
-      id: Date.now().toString(),
-      name: inviteForm.email.split('@')[0],
-      email: inviteForm.email,
-      status: 'pending',
-      isOnline: false,
-      assignedCredentialId: undefined,
-      lastSeen: new Date(),
-      role: inviteForm.role,
-      totalCalls: 0,
-      callsToday: 0,
-      successRate: 0,
-      joinedAt: new Date(),
-      isCurrentUser: false,
-    };
-
-    setMembers(prev => [...prev, newMember]);
-    setIsInviteOpen(false);
-    setInviteForm({
-      email: '',
-      role: 'developer',
-      message:
-        "You've been invited to join our MCP server team. Click the link below to get started.",
-    });
-  };
 
   const handleStatusToggle = (memberId: string, checked: boolean) => {
     setMembers(prev =>
@@ -235,35 +184,24 @@ export default function EnhancedTeamManagement({
     credentialId: string
   ) => {
     try {
-      const memberIdNum = parseInt(memberId);
-      const member = workspaceMembers?.find(m => m.id === memberIdNum);
-
-      if (!member) return;
-
       if (credentialId === 'none') {
-        // Unassign any existing credential
-        if (member.credential_ref) {
-          await unassignMemberFromCredential(
-            member.credential_ref,
-            memberIdNum
-          );
-        }
-      } else {
-        const credId = parseInt(credentialId);
-        // First unassign from any existing credential
-        if (member.credential_ref && member.credential_ref !== credId) {
-          await unassignMemberFromCredential(
-            member.credential_ref,
-            memberIdNum
-          );
-        }
-        // Then assign to new credential
-        await assignMemberToCredential(credId, memberIdNum);
+        // Can't unset a default credential through the API
+        // Just update UI state
+        setAssigningCredential(null);
+        return;
       }
 
+      const credId = parseInt(credentialId);
+      
+      // Call the actual Xano API to set this as the default credential
+      await xanoClient.credentials.setDefault(credId);
+      
+      // Refresh the credentials list to get updated default status
+      await refetchCredentials();
+      
       setAssigningCredential(null);
-    } catch {
-      // Failed to assign credential
+    } catch (error) {
+      console.error('Failed to set default credential:', error);
       setAssigningCredential(null);
     }
   };
@@ -298,7 +236,7 @@ export default function EnhancedTeamManagement({
         <div>
           <h2 className="text-xl font-bold">Team Management</h2>
           <p className="text-muted-foreground text-sm">
-            Invite, manage, and monitor your team members
+            Manage and monitor your team members
           </p>
         </div>
         <div className="flex items-center gap-6">
@@ -311,93 +249,6 @@ export default function EnhancedTeamManagement({
             </div>
             <p className="text-lg font-semibold">{totalCalls} calls today</p>
           </div>
-          <Dialog open={isInviteOpen} onOpenChange={setIsInviteOpen}>
-            <DialogTrigger asChild>
-              <Button className="flex items-center gap-2">
-                <PlusIcon className="h-4 w-4" />
-                Invite Member
-              </Button>
-            </DialogTrigger>
-            <DialogContent>
-              <DialogHeader>
-                <DialogTitle>Invite Team Member</DialogTitle>
-                <DialogDescription>
-                  Send an invitation to join your MCP server team
-                </DialogDescription>
-              </DialogHeader>
-              <div className="space-y-4">
-                <div>
-                  <Label htmlFor="email">Email Address</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    value={inviteForm.email}
-                    onChange={e =>
-                      setInviteForm(prev => ({
-                        ...prev,
-                        email: e.target.value,
-                      }))
-                    }
-                    placeholder="colleague@company.com"
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="role">Role</Label>
-                  <Select
-                    value={inviteForm.role}
-                    onValueChange={value =>
-                      setInviteForm(prev => ({
-                        ...prev,
-                        role: value as 'admin' | 'developer' | 'viewer',
-                      }))
-                    }
-                  >
-                    <SelectTrigger>
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="viewer">
-                        Viewer - Read-only access
-                      </SelectItem>
-                      <SelectItem value="developer">
-                        Developer - Full API access
-                      </SelectItem>
-                      <SelectItem value="admin">
-                        Admin - Full management access
-                      </SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div>
-                  <Label htmlFor="message">Custom Message (Optional)</Label>
-                  <Textarea
-                    id="message"
-                    value={inviteForm.message}
-                    onChange={e =>
-                      setInviteForm(prev => ({
-                        ...prev,
-                        message: e.target.value,
-                      }))
-                    }
-                    placeholder="Add a personal note..."
-                    rows={3}
-                  />
-                </div>
-              </div>
-              <DialogFooter>
-                <Button
-                  variant="outline"
-                  onClick={() => setIsInviteOpen(false)}
-                >
-                  Cancel
-                </Button>
-                <Button onClick={handleInvite} disabled={!inviteForm.email}>
-                  <MailIcon className="mr-2 h-4 w-4" />
-                  Send Invitation
-                </Button>
-              </DialogFooter>
-            </DialogContent>
-          </Dialog>
         </div>
       </div>
 
@@ -513,7 +364,7 @@ export default function EnhancedTeamManagement({
                       <span>Assigned API Key</span>
                     </div>
                     <Select
-                      value={member.assignedCredentialId?.toString() || 'none'}
+                      value={credentials?.find(c => c.is_default)?.id.toString() || 'none'}
                       onValueChange={value => {
                         setAssigningCredential(member.id);
                         handleCredentialAssignment(member.id, value);
@@ -526,12 +377,9 @@ export default function EnhancedTeamManagement({
                             <span className="text-muted-foreground">
                               Updating...
                             </span>
-                          ) : member.assignedCredentialId ? (
+                          ) : credentials?.find(c => c.is_default) ? (
                             <span className="font-mono text-xs">
-                              {credentials?.find(
-                                c => c.id === member.assignedCredentialId
-                              )?.credential_name ||
-                                `Key ${member.assignedCredentialId}`}
+                              {credentials.find(c => c.is_default)?.credential_name}
                             </span>
                           ) : (
                             <span className="text-muted-foreground">
@@ -556,6 +404,11 @@ export default function EnhancedTeamManagement({
                               <span className="font-mono text-sm">
                                 {credential.credential_name}
                               </span>
+                              {credential.is_default && (
+                                <Badge variant="secondary" className="text-xs">
+                                  Default
+                                </Badge>
+                              )}
                               {credential.xano_instance_name && (
                                 <span className="text-muted-foreground text-xs">
                                   ({credential.xano_instance_name})
@@ -566,7 +419,7 @@ export default function EnhancedTeamManagement({
                         ))}
                       </SelectContent>
                     </Select>
-                    {member.assignedCredentialId && (
+                    {credentials?.find(c => c.is_default) && (
                       <code className="bg-muted/50 block truncate rounded border px-2 py-1 font-mono text-xs">
                         xano_prod_a8b2{'•'.repeat(8)}
                       </code>
@@ -575,7 +428,7 @@ export default function EnhancedTeamManagement({
                 )}
 
                 {/* Access Controls Toggle */}
-                {member.status !== 'pending' && member.assignedCredentialId && (
+                {member.status !== 'pending' && credentials?.find(c => c.is_default) && (
                   <div className="space-y-2">
                     <Button
                       variant="ghost"

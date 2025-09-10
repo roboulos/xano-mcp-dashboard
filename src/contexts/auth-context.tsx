@@ -2,6 +2,9 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
+import { xanoClient } from '@/services/xano-client';
+import { authStorage } from '@/utils/auth-storage';
+
 interface User {
   id: string;
   name: string;
@@ -27,13 +30,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const fetchUser = async () => {
     try {
-      // Check both localStorage and cookies for auth token
-      const authToken =
-        localStorage.getItem('authToken') ||
-        document.cookie
-          .split('; ')
-          .find(row => row.startsWith('authToken='))
-          ?.split('=')[1];
+      const authToken = authStorage.getToken();
 
       if (!authToken) {
         setUser(null);
@@ -41,29 +38,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         return;
       }
 
-      const response = await fetch('/api/auth/me', {
-        headers: {
-          Authorization: `Bearer ${authToken}`,
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include', // Include cookies
+      const data = await xanoClient.auth.me();
+      const userData = data as User;
+      setUser({
+        ...userData,
+        authToken, // Include the auth token in the user object
       });
-
-      if (response.ok) {
-        const data = await response.json();
-        setUser({
-          ...data.user,
-          authToken, // Include the auth token in the user object
-        });
-      } else {
-        // Invalid token, clear it
-        localStorage.removeItem('authToken');
-        // Clear cookie
-        document.cookie =
-          'authToken=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-        setUser(null);
-      }
     } catch {
+      // Invalid token, clear it
+      authStorage.removeToken();
       setUser(null);
     } finally {
       setIsLoading(false);
@@ -71,21 +54,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   const logout = async () => {
-    try {
-      // Call logout API to clear server-side cookie
-      await fetch('/api/auth/logout', {
-        method: 'POST',
-        credentials: 'include',
-      });
-    } catch {
-      // Continue with logout even if API call fails
-    }
-
-    // Clear client-side storage
-    localStorage.removeItem('authToken');
-    // Clear cookie on client side as backup
-    document.cookie =
-      'authToken=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    // Clear auth token
+    authStorage.removeToken();
     setUser(null);
 
     // Redirect to login

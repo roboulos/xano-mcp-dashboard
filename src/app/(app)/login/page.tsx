@@ -11,11 +11,15 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
+import { useAuth } from '@/contexts/auth-context';
 import { useToast } from '@/hooks/use-toast';
+import { xanoClient } from '@/services/xano-client';
+import { authStorage } from '@/utils/auth-storage';
 
 const Login = () => {
   const router = useRouter();
   const { toast } = useToast();
+  const { fetchUser } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
@@ -28,39 +32,44 @@ const Login = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: formData.email,
-          password: formData.password,
-        }),
-      });
+      const data = await xanoClient.auth.login(
+        formData.email,
+        formData.password
+      );
 
-      const data = await response.json();
-
-      if (response.ok) {
+      const loginResponse = data as { authToken?: string };
+      if (loginResponse.authToken) {
         // Store the auth token
-        localStorage.setItem('authToken', data.authToken);
+        authStorage.setToken(loginResponse.authToken);
+        
+        // Fetch user data to update auth context
+        await fetchUser();
+        
         toast({
           title: 'Success',
           description: 'Login successful! Redirecting...',
         });
-        router.push('/dashboard');
+        
+        // Small delay to ensure everything is updated
+        setTimeout(() => {
+          router.push('/dashboard');
+          router.refresh();
+        }, 100);
       } else {
         toast({
           title: 'Error',
-          description: data.error || 'Invalid credentials',
+          description: 'Invalid credentials',
           variant: 'destructive',
         });
         setIsLoading(false);
       }
-    } catch {
+    } catch (error) {
       toast({
         title: 'Error',
-        description: 'An error occurred. Please try again.',
+        description:
+          error instanceof Error
+            ? error.message
+            : 'An error occurred. Please try again.',
         variant: 'destructive',
       });
       setIsLoading(false);
