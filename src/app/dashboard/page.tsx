@@ -74,13 +74,15 @@ function DashboardContent() {
             <Button
               variant="secondary"
               size="sm"
-              className="bg-gradient-to-r from-blue-50 to-purple-50 text-blue-700 border border-blue-200 hover:from-blue-100 hover:to-purple-100 hover:border-blue-300 hover:shadow-sm transition-all duration-200 dark:from-blue-950/50 dark:to-purple-950/50 dark:text-blue-300 dark:border-blue-800 dark:hover:from-blue-950/70 dark:hover:to-purple-950/70"
-              onClick={() => window.open('https://www.snappy.ai/events', '_blank')}
+              className="border border-blue-200 bg-gradient-to-r from-blue-50 to-purple-50 text-blue-700 transition-all duration-200 hover:border-blue-300 hover:from-blue-100 hover:to-purple-100 hover:shadow-sm dark:border-blue-800 dark:from-blue-950/50 dark:to-purple-950/50 dark:text-blue-300 dark:hover:from-blue-950/70 dark:hover:to-purple-950/70"
+              onClick={() =>
+                window.open('https://www.snappy.ai/events', '_blank')
+              }
             >
               <Sparkles className="h-3.5 w-3.5" />
               Join MCP Workshop
             </Button>
-            
+
             <div className="flex items-center gap-2">
               <span className="text-muted-foreground text-sm">
                 Last sync: 2 minutes ago
