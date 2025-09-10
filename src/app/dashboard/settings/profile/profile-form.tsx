@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import { useState } from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
@@ -17,21 +17,11 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import { nofitySubmittedValues } from '@/lib/notify-submitted-values';
+import { useAuth } from '@/contexts/auth-context';
+import { useToast } from '@/hooks/use-toast';
+import { xanoClient } from '@/services/xano-client';
 
 const accountFormSchema = z.object({
-  email: z
-    .string({
-      required_error: 'Please select an email to display.',
-    })
-    .email(),
   name: z
     .string()
     .min(2, {
@@ -40,23 +30,57 @@ const accountFormSchema = z.object({
     .max(30, {
       message: 'Name must not be longer than 30 characters.',
     }),
+  first_name: z.string().optional(),
+  last_name: z.string().optional(),
+  company: z.string().optional(),
+  avatar_url: z.string().url().optional().or(z.literal('')),
 });
 
 type AccountFormValues = z.infer<typeof accountFormSchema>;
 
-// This can come from your database or API.
-const defaultValues: Partial<AccountFormValues> = {
-  name: 'Your name',
-};
-
 export function AccountForm() {
+  const { user, fetchUser } = useAuth();
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const form = useForm<AccountFormValues>({
     resolver: zodResolver(accountFormSchema),
-    defaultValues,
+    defaultValues: {
+      name: user?.name || '',
+      first_name: user?.first_name || '',
+      last_name: user?.last_name || '',
+      company: user?.company || '',
+      avatar_url: user?.avatar_url || '',
+    },
   });
 
-  function onSubmit(data: AccountFormValues) {
-    nofitySubmittedValues(data);
+  async function onSubmit(data: AccountFormValues) {
+    setIsSubmitting(true);
+    try {
+      await xanoClient.auth.updateProfile({
+        name: data.name,
+        first_name: data.first_name,
+        last_name: data.last_name,
+        company: data.company,
+        avatar_url: data.avatar_url || '',
+      });
+
+      // Refresh user data
+      await fetchUser();
+
+      toast({
+        title: 'Profile updated',
+        description: 'Your profile has been updated successfully.',
+      });
+    } catch {
+      toast({
+        title: 'Error',
+        description: 'Failed to update profile. Please try again.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -67,9 +91,9 @@ export function AccountForm() {
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Name</FormLabel>
+              <FormLabel>Display Name</FormLabel>
               <FormControl>
-                <Input placeholder="Your name" {...field} />
+                <Input placeholder="Your display name" {...field} />
               </FormControl>
               <FormDescription>
                 This is the name that will be displayed on your profile and in
@@ -79,33 +103,79 @@ export function AccountForm() {
             </FormItem>
           )}
         />
+
+        <div className="grid grid-cols-2 gap-4">
+          <FormField
+            control={form.control}
+            name="first_name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>First Name</FormLabel>
+                <FormControl>
+                  <Input placeholder="First name" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="last_name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Last Name</FormLabel>
+                <FormControl>
+                  <Input placeholder="Last name" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+
         <FormField
           control={form.control}
-          name="email"
+          name="company"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select a verified email to display" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  <SelectItem value="m@example.com">m@example.com</SelectItem>
-                  <SelectItem value="m@google.com">m@google.com</SelectItem>
-                  <SelectItem value="m@support.com">m@support.com</SelectItem>
-                </SelectContent>
-              </Select>
+              <FormLabel>Company</FormLabel>
+              <FormControl>
+                <Input placeholder="Your company" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="avatar_url"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Avatar URL</FormLabel>
+              <FormControl>
+                <Input
+                  placeholder="https://example.com/avatar.jpg"
+                  {...field}
+                />
+              </FormControl>
               <FormDescription>
-                You can manage verified email addresses in your{' '}
-                <Link href="/">email settings</Link>.
+                URL to your profile picture. Leave empty to use default.
               </FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button type="submit">Update account</Button>
+
+        <div className="flex items-center gap-4">
+          <Button type="submit" disabled={isSubmitting}>
+            {isSubmitting ? 'Updating...' : 'Update account'}
+          </Button>
+          <div className="text-muted-foreground text-sm">
+            Email: {user?.email}
+          </div>
+        </div>
       </form>
     </Form>
   );

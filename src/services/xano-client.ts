@@ -146,6 +146,28 @@ class XanoClient {
       return this.request('authManagement', '/auth/me');
     },
 
+    updateProfile: async (data: {
+      name?: string;
+      first_name?: string;
+      last_name?: string;
+      company?: string;
+      avatar_url?: string;
+    }) => {
+      // Convert undefined to empty strings for proper handling in Xano
+      const payload = {
+        name: data.name ?? '',
+        first_name: data.first_name ?? '',
+        last_name: data.last_name ?? '',
+        company: data.company ?? '',
+        avatar_url: data.avatar_url ?? '',
+      };
+
+      return this.request('authManagement', '/auth/update-profile', {
+        method: 'PATCH',
+        body: JSON.stringify(payload),
+      });
+    },
+
     saveApiKey: async (apiKey: string) => {
       return this.request('authManagement', '/save_api_key', {
         method: 'POST',

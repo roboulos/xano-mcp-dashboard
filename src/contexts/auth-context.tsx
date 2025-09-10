@@ -13,6 +13,10 @@ interface User {
   api_key?: string;
   created_at?: number;
   authToken?: string;
+  first_name?: string;
+  last_name?: string;
+  company?: string;
+  avatar_url?: string;
 }
 
 interface AuthContextType {
