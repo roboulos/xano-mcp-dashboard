@@ -177,22 +177,25 @@ class XanoClient {
       );
     },
 
-    update: async (id: number, credential_name: string) => {
+    update: async (
+      id: number,
+      updates: {
+        credential_name?: string;
+        workspace_id?: number;
+        branch?: string;
+      }
+    ) => {
       return this.request('credentialsManagement', '/xano-credentials/update', {
         method: 'PATCH',
-        body: JSON.stringify({ id, credential_name }),
+        body: JSON.stringify({ id, ...updates }),
       });
     },
 
     validate: async (id: number) => {
-      return this.request(
-        'credentialsManagement',
-        '/xano-credentials/validate',
-        {
-          method: 'POST',
-          body: JSON.stringify({ id }),
-        }
-      );
+      return this.request('credentialsManagement', '/validate', {
+        method: 'POST',
+        body: JSON.stringify({ id }),
+      });
     },
 
     getActive: async () => {

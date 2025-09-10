@@ -41,15 +41,15 @@ const Login = () => {
       if (loginResponse.authToken) {
         // Store the auth token
         authStorage.setToken(loginResponse.authToken);
-        
+
         // Fetch user data to update auth context
         await fetchUser();
-        
+
         toast({
           title: 'Success',
           description: 'Login successful! Redirecting...',
         });
-        
+
         // Small delay to ensure everything is updated
         setTimeout(() => {
           router.push('/dashboard');

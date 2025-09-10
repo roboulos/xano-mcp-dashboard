@@ -221,6 +221,7 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
     data: credentials,
     createCredential,
     deleteCredential,
+    validateCredential,
   } = useXanoCredentials();
 
   // Transform Xano credentials to match the existing ApiKey interface
@@ -281,7 +282,29 @@ export default function ApiKeyManager({ className }: ApiKeyManagerProps) {
   const handleCreateKey = async () => {
     try {
       // Create the credential first
-      await createCredential(createForm.name, createForm.apiKey);
+      const newCredential = await createCredential(
+        createForm.name,
+        createForm.apiKey
+      );
+
+      // Validate the newly created credential
+      if (newCredential && (newCredential as any).id) {
+        try {
+          const validationResult = await validateCredential(
+            (newCredential as any).id
+          );
+          if (validationResult && !(validationResult as any).isValid) {
+            toast({
+              title: 'Warning',
+              description:
+                'API key created but validation failed. Please check the key.',
+              variant: 'destructive',
+            });
+          }
+        } catch (validationError) {
+          console.error('Failed to validate credential:', validationError);
+        }
+      }
 
       // Team member assignment is now handled from the Team page
 

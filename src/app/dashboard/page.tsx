@@ -15,13 +15,6 @@ import ContextualActivityFeed from '@/components/dashboard/contextual-activity-f
 import EnhancedTeamManagement from '@/components/dashboard/enhanced-team-management';
 import MCPConnectionHub from '@/components/dashboard/mcp-connection-hub';
 import UsageAnalytics from '@/components/dashboard/usage-analytics';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { WorkspaceProvider, useWorkspace } from '@/contexts/workspace-context';
 
@@ -31,7 +24,7 @@ export const dynamic = 'force-dynamic';
 function DashboardContent() {
   const [activeTab, setActiveTab] = useState('overview');
   const [isLoading, setIsLoading] = useState(false);
-  const { workspaces, currentWorkspace, setCurrentWorkspace } = useWorkspace();
+  useWorkspace();
 
   // Handle tab changes with loading state
   const handleTabChange = (value: string) => {
@@ -75,6 +68,7 @@ function DashboardContent() {
             </div>
           </div>
           <div className="flex items-center gap-4">
+            {/* Workspace selector hidden - now displayed in Team Management 
             <Select
               value={currentWorkspace?.id.toString() || ''}
               onValueChange={value => {
@@ -105,6 +99,7 @@ function DashboardContent() {
                 ))}
               </SelectContent>
             </Select>
+            */}
             <div className="flex items-center gap-2">
               <span className="text-muted-foreground text-sm">
                 Last sync: 2 minutes ago

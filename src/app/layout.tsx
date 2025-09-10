@@ -3,11 +3,11 @@ import localFont from 'next/font/local';
 
 import type { Metadata } from 'next';
 
+import { ApiMonitor } from '@/components/api-monitor';
 import { SmoothScrollProvider } from '@/components/smooth-scroll-provider';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
-import { ApiMonitor } from '@/components/api-monitor';
 import { AuthProvider } from '@/contexts/auth-context';
 import './globals.css';
 
