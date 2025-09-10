@@ -209,8 +209,11 @@ export default function EnhancedTeamManagement({
       // Mark as validated immediately to prevent re-runs
       setHasValidated(true);
 
+      // If credential has a stored workspace, validate with that workspace to get branches
+      const workspaceToValidate = activeCredential.workspace_id;
+
       // Validate it to get the email and user info
-      validateCredential(activeCredential.id)
+      validateCredential(activeCredential.id, workspaceToValidate)
         .then(validationResult => {
           if (validationResult) {
             // Validation succeeded - update state with the response data
@@ -220,9 +223,17 @@ export default function EnhancedTeamManagement({
               instanceName:
                 result.credentialName || activeCredential.credential_name,
               currentInstanceName: result.currentInstanceName,
-              workspaceName: result.currentWorkspaceName,
-              currentBranch: result.currentBranch || result.liveBranch,
-              workspaceId: result.currentWorkspaceId,
+              workspaceName:
+                result.currentWorkspaceName ||
+                (workspaceToValidate
+                  ? result.workspaces?.find(w => w.id === workspaceToValidate)
+                      ?.name
+                  : undefined),
+              currentBranch:
+                activeCredential.branch ||
+                result.currentBranch ||
+                result.liveBranch,
+              workspaceId: workspaceToValidate || result.currentWorkspaceId,
               workspaces: result.workspaces || [],
               branches: result.branches || [],
             });
@@ -329,6 +340,47 @@ export default function EnhancedTeamManagement({
     const activeCredential = credentials?.find(c => c.is_default);
     if (!activeCredential) return;
 
+    // Handle "none" selection
+    if (workspaceName === 'none') {
+      try {
+        // Update credential to remove workspace restriction
+        await xanoClient.credentials.update(activeCredential.id, {
+          workspace_id: undefined,
+          branch: undefined,
+        });
+
+        // Re-validate without workspace to get all workspaces
+        const validationResult = await validateCredential(activeCredential.id);
+        const result = validationResult as ValidationResult;
+
+        // Update local state
+        setActiveCredentialInfo({
+          email: result.userEmail,
+          instanceName:
+            result.credentialName || activeCredential.credential_name,
+          currentInstanceName: result.currentInstanceName,
+          workspaceName: undefined,
+          currentBranch: undefined,
+          workspaceId: undefined,
+          workspaces: result.workspaces || [],
+          branches: [], // Clear branches when no workspace is selected
+        });
+
+        toast({
+          title: 'Workspace Updated',
+          description: 'Access to all workspaces',
+        });
+        return;
+      } catch {
+        toast({
+          title: 'Error',
+          description: 'Failed to update workspace',
+          variant: 'destructive',
+        });
+        return;
+      }
+    }
+
     // Find the workspace by name to get its ID
     const workspace = activeCredentialInfo.workspaces?.find(
       w => w.name === workspaceName
@@ -336,15 +388,26 @@ export default function EnhancedTeamManagement({
     if (!workspace) return;
 
     try {
+      // Validate with the specific workspace to get its branches
+      const validationResult = await validateCredential(
+        activeCredential.id,
+        workspace.id
+      );
+      const result = validationResult as ValidationResult;
+
+      // Update the credential with the workspace (but not branch yet)
       await xanoClient.credentials.update(activeCredential.id, {
         workspace_id: workspace.id,
+        branch: undefined, // Clear branch when workspace changes
       });
 
-      // Update local state
+      // Update local state with workspace info and branches from validation
       setActiveCredentialInfo(prev => ({
         ...prev,
         workspaceName: workspace.name,
         workspaceId: workspace.id,
+        currentBranch: undefined, // Clear current branch
+        branches: result.branches || [], // Update branches from validation
       }));
 
       toast({
@@ -656,55 +719,6 @@ export default function EnhancedTeamManagement({
 
                       {expandedControls[member.id] && (
                         <div className="space-y-3 px-2">
-                          {/* Branch Selection */}
-                          <div className="space-y-2">
-                            <div className="flex items-center gap-1 text-xs">
-                              <span className="text-muted-foreground">
-                                Branch Access
-                              </span>
-                            </div>
-                            <Select
-                              value={
-                                member.isCurrentUser &&
-                                activeCredentialInfo.currentBranch
-                                  ? activeCredentialInfo.currentBranch
-                                  : ''
-                              }
-                              disabled={
-                                !member.isCurrentUser ||
-                                !activeCredentialInfo.branches?.length
-                              }
-                              onValueChange={handleBranchChange}
-                            >
-                              <SelectTrigger className="h-8 w-full text-sm">
-                                <SelectValue placeholder="Select branch..." />
-                              </SelectTrigger>
-                              <SelectContent>
-                                {activeCredentialInfo.branches?.map(branch => (
-                                  <SelectItem
-                                    key={branch.label}
-                                    value={branch.label}
-                                    className="font-mono text-sm"
-                                  >
-                                    {branch.label}
-                                    {branch.live && (
-                                      <Badge
-                                        variant="secondary"
-                                        className="ml-2 text-xs"
-                                      >
-                                        Live
-                                      </Badge>
-                                    )}
-                                  </SelectItem>
-                                )) || (
-                                  <SelectItem value="loading" disabled>
-                                    Loading branches...
-                                  </SelectItem>
-                                )}
-                              </SelectContent>
-                            </Select>
-                          </div>
-
                           {/* Xano Workspace Selection */}
                           <div className="space-y-2">
                             <div className="flex items-center gap-1 text-xs">
@@ -729,6 +743,11 @@ export default function EnhancedTeamManagement({
                                 <SelectValue placeholder="Select workspace..." />
                               </SelectTrigger>
                               <SelectContent>
+                                <SelectItem value="none" className="text-sm">
+                                  <span className="text-muted-foreground">
+                                    None (All workspaces)
+                                  </span>
+                                </SelectItem>
                                 {activeCredentialInfo.workspaces?.map(
                                   workspace => (
                                     <SelectItem
@@ -737,20 +756,74 @@ export default function EnhancedTeamManagement({
                                       className="text-sm"
                                     >
                                       {workspace.name}
-                                      {workspace.id ===
-                                        activeCredentialInfo.workspaceId && (
-                                        <Badge
-                                          variant="secondary"
-                                          className="ml-2 text-xs"
-                                        >
-                                          Current
-                                        </Badge>
-                                      )}
                                     </SelectItem>
                                   )
                                 ) || (
                                   <SelectItem value="loading" disabled>
                                     Loading workspaces...
+                                  </SelectItem>
+                                )}
+                              </SelectContent>
+                            </Select>
+                          </div>
+
+                          {/* Branch Selection */}
+                          <div className="space-y-2">
+                            <div className="flex items-center gap-1 text-xs">
+                              <span className="text-muted-foreground">
+                                Branch Access
+                              </span>
+                            </div>
+                            <Select
+                              value={
+                                member.isCurrentUser &&
+                                activeCredentialInfo.currentBranch
+                                  ? activeCredentialInfo.currentBranch
+                                  : ''
+                              }
+                              disabled={
+                                !member.isCurrentUser ||
+                                !activeCredentialInfo.branches?.length ||
+                                !activeCredentialInfo.workspaceName ||
+                                activeCredentialInfo.workspaceName === 'none'
+                              }
+                              onValueChange={handleBranchChange}
+                            >
+                              <SelectTrigger className="h-8 w-full text-sm">
+                                <SelectValue
+                                  placeholder={
+                                    activeCredentialInfo.workspaceName &&
+                                    activeCredentialInfo.workspaceName !==
+                                      'none'
+                                      ? 'Select branch...'
+                                      : 'Select a workspace first'
+                                  }
+                                />
+                              </SelectTrigger>
+                              <SelectContent>
+                                {activeCredentialInfo.branches?.map(branch => (
+                                  <SelectItem
+                                    key={branch.label}
+                                    value={branch.label}
+                                    className="font-mono text-sm"
+                                  >
+                                    {branch.label}
+                                    {branch.live && (
+                                      <Badge
+                                        variant="secondary"
+                                        className="ml-2 text-xs"
+                                      >
+                                        Live
+                                      </Badge>
+                                    )}
+                                  </SelectItem>
+                                )) || (
+                                  <SelectItem value="loading" disabled>
+                                    {activeCredentialInfo.workspaceName &&
+                                    activeCredentialInfo.workspaceName !==
+                                      'none'
+                                      ? 'Loading branches...'
+                                      : 'No workspace selected'}
                                   </SelectItem>
                                 )}
                               </SelectContent>

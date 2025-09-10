@@ -36,6 +36,8 @@ export interface XanoCredential {
   is_active: boolean;
   created_at: string;
   last_validated?: string;
+  workspace_id?: number;
+  branch?: string;
 }
 
 export interface WorkspaceMember {
@@ -220,10 +222,18 @@ export function useXanoCredentials() {
     await fetchCredentials();
   };
 
-  const validateCredential = async (id: number) => {
+  const validateCredential = async (id: number, workspace_id?: number) => {
     if (!user) throw new Error('Not authenticated');
 
-    return await xanoClient.credentials.validate(id);
+    // Use the new endpoint when workspace_id is provided
+    if (workspace_id !== undefined) {
+      return await xanoClient.credentials.validateWithWorkspace(
+        id,
+        workspace_id
+      );
+    }
+
+    return await xanoClient.credentials.validate(id, workspace_id);
   };
 
   return {

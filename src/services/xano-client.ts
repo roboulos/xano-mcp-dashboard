@@ -221,10 +221,25 @@ class XanoClient {
       });
     },
 
-    validate: async (id: number) => {
+    validate: async (id: number, workspace_id?: number) => {
+      const payload: { id: number; workspace_id?: number } = { id };
+      if (workspace_id !== undefined) {
+        payload.workspace_id = workspace_id;
+      }
       return this.request('credentialsManagement', '/validate', {
         method: 'POST',
-        body: JSON.stringify({ id }),
+        body: JSON.stringify(payload),
+      });
+    },
+
+    validateWithWorkspace: async (id: number, workspace_id?: number) => {
+      const payload: { id: number; workspace_id?: number } = { id };
+      if (workspace_id !== undefined) {
+        payload.workspace_id = workspace_id;
+      }
+      return this.request('credentialsManagement', '/validate-with-workspace', {
+        method: 'POST',
+        body: JSON.stringify(payload),
       });
     },
 
