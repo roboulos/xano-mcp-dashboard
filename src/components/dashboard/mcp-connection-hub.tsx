@@ -51,7 +51,7 @@ export default function McpConnectionHub({ className }: McpConnectionHubProps) {
               command: 'npx',
               args: [
                 'mcp-remote',
-                'https://xano-mcp-server.robertjboulos.workers.dev/sse',
+                'https://snappy-mcp-turbo.robertjboulos.workers.dev/sse',
               ],
             },
           },
@@ -66,7 +66,7 @@ export default function McpConnectionHub({ className }: McpConnectionHubProps) {
       description: 'Command for Claude Code CLI',
       icon: <Terminal className="h-4 w-4" />,
       format: 'command',
-      content: `claude mcp add snappy-xano https://xano-mcp-server.robertjboulos.workers.dev/sse --transport sse`,
+      content: `claude mcp add snappy-xano https://snappy-mcp-turbo.robertjboulos.workers.dev/sse --transport sse`,
       filename: 'claude-code-command.sh',
     },
     cursor: {
@@ -81,7 +81,7 @@ export default function McpConnectionHub({ className }: McpConnectionHubProps) {
               command: 'npx',
               args: [
                 'mcp-remote',
-                'https://xano-mcp-server.robertjboulos.workers.dev/sse',
+                'https://snappy-mcp-turbo.robertjboulos.workers.dev/sse',
               ],
             },
           },
@@ -96,7 +96,7 @@ export default function McpConnectionHub({ className }: McpConnectionHubProps) {
       description: 'Generic server URL and credentials',
       icon: <Link className="h-4 w-4" />,
       format: 'text',
-      content: `Server URL: https://xano-mcp-server.robertjboulos.workers.dev/sse
+      content: `Server URL: https://snappy-mcp-turbo.robertjboulos.workers.dev/sse
 Transport: SSE (Server-Sent Events)
 Server Name: snappy
 
